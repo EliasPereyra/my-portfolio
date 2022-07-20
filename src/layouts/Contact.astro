@@ -1,10 +1,10 @@
 <section>
-  <div>
+  <div id="contact-container">
     <div><img src="" alt="cellphone saludando con buena onda" /></div>
     <div>
       <h3>Te gustaría trabajar conmigo?</h3>
       <p>Me gustaría escuchar tus propuestas y realizar un trabajo increíble juntos</p>
-      <button><b>contáctame</b></button>
+      <button id="contact-btn"><b>contáctame</b></button>
     </div>
   </div>
 </section>
@@ -12,5 +12,21 @@
 <style>
   section {
     padding: 4em 3em;
+  }
+
+  #contact-container {
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+  }#contact-container p {
+    width: 40ch;
+  }
+
+  #contact-btn {
+    width: 14em;
+    border: 1px solid purple;
+    border-radius: 5px;
+    padding: 1em 2em;
   }
 </style>
