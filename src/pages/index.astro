@@ -1,0 +1,78 @@
+---
+import Hero from "../layouts/Hero.astro";
+import Navbar from "../components/Navbar.astro";
+---
+
+<Hero title="Elias Pereyra Gomez">
+	<Navbar />
+	<section>
+			<div id="hero-content">
+				<h1><span>Diseñador</span> y <br /><span>Desarrollador</span></h1>
+				<h3>
+					Me gusta hacer diseños y desarrollos que contribuyan satisfacción y contento
+				</h3>
+				<div>
+					<button><b>¡Entremos en contacto!</b></button>
+					<button>Descargar <b>CV</b></button>
+				</div>
+				<img src="" alt="una flecha va acá" />
+			</div>
+
+			<div>
+				<img src="" alt="Una compu va acá" />
+			</div>
+	</section>
+</Hero>
+
+<style>
+	:root {
+		--astro-gradient: linear-gradient(0deg, #4f39fa, #da62c4);
+	}
+
+	h1 {
+		margin: 0;
+	}
+
+	h3 {
+		color: gray;
+		width: 54ch;
+	}
+
+	main {
+		margin: auto;
+		padding: 1em;
+		max-width: 60ch;
+	}
+
+	button {
+    border: none;
+		border-radius: 5px;
+    font-size: 1rem;
+    padding: 1em;
+		background-color: darkblue;
+		color: white;
+		min-width: 14em;
+  }
+
+	section {
+		padding: 3em 0;
+	}
+
+	#hero-content{
+		padding: 0 3em;
+		display: flex;
+		flex-direction: column;
+
+	}
+
+	.text-gradient {
+		font-weight: 900;
+		background-image: var(--astro-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 100% 200%;
+		background-position-y: 100%;
+		border-radius: 0.4rem;
+		animation: pulse 4s ease-in-out infinite;
+	}
+</style>
