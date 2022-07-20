@@ -1,0 +1,28 @@
+---
+  import Card from '../components/Card.astro'
+---
+
+<main>
+  <h2>Mis Últimos Proyectos</h2>
+  <div>
+    <Card title="Expense Tracker" body="" href="somepage" />
+    <Card title="Expense Tracker" body="" href="somepage" />
+    <Card title="Expense Tracker" body="" href="somepage" />
+  </div>
+  <button id="btn-more"><b>Ver más</b></button>
+</main>
+
+<style>
+  h2 {text-align: center; margin: 4em 0;}
+  main {
+    padding: 2em 3em;
+  }
+
+  #btn-more {
+    border: none;
+    border-radius: 5px;
+    width: 14em;
+    margin: auto;
+    padding: 1em 3em;
+  }
+</style>
