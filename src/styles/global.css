@@ -1,0 +1,11 @@
+:root {
+  --astro-gradient: linear-gradient(0deg, #4f39fa, #da62c4);
+
+  --dark-blue: #142664;
+  --dark-purple: #422179;
+  --dark-green: #486478;
+  --orange: #FC6A48;
+
+  --standard-black: hsl(0, 4%, 5%);
+  --light-dark: hsl(0, 3%, 22%);
+}

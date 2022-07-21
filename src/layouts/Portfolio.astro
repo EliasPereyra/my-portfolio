@@ -1,21 +1,53 @@
 ---
   import Card from '../components/Card.astro'
+
+  import '../styles/global.css'
+
+  const projects = [
+    {
+      title: "Expense Tracker",
+      body: "This is a description for this particular project. It was made with such technologies.",
+      tags: [
+
+      ],
+      live: "https://app.com",
+      repo: "https://github.com/eliaspereyra/"
+    },
+    {
+      title: "Expense Tracker",
+      body: "This is a description for this particular project. It was made with such technologies.",
+      tags: [
+        
+      ],
+      live: "https://app.com",
+      repo: "https://github.com/eliaspereyra/"
+    },
+    {
+      title: "Expense Tracker",
+      body: "This is a description for this particular project. It was made with such technologies.",
+      tags: [
+        
+      ],
+      live: "https://app.com",
+      repo: "https://github.com/eliaspereyra/"
+    }
+  ]
 ---
 
 <main>
   <h2>Mis Últimos Proyectos</h2>
-  <div>
-    <Card title="Expense Tracker" body="" href="somepage" />
-    <Card title="Expense Tracker" body="" href="somepage" />
-    <Card title="Expense Tracker" body="" href="somepage" />
-  </div>
+  <ul>
+    {projects.map(({title, body, live}) => <Card title={title} body={body} href={live} />)}
+  </ul>
   <button id="btn-more"><b>Ver más</b></button>
 </main>
 
 <style>
-  h2 {text-align: center; margin: 4em 0;}
+  h2 {text-align: center; margin: 4em 0; color: white;}
+  
   main {
     padding: 2em 3em;
+    background-color: var(--dark-blue);
   }
 
   #btn-more {

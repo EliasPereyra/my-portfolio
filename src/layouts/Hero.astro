@@ -1,29 +1,56 @@
+---
+import '../styles/global.css'
+---
+
 <section>
   <div id="hero-content">
-    <h1><span>Diseñador</span> y <br /><span>Desarrollador</span></h1>
+    <h1><span id="designer">Diseñador</span> y <br /><span id="developer">Desarrollador</span></h1>
     <h3>
       Me gusta hacer diseños y desarrollos que contribuyan satisfacción y contento
     </h3>
-    <div>
-      <button><b>¡Entremos en contacto!</b></button>
-      <button>Descargar <b>CV</b></button>
+    <div id="btns-wrapper">
+      <button id="btn-filled"><b>¡Entremos en contacto!</b></button>
+      <button id="btn-empty">Descargar <b>CV</b></button>
     </div>
     <img src="" alt="una flecha va acá" />
   </div>
 
-  <div>
-    <img src="" alt="Una compu va acá" />
+  <div id="laptop-img">
+    <img src="assets/laptop.svg" alt="Una compu va acá" />
   </div>
 </section>
 
 <style>
+	section {
+		display: flex;
+		padding: 3em 0;
+		background-color: linear-gradient(121.95deg, #F8F7FF 43.69%, rgba(248, 247, 255, 0) 99.28%);
+	}
+
+	#hero-content{
+		padding: 0 3em;
+		display: flex;
+		flex-direction: column;
+	}	
+
+	img {
+		width: 22em;
+	}
+
   h1 {
 		margin: 0;
+	}#designer {
+		color: var(--orange);
+	}#developer {
+		color: var(--dark-green);
 	}
 
 	h3 {
-		color: gray;
-		width: 54ch;
+		color: var(--light-dark);
+		width: 52ch;
+		font-weight: 400;
+		margin-top: .4em;
+		margin-bottom: 1em;
 	}
 
 	main {
@@ -32,24 +59,25 @@
 		max-width: 60ch;
 	}
 
-	button {
+	#btns-wrapper {
+		display: flex;
+		gap: .7em;
+	}button {
     border: none;
 		border-radius: 5px;
     font-size: 1rem;
-    padding: 1em;
-		background-color: darkblue;
-		color: white;
+    padding: .7em;
 		min-width: 14em;
-  }
-
-	section {
-		padding: 3em 0;
+		transition: opacity .3s ease-in-out;
+  }button:hover {
+		opacity: .9;
 	}
-
-	#hero-content{
-		padding: 0 3em;
-		display: flex;
-		flex-direction: column;
-
+	#btn-filled {
+		background-color: var(--dark-blue);
+		color: white;
+	}#btn-empty {
+		background-color: transparent;
+		border: 2px solid var(--dark-blue);
+		color: var(--dark-blue);
 	}
 </style>

@@ -4,19 +4,21 @@ export interface Props {
 	body: string;
 	href: string;
 }
-const { href, title, body } = Astro.props;
+const { live, title, body } = Astro.props;
 ---
 
 <li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
+		<div id="link-card__wrapper">
+			<div><img src="" alt="Imagen del proyecto" /></div>
+			<div id="link-card__content">
+				<h3>{title}</h3>
+				<p id="link-card__content-body">{body}</p>
+				<p>Aca van los tags</p>
+				<hr />
+				<p><a href={live}>https://livepage</a></p>
+				<p><a href={live}>https://github.com/eliaspereyra/repositorio-x</a></p>
+			</div>
+		</div>
 </li>
 <style>
 	:root {
@@ -34,19 +36,30 @@ const { href, title, body } = Astro.props;
 		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 		margin: 2em 0;
 	}
+	
+	#link-card__wrapper {
+		display: flex;
+	}
+
+	#link-card__content {
+		padding: 1em;
+	}
+
+	#link-card__content-body {
+		width: 50ch;
+	}
 
 	.link-card > a {
 		width: 100%;
 		text-decoration: none;
 		line-height: 1.4;
-		padding: 1em 1.3em;
 		border-radius: 0.35rem;
 		color: var(--text-color);
 		background-color: white;
 		opacity: 0.8;
 	}
 
-	h2 {
+	h3 {
 		margin: 0;
 		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 	}
@@ -58,7 +71,7 @@ const { href, title, body } = Astro.props;
 
 	h2 span {
 		display: inline-block;
-		transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+		transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 
 	.link-card:is(:hover, :focus-within) {
