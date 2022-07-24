@@ -16,15 +16,19 @@ import '../styles/global.css'
   </div>
 
   <div id="laptop-img">
-    <img src="assets/laptop.svg" alt="Una compu va acá" />
+    <img src="assets/laptop.webp" alt="Una compu va acá" />
   </div>
 </section>
 
 <style>
+	:root {
+		--bckg-gradient: linear-gradient(121.95deg, #F8F7FF 43.69%, rgba(248, 247, 255, 0) 99.28%);
+	}
+
 	section {
 		display: flex;
 		padding: 3em 0;
-		background-color: linear-gradient(121.95deg, #F8F7FF 43.69%, rgba(248, 247, 255, 0) 99.28%);
+		background: var(--bckg-gradient);
 	}
 
 	#hero-content{
@@ -34,7 +38,7 @@ import '../styles/global.css'
 	}	
 
 	img {
-		width: 22em;
+		width: 18em;
 	}
 
   h1 {
@@ -70,14 +74,25 @@ import '../styles/global.css'
 		min-width: 14em;
 		transition: opacity .3s ease-in-out;
   }button:hover {
-		opacity: .9;
 	}
 	#btn-filled {
 		background-color: var(--dark-blue);
 		color: white;
+	}#btn-filled:hover {
+		opacity: .9;
 	}#btn-empty {
 		background-color: transparent;
 		border: 2px solid var(--dark-blue);
 		color: var(--dark-blue);
+		transiton-property: border color;
+		transition-duration: 0.4s;
+		transition-timing-function: ease-in-out;
+		-webkit-transition-property: border, color;
+  	-webkit-transition-duration: 0.4s;
+  	-o-transition-property: border, color;
+  	-o-transition-duration: 0.4s;
+	}#btn-empty:hover {
+		border: 2px solid var(--orange);
+		color: var(--orange);	
 	}
 </style>
