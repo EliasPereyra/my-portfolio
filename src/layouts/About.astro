@@ -1,4 +1,32 @@
-<section>
+---
+import Skill from "../components/Skill.astro";
+
+const skills = [
+  {
+    title: "Diseñador",
+    desc: "Me encanta el diseño!",
+    tags: "Figma",
+    skill_img: "../../public/assets/design-img.webp",
+    logo_src: "../../public/assets/logo_figma.svg"
+  },
+  {
+    title: "Frontend",
+    desc: "el UI funcional!",
+    tags: "HTML",
+    skill_img: "../../public/assets/frontend-img.webp",
+    logo_src: "../../public/assets/logos.svg"
+  },
+  {
+    title: "Backend",
+    desc: "Logica de negocio!",
+    tags: "Node.js",
+    skill_img: "../../public/assets/backend-img.svg",
+    logo_src: "../../public/assets/logos_express.svg"
+  }
+]
+---
+
+<section id="about">
   <div>
     <div id="about-desc-container">
       <div>
@@ -15,7 +43,9 @@
     <h3>Estos son los roles que me gusta aprender:</h3>
 
     <div id="skills">
-      <div></div>
+      {skills.map(({title, desc, tags, skill_img, logo_src}) => 
+        <Skill title={title} desc={desc} skill_img={skill_img} tags={tags} logo_src={logo_src} />)
+      }
     </div>
   </div>
 </section>

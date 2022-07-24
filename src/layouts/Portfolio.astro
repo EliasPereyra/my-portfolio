@@ -6,7 +6,8 @@
   const projects = [
     {
       title: "Expense Tracker",
-      body: "This is a description for this particular project. It was made with such technologies.",
+      desc: "This is a description for this particular project. It was made with such technologies.",
+      project_img: "/public/assets/app-cover.webp",
       tags: [
 
       ],
@@ -15,7 +16,8 @@
     },
     {
       title: "Expense Tracker",
-      body: "This is a description for this particular project. It was made with such technologies.",
+      desc: "This is a description for this particular project. It was made with such technologies.",
+      project_img: "/public/assets/ej2.webp",
       tags: [
         
       ],
@@ -24,7 +26,8 @@
     },
     {
       title: "Expense Tracker",
-      body: "This is a description for this particular project. It was made with such technologies.",
+      desc: "This is a description for this particular project. It was made with such technologies.",
+      project_img: "/public/assets/ej3.webp",
       tags: [
         
       ],
@@ -34,20 +37,34 @@
   ]
 ---
 
-<main>
+<main id="portfolio">
   <h2>Mis Últimos Proyectos</h2>
   <ul>
-    {projects.map(({title, body, live}) => <Card title={title} body={body} href={live} />)}
+    {projects.map(({title, desc, project_img, live, repo}) => 
+      <Card 
+        title={title} 
+        desc={desc} 
+        project_img={project_img} 
+        live_link={live} 
+        repo_link={repo} />)}
   </ul>
   <button id="btn-more"><b>Ver más</b></button>
 </main>
 
 <style>
-  h2 {text-align: center; margin: 4em 0; color: white;}
   
   main {
     padding: 2em 3em;
     background: linear-gradient(180deg, #101732 0%, #060C21 100%);
+  }
+  
+  h2 {text-align: center; margin: 4em 0; color: white;}
+  
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
   }
 
   #btn-more {
@@ -60,5 +77,11 @@
     color: var(--dark-blue);
     background-color: white;
     font-weight: bold;
+    transition-property: background-color, color;
+    -webkit-transition-property: opacity;
+    transition-duration: 0.3s;
+    transition-delay: ease-in-out;
+  }#btn-more:hover {
+    opacity: .8;
   }
 </style>

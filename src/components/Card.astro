@@ -1,29 +1,35 @@
 ---
 export interface Props {
 	title: string;
-	body: string;
-	href: string;
+	desc: string;
+	project_img: string;
+	live_link: string;
+	repo_link: string;
 }
-const { live, title, body } = Astro.props;
+const { title, desc, project_img, live_link, repo_link } = Astro.props;
 ---
 
 <li class="link-card">
 		<div id="link-card__wrapper">
-			<div><img src="" alt="Imagen del proyecto" /></div>
+			<div id="img-container">
+				<img src={project_img} alt={`${title} cover image`} />
+			</div>
 			<div id="link-card__content">
 				<h3>{title}</h3>
-				<p id="link-card__content-body">{body}</p>
+				<p id="link-card__content-body">{desc}</p>
 				<p>Aca van los tags</p>
 				<hr />
-				<p><a href={live}>https://livepage</a></p>
-				<p><a href={live}>https://github.com/eliaspereyra/repositorio-x</a></p>
+				<p><a href={live_link}>{live_link}</a></p>
+				<p><a href={repo_link}>{repo_link}</a></p>
 			</div>
 		</div>
 </li>
 <style>
 	:root {
-		--link-gradient: linear-gradient(45deg, #4f39fa, #da62c4 30%, var(--color-border) 60%);
+		--link-gradient: linear-gradient(90deg, #f5f3f3, #e6f0ff 30%, var(--color-border) 60%);
 	}
+
+	hr { border: none; height: 1px; background-color: gray;}
 
 	.link-card {
 		list-style: none;
@@ -31,10 +37,11 @@ const { live, title, body } = Astro.props;
 		padding: 0.15rem;
 		background-image: var(--link-gradient);
 		background-size: 400%;
-		border-radius: 0.5rem;
+		border-radius: 5px;
 		background-position: 100%;
 		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 		margin: 2em 0;
+		width: 50em;
 	}
 	
 	#link-card__wrapper {
@@ -47,6 +54,8 @@ const { live, title, body } = Astro.props;
 
 	#link-card__content-body {
 		width: 50ch;
+		font-weight: 300;
+		color: var(--light-dark)
 	}
 
 	.link-card > a {
@@ -57,6 +66,11 @@ const { live, title, body } = Astro.props;
 		color: var(--text-color);
 		background-color: white;
 		opacity: 0.8;
+	}
+
+	#img-container img {
+		width: 20em;
+		height: 100%;
 	}
 
 	h3 {
@@ -78,7 +92,7 @@ const { live, title, body } = Astro.props;
 		background-position: 0;
 	}
 
-	.link-card:is(:hover, :focus-within) h2 {
+	.link-card:is(:hover, :focus-within) h3 {
 		color: #4f39fa;
 	}
 

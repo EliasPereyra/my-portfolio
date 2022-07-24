@@ -1,0 +1,40 @@
+---
+export interface Props {
+  title: string;
+  desc: string;
+  tags: string;
+  skill_img: string;
+  logo_src: string;
+}
+
+const { title, desc, tags, skill_img, logo_src } = Astro.props;
+---
+
+<div id="container">
+  <div id="skill-logo"><img src={skill_img} alt={`${title} image`} /></div>
+  <div>
+    <h3>{title}</h3>
+    <p>{desc}</p>
+    <p>{tags}</p>
+  </div>
+  <div>
+    <img src={logo_src} alt={title} />
+  </div>
+</div>
+
+<style>
+  #container {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    width: 100%;
+
+    margin: 2em;
+  }
+
+  #skill-logo img {
+    width: 11em;
+  }
+
+</style>
