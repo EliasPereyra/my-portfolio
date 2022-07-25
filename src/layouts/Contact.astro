@@ -1,32 +1,59 @@
+---
+import '../styles/global.css';
+---
+
 <section id="contact">
   <div id="contact-container">
-    <div><img src="" alt="cellphone saludando con buena onda" /></div>
-    <div>
+    <div id="contact-container__img">
+      <img src="/assets/payment_processed.webp" alt="cellphone saludando con buena onda" />
+    </div>
+    <div id="contact-container__content">
       <h3>Te gustaría trabajar conmigo?</h3>
       <p>Me gustaría escuchar tus propuestas y realizar un trabajo increíble juntos</p>
-      <button id="contact-btn"><b>contáctame</b></button>
+      <a id="contact-btn" href="mailto:EliasPereyra_Gomez@hotmail.com"><b>contáctame</b></a>
     </div>
   </div>
 </section>
 
 <style>
-  section {
-    padding: 4em 3em;
-  }
+  section { padding: 4em 3em; }
 
   #contact-container {
     display: flex;
-    gap: 2em;
+    gap: 7em;
     justify-content: center;
     align-items: center;
-  }#contact-container p {
-    width: 40ch;
+  }#contact-container p { width: 40ch; }
+
+  #contact-container__img {
+    width: 10em;
   }
 
-  #contact-btn {
-    width: 14em;
-    border: 1px solid purple;
+  #contact-container__content {
+    display: flex;
+    flex-direction: column;
+    gap: .1em;
+  }
+
+  #contact-container__content h3 {
+    margin: 0;
+  }
+
+  #contact-container__content p {
+    color: var(--light-dark);
+  }
+
+  #contact-container__content #contact-btn {
+    font-size: 1rem;
+    text-decoration: none;
+    text-align: center;
+    width: 7em;
+    border: 2px solid var(--dark-blue);
+    color: var(--dark-blue);
     border-radius: 5px;
-    padding: 1em 2em;
+    padding: .7em 2em;
+    transition: opacity .3s ease-in-out;
+  }#contact-container__content #contact-btn:hover {
+    opacity: .8;
   }
 </style>
