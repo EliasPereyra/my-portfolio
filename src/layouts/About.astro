@@ -3,25 +3,25 @@ import Skill from "../components/Skill.astro";
 
 const skills = [
   {
-    title: "Diseñador",
-    desc: "Me encanta el diseño!",
-    tags: "Figma",
-    skill_img: "../../public/assets/design-img.webp",
-    logo_src: "../../public/assets/logo_figma.svg"
+    title: "Diseño",
+    desc: "Me encanta el diseño! El diseño es uno de los aspectos más importantes al desarrollar un producto. Por eso pongo especial atención en el diseño y la experiencia de usuario. Estas son las herramientas que uso para prototipar:",
+    tags: "Figma, Inkscape",
+    skill_img: "/assets/design-img.webp",
+    logo_src: "./assets/logo_figma.svg"
   },
   {
     title: "Frontend",
-    desc: "el UI funcional!",
-    tags: "HTML",
-    skill_img: "../../public/assets/frontend-img.webp",
-    logo_src: "../../public/assets/logos.svg"
+    desc: "Éste es el paso que más me gusta del desarrollo: hacer el diseño UI, funcional! Y además de funcional, que la UX se refleje en la optimización y en el uso de la página. Estas son las herramientas que utilizo:",
+    tags: "HTML, CSS, Javascript",
+    skill_img: "/assets/frontend-img.webp",
+    logo_src: "/assets/logos.svg"
   },
   {
     title: "Backend",
-    desc: "Logica de negocio!",
+    desc: "La lógica de negocio, es otra área que me fascina para el manejo de los datos y la persistencia de los mismos. Estos son las herramientas que utilizo para el backend: ",
     tags: "Node.js",
-    skill_img: "../../public/assets/backend-img.svg",
-    logo_src: "../../public/assets/logos_express.svg"
+    skill_img: "/assets/backend-img.svg",
+    logo_src: "/assets/logos_express.svg"
   }
 ]
 ---
@@ -29,14 +29,14 @@ const skills = [
 <section id="about">
   <div>
     <div id="about-desc-container">
-      <div>
+      <div id="first-column">
         <div id="watermark">Sobre mí</div>
         <h2>Sobre mí</h2>
         <p class="about-desc"><b>Hola!</b> Me llamo Elías Pereyra Gómez, soy desarrollador web. El entusiasmo por el mundo de la web comenzó en el año 2015, cuando conocí por primera vez los lenguajes de marcado: HTML y CSS. Más adelante, me fui adentrando a los lenguajes de programación, como PHP, Java y JavaScript.</p>
         <p class="about-desc">En el desarrollo web hay muchas áreas, y de las tantas, me fascinan el desarrollo fullstack y el diseño UI.</p>
       </div>
-      <div>
-        <img src="" alt="foto de perfil" />
+      <div id="second-column">
+        <img src="/assets/profile-removebg.webp" alt="foto de perfil" />
       </div>
     </div>
 
@@ -56,6 +56,8 @@ const skills = [
     position: relative;
   }
 
+  h3 { margin-top: 0; text-align: center; }
+
   #watermark {
     position: absolute;
     opacity: .03;
@@ -67,14 +69,27 @@ const skills = [
 
   #about-desc-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: 6em 0;
+    padding: 8em 0;
   }
 
   .about-desc {
     font-weight: 400;
     width: 55ch;
     line-height: 1.5em;
+  }
+
+  #second-column img {
+    width: 15em;
+    border: 7px solid var(--dark-blue);
+    border-radius: 50%;
+    background: linear-gradient(90deg, rgb(252, 252, 213) 40%, rgb(241, 241, 197) 100%);
+  }
+
+  #skills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 </style>

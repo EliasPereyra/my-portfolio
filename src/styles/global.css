@@ -8,4 +8,5 @@
 
   --standard-black: hsl(0, 4%, 5%);
   --light-dark: hsl(0, 3%, 22%);
+  --light-orange: linear-gradient(270deg, #FED1CC 17.36%, rgba(254, 209, 204, 0) 93.71%);
 }
