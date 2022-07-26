@@ -9,8 +9,8 @@ import '../styles/global.css'
       Me gusta hacer diseños y desarrollos que contribuyan satisfacción y contento
     </h3>
     <div id="btns-wrapper">
-      <button id="btn-filled"><b>¡Entremos en contacto!</b></button>
-      <button id="btn-empty">Descargar <b>CV</b></button>
+      <a id="btn-filled" href="#contact"><b>Entremos en contacto</b></a>
+      <a id="btn-empty" href="/resume.pdf" target="_blank">Descargar <b>CV</b></a>
     </div>
     <img src="" alt="una flecha va acá" />
   </div>
@@ -22,13 +22,13 @@ import '../styles/global.css'
 
 <style>
 	:root {
-		--bckg-gradient: linear-gradient(121.95deg, #F8F7FF 43.69%, rgba(248, 247, 255, 0) 99.28%);
+		--bckg-gradient: linear-gradient(121.95deg, #F8F7FF 43.69%, rgba(249, 248, 255, 0) 99.28%);
 	}
 
 	section {
 		display: flex;
 		align-items: center;
-		padding: 6em 0;
+		padding: 7em 0;
 		background: var(--bckg-gradient);
 	}
 
@@ -37,7 +37,7 @@ import '../styles/global.css'
 		display: flex;
 		flex-direction: column;
 	}	
-
+	
 	img {
 		width: 18em;
 	}
@@ -67,14 +67,16 @@ import '../styles/global.css'
 	#btns-wrapper {
 		display: flex;
 		gap: .7em;
-	}button {
-    border: none;
+	}a {
+    text-decoration: none;
 		border-radius: 5px;
     font-size: 1rem;
     padding: .7em;
-		min-width: 14em;
+		text-align: center;
+		width: 11em;
 		transition: opacity .3s ease-in-out;
-  }button:hover {
+		border: 2px solid var(--dark-blue);
+  }a:hover {
 	}
 	#btn-filled {
 		background-color: var(--dark-blue);
@@ -83,7 +85,6 @@ import '../styles/global.css'
 		opacity: .9;
 	}#btn-empty {
 		background-color: transparent;
-		border: 2px solid var(--dark-blue);
 		color: var(--dark-blue);
 		transiton-property: border color;
 		transition-duration: 0.4s;

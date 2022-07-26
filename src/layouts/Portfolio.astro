@@ -7,7 +7,7 @@
     {
       title: "Expense Tracker",
       desc: "This is a description for this particular project. It was made with such technologies.",
-      project_img: "/public/assets/app-cover.webp",
+      project_img: "/assets/app-cover.webp",
       tags: [
 
       ],
@@ -17,7 +17,7 @@
     {
       title: "Expense Tracker",
       desc: "This is a description for this particular project. It was made with such technologies.",
-      project_img: "/public/assets/ej2.webp",
+      project_img: "/assets/ej2.webp",
       tags: [
         
       ],
@@ -27,7 +27,7 @@
     {
       title: "Expense Tracker",
       desc: "This is a description for this particular project. It was made with such technologies.",
-      project_img: "/public/assets/ej3.webp",
+      project_img: "/assets/ej3.webp",
       tags: [
         
       ],
@@ -48,7 +48,7 @@
         live_link={live} 
         repo_link={repo} />)}
   </ul>
-  <button id="btn-more"><b>Ver más</b></button>
+  <a id="btn-more" href="https://github.com/EliasPereyra" target="_blank" referrerpolicy="no-referrer"><b>Ver más</b></a>
 </main>
 
 <style>
@@ -56,6 +56,7 @@
   main {
     padding: 2em 3em;
     background: linear-gradient(180deg, #101732 0%, #060C21 100%);
+    
   }
   
   h2 {text-align: center; margin: 4em 0; color: white;}
@@ -71,9 +72,11 @@
     display: block;
     margin: auto;
     padding: 1em 3em;
-    border: none;
     border-radius: 5px;
-    width: 14em;
+    width: 7em;
+    text-align: center;
+    text-decoration: none;
+    font-size: .8rem;
     color: var(--dark-blue);
     background-color: white;
     font-weight: bold;
