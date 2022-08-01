@@ -4,7 +4,7 @@ import '../styles/global.css'
 
 <section>
   <div id="hero-content">
-    <h1><span id="designer">Diseñador</span> y <br /><span id="developer">Desarrollador</span></h1>
+    <h1><span id="designer">Diseñador</span> <span id="upper-line">y</span> <br /><span id="developer">Desarrollador</span></h1>
     <h3>
       Me gusta hacer diseños y desarrollos que contribuyan satisfacción y contento
     </h3>
@@ -22,7 +22,7 @@ import '../styles/global.css'
 
 <style>
 	:root {
-		--bckg-gradient: linear-gradient(121.95deg, #F8F7FF 43.69%, rgba(249, 248, 255, 0) 99.28%);
+		--bckg-gradient: linear-gradient(150deg, #F8F7FF 43.69%, rgba(249, 248, 255, 0) 99.28%);
 	}
 
 	section {
@@ -38,15 +38,24 @@ import '../styles/global.css'
 		flex-direction: column;
 	}	
 	
+	#laptop-img {
+		margin-left: 2em;
+	}
 	img {
-		width: 18em;
+		width: 21em;
 	}
 
   h1 {
 		margin: 0;
+		position: relative;
 	}#designer {
 		color: var(--orange);
-	}#developer {
+	}h1::before {
+		content: url('assets/upper-line.png');
+		position: absolute;
+		margin-top: -.7em;
+	}
+	#developer {
 		color: var(--dark-green);
 	}
 
