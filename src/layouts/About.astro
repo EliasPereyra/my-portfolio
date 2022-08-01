@@ -7,21 +7,24 @@ const skills = [
     desc: "Me encanta el diseño! El diseño es uno de los aspectos más importantes al desarrollar un producto. Por eso pongo especial atención en el diseño y la experiencia de usuario. Estas son las herramientas que uso para prototipar:",
     tags: "Figma, Inkscape",
     skill_img: "/assets/design-img.webp",
-    logo_src: "./assets/logo_figma.svg"
+    logo_src: "./assets/logo_figma.svg",
+    bg_color: "linear-gradient(270deg, #FED1CC 17.36%, rgba(254, 209, 204, 0) 93.71%);"
   },
   {
     title: "Frontend",
     desc: "Éste es el paso que más me gusta del desarrollo: hacer el diseño UI, funcional! Y además de funcional, que la UX se refleje en la optimización y en el uso de la página. Estas son las herramientas que utilizo:",
     tags: "HTML, CSS, Javascript",
     skill_img: "/assets/frontend-img.webp",
-    logo_src: "/assets/logos.svg"
+    logo_src: "/assets/logos.svg",
+    bg_color: "linear-gradient(89.84deg, #B6F2B6 17.82%, rgba(182, 242, 182, 0) 89.38%);"
   },
   {
     title: "Backend",
     desc: "La lógica de negocio, es otra área que me fascina para el manejo de los datos y la persistencia de los mismos. Estos son las herramientas que utilizo para el backend: ",
     tags: "Node.js",
     skill_img: "/assets/backend-img.svg",
-    logo_src: "/assets/logos_express.svg"
+    logo_src: "/assets/logos_express.svg",
+    bg_color: "linear-gradient(270deg, #E6BBF5 18.01%, rgba(230, 187, 245, 0) 94.35%);"
   }
 ]
 ---
@@ -43,8 +46,15 @@ const skills = [
     <h3>Estos son los roles que me gusta aprender:</h3>
 
     <div id="skills">
-      {skills.map(({title, desc, tags, skill_img, logo_src}) => 
-        <Skill title={title} desc={desc} skill_img={skill_img} tags={tags} logo_src={logo_src} />)
+      {skills.map(({title, desc, tags, skill_img, logo_src, bg_color}) => 
+        <Skill 
+          title={title} 
+          desc={desc} 
+          skill_img={skill_img} 
+          tags={tags} 
+          logo_src={logo_src} 
+          bg_color={bg_color} 
+        />)
       }
     </div>
   </div>

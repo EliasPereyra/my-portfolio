@@ -7,12 +7,13 @@ export interface Props {
   tags: string;
   skill_img: string;
   logo_src: string;
+  bg_color: string;
 }
 
-const { title, desc, tags, skill_img, logo_src } = Astro.props;
+const { title, desc, tags, skill_img, logo_src, bg_color } = Astro.props;
 ---
 
-<div id="container">
+<div id="container" style={`background: ${bg_color}`}>
   <div id="skill-logo"><img src={skill_img} alt={`${title} image`} /></div>
   <div id="skill-content">
     <h3>{title}</h3>
@@ -27,7 +28,6 @@ const { title, desc, tags, skill_img, logo_src } = Astro.props;
     display: flex;
     align-items: center;
     gap: 1em;
-    background: var(--light-orange);
     border-radius: 5px;
     width: 80%;
     margin: 2em 0;
