@@ -9,20 +9,26 @@
       desc: "This is a description for this particular project. It was made with such technologies.",
       project_img: "/assets/app-cover.webp",
       tags: [
-
+        "React.js ",
+        "Material UI ",
+        "Speechly AI",
       ],
-      live: "https://app.com",
-      repo: "https://github.com/eliaspereyra/"
+      live: "https://s-expensetracker.netlify.app",
+      repo: "https://github.com/eliaspereyra/expense-tracker"
     },
     {
-      title: "Expense Tracker",
+      title: "Memories",
       desc: "This is a description for this particular project. It was made with such technologies.",
       project_img: "/assets/ej2.webp",
       tags: [
-        
+        "React.js ",
+        "Node.js ",
+        "Express.js ",
+        "MongoDB ",
+        "Material UI"
       ],
-      live: "https://app.com",
-      repo: "https://github.com/eliaspereyra/"
+      live: "https://imagery-app.netlify.app",
+      repo: "https://github.com/eliaspereyra/memories-project"
     },
     {
       title: "Expense Tracker",
@@ -40,11 +46,12 @@
 <main id="portfolio">
   <h2>Mis Últimos Proyectos</h2>
   <ul>
-    {projects.map(({title, desc, project_img, live, repo}) => 
+    {projects.map(({title, desc, project_img, tags, live, repo}) => 
       <Card 
         title={title} 
         desc={desc} 
-        project_img={project_img} 
+        project_img={project_img}
+        tags={tags} 
         live_link={live} 
         repo_link={repo} />)}
   </ul>
