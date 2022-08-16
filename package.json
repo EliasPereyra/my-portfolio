@@ -1,6 +1,13 @@
 {
-  "name": "@example/basics",
+  "name": "my-portfolio",
   "version": "0.0.1",
+  "author": "Elias Pereyra",
+  "description": "My personal portfolio",
+  "keywords": [
+    "Astro",
+    "HTML",
+    "CSS"
+  ],
   "private": true,
   "scripts": {
     "dev": "astro dev",
