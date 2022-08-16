@@ -1,4 +1,5 @@
 ---
+import CVButton from '../components/CV_Button.astro'
 import '../styles/global.css'
 ---
 
@@ -10,7 +11,7 @@ import '../styles/global.css'
     </h3>
     <div id="btns-wrapper">
       <a id="btn-filled" href="#contact"><b>Entremos en contacto</b></a>
-      <a id="btn-empty" href="/resume.pdf" target="_blank">Descargar <b>CV</b></a>
+			<CVButton />
     </div>
     <img src="" alt="una flecha va acá" />
   </div>
@@ -92,18 +93,5 @@ import '../styles/global.css'
 		color: white;
 	}#btn-filled:hover {
 		opacity: .9;
-	}#btn-empty {
-		background-color: transparent;
-		color: var(--dark-blue);
-		transiton-property: border color;
-		transition-duration: 0.4s;
-		transition-timing-function: ease-in-out;
-		-webkit-transition-property: border, color;
-  	-webkit-transition-duration: 0.4s;
-  	-o-transition-property: border, color;
-  	-o-transition-duration: 0.4s;
-	}#btn-empty:hover {
-		border: 2px solid var(--orange);
-		color: var(--orange);	
 	}
 </style>

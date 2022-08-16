@@ -1,5 +1,6 @@
 ---
 import Skill from "../components/Skill.astro";
+import CVBtn from "../components/CV-btn.astro";
 
 const skills = [
   {
@@ -30,14 +31,15 @@ const skills = [
 ---
 
 <section id="about">
-  <div>
     <div id="about-desc-container">
-      <div id="first-column">
+      <article id="first-column">
         <div id="watermark">Sobre mí</div>
         <h2>Sobre mí</h2>
         <p class="about-desc"><b>Hola!</b> Me llamo Elías Pereyra Gómez, soy desarrollador web. El entusiasmo por el mundo de la web comenzó en el año 2015, cuando conocí por primera vez los lenguajes de marcado: HTML y CSS. Más adelante, me fui adentrando a los lenguajes de programación, como PHP, Java y JavaScript.</p>
         <p class="about-desc">En el desarrollo web hay muchas áreas, y de las tantas, me fascinan el desarrollo fullstack y el diseño UI.</p>
-      </div>
+        <CVBtn />
+      </article>
+      
       <div id="second-column">
         <img src="/assets/profile-removebg.webp" alt="foto de perfil" />
       </div>
@@ -57,7 +59,6 @@ const skills = [
         />)
       }
     </div>
-  </div>
 </section>
 
 <style>
@@ -66,8 +67,8 @@ const skills = [
 
   #watermark {
     position: absolute;
-    opacity: .03;
-    font-size: 10rem;
+    opacity: .02;
+    font-size: 11rem;
     top: 0;
     left: 0;
     z-index: 999;
@@ -84,6 +85,7 @@ const skills = [
     font-weight: 400;
     width: 55ch;
     line-height: 1.5em;
+    margin-bottom: 1.5em;
   }
 
   #second-column img {
