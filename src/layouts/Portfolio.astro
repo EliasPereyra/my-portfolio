@@ -7,7 +7,7 @@
     {
       title: "Expense Tracker",
       desc: "This is a description for this particular project. It was made with such technologies.",
-      project_img: "/assets/app-cover.webp",
+      project_img: "/assets/expense-tracker.webp",
       tags: [
         "React.js ",
         "Material UI ",
@@ -19,7 +19,7 @@
     {
       title: "Memories",
       desc: "This is a description for this particular project. It was made with such technologies.",
-      project_img: "/assets/ej2.webp",
+      project_img: "/assets/memories-app.webp",
       tags: [
         "React.js ",
         "Node.js ",
@@ -31,20 +31,20 @@
       repo: "https://github.com/eliaspereyra/memories-project"
     },
     {
-      title: "Expense Tracker",
-      desc: "This is a description for this particular project. It was made with such technologies.",
-      project_img: "/assets/ej3.webp",
+      title: "Portfolio",
+      desc: "A portfolio made for a drawer and designer from Argentina. It was made with HTML, Sass and JavaScript.",
+      project_img: "/assets/yonni-art.webp",
       tags: [
-        
+        "HTML", "Sass", "JavaScript"
       ],
-      live: "https://app.com",
-      repo: "https://github.com/eliaspereyra/"
+      live: "https://www.yonni.art/",
+      repo: "https://github.com/EliasPereyra/yonni-art"
     }
   ]
 ---
 
 <main id="portfolio">
-  <h2>Mis Últimos Proyectos</h2>
+  <h2>My Recent Projects</h2>
   <ul>
     {projects.map(({title, desc, project_img, tags, live, repo}) => 
       <Card 
@@ -69,8 +69,8 @@
   h2 {text-align: center; margin: 4em 0; color: white;}
   
   ul {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     padding: 0;
   }
