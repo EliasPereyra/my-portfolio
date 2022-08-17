@@ -72,6 +72,10 @@ const skills = [
     top: 0;
     left: 0;
     z-index: 999;
+  }@media (max-width: 768px) {
+    #watermark {
+      font-size: 8rem;
+    }
   }
 
   #about-desc-container {
@@ -79,6 +83,11 @@ const skills = [
     justify-content: space-around;
     align-items: center;
     padding: 8em 0;
+  }@media (max-width: 768px) {
+    #about-desc-container {
+      flex-direction: column;
+      text-align: center;
+    }
   }
 
   .about-desc {
@@ -86,6 +95,11 @@ const skills = [
     width: 55ch;
     line-height: 1.5em;
     margin-bottom: 1.5em;
+  }@media (max-width: 768px) {
+    h2 { font-size: 1.7rem; }
+    .about-desc {
+      font-size: 1.1rem;
+    }
   }
 
   #second-column img {
@@ -93,6 +107,10 @@ const skills = [
     border: 7px solid var(--dark-blue);
     border-radius: 50%;
     background: linear-gradient(90deg, rgb(252, 252, 213) 40%, rgb(241, 241, 197) 100%);
+  }@media (max-width: 768px) {
+    #second-column img {
+      display: none;
+    }
   }
 
   #skills {

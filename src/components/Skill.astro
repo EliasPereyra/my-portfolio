@@ -32,6 +32,12 @@ const { title, desc, tags, skill_img, logo_src, bg_color } = Astro.props;
     width: 80%;
     margin: 2em 0;
     padding: 2em;
+  }@media (max-width: 768px) {
+    #container {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
   }
 
   h3 {
@@ -50,6 +56,10 @@ const { title, desc, tags, skill_img, logo_src, bg_color } = Astro.props;
 
   #logo-img {
     width: 5em;
+  }@media (max-width: 768px) {
+    #logo-img {
+      display: none;
+    }
   }
 
 </style>

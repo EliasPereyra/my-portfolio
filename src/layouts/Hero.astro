@@ -33,16 +33,27 @@ import '../styles/global.css'
 		padding: 6em 0;
 		background: var(--bckg-gradient);
 	}
+	
 
 	#hero-content{
 		padding: 0 4em;
 		display: flex;
 		flex-direction: column;
-	}	
+	}@media (max-width: 768px) {
+		#hero-content {
+			align-items: center;
+			text-align: center;
+		}
+	}
 	
 	#laptop-img {
 		margin-left: 2em;
+	}@media (max-width: 768px) {
+		#laptop-img {
+			display: none;
+		}
 	}
+	
 	img {
 		width: 21em;
 	}
@@ -85,8 +96,7 @@ import '../styles/global.css'
 		width: 11em;
 		transition: opacity .3s ease-in-out;
 		border: 2px solid var(--dark-blue);
-  }a:hover {
-	}
+  }
 	#btn-filled {
 		background-color: var(--dark-blue);
 		color: white;

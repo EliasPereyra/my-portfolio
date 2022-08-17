@@ -54,6 +54,10 @@ const { title, desc, project_img, tags, live_link, repo_link } = Astro.props;
 	#link-card__wrapper {
 		display: flex;
 		flex-direction: column;
+	}@media (max-width: 768px) {
+		#link-card__content {
+			flex-direction: row;
+		}	
 	}
 
 	#link-card__content {
@@ -85,6 +89,10 @@ const { title, desc, project_img, tags, live_link, repo_link } = Astro.props;
 		font-weight: 300;
 		font-size: .8rem;
 		color: var(--light-dark);
+	}@media (max-width: 768px) {
+		#link-card__content-links {
+			justify-content: center;
+		}
 	}
 
 	#img-container img {
@@ -102,6 +110,8 @@ const { title, desc, project_img, tags, live_link, repo_link } = Astro.props;
 	p {
 		margin-top: 0.75rem;
 		margin-bottom: 0;
+	}@media (max-width: 768px) {
+		h3, p { text-align: center; }
 	}
 
 	h2 span {
