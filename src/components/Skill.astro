@@ -18,9 +18,8 @@ const { title, desc, tags, skill_img, logo_src, bg_color } = Astro.props;
   <div id="skill-content">
     <h3>{title}</h3>
     <p id="skill-content__desc">{desc}</p>
-    <p id="skill-content__tags">{tags}</p>
+    <p id="skill-content__tags">Herramientas: {tags}</p>
   </div>
-  <img id="logo-img" src={logo_src} alt={title} />
 </div>
 
 <style>
@@ -29,7 +28,7 @@ const { title, desc, tags, skill_img, logo_src, bg_color } = Astro.props;
     align-items: center;
     gap: 1em;
     border-radius: 5px;
-    width: 80%;
+    width: 70%;
     margin: 2em 0;
     padding: 2em;
   }@media (max-width: 768px) {
