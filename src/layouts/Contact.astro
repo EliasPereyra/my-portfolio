@@ -4,13 +4,22 @@ import '../styles/global.css';
 
 <section id="contact">
   <div id="contact-container">
-    <div id="contact-container__img">
-      <img src="/assets/payment_processed.webp" alt="cellphone saludando con buena onda" />
+    <div id="contact-container__right-side">
+      <h2>Would you like to work with me?</h2>
+      <p>I'd like to hear your proposals and make an incredible work together</p>
     </div>
     <div id="contact-container__content">
-      <h3>Would you like to work with me?</h3>
-      <p>I'd like to listen to your proposals and do an incredible work together</p>
-      <a id="contact-btn" href="mailto:EliasPereyra_Gomez@hotmail.com"><b>contact me</b></a>
+      <form>
+        <label>Name</label>
+        <input type="text" required />
+
+        <label>Email</label>
+        <input type="email" required />
+
+        <label>Message</label>
+        <textarea rows="3"></textarea>
+        <button type="submit">Send</button>
+      </form>
     </div>
   </div>
 </section>
@@ -20,23 +29,25 @@ import '../styles/global.css';
 
   #contact-container {
     display: flex;
-    gap: 7em;
+    gap: 5em;
     justify-content: center;
     align-items: center;
   }#contact-container p { width: 40ch; }
 
-  #contact-container__img {
-    width: 10em;
+  #contact-container__right-side {
+    width: 80%;
+  }
+
+  #contact-container__right-side h2 {
+    margin: 0;
+    font-size: 2rem;
   }
 
   #contact-container__content {
     display: flex;
     flex-direction: column;
     gap: .1em;
-  }
-
-  #contact-container__content h3 {
-    margin: 0;
+    width: 100%;
   }
 
   #contact-container__content p {
@@ -55,5 +66,47 @@ import '../styles/global.css';
     transition: opacity .3s ease-in-out;
   }#contact-container__content #contact-btn:hover {
     opacity: .8;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+  }
+
+  input {
+    border: none;
+    border-radius: 5px;
+    padding: .6em;
+    width: 90%;
+    margin-bottom: 1.2em;
+    transition: .2s all ease-in-out;
+  }input:focus {
+    outline: 1px solid orangered;
+  }
+
+  textarea {
+    padding: .6em;
+    border: none;
+    border-radius: 5px;
+    width: 90%;
+    transition: .2s all ease-in-out;
+    
+  }textarea:focus {
+    outline: 1px solid orangered;
+  }
+
+  button {
+    background: none;
+    border: none;
+    border-radius: 5px;
+    padding: .6em;
+    margin-top: 1em;
+    width: 30%;
+    font-size: .8rem;
+    outline: 1px solid orangered;
+    transition: .2s all ease-in-out;
+  }button:hover {
+    outline: 1px solid rgb(148, 41, 2);
   }
 </style>
