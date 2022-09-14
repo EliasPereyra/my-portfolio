@@ -44,7 +44,7 @@
 ---
 
 <main id="portfolio">
-  <h2>My Recent Projects</h2>
+  <h2>My Latest Works</h2>
   <ul>
     {projects.map(({title, desc, project_img, tags, live, repo}) => 
       <Card 
@@ -55,7 +55,6 @@
         live_link={live} 
         repo_link={repo} />)}
   </ul>
-  <a id="btn-more" href="https://github.com/EliasPereyra" target="_blank" referrerpolicy="no-referrer"><b>Ver más</b></a>
 </main>
 
 <style>
@@ -70,8 +69,8 @@
   ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-content: center;
     align-items: center;
-    padding: 0;
   }@media (max-width: 768px) {
     ul {
       display: flex;
