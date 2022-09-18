@@ -4,10 +4,10 @@
   <p>My website where you can learn about me and what I do.</p>
 </div>
 
-## Built with 
+## Built with
 
-- ![Astro][Astro]
-- ![React.js][React.js]
+- ![Astro][astro]
+- ![React.js][react.js]
 
-[Astro]: https://img.shields.io/badge/astro-FF5D01?style=for-the-badge&logo=astro&logoColor=white
-[React.js]: https://img.shields.io/badge/react.js-61DAFB?style=for-the-badge&logo=react&logoColor=white
+[astro]: https://img.shields.io/badge/astro-FF5D01?style=for-the-badge&logo=astro&logoColor=white
+[react.js]: https://img.shields.io/badge/react.js-61DAFB?style=for-the-badge&logo=react&logoColor=white
