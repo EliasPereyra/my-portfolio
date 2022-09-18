@@ -11,3 +11,9 @@
 
 [astro]: https://img.shields.io/badge/astro-FF5D01?style=for-the-badge&logo=astro&logoColor=white
 [react.js]: https://img.shields.io/badge/react.js-61DAFB?style=for-the-badge&logo=react&logoColor=white
+
+## Contact
+
+Email - [eliaspereyra_gomez@hotmail.com](mailto:eliaspereyra_gomez@hotmail.com)
+
+Project Link: [https://github.com/EliasPereyra/my-portfolio](https://github.com/EliasPereyra/my-portfolio)
