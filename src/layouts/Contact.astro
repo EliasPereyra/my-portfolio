@@ -2,7 +2,7 @@
 import '../styles/global.css';
 ---
 
-<section id="contact">
+<section id="contact" onsubmit="mailto:eliaspereyra_gomez@hotmail.com">
   <div id="contact-container">
     <div id="contact-container__right-side">
       <h2>Would you like to work with me?</h2>
@@ -17,7 +17,7 @@ import '../styles/global.css';
         <input type="email" required />
 
         <label>Message</label>
-        <textarea rows="3"></textarea>
+        <textarea rows="3" required></textarea>
         <button type="submit">Send</button>
       </form>
     </div>
@@ -25,7 +25,11 @@ import '../styles/global.css';
 </section>
 
 <style>
-  section { padding: 4em 3em; background: radial-gradient(54.59% 54.62% at 52.19% 50%, rgba(255, 255, 255, 0) 0%, #F7F5FA 100%); }
+  section { 
+    padding: 4em 3em; 
+    /* background: radial-gradient(54.59% 54.62% at 52.19% 50%, rgba(255, 255, 255, 0) 0%, #F7F5FA 100%); */
+    background-color: #FFF0DA;
+  }
 
   #contact-container {
     display: flex;
