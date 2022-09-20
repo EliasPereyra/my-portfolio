@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 
+import { PageConfig } from '../utils/PageConfig';
+
 import Layout from "../layouts/Layout.astro";
 import Hero from "../layouts/Hero.astro";
 import Portfolio from "../layouts/Portfolio.astro";
@@ -8,7 +10,7 @@ import About from "../layouts/About.astro"
 import Contact from "../layouts/Contact.astro";
 ---
 
-<Layout title="Elias Pereyra Gomez">
+<Layout title={PageConfig.title} site_name={PageConfig.site_name} author={PageConfig.author} description={PageConfig.description} >
 	
 	<Hero />
 	<Portfolio />
