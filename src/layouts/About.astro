@@ -40,9 +40,9 @@ const skills = [
         <CVButton />
       </article>
       
-      <div id="second-column">
+      <article id="second-column">
         <img src="/assets/profile-removebg.webp" alt="foto de perfil" />
-      </div>
+      </article>
     </div>
 
     <h3>These are the areas that I like to learn:</h3>
@@ -62,7 +62,7 @@ const skills = [
 </section>
 
 <style>
-  section { padding: 4em 3em; position: relative; background-color: #F8F7FF; }
+  section { padding: 4em 3em; position: relative; background-color: #FFFBDA; }
   h3 { margin-top: 0; text-align: center; }
 
   #watermark {
@@ -83,6 +83,7 @@ const skills = [
     justify-content: space-around;
     align-items: center;
     padding: 8em 0;
+    background-color: #FFFBDA;
   }@media (max-width: 768px) {
     #about-desc-container {
       flex-direction: column;
@@ -100,6 +101,10 @@ const skills = [
     .about-desc {
       font-size: 1.1rem;
     }
+  }
+
+  #first-column {
+    
   }
 
   #second-column img {
