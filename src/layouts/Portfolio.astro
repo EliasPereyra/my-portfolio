@@ -31,7 +31,7 @@ const projects = [
 
 ---
 <main id="portfolio">
-  <h2>My Recent Projects</h2>
+  <h2 class="h2">My Recent Projects</h2>
   <ul>
     {projects.map(({title, desc, project_img, tags, live, repo}) => (
       <Card title={title} desc={desc} project_img={project_img} tags={tags} live_link={live} repo_link={repo} />
@@ -46,18 +46,34 @@ const projects = [
   </a>
 </main>
 
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      console.log(entry)
+      if (entry) {
+        entry.target.classList.add('show')
+      } else {
+        entry.target.classList.remove('show')
+      }
+    })
+  })
+
+  const element = document.querySelector('.h2')
+  observer.observe(element)
+</script>
+
 <style>
   main {
   padding: 2em 3em;
   background: linear-gradient(180deg, #101732 0%, #060c21 100%);
 }
 
-h2 {
+.h2 {
   text-align: center;
   margin: 4em 0 2em 0;
   color: white;
   opacity: 0;
-  transition: opacity 0.5s;
+  transitions: all 1s;
 }
 
 .show {
