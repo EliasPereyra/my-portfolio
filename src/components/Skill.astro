@@ -4,7 +4,7 @@ import '../styles/global.css';
 export interface Props {
   title: string;
   desc: string;
-  tags: string;
+  tags: string[];
   skill_img: string;
   logo_src: string;
   bg_color: string;
@@ -13,12 +13,12 @@ export interface Props {
 const { title, desc, tags, skill_img, logo_src, bg_color } = Astro.props;
 ---
 
-<div id="container" style={`background: ${bg_color}`}>
+<div id="container" >
   <div id="skill-logo"><img src={skill_img} alt={`${title} image`} /></div>
   <div id="skill-content">
     <h3>{title}</h3>
     <p id="skill-content__desc">{desc}</p>
-    <p id="skill-content__tags">Herramientas: {tags}</p>
+    <p id="skill-content__tags">{tags.map(tag => <small><b>{tag}</b></small>)}</p>
   </div>
 </div>
 
@@ -41,6 +41,7 @@ const { title, desc, tags, skill_img, logo_src, bg_color } = Astro.props;
 
   h3 {
     margin: 0;
+    font-size: 1.2rem;
   }
 
   #skill-content__desc {
@@ -59,6 +60,17 @@ const { title, desc, tags, skill_img, logo_src, bg_color } = Astro.props;
     #logo-img {
       display: none;
     }
+  }
+
+  #skill-content__tags {
+    font-size: .8rem;
+  }
+
+  small {
+    margin-right: 5px;
+    padding: .5em 1em;
+    background-color: rgb(250, 218, 177);
+    border-radius: 5px;
   }
 
 </style>
