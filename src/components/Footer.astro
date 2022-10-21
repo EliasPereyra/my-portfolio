@@ -1,0 +1,51 @@
+---
+import GithubIcon from "./GithubIcon.astro";
+import LinkedinIcon from "./LinkedinIcon.astro";
+import Logo from "./LogoWhite.astro";
+
+---
+
+<footer>
+   <ul id="first-row">
+       <li><a href="#">Home</a></li>
+       <li><a href="#portfolio">Projects</a></li>
+       <li><a href="#about">About me</a></li>
+       <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div id="second-row">
+    <a href="/"><Logo /></a>
+    <GithubIcon color="#eee" />
+    <LinkedinIcon color="#eee" />
+  </div>
+</footer>
+
+<style>
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  footer {
+    background-color: hsl(228, 52%, 13%);
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    gap: .7em;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+
+  #second-row {
+    display: flex;
+    gap: .7em;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
