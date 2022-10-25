@@ -9,6 +9,7 @@
     "CSS"
   ],
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -17,7 +18,8 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@emailjs/browser": "^3.7.0",
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
     "@typescript-eslint/parser": "^5.41.0",
     "astro": "^1.5.2",
     "eslint": "^8.23.1",
@@ -26,9 +28,12 @@
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
     "prettier-plugin-astro": "^0.5.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "typescript": "^4.8.3"
   },
   "dependencies": {
-    "@astrojs/netlify": "^1.0.3"
+    "@astrojs/netlify": "^1.0.3",
+    "@astrojs/react": "^1.2.1"
   }
 }
