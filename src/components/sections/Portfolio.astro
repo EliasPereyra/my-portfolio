@@ -1,0 +1,150 @@
+---
+import Card from "../widgets/Card.astro";
+
+import "../../styles/global.css"
+
+const projects = [
+  {
+    title: "Expense Tracker",
+    desc: "An app designed for tracking different types of transactions: incomes and expenses. The project is built with React.js, using the Speechly AI library.",
+    project_img: "/assets/expense-tracker.webp",
+    tags: ["React.js ", "Material UI ", "Speechly AI"],
+    live: "https://s-expensetracker.netlify.app",
+    repo: "https://github.com/eliaspereyra/expense-tracker",
+  },
+  {
+    title: "Memories",
+    desc: "This app was made with the MERN stack. Allows you to share memories with the people, attaching an image. A memory is a post which has a title and a description of you like, altogether with a photo or an image.",
+    project_img: "/assets/memories-app.webp",
+    tags: ["React.js ", "Node.js ", "Express.js ", "MongoDB ", "Material UI"],
+    live: "https://imagery-app.netlify.app",
+    repo: "https://github.com/eliaspereyra/memories-project",
+  },
+  {
+    title: "Portfolio",
+    desc: "A portfolio made for a drawer and designer from Argentina. It was made with HTML, Sass and JavaScript.",
+    project_img: "/assets/yonni-art.webp",
+    tags: ["HTML", "Sass", "JavaScript"],
+    live: "https://www.yonni.art/",
+    repo: "https://github.com/EliasPereyra/yonni-art",
+  },
+]
+---
+<main id="portfolio">
+  <h2 class="h2">My Recent Projects</h2>
+  <ul>
+    {projects.map(({title, desc, project_img, tags, live, repo}) => (
+      <Card 
+        title={title} 
+        desc={desc} 
+        project_img={project_img} 
+        tags={tags} 
+        live_link={live} 
+        repo_link={repo} />
+    ))}  
+  </ul>;
+  <a
+    id="btn-more"
+    href="https://github.com/EliasPereyra"
+    target="_blank"
+    rel="noreferrer">
+    <b>Ver más</b>
+  </a>
+</main>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      console.log(entry)
+      if (entry) {
+        entry.target.classList.add('show')
+      } else {
+        entry.target.classList.remove('show')
+      }
+    })
+  })
+
+  const element = document.querySelector('.h2')
+  observer.observe(element)
+
+</script>
+
+<style>
+  main {
+  padding: 2em 3em;
+  background: linear-gradient(220deg, hsl(228, 52%, 13%) 0%, hsl(227, 42%, 17%) 50%, hsl(227, 69%, 8%) 100%);
+  background-size: 200%;
+  animation: aurora 10s infinite;
+}
+
+@keyframes aurora {
+  0% {
+    background-position: left top;
+  }
+
+  25% {
+    background-position: right top;
+  }
+  
+  50% {
+    background-position: right bottom;
+  }
+
+  75% {
+    background-position: left bottom;
+  }
+  
+  100% {
+    background-position: left top;
+  }
+}
+
+.h2 {
+  text-align: center;
+  margin: 4em 0 2em 0;
+  color: white;
+  opacity: 0;
+  transitions: all 1s;
+}
+
+.show {
+  opacity: 1;
+}
+
+ul {
+  color: hsl(233, 53%, 27%);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  padding: 0;
+}
+@media (max-width: 768px) {
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+#btn-more {
+  display: block;
+  margin: auto;
+  padding: 1em 3em;
+  border-radius: 5px;
+  width: 7em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: var(--dark-blue);
+  background-color: white;
+  font-weight: bold;
+  transition-property: background-color, color;
+  -webkit-transition-property: opacity;
+  transition-duration: 0.3s;
+  transition-delay: ease-in-out;
+}
+#btn-more:hover {
+  opacity: 0.8;
+}
+
+</style>
