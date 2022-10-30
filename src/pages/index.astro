@@ -4,11 +4,10 @@ import "../styles/global.css";
 import { PageConfig } from '../utils/PageConfig';
 
 import Layout from "../layouts/Layout.astro";
-import Hero from "../layouts/Hero.astro";
-import Portfolio from "../layouts/Portfolio.astro";
-import About from "../layouts/About.astro"
-import Contact from "../layouts/Contact.astro";
-import Footer from "../components/Footer.astro";
+import Hero from "../components/sections/Hero.astro";
+import Portfolio from "../components/sections/Portfolio.astro";
+import About from "../components/sections/About.astro";
+import Contact from "../components/sections/Contact";
 ---
 
 <Layout 
@@ -20,7 +19,6 @@ import Footer from "../components/Footer.astro";
 	<Portfolio />
 	<About />
 	<Contact />
-	<Footer />
 </Layout>
 
 <style>
