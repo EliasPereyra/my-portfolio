@@ -1,5 +1,9 @@
 ---
+import Footer from '../components/sections/Footer.astro';
+import Navbar from '../components/sections/Navbar.astro';
+
 import '../styles/global.css'
+
 export interface Props {
   site_name: string;
   title: string;
@@ -21,9 +25,12 @@ const { title, site_name, author, description } = Astro.props as Props;
 		<title>{title}</title>
 	</head>
 	<body>
+		<Navbar />
 		<slot />
+		<Footer />
 	</body>
 </html>
+
 <style>
 	:root {
 		--font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
