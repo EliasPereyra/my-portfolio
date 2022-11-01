@@ -50,11 +50,13 @@ const { title, desc, project_img, tags, live_link, repo_link } = Astro.props;
 		flex-direction: column;
 		padding: .15rem;
 		border-radius: 5px;
-		background-size: 400%;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+		transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 		margin: 2em 0;
 		width: 25em;
+	}
+
+	.link-card:hover {
+		box-shadow: 1px 1px 20px rgba(247, 247, 247, 0.274);
 	}
 	
 	#link-card__wrapper {
@@ -67,13 +69,15 @@ const { title, desc, project_img, tags, live_link, repo_link } = Astro.props;
 	}
 
 	#link-card__content {
-		background-color: #f7f7f7;
+		background-color: #667cfaa6;
 		background-size: 400%;
 		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+		transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 		padding: 1em;
 		border-bottom-left-radius: 5px;
 		border-bottom-right-radius: 5px;
+	}#link-card__content:hover {
+		/* background: radial-gradient(45deg, 0% #667cfaa6, 50% #b17ef3a6, 100% #667cfaa6); */
 	}
 
 	#link-card__content:is(:hover, :focus-within) {
@@ -81,9 +85,9 @@ const { title, desc, project_img, tags, live_link, repo_link } = Astro.props;
 	}
 
 	#link-card__content-body {
-		width: 40ch;
+		width: 42ch;
 		font-weight: 300;
-		color: var(--light-dark)
+		color: rgb(224, 224, 224);
 	}
 
 	.link-card > a {
@@ -101,6 +105,7 @@ const { title, desc, project_img, tags, live_link, repo_link } = Astro.props;
 		gap: .5em;
 	}#link-card__content-links h3 {
 		margin: 0;
+		color: white;
 	}
 
 	.link-card__content-link {
