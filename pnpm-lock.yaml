@@ -12,6 +12,7 @@ specifiers:
   eslint-config-prettier: ^8.5.0
   eslint-plugin-astro: ^0.19.0
   eslint-plugin-prettier: ^4.2.1
+  i18next-fs-backend: ^2.0.0
   prettier: ^2.7.1
   prettier-plugin-astro: ^0.5.4
   react: ^18.2.0
@@ -22,6 +23,7 @@ dependencies:
   '@astrojs/netlify': 1.2.0
   '@astrojs/react': 1.2.1_pfva2yqwphl3e2f6qzlabaeuhu
   astro-i18next: 1.0.0-beta.12_astro@1.5.2
+  i18next-fs-backend: 2.0.0
 
 devDependencies:
   '@types/react': 18.0.22
@@ -2100,6 +2102,10 @@ packages:
   /human-signals/3.0.1:
     resolution: {integrity: sha512-rQLskxnM/5OCldHo+wNXbpVgDn5A17CUoKX+7Sokwaknlq7CdSnphy0W39GU8dw59XiCXmFXDg4fRuckQRKewQ==}
     engines: {node: '>=12.20.0'}
+
+  /i18next-fs-backend/2.0.0:
+    resolution: {integrity: sha512-zlwzcoUKlveoRt/SxgeP8i/6p1rxwxZ+x0w4sfCTY1zgUlhhnoxBSRX3GjVIsDJm5mky8Hpr//UX93UIknK7yQ==}
+    dev: false
 
   /i18next/21.10.0:
     resolution: {integrity: sha512-YeuIBmFsGjUfO3qBmMOc0rQaun4mIpGKET5WDwvu8lU7gvwpcariZLNtL0Fzj+zazcHUrlXHiptcFhBMFaxzfg==}
