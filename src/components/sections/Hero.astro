@@ -1,4 +1,7 @@
 ---
+import {t} from 'i18next'
+import { Trans, HeadHrefLangs } from "astro-i18next/components";
+
 import GithubIcon from '../atoms/GithubIcon.astro';
 import LinkedinIcon from '../atoms/LinkedinIcon.astro';
 
@@ -10,7 +13,9 @@ import '../../styles/global.css'
 		<div id="hero-content">
 			<h1><span id="designer">Designer</span> <span id="upper-line">&</span> <br /><span id="developer">Developer</span></h1>
 			<h3>
-				Fullstack web developer who likes to experiment and make designs, code and ship it onto the web
+				<Trans i18nKey="hero.subtitle">
+					{t("Fullstack web developer who likes to experiment and make designs, code and ship it onto the web")}
+				</Trans>
 			</h3>
 			<div id="btns-wrapper">
 				<a id="btn-filled" href="#portfolio"><b>See my works</b></a>
@@ -83,7 +88,7 @@ import '../../styles/global.css'
 	h3 {
 		color: var(--light-dark);
 		width: 45ch;
-		font-weight: 400;
+		font-weight: 300;
 		font-size: 1.2rem;
 		margin-top: .4em;
 		margin-bottom: 1em;
