@@ -2,6 +2,7 @@
 import LogoWhite from "../atoms/LogoWhite.astro";
 import GithubIcon from "../atoms/GithubIcon.astro";
 import LinkedinIcon from "../atoms/LinkedinIcon.astro";
+import AstroLightIcon from "../atoms/AstroLightIcon.astro";
 
 ---
 
@@ -16,6 +17,10 @@ import LinkedinIcon from "../atoms/LinkedinIcon.astro";
     <a href="/"><LogoWhite /></a>
     <GithubIcon color="#eee" />
     <LinkedinIcon color="#eee" />
+  </div>
+  <div id="third-row">
+    <small><b>built it with </b></small>
+    <AstroLightIcon />
   </div>
 </footer>
 
@@ -45,6 +50,16 @@ import LinkedinIcon from "../atoms/LinkedinIcon.astro";
   #second-row {
     display: flex;
     gap: .7em;
+    justify-content: center;
+    align-items: center;
+    margin: 0.3em 0;
+  }
+
+  #third-row {
+    text-align: center;
+    color: #fff;
+    margin-top: .7em;
+    display: flex;
     justify-content: center;
     align-items: center;
   }
