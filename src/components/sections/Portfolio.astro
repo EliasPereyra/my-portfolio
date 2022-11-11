@@ -52,23 +52,6 @@ const projects = [
   </a>
 </main>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      console.log(entry)
-      if (entry) {
-        entry.target.classList.add('show')
-      } else {
-        entry.target.classList.remove('show')
-      }
-    })
-  })
-
-  const element = document.querySelector('.h2')
-  observer.observe(element)
-
-</script>
-
 <style>
   main {
   padding: 2em 3em;
