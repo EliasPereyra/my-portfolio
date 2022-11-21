@@ -9,8 +9,14 @@
 ## Built with
 
 - ![Astro][astro]
+- ![React.js][React.js]
+- ![TypeScript][TypeScript]
+- ![Netlify][Netlify]
 
 [astro]: https://img.shields.io/badge/astro-FF5D01?style=for-the-badge&logo=astro&logoColor=white
+[React.js]: https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white
+[TypeScript]: https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white
+[Netlify]: https://img.shields.io/badge/netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white
 
 ## Contact
 
