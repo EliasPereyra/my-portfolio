@@ -6,7 +6,9 @@
   "keywords": [
     "Astro",
     "HTML",
-    "CSS"
+    "CSS",
+    "TypeScript",
+    "react.js"
   ],
   "private": true,
   "type": "module",
