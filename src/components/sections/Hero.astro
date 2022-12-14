@@ -15,7 +15,7 @@ import '../../styles/global.css'
 				Curious fullstack developer who likes to experiment and make designs, code and host it on the web
 			</h3>
 			<div id="btns-wrapper">
-				<a id="btn-filled" href="#portfolio"><b>See my works</b></a>
+				<a id="btn-portfolio" href="#portfolio"><b>See my works</b></a>
 				<ul>
 					<li>
 						<GithubIcon color="#142664" />
@@ -116,13 +116,15 @@ import '../../styles/global.css'
     padding: .6em;
 		text-align: center;
 		width: 9em;
-		transition: opacity .3s ease-in-out;
+		transition: background-color .15s ease-in-out, color .15s ease-in, outline .15s ease-in-out;
   }
-	#btn-filled {
+	#btn-portfolio {
 		background-color: var(--dark-blue);
 		color: white;
 		padding: 1em;
-	}#btn-filled:hover {
-		opacity: .9;
+	}#btn-portfolio:hover {
+		background-color: transparent;
+		color: var(--dark-blue);
+		outline: 1px solid var(--dark-blue);
 	}
 </style>
