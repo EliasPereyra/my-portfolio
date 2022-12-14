@@ -52,7 +52,7 @@ import '../../styles/global.css'
 		display: flex;
 		flex-direction: column;
 		
-	}@media (max-width: 768px) {
+	} @media (max-width: 768px) {
 		#hero-content {
 			align-items: center;
 			text-align: center;
@@ -61,7 +61,7 @@ import '../../styles/global.css'
 	
 	#laptop-img {
 		margin-left: 4.5em;
-	}@media (max-width: 768px) {
+	} @media (max-width: 768px) {
 		#laptop-img {
 			display: none;
 		}
@@ -104,7 +104,11 @@ import '../../styles/global.css'
 	}
   li {
 		list-style: none;
-	}
+		transition: opacity .15s ease-in-out, scale .15s ease-in-out;
+	}li:hover {
+    opacity: .8;
+		scale: 1.2;
+  }
 
 	#btns-wrapper {
 		display: flex;
@@ -118,6 +122,7 @@ import '../../styles/global.css'
 		width: 9em;
 		transition: background-color .15s ease-in-out, color .15s ease-in, outline .15s ease-in-out;
   }
+
 	#btn-portfolio {
 		background-color: var(--dark-blue);
 		color: white;
