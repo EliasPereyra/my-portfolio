@@ -8,10 +8,10 @@ import AstroLightIcon from "../atoms/AstroLightIcon.astro";
 
 <footer>
    <ul id="first-row">
-       <li><a href="#">Home</a></li>
-       <li><a href="#portfolio">Projects</a></li>
-       <li><a href="#about">About me</a></li>
-       <li><a href="#contact">Contact</a></li>
+    <li><a href="#">Home</a></li>
+    <li><a href="#portfolio">Projects</a></li>
+    <li><a href="#about">About me</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <div id="second-row">
     <a href="/"><LogoWhite /></a>
@@ -27,7 +27,14 @@ import AstroLightIcon from "../atoms/AstroLightIcon.astro";
 <style>
   a {
     text-decoration: none;
-    color: #fff;
+    color: #eee;
+    font-weight: 500;
+    text-underline-offset: 10px;
+    transition: text-underline-offset .2s ease-in-out;
+  }a:hover {
+    color: #ddd;
+    text-decoration: underline #ddd;
+    text-decoration-thickness: 2px;
   }
 
   footer {
