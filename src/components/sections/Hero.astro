@@ -43,10 +43,20 @@ import '../../styles/global.css'
 		background-color: white;
 		padding-top: 4.5em;
 	}
+
+	@media(max-width: 360px) {
+		section {
+			background-image: none;
+		}
+	} 
 	
 	#content {
 		display: flex;
 		padding: 5.7em 0;
+	}@media (max-width: 360px) {
+		#content {
+			display: block;
+		}
 	}
 
 	#hero-content{
@@ -58,6 +68,10 @@ import '../../styles/global.css'
 		#hero-content {
 			align-items: center;
 			text-align: center;
+		}
+	}@media (max-width: 360px) {
+		#hero-content {
+			padding: 0 2em;
 		}
 	}
 	
@@ -84,6 +98,12 @@ import '../../styles/global.css'
 		color: var(--dark-green);
 	}
 
+	@media(max-width: 360px) {
+		h1 {
+			font-size: 2.2rem;
+		}
+	}
+
 	h3 {
 		color: var(--light-dark);
 		width: 45ch;
@@ -91,6 +111,13 @@ import '../../styles/global.css'
 		font-size: 1.1rem;
 		margin-top: .4em;
 		margin-bottom: 1em;
+	}
+
+	@media(max-width: 360px) {
+		h3 {
+			font-size: .9rem;
+			width: 35ch;
+		}
 	}
 
 	main {
@@ -108,7 +135,6 @@ import '../../styles/global.css'
 		list-style: none;
 		transition: opacity .15s ease-in-out, scale .15s ease-in-out;
 	}li:hover {
-    opacity: .8;
 		scale: 1.2;
   }
 
@@ -133,5 +159,9 @@ import '../../styles/global.css'
 		background-color: transparent;
 		color: var(--dark-blue);
 		outline: 1px solid var(--dark-blue);
+	}@media( max-width: 360px) {
+		#btn-portfolio {
+			padding: 8em;
+		}
 	}
 </style>
