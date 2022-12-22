@@ -48,6 +48,10 @@ const { title, desc, tags, skill_img, logo_src, bg_color } = Astro.props;
     font-weight: 300;
     color: var(--light-dark);
     width: 55ch;
+  }@media (max-width: 360px) {
+    #skill-content__desc {
+      width: 35ch;
+    }
   }
 
   #skill-logo img {
@@ -64,6 +68,13 @@ const { title, desc, tags, skill_img, logo_src, bg_color } = Astro.props;
 
   #skill-content__tags {
     font-size: .8rem;
+    margin: 5px 0;
+  }@media (max-width: 360px) {
+    #skill-content__tags {
+      display: flex;
+    align-items: center;
+    justify-content: center;
+    }
   }
 
   small {
