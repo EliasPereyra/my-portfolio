@@ -14,8 +14,21 @@
   width: 40ch;
 }
 
+@media (max-width: 360px) {
+  #contact-container {
+    flex-direction: column;
+  }
+}
+
 #contact-container__right-side {
   width: 80%;
+}
+
+@media (max-width: 360px) {
+  #contact-container__right-side > p {
+    width: 100%;
+    width: 25ch;
+  }
 }
 
 #contact-container__right-side h2 {
@@ -28,6 +41,11 @@
   flex-direction: column;
   gap: 0.1em;
   width: 100%;
+}
+@media (max-width: 360px) {
+  #contact-container__content {
+    align-items: center;
+  }
 }
 
 #contact-container__content p {
