@@ -3,5 +3,30 @@
     "subheader": "Curious fullstack developer who likes to experiment and make designs, code and host it on the web",
     "button": "See my works"
   },
+  "navbar": {
+    "home": "Home",
+    "about": "About me",
+    "projects": "My projects",
+    "contact": "Contact"
+  },
+  "portfolio": {
+    "title": "My Recent Projects",
+    "button": "See more"
+  },
+  "about": {
+    "title": "About me",
+    "greeting": "Hi!",
+    "first-paragraph": "My name is Elías Pereyra Gómez. I'm a fullstack web developer. The enthusiasm for the world of the web started in 2015, when I met for the first time the markup languages: HTML and CSS. Later, I was getting deeper into the programming languages, like PHP, Java and JavaScript.",
+    "second-paragraph": "In web development there are many areas, and of the many, fullstack development and UI design fascinate me.",
+    "subheader": "These are the areas that I like to learn:"
+  },
+  "contact": {
+    "title": "Would you like to work with me?",
+    "comment": "I'd like to hear your proposals and make an incredible work together",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send-button": "Send"
+  },
   "description": "My personal website where you'll find all my recent projects and, also, a little bit of who I am"
 }
