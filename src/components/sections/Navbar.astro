@@ -1,4 +1,6 @@
 ---
+import {t} from "i18next"
+
 import Languages from "../atoms/Languages.astro";
 import LogoPurple from "../atoms/LogoPurple.astro";
 ---
@@ -8,10 +10,10 @@ import LogoPurple from "../atoms/LogoPurple.astro";
 		<a href="/"><LogoPurple /></a>
 	</div>
 	<ul id="navbar-items">
-    <li><a href="#">Home</a></li>
-		<li><a href="#about">About me</a></li>
-		<li><a href="#portfolio">My Projects</a></li>
-		<li><a href="#contact">Contact</a></li>
+    <li><a href="#">{t("navbar.home")}</a></li>
+		<li><a href="#about">{t("navbar.about")}</a></li>
+		<li><a href="#portfolio">{t("navbar.projects")}</a></li>
+		<li><a href="#contact">{t("navbar.contact")}</a></li>
     <li><Languages /></li>
 	</ul>
   
