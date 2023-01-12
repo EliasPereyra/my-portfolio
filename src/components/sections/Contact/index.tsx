@@ -1,3 +1,5 @@
+import { t } from "i18next"
+
 import "./styles.css"
 
 function Contact() {
@@ -5,23 +7,21 @@ function Contact() {
     <section id="contact">
       <div id="contact-container">
         <div id="contact-container__right-side">
-          <h2>Would you like to work with me?</h2>
-          <p>
-            I'd like to hear your proposals and make an incredible work together
-          </p>
+          <h2>{t("contact.title")}</h2>
+          <p>{t("contact.comment")}</p>
         </div>
         <div id="contact-container__content">
           <form action="mailto:eliaspereyra_gomez@hotmail.com" method="POST">
-            <label>Name</label>
+            <label>{t("contact.name")}</label>
             <input type="text" required />
 
-            <label>Email</label>
+            <label>{t("contact.email")}</label>
             <input type="email" required />
 
-            <label>Message</label>
+            <label>{t("contact.message")}</label>
             <textarea rows={3} required></textarea>
             <button type="submit" value="send">
-              Send
+              {t("contact.send-button")}
             </button>
           </form>
         </div>
