@@ -1,20 +1,21 @@
 ---
-import "../styles/global.css";
-
-import { PageConfig } from '../utils/PageConfig';
-
+import { t, changeLanguage } from "i18next";
+import { PageConfig } from "../utils/PageConfig";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/sections/Hero.astro";
 import Portfolio from "../components/sections/Portfolio.astro";
 import About from "../components/sections/About.astro";
 import Contact from "../components/sections/Contact";
+import "../styles/global.css";
+
+changeLanguage("spa");
 ---
 
 <Layout 
 		title={PageConfig.title} 
 		site_name={PageConfig.site_name} 
 		author={PageConfig.author} 
-		description={PageConfig.description} >
+		description={t("description")} >
 	<Hero />
 	<Portfolio />
 	<About />
