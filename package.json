@@ -4,11 +4,12 @@
   "author": "Elias Pereyra",
   "description": "My personal portfolio",
   "keywords": [
-    "Astro",
-    "HTML",
-    "CSS",
-    "TypeScript",
-    "react.js"
+    "astro",
+    "html",
+    "css",
+    "typescript",
+    "react.js",
+    "i18n"
   ],
   "private": true,
   "type": "module",
