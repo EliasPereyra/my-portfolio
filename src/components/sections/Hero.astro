@@ -1,4 +1,5 @@
 ---
+import {t} from "i18next"
 import GithubIcon from '../atoms/GithubIcon.astro';
 import LinkedinIcon from '../atoms/LinkedinIcon.astro';
 
@@ -12,10 +13,10 @@ import '../../styles/global.css'
 				<span id="designer">Designer</span><span id="upper-line"> &</span><br /><span id="developer">Developer</span>
 			</h1>
 			<h3>
-				Curious fullstack developer who likes to experiment and make designs, code and host it on the web
+				{t("hero.subheader")}
 			</h3>
 			<div id="btns-wrapper">
-				<a id="btn-portfolio" href="#portfolio"><b>See my works</b></a>
+				<a id="btn-portfolio" href="#portfolio"><b>{t("hero.button")}</b></a>
 				<ul>
 					<li>
 						<GithubIcon color="#142664" />
