@@ -1,4 +1,5 @@
 {
+  "description": "Mi sitio web personal donde encontrarás todos mis últimos proyectos y, también, un poquito sobre quién soy",
   "hero": {
     "subheader": "Desarrollador Fullstack curioso que le gusta experimentar y hacer diseños, codificar y ponerlos en la web",
     "button": "Mira mis proyectos"
@@ -27,6 +28,5 @@
     "email": "Email",
     "message": "Mensaje",
     "send-button": "Enviar"
-  },
-  "description": "Mi página personal donde encontrarás todos mis últimos proyectos y, también, un poquito sobre quién soy"
+  }
 }
