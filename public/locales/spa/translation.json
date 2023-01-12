@@ -1,6 +1,32 @@
 {
-  "description": "Mi página personal donde encontrarás todos mis últimos proyectos y, también, un poquito sobre quién soy",
   "hero": {
-    "subheader": "Desarrollador Fullstack curioso que le gusta experimentar y hacer diseños, codificar y ponerlos en la web"
-  }
+    "subheader": "Desarrollador Fullstack curioso que le gusta experimentar y hacer diseños, codificar y ponerlos en la web",
+    "button": "Mira mis proyectos"
+  },
+  "navbar": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "projects": "Mis proyectos",
+    "contact": "Contacto"
+  },
+  "portfolio": {
+    "title": "Mis Últimos Proyectos",
+    "button": "Ver más"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "greeting": "Hola!",
+    "first-paragraph": "Mi nombre es Elías Pereyra Gómez. Soy un Desarrollador Fullstack web. El entusiasmo por el mundo de la web comenzó en 2015, cuando me encontré la primera vez con los lenguajes de marcado: HTML y CSS. Después, fui indagando más profundamente en los lenguajes de programación, como PHP, Java y JavaScript.",
+    "second-paragraph": "En el desarrollo web hay muchas áreas, y de las tantas, el desarrollo fullstack y el diseño UI me fascinan.",
+    "subheader": "Estas son las áreas que me gustan aprender:"
+  },
+  "contact": {
+    "title": "Te gustaría trabajar conmigo?",
+    "comment": "Me gustaría escuchar tus propuestas y hacer un trabajo increíble juntos",
+    "name": "Nombre",
+    "email": "Email",
+    "message": "Mensaje",
+    "send-button": "Enviar"
+  },
+  "description": "Mi página personal donde encontrarás todos mis últimos proyectos y, también, un poquito sobre quién soy"
 }
