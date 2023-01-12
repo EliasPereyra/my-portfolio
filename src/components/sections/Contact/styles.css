@@ -108,7 +108,7 @@ textarea:focus {
   background-color: #fff7e7;
 }
 
-button {
+button[type="submit"] {
   background: #ffefce;
   border: none;
   border-radius: 5px;
@@ -119,7 +119,7 @@ button {
   outline: 1px solid #a17412;
   transition: 0.2s all ease-in-out;
 }
-button:hover {
+[type="submit"]:hover {
   background: #fdf5e5;
   outline: 1px solid #cc992b;
 }
