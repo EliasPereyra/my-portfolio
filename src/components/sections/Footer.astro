@@ -1,4 +1,6 @@
 ---
+import {t} from "i18next"
+
 import LogoWhite from "../atoms/LogoWhite.astro";
 import GithubIcon from "../atoms/GithubIcon.astro";
 import LinkedinIcon from "../atoms/LinkedinIcon.astro";
@@ -8,10 +10,10 @@ import AstroLightIcon from "../atoms/AstroLightIcon.astro";
 
 <footer>
    <ul id="first-row">
-    <li><a href="#">Home</a></li>
-    <li><a href="#portfolio">Projects</a></li>
-    <li><a href="#about">About me</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#">{t("navbar.home")}</a></li>
+    <li><a href="#portfolio">{t("navbar.projects")}</a></li>
+    <li><a href="#about">{t("navbar.about")}</a></li>
+    <li><a href="#contact">{t("navbar.contact")}</a></li>
   </ul>
   <div id="second-row">
     <a href="/"><LogoWhite /></a>
