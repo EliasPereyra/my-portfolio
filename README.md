@@ -3,7 +3,7 @@
     <img src="https://github.com/EliasPereyra/my-portfolio/blob/main/public/assets/logo-white.svg" width="250" />
   </a>
   <h1>My Portfolio</h1>
-  <p>My website where you can learn about me and what I do.</p>
+  <p>My personal website where you can learn about me and see projects that I make.</p>
 </div>
 
 ## Built with
@@ -11,6 +11,9 @@
 - ![Astro.js][Astro.js]
 - ![React.js][React.js]
 - ![TypeScript][TypeScript]
+
+## Deploy
+
 - ![Netlify][Netlify]
 
 [Astro.js]: https://img.shields.io/badge/astro-FF5D01?style=for-the-badge&logo=astro&logoColor=white
