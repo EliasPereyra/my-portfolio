@@ -1,4 +1,6 @@
 ---
+import {t} from "i18next"
+
 import CVButton from "../atoms/CV_Button.astro";
 import Skill from "../widgets/Skill.astro";
 
@@ -34,9 +36,9 @@ const skills = [
     <div id="about-desc-container">
       <article id="first-column">
         <span id="watermark">About me</span>
-        <h2>About me</h2>
-        <p class="about-desc"><b>Hi!</b> My name is Elías Pereyra Gómez, I'm a fullstack web developer. The enthusiasm for the world of the web started in 2015, when I met for the first time the markup languages: <i>HTML</i> and <i>CSS</i>. Later, I was getting deeper into the programming languages, like <i>PHP</i>, <i>Java</i> and <i>JavaScript</i>.</p>
-        <p class="about-desc">In web development there are many areas, and of the many, <b>fullstack development</b> and <b>UI design</b> fascinate me.</p>
+        <h2>{t("about.title")}</h2>
+        <p class="about-desc"><strong>{t("about.greeting")}</strong> {t("about.first-paragraph")}.</p>
+        <p class="about-desc">{t("about.second-paragraph")}.</p>
         <CVButton />
       </article>
       
