@@ -17,7 +17,8 @@
     "start": "astro dev",
     "eslint": "eslint --ext .ts,.astro",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "i18n:generate": "astro-i18next generate"
   },
   "devDependencies": {
     "@types/react": "^18.0.22",
