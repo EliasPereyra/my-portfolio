@@ -90,7 +90,14 @@ input {
 }
 input:focus {
   outline: 1px solid #a17412;
-  background-color: #fff7e7;
+  background-color: #fff0d1;
+}
+input:valid {
+  background-color: #fff5e2;
+}
+input:invalid {
+  background-color: #ffadad;
+  outline: 1px solid #a11212;
 }
 
 textarea {
@@ -116,10 +123,11 @@ button[type="submit"] {
   margin-top: 1em;
   width: 30%;
   font-size: 0.8rem;
+  font-weight: bold;
   outline: 1px solid #a17412;
   transition: 0.2s all ease-in-out;
 }
 [type="submit"]:hover {
-  background: #fdf5e5;
+  background: #ffd88a;
   outline: 1px solid #cc992b;
 }
