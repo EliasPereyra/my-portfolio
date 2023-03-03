@@ -1,8 +1,31 @@
 import { t } from "i18next"
+import emailjs from "@emailjs/browser"
 
 import "./styles.css"
 
 function Contact() {
+  const templateParams = {
+    name: "Elias",
+    notes: "Check this out",
+  }
+
+  const send = emailjs
+    .send(
+      "service_iewzp4j",
+      "template_5d2x7k2",
+      templateParams,
+      "npZhM9ycdFWILFA3A"
+    )
+    .then(
+      (response) => {
+        console.log("Success!", response.status, response.text)
+        return response.text
+      },
+      (err) => {
+        console.log(err)
+      }
+    )
+
   return (
     <section id="contact">
       <div id="contact-container">
@@ -12,15 +35,29 @@ function Contact() {
         </div>
         <div id="contact-container__content">
           <form action="mailto:eliaspereyra_gomez@hotmail.com" method="POST">
-            <label>{t("contact.name")}</label>
-            <input type="text" required />
+            <label htmlFor="username">{t("contact.name")}</label>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              autoComplete="username"
+              minLength="5"
+              maxLength="35"
+              required
+            />
 
-            <label>{t("contact.email")}</label>
-            <input type="email" required />
+            <label htmlFor="email">{t("contact.email")}</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+            />
 
-            <label>{t("contact.message")}</label>
-            <textarea rows={3} required></textarea>
-            <button type="submit" value="send">
+            <label htmlFor="message">{t("contact.message")}</label>
+            <textarea id="message" name="message" rows={3} required></textarea>
+            <button type="submit" value="send" onClick={send}>
               {t("contact.send-button")}
             </button>
           </form>
