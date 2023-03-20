@@ -3,8 +3,6 @@ import Footer from '../components/sections/Footer.astro';
 import Navbar from '../components/sections/Navbar.astro';
 import NewNavbar from '../components/sections/NewNavbar.astro';
 
-import '../styles/global.css'
-
 export interface Props {
   site_name: string;
   title: string;
@@ -38,18 +36,43 @@ const { title, site_name, author, description } = Astro.props as Props;
 	document.addEventListener('visibilitychange', () => {
 	const hidden = document.hidden
 
-	favicon.setAttribute("href", `/assets/logo${hidden ? "" : "-white"}.svg`)
-})
+	favicon.setAttribute("href", `/assets/logo${hidden ? "" : "-white"}.svg`)	
+	})
+
+	const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible')
+      }
+    })
+  }, { threshold: 0.15 })
+    
+  const elements = document.querySelectorAll('.animate')
+    
+  elements.forEach((element) => {
+    observer.observe(element)
+  })
 </script>
 
-<style>
+<style is:global>
 	:root {
 		--font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
 		--font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
 		--font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
 
-		--color-bg: hsl(10, 21%, 95%);
-		--color-border: hsl(17, 24%, 90%);
+  	--dark-blue: #142664;
+  	--dark-purple: #742ce7;
+  	--dark-green: #486478;
+  	--orange: #fc6a48;
+		--light-orange: linear-gradient(
+    270deg,
+    #fed1cc 17.36%,
+    rgba(254, 209, 204, 0) 93.71%
+  	);
+  	--white: #f8f8f8;
+  	--standard-black: hsl(0, 4%, 5%);
+  	--light-dark: hsl(0, 3%, 22%);
+  
 	}
 
 	* {
@@ -68,16 +91,15 @@ const { title, site_name, author, description } = Astro.props as Props;
 		margin: 0;
 	}
 
-	:global(h1) {
-		font-size: var(--font-size-xl);
-	}
+	.animate {
+    opacity: 0;
+    transform: translateY(4rem);
+    transition: all 0.7s ease-in-out;
+    transition-delay: 0.1s;
+  }
 
-	:global(h2) {
-		font-size: var(--font-size-lg);
-	}
-
-	:global(code) {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
+  .is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
