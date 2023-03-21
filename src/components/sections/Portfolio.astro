@@ -2,8 +2,6 @@
 import {t} from "i18next"
 import Card from "../widgets/Card.astro";
 
-import "../../styles/global.css"
-
 const projects = [
   {
     title: "Expense Tracker",
@@ -32,99 +30,109 @@ const projects = [
 ]
 ---
 <main id="portfolio">
-  <h2 class="h2">{t("portfolio.title")}</h2>
-  <ul>
-    {projects.map(({title, desc, project_img, tags, live, repo}) => (
-      <Card 
-        title={title} 
-        desc={desc} 
-        project_img={project_img} 
-        tags={tags} 
-        live_link={live} 
-        repo_link={repo} />
-    ))}  
-  </ul>
-  <a
-    id="btn-more"
-    href="https://github.com/EliasPereyra"
-    target="_blank"
-    rel="noreferrer">
-    <b>{t("portfolio.button")}</b>
-  </a>
+  <div id="noise"></div>
+  <div id="content">
+    <div id="underlay"></div>
+    <h2>{t("portfolio.title")}</h2>
+    <ul class="animate">
+      {projects.map(({title, desc, project_img, tags, live, repo}) => (
+        <Card 
+          title={title} 
+          desc={desc} 
+          project_img={project_img} 
+          tags={tags} 
+          live_link={live} 
+          repo_link={repo} />
+      ))}  
+    </ul>
+    <a
+      href="https://github.com/EliasPereyra"
+      target="_blank"
+      rel="noreferrer">
+      <b>{t("portfolio.button")}</b>
+    </a>
+  </div>
 </main>
 
 <style>
   main {
   padding: 2em 3em;
-  background: linear-gradient(220deg, hsl(228, 52%, 13%) 0%, hsl(227, 42%, 17%) 50%, hsl(227, 69%, 8%) 100%);
-  background-size: 200%;
-  animation: aurora 10s infinite;
+  background: #1b1b1b;
+  background-size: 100%;
+  position: relative;
+  isolation: isolate;
+  z-index: 10;
 }
 
-@keyframes aurora {
-  0% {
-    background-position: left top;
+#noise {
+    position: absolute;
+    background-image: url("/assets/noise.webp");
+    z-index: -20; 
+    mix-blend-mode: overlay;
+    inset: 0;
+    opacity: .1;
   }
 
-  25% {
-    background-position: right top;
-  }
-  
-  50% {
-    background-position: right bottom;
+  #content::before {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    top: 0%;
+    left: 0%;
+    bottom: 0%;
+    width: 100%;
+    background: url("/assets/noise.webp") repeat,linear-gradient(174deg, #1D2B5C 0%, #060C22 78.22%, #060C22 100%);
+    background-blend-mode: overlay;
+    -webkit-mask-image: radial-gradient(rgba(0, 0, 0, 0.671),transparent 100%);
   }
 
-  75% {
-    background-position: left bottom;
+  #underlay {
+    position: absolute;
+    z-index: -30;
+    inset: 0;
   }
-  
-  100% {
-    background-position: left top;
+
+  h2 {
+    padding-top: 6em;
+    text-align: center;
+    text-shadow: 1px 1px 10px rgb(255 255 255 / 20%);
+    margin: 4em 0 2em 0;
+    color: white;
+    transitions: all 1s;
   }
-}
 
-.h2 {
-  text-align: center;
-  text-shadow: 1px 1px 10px rgb(255 255 255 / 20%);
-  margin: 4em 0 2em 0;
-  color: white;
-  transitions: all 1s;
-}
-
-ul {
-  color: hsl(233, 53%, 27%);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-  padding: 0;
-}
-@media (max-width: 768px) {
   ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    color: hsl(233, 53%, 27%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    padding: 0;
   }
-}
+  @media (max-width: 768px) {
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
 
-#btn-more {
-  display: block;
-  margin: auto;
-  padding: 1em 3em;
-  border-radius: 5px;
-  width: 7em;
-  text-align: center;
-  text-decoration: none;
-  font-size: 0.8rem;
-  color: var(--dark-blue);
-  background-color: white;
-  font-weight: bold;
-  transition-property: background-color, color;
-  -webkit-transition-property: opacity;
-  transition-duration: 0.3s;
-  transition-delay: ease-in-out;
-}
-#btn-more:hover {
-  opacity: 0.8;
-}
-
+  a {
+    display: block;
+    margin: auto;
+    padding: 1em 3em;
+    border-radius: 5px;
+    width: 10em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: var(--dark-blue);
+    background-color: white;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border .1s ease-in-out;
+  }
+  a:hover {
+    background: transparent;
+    border: solid .8px var(--orange);
+    color: var(--white);
+  }
 </style>
