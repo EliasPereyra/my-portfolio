@@ -49,14 +49,14 @@ const projects = [
       href="https://github.com/EliasPereyra"
       target="_blank"
       rel="noreferrer">
-      <b>{t("portfolio.button")}</b>
+      <strong>{t("portfolio.button")}</strong>
     </a>
   </div>
 </main>
 
 <style>
   main {
-  padding: 2em 3em;
+  padding: 6em 3em;
   background: #1b1b1b;
   background-size: 100%;
   position: relative;
@@ -118,21 +118,22 @@ const projects = [
 
   a {
     display: block;
-    margin: auto;
+    margin: 4em auto;
     padding: 1em 3em;
     border-radius: 5px;
     width: 10em;
     text-align: center;
     text-decoration: none;
     font-size: 0.8rem;
-    color: var(--dark-blue);
-    background-color: white;
+    color: var(--white);
+    background-color: none;
+    border: 1px solid var(--light-purple);
     font-weight: bold;
-    transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border .1s ease-in-out;
+    transition: border 0.3s ease-in-out, color 0.3s ease-in-out;
   }
   a:hover {
     background: transparent;
     border: solid .8px var(--orange);
-    color: var(--white);
+    color: var(--orange);
   }
 </style>
