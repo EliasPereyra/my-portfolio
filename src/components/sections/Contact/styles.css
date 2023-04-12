@@ -1,7 +1,9 @@
 #contact {
-  padding: 4em 3em;
-  /* background: radial-gradient(54.59% 54.62% at 52.19% 50%, rgba(255, 255, 255, 0) 0%, #F7F5FA 100%); */
-  background: #fde6c2;
+  padding: 10em 6em;
+  background: #1b1b1b;
+  position: relative;
+  isolation: isolate;
+  z-index: 10;
 }
 
 #contact-container {
@@ -9,6 +11,20 @@
   gap: 5em;
   justify-content: center;
   align-items: center;
+  color: #eee;
+}
+#contact-container::before {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  top: 0%;
+  left: 0%;
+  bottom: 0%;
+  width: 100%;
+  background: url("/assets/noise.webp") repeat,
+    linear-gradient(161.79deg, #223266 11.3%, #2e3e6d 58.12%, #34457e 88.11%);
+  background-blend-mode: overlay;
+  -webkit-mask-image: radial-gradient(rgba(0, 0, 0, 0.541), transparent 70%);
 }
 #contact-container p {
   width: 40ch;
@@ -18,6 +34,21 @@
   #contact-container {
     flex-direction: column;
   }
+}
+
+#noise {
+  position: absolute;
+  background-image: url("/assets/noise.webp");
+  z-index: -20;
+  mix-blend-mode: overlay;
+  inset: 0;
+  opacity: 0.1;
+}
+
+#underlay {
+  position: absolute;
+  z-index: -30;
+  inset: 0;
 }
 
 #contact-container__right-side {
@@ -96,7 +127,6 @@ input:valid {
   background-color: #fff5e2;
 }
 input:invalid {
-  background-color: #ffadad;
   outline: 1px solid #a11212;
 }
 

@@ -28,12 +28,14 @@ function Contact() {
 
   return (
     <section id="contact">
+      <div id="noise"></div>
       <div id="contact-container">
-        <div id="contact-container__right-side">
+      <div id="underlay"></div>
+        <div id="contact-container__right-side" class="animate">
           <h2>{t("contact.title")}</h2>
           <p>{t("contact.comment")}</p>
         </div>
-        <div id="contact-container__content">
+        <div id="contact-container__content" class="animate">
           <form action="mailto:eliaspereyra_gomez@hotmail.com" method="POST">
             <label htmlFor="username">{t("contact.name")}</label>
             <input
