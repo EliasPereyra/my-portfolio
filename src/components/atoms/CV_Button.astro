@@ -1,28 +1,33 @@
-<a id="btn-empty" href="/resume.pdf" target="_blank">Download <b>CV</b></a>
+<a 
+	id="cv-button" 
+	href="/resume.pdf" 
+	target="_blank"
+>
+	Download 
+	<strong>CV</strong>
+</a>
 
 <style>
   a {
+		display: block;
     text-decoration: none;
 		border-radius: 5px;
-    font-size: 1rem;
-    padding: .7em;
+		width: 13em;
+		padding: .7em 3em;
 		text-align: center;
-		width: 11em;
+		color: var(--dark-purple);
 		transition: opacity .3s ease-in-out;
-		border: 2px solid var(--dark-blue);
+		border: 2px solid var(--light-purple);
   }
-  #btn-empty {
+  #cv-button {
 		background-color: transparent;
-		color: var(--dark-blue);
-		transition-property: border color;
-		transition-duration: 0.4s;
-		transition-timing-function: ease-in-out;
-		-webkit-transition-property: border, color;
-  	-webkit-transition-duration: 0.4s;
-  	-o-transition-property: border, color;
-  	-o-transition-duration: 0.4s;
-	}#btn-empty:hover {
+		transition: 
+			border .2s ease-in-out, 
+			color .2s ease-in-out, 
+			letter-spacing .2s ease-in-out;
+	}#cv-button:hover {
 		border: 2px solid var(--orange);
 		color: var(--orange);	
+		letter-spacing: 1px;
 	}
 </style>
