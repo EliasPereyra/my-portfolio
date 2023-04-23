@@ -1,7 +1,5 @@
 <div align="center">
-  <a href="https://eliaspereyra.com">
     <img src="https://github.com/EliasPereyra/my-portfolio/blob/main/public/assets/logo-white.svg" width="250" />
-  </a>
   <h1>My Portfolio</h1>
   <p>My personal website where you can learn about me and see projects that I make.</p>
 </div>
