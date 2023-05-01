@@ -1,3 +1,5 @@
+import { t } from 'i18next'
+
 export interface Projects {
   title: string;
   desc: string;
@@ -10,7 +12,7 @@ export interface Projects {
 export const projects: Projects[] = [
   {
     title: "Expense Tracker",
-    desc: "An app designed for tracking different types of transactions: incomes and expenses. The project is built with React.js, using the Speechly AI library.",
+    desc: `${t("projects.expense_tracker.desc")}`,
     project_img: "/assets/expense-tracker.webp",
     tags: ["React.js ", "Material UI ", "Speechly AI"],
     live_link: "https://s-expensetracker.netlify.app",
