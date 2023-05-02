@@ -1,0 +1,211 @@
+---
+import { t } from "i18next";
+
+import CVButton from "../atoms/CV_Button.astro";
+---
+
+<section id="about">
+  <div id="noise"></div>
+  <div id="about-desc-container">
+    <div id="underlay"></div>
+    <div id="about-me" class="animate">
+      <article>
+        <h2>{t("about.title")}</h2>
+        <p class="about-desc">
+          <strong>{t("about.greeting")}</strong> {t("about.first-paragraph")}
+        </p>
+        <p class="about-desc">{t("about.second-paragraph")}</p>
+        <CVButton />
+      </article>
+
+      <div id="photo-container" class="animate">
+        <img id="photo" src="/assets/profile-removebg.webp" alt="Foto de perfil" />
+      </div>
+    </div>
+
+    <article id="skills" class="animate">
+      <h3>{t("about.tools")}</h3>
+      <p>
+        <strong>{t("about.libraries")}: </strong>
+          <i>
+            <a href="https://github.com/EliasPereyra?tab=repositories&q=react" target="_blank" rel="noreferrer">React.js</a>, 
+            <a href="https://github.com/EliasPereyra?tab=repositories&q=astro" target="_blank" rel="noreferrer">Astro.js</a>, 
+            <a href="https://github.com/EliasPereyra?tab=repositories&q=express" target="_blank" rel="noreferrer">Express.js</a>
+          </i>.<br/>
+        <strong>{t("about.languages")}: </strong><i>HTML, CSS, JavaScript, TypeScript y Go.</i><br/>
+        <strong>{t("about.other_tools")}: </strong><i>Git, Figma, Penpot, Docker, MongoDB, Dbeaver (for DBs)</i>
+      </p>
+      <p>{t("about.final_words")}</p>
+    </article>
+  </div>
+</section>
+
+<style>
+  section { 
+    position: relative; 
+    background: #161420;
+    background-size: 100%;
+    color: #eee;
+    isolation: isolate;
+    z-index: 10;
+  }
+
+  a {
+    color: var(--white);
+    transiton: text-decoration .2s ease-in;
+  }a:hover {
+    text-decoration: underline;
+  }
+
+  #noise {
+    position: absolute;
+    background-image: url("/assets/noise.webp");
+    z-index: -20; 
+    mix-blend-mode: overlay;
+    inset: 0;
+    opacity: .1;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }h2::before {
+    content: "";
+    width: 10em;
+    height: 4px;
+    background: linear-gradient(to right, hsl(263, 53%, 51%), hsl(263, 53%, 51%));
+    border-radius: 1px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 768px) {
+    h2::before {
+      content: "";
+      margin: 0 auto 8px auto;
+  }
+  }
+
+  h3 { 
+    margin: 0; 
+    font-size: 1.5rem;
+  }
+
+  #about-desc-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10em;
+    align-items: center;
+    padding: 12em 3em; 
+  }
+  #about-desc-container::before {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    top: 0%;
+    left: 0%;
+    bottom: 0%;
+    width: 100%;
+    background: url(/assets/noise.webp) repeat,linear-gradient(270deg,#0d0621 10%,#281a4b 49%,#21194d 87%,#2e1f52 97%);
+    background-blend-mode: overlay;
+    -webkit-mask-image: radial-gradient(rgba(0, 0, 0, 0.671),transparent 70%);
+  }
+  
+  @media (max-width: 768px) {
+    #about-desc-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  #underlay {
+    position: absolute;
+    z-index: -30;
+    inset: 0;
+  }
+
+  .about-desc {
+    font-weight: 400;
+    width: 50ch;
+    line-height: 1.5em;
+    margin-bottom: 1em;
+  }
+  
+  @media (max-width: 768px) {
+    h2 { font-size: 1.7rem; }
+    .about-desc {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 425px) {
+    .about-desc {
+      width: 37ch;
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .about-desc {
+      width: 30ch;
+      font-size: 1rem;
+    }
+  }
+
+  #about-me {
+    display: flex;
+    gap: 8em;
+  }
+
+  @media (max-width: 768px){
+    #about-me {
+      gap: 2em;
+      flex-direction: column-reverse;
+    }
+  }
+
+  @media (max-width: 425px){
+    #about-me {
+      flex-direction: column-reverse;
+    }
+  }
+
+  #photo-container {
+    position: relative;
+  }
+
+  #photo {
+    width: 15em;
+    border: 5px solid hsl(263,53%,51%);
+    border-radius: 50%;
+    background: #e8f88e;
+    position: relative;
+  }
+
+  #skills {
+    border-width: 1px;
+    border-color: #eee;
+    border-style: dashed;
+    padding: 2em;
+    text-align: left;
+    width: 50em;
+  }
+
+  @media (max-width: 768px){
+    #skills {
+      width: 25em;
+    }
+  }
+
+  @media (max-width: 375px){
+    #skills {
+      padding: 1em;
+      width: 20em;
+    }
+  }
+
+  @media (max-width: 375px){
+    #skills {
+      width: 15em;
+    }
+  }
+</style>
