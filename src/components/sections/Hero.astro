@@ -1,0 +1,134 @@
+---
+import { t } from "i18next";
+
+---
+<section>
+  <div id="noise"></div>
+  <div id="hero-text-content">
+    <div id="underlay"></div>
+    <h1>
+      {t("hero.headline.first-part")}
+      <span id="name">{t("hero.headline.final-part")}</span>
+    </h1>
+    <p>
+      {t("hero.description")}
+    </p>
+  </div>
+</section>
+
+<style>
+  section {
+    background: #191622;
+		padding: 5em 0;
+    position: relative;
+    isolation: isolate;
+    z-index: 10;
+	}
+
+  button { border: none; padding: 1em 4em; border-radius: 5px; }
+
+  #hero-text-content {
+    padding-top: 5em;
+    padding-bottom: 10em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 80ch;
+    opacity: 0;
+    animation: fade-in 0.5s ease-in forwards;
+    animation-delay: 0.1s;
+  }
+
+  @media (max-width: 425px) {
+    #hero-text-content {
+      width: 40ch;
+    }
+  }
+
+  @keyframes fade-in {
+    to {
+      opacity: 1;
+    }
+  }
+
+  #hero-text-content::before {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    top: -10%;
+    left: 0%;
+    bottom: 0%;
+    width: 100%;
+    background: 
+      url(/assets/grunge-dusty-texture-background.webp) no-repeat,
+      linear-gradient(201deg,#000 0%,#201034 2%,#643696 17%,rgb(6,12,34) 100%);
+    background-blend-mode: overlay;
+    background-size: cover;
+    -webkit-mask-image: radial-gradient(rgb(0 0 0 / 94%),transparent 90%);
+  }
+
+  #noise {
+    position: absolute;
+    background-image: url("/assets/noise.webp");
+    z-index: -20; 
+    mix-blend-mode: overlay;
+    inset: 0;
+    opacity: .1;
+  }
+
+  #underlay {
+    position: absolute;
+    z-index: -30;
+    inset: 0;
+  }
+
+  h1 {
+    width: 12ch;
+    margin: 0;
+    font-size: 3.4rem;
+    color: var(--white);
+    text-align: center;
+  }
+
+  @media (max-width: 425px) {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+
+  @media (max-width: 320px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+
+  #name {
+    color: var(--light-purple);
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+  }  
+
+  p {
+    width: 40ch;
+    text-align: center;
+    color: var(--white);
+    font-weight: 400;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 425px) {
+    p {
+      font-size: var(--font-size-lg);
+      width: 25ch;
+    }
+  }
+
+  @media (max-width: 320px) {
+    p {
+      font-size: var(--font-size-lg);
+      width: 25ch;
+    }
+  }
+</style>
