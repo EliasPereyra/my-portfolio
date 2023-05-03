@@ -1,7 +1,11 @@
 {
   "description": "My personal website where you'll find all my recent projects and, also, a little bit of who I am",
   "hero": {
-    "subheader": "Curious fullstack developer who likes to experiment and make designs, code and host it on the web",
+    "headline": {
+      "first-part": "My name is",
+      "final-part": "Elias Pereyra"
+    },
+    "description": "Fullstack Developer focused on improvement for web perfomance and pleasant UI interfaces for the users",
     "button": "See my works"
   },
   "navbar": {
@@ -12,14 +16,20 @@
   },
   "portfolio": {
     "title": "My Recent Projects",
+    "description": "These are project I make as a hobby, using different tools like Astro.js, React.js and many more, combining them, and experimenting new stuff.",
     "button": "See more"
   },
   "about": {
     "title": "About me",
     "greeting": "Hi!",
-    "first-paragraph": "My name is Elías Pereyra Gómez. I'm a fullstack web developer. The enthusiasm for the world of the web started in 2015, when I met for the first time the markup languages: HTML and CSS. Later, I was getting deeper into the programming languages, like PHP, Java and JavaScript.",
+    "first-paragraph": "My name is Elías Pereyra Gómez. The enthusiasm for the world of the web started in 2015, when I met for the first time the markup languages: HTML and CSS. Later, I was getting deeper into the programming languages, like PHP, Java and JavaScript.",
     "second-paragraph": "In web development there are many areas, and of the many, fullstack development and UI design fascinate me.",
-    "subheader": "These are the areas that I like to learn:"
+    "subheader": "These are the areas that I like to learn:",
+    "tools": "Tools I use",
+    "libraries": "Frameworks and libraries",
+    "languages": "Languages",
+    "other_tools": "Other Tools",
+    "final_words": "I like to be curious and learn other tools, how they work, what they do, what benefits and results they provide."
   },
   "contact": {
     "title": "Would you like to work with me?",
@@ -28,5 +38,10 @@
     "email": "Email",
     "message": "Message",
     "send-button": "Send"
+  },
+  "projects": {
+    "expense_tracker": {
+      "desc": "An app designed for tracking different types of transactions: incomes and expenses. The project is built with React.js, using the Speechly AI library."
+    }
   }
 }
