@@ -9,20 +9,24 @@ import AstroLightIcon from "../atoms/AstroLightIcon.astro";
 ---
 
 <footer>
-   <ul id="first-row">
-    <li><a href="#">{t("navbar.home")}</a></li>
-    <li><a href="#portfolio">{t("navbar.projects")}</a></li>
-    <li><a href="#about">{t("navbar.about")}</a></li>
-    <li><a href="#contact">{t("navbar.contact")}</a></li>
-  </ul>
-  <div id="second-row">
-    <a href="/"><LogoWhite /></a>
-    <GithubIcon color="#eee" />
-    <LinkedinIcon color="#eee" />
-  </div>
-  <div id="third-row">
-    <small><b>built with </b></small>
-    <AstroLightIcon />
+  <div id="noise"></div>
+  <div id="content">
+    <ul id="first-row">
+      <div id="overlay"></div>
+      <li><a href="/#">{t("navbar.home")}</a></li>
+      <li><a href="/#portfolio">{t("navbar.projects")}</a></li>
+      <li><a href="/#about">{t("navbar.about")}</a></li>
+      <li><a href="/#contact">{t("navbar.contact")}</a></li>
+    </ul>
+    <div id="second-row">
+      <a href="/"><LogoWhite /></a>
+      <GithubIcon color="#eee" />
+      <LinkedinIcon color="#eee" />
+    </div>
+    <div id="third-row">
+      <small><b>built with </b></small>
+      <a href="https://astro.build" target="_blank"><AstroLightIcon /></a>
+    </div>
   </div>
 </footer>
 
@@ -41,11 +45,29 @@ import AstroLightIcon from "../atoms/AstroLightIcon.astro";
   }
 
   footer {
-    background-color: hsl(228, 52%, 13%);
-    padding: 2em;
+    background-color: #161416;
+    padding: 4em 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    isolation: isolate;
+    z-index: 10;
+  }
+
+  #noise {
+    position: absolute;
+    background-image: url("/assets/noise.webp");
+    z-index: -20;
+    mix-blend-mode: overlay;
+    inset: 0;
+    opacity: 0.1;
+  }
+
+  #underlay {
+    position: absolute;
+    z-index: -30;
+    inset: 0;
   }
 
   ul {
@@ -55,6 +77,7 @@ import AstroLightIcon from "../atoms/AstroLightIcon.astro";
     justify-content: center;
     align-items: center;
     color: #fff;
+    padding: 0;
   }
 
   @media (max-width: 360px) {
