@@ -1,7 +1,6 @@
 ---
 import Footer from '../components/sections/Footer.astro';
 import Navbar from '../components/sections/Navbar.astro';
-import NewNavbar from '../components/sections/NewNavbar.astro';
 
 import type { PageConfig } from '../utils/PageConfig';
 
@@ -19,7 +18,7 @@ const { title, author, description } = Astro.props as PageConfig;
 		<title>{title}</title>
 	</head>
 	<body>
-		<NewNavbar />
+		<Navbar />
 			<slot />
 		<Footer />
 	</body>
