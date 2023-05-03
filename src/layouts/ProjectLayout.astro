@@ -1,0 +1,61 @@
+---
+import Footer from '../components/sections/Footer.astro';
+import Navbar from '../components/sections/Navbar.astro';
+import NewNavbar from '../components/sections/NewNavbar.astro';
+
+import type { PageConfig } from '../utils/PageConfig';
+
+const { title, author, description } = Astro.props as PageConfig;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="/assets/logo-white.svg" />
+		<meta name="author" content={author} />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<NewNavbar />
+			<slot />
+		<Footer />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+		--font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
+		--font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+
+  	--dark-blue: #142664;
+  	--dark-green: #486478;
+  	--orange: #fa5f3c;
+  	--white: #f8f8f8;
+  	--standard-black: hsl(0, 4%, 5%);
+		--light-orange: #fabe3c;
+  	--light-purple: #742ce7;
+		--light-orange: linear-gradient(270deg, #fed1cc 17.36%, rgba(254, 209, 204, 0) 93.71%);
+  	--light-dark: hsl(0, 3%, 22%);
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	html {
+		font-family: 'Fira Sans', sans-serif;
+		font-size: var(--font-size-base);
+		color: var(--standard-dark);
+		opacity: .99;
+		background-color: var(--color-bg);
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+	}
+</style>
