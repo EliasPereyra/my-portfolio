@@ -1,19 +1,18 @@
 ---
-import { t, changeLanguage } from "i18next";
+import { t, changeLanguage,  } from "i18next";
+
 import { PageConfig } from "../utils/PageConfig";
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/sections/Hero.astro";
 import Portfolio from "../components/sections/Portfolio.astro";
-import About from "../components/sections/About.astro";
 import Contact from "../components/sections/Contact";
-import "../styles/global.css";
+import Hero from "../components/sections/Hero.astro";
+import About from "../components/sections/About.astro";
 
 changeLanguage("spa");
 ---
 
 <Layout 
 		title={PageConfig.title} 
-		site_name={PageConfig.site_name} 
 		author={PageConfig.author} 
 		description={t("description")} >
 	<Hero />
@@ -21,16 +20,3 @@ changeLanguage("spa");
 	<About />
 	<Contact />
 </Layout>
-
-<style>
-	.text-gradient {
-		font-weight: 900;
-		background-image: var(--astro-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 100% 200%;
-		background-position-y: 100%;
-		border-radius: 0.4rem;
-		animation: pulse 4s ease-in-out infinite;
-	}
-</style>
