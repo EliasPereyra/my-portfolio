@@ -1,48 +1,23 @@
 ---
 import {t} from "i18next"
+
+import { projects } from "../../utils/Projects";
 import Card from "../widgets/Card.astro";
 
-const projects = [
-  {
-    title: "Expense Tracker",
-    desc: "An app designed for tracking different types of transactions: incomes and expenses. The project is built with React.js, using the Speechly AI library.",
-    project_img: "/assets/expense-tracker.webp",
-    tags: ["React.js ", "Material UI ", "Speechly AI"],
-    live: "https://s-expensetracker.netlify.app",
-    repo: "https://github.com/eliaspereyra/expense-tracker",
-  },
-  {
-    title: "Memories",
-    desc: "This app was made with the MERN stack. Allows you to share memories with the people, attaching an image. A memory is a post which has a title and a description of you like, altogether with a photo or an image.",
-    project_img: "/assets/memories-app.webp",
-    tags: ["React.js ", "Node.js ", "Express.js ", "MongoDB ", "Material UI"],
-    live: "https://imagery-app.netlify.app",
-    repo: "https://github.com/eliaspereyra/memories-project",
-  },
-  {
-    title: "Portfolio",
-    desc: "A portfolio made for a drawer and designer from Argentina. It was made with HTML, Sass and JavaScript.",
-    project_img: "/assets/yonni-art.webp",
-    tags: ["HTML", "Sass", "JavaScript"],
-    live: "https://www.yonni.art/",
-    repo: "https://github.com/EliasPereyra/yonni-art",
-  },
-]
 ---
 <main id="portfolio">
   <div id="noise"></div>
   <div id="content">
     <div id="underlay"></div>
     <h2>{t("portfolio.title")}</h2>
+    <p>{t("portfolio.description")}</p>
     <ul class="animate">
-      {projects.map(({title, desc, project_img, tags, live, repo}) => (
+      {projects.map(({title, desc, tags }) => (
         <Card 
           title={title} 
-          desc={desc} 
-          project_img={project_img} 
+          desc={t("projects.expense_tracker.desc")} 
           tags={tags} 
-          live_link={live} 
-          repo_link={repo} />
+        />
       ))}  
     </ul>
     <a
@@ -56,15 +31,15 @@ const projects = [
 
 <style>
   main {
-  padding: 6em 3em;
-  background: #1b1b1b;
-  background-size: 100%;
-  position: relative;
-  isolation: isolate;
-  z-index: 10;
-}
+    padding: 6em 3em;
+    background: #191622;
+    background-size: 100%;
+    position: relative;
+    isolation: isolate;
+    z-index: 10;
+  }
 
-#noise {
+  #noise {
     position: absolute;
     background-image: url("/assets/noise.webp");
     z-index: -20; 
@@ -81,9 +56,9 @@ const projects = [
     left: 0%;
     bottom: 0%;
     width: 100%;
-    background: url("/assets/noise.webp") repeat,linear-gradient(174deg, #1D2B5C 0%, #060C22 78.22%, #060C22 100%);
+    background: url(/assets/noise.webp) repeat,linear-gradient(174deg,#000 0%,#1d0a2b 20%,#412f64 40%,#060C22 78.22%,#060C22 100%);
     background-blend-mode: overlay;
-    -webkit-mask-image: radial-gradient(rgba(0, 0, 0, 0.671),transparent 100%);
+    -webkit-mask-image: radial-gradient(rgb(0 0 0 / 84%),transparent 90%);
   }
 
   #underlay {
@@ -94,11 +69,80 @@ const projects = [
 
   h2 {
     padding-top: 6em;
-    text-align: center;
+    text-align: left;
     text-shadow: 1px 1px 10px rgb(255 255 255 / 20%);
-    margin: 4em 0 2em 0;
+    margin: 0em 0 .5em 1.7em;
     color: white;
-    transitions: all 1s;
+    transition: all 1s;
+    font-size: 2.3rem;
+  }h2::before {
+    content: "";
+    width: 10em;
+    height: 4px;
+    background: linear-gradient(to right, hsl(263, 53%, 51%), hsl(263, 53%, 51%));
+    border-radius: 1px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin: 0 auto .5em auto;
+    }h2::before {
+      content: "";
+      margin: 0 auto 6px auto;
+    }
+  }
+
+  @media (max-width: 425px) {
+    h2::before {
+      content: "";
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 375px) {
+    h2 {
+      content: "";
+      font-size: 1.7rem;
+    }
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: var(--white);
+    font-weight: 300;
+    margin-top: 0;
+    margin-left: 3.5em;
+    width: 60ch;
+  }
+
+  @media (max-width: 768px) {
+    p {
+      width: 40ch;
+      text-align: center;
+      margin: auto;
+    }
+  }
+
+  @media (max-width: 425px) {
+    p {
+      width: 35ch;
+    }
+  }
+
+  @media (max-width: 375px) {
+    p {
+      width: 30ch;
+    }
+  }
+
+  @media (max-width: 320px) {
+    p {
+      width: 25ch;
+    }
   }
 
   ul {
@@ -121,7 +165,7 @@ const projects = [
     margin: 4em auto;
     padding: 1em 3em;
     border-radius: 5px;
-    width: 10em;
+    width: 12em;
     text-align: center;
     text-decoration: none;
     font-size: 0.8rem;
@@ -129,11 +173,15 @@ const projects = [
     background-color: none;
     border: 1px solid var(--light-purple);
     font-weight: bold;
-    transition: border 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: 
+      border .3s ease-in-out, 
+      color .3s ease-in-out,
+      letter-spacing .3s ease-in-out;
   }
   a:hover {
     background: transparent;
     border: solid .8px var(--orange);
     color: var(--orange);
+    letter-spacing: 1px;
   }
 </style>
