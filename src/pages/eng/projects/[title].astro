@@ -1,0 +1,41 @@
+---
+import { t, changeLanguage } from "i18next";
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import { PageConfig } from "../../../utils/PageConfig";
+import { projects } from "../../../utils/Projects";
+import ProjectPage from "../../../components/sections/ProjectPage.astro";
+
+changeLanguage("eng");
+
+export async function getStaticPaths() {
+    return projects.map(project => {
+        return {
+            params: {
+                title: project.title.toLocaleLowerCase().replace(" ", "_")
+            },
+            props: {
+                project_title: project.title,
+                desc: project.desc,
+                project_img: project.project_img,
+                live_link: project.live_link,
+                repo_link: project.repo_link
+            }
+        };
+    });
+}
+const { title } = Astro.params;
+const { project_title, desc, live_link, repo_link, project_img } = Astro.props;
+---
+
+<ProjectLayout
+  title={PageConfig.title} 
+  author={PageConfig.author} 
+  description={t("description")}
+>
+  <ProjectPage 
+    title={project_title} 
+    desc={t("projects.expense_tracker.desc")}
+    project_img={project_img} 
+    live_link={live_link} 
+    repo_link={repo_link} />
+</ProjectLayout>
