@@ -67,9 +67,9 @@ const { title, desc, project_img, live_link, repo_link } = Astro.props
   }
 
   #content {
-    background: linear-gradient(to right, hsl(0deg 2.65% 12.27%), #111);
-    padding: 1em;
-    border-radius: 4px;
+    background: linear-gradient(to right, hsl(0deg 0.04% 11.02%), #111);
+    padding: 1.5em;
+    border-radius: 2px;
   }
 
   #content-header {
@@ -80,14 +80,17 @@ const { title, desc, project_img, live_link, repo_link } = Astro.props
   }
 
   h3 {
-    background: linear-gradient(to right, var(--orange), red);
+    background: linear-gradient(to right,#fa5f3c,#fabe3c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: 1.7rem;
+    margin: 0;
   }
 
   p {
     color: var(--white);
     width: 70ch;
+    font-size: .9rem;
   }
 
   #texture {
