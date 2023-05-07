@@ -27,7 +27,7 @@ export const projects: Projects[] = [
     repo_link: "https://github.com/eliaspereyra/memories-project",
   },
   {
-    title: "Portfolio",
+    title: "yonni.art",
     desc: "A portfolio made for a drawer and designer from Argentina. It was made with HTML, Sass and JavaScript.",
     project_img: "/assets/yonni-art.webp",
     tags: ["HTML", "Sass", "JavaScript"],
