@@ -28,9 +28,9 @@ import LogoWhite from "../atoms/LogoWhite.astro";
     z-index: 20;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: 375px) {
     nav {
-      display: none;
+    padding: 1em 2em;
     }
   }
 
@@ -55,5 +55,11 @@ import LogoWhite from "../atoms/LogoWhite.astro";
     display: flex;
     align-items: center;
     gap: 1.9em;
+  }
+
+  @media (max-width: 540px) {
+    #navbar-items {
+      display: none;
+    }
   }
 </style>
