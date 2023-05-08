@@ -41,9 +41,21 @@ import { t } from "i18next";
     animation-delay: 0.1s;
   }
 
+  @media (max-width: 540px) {
+    #hero-text-content {
+      width: 40ch;
+    }
+  }
+
   @media (max-width: 425px) {
     #hero-text-content {
       width: 40ch;
+    }
+  }
+
+  @media (max-width: 320px) {
+    #hero-text-content {
+      width: 20ch;
     }
   }
 
@@ -127,8 +139,8 @@ import { t } from "i18next";
 
   @media (max-width: 320px) {
     p {
-      font-size: var(--font-size-lg);
-      width: 25ch;
+      font-size: 1rem;
+      width: 23ch;
     }
   }
 </style>
