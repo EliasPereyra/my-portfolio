@@ -15,7 +15,9 @@ const { title, desc, tags, } = Astro.props;
 			<div id="link-card__content">
 				<div id="link-card__content-links" >
 					<h3>{title}</h3>	
-					<a href={`/eng/projects/${title.toLocaleLowerCase().replace(' ', '_')}`}><LinkNewWindow color="#eee" /> see project</a>
+					<a href={`/eng/projects/${title.toLocaleLowerCase().replace(' ', '_')}`}>
+						<LinkNewWindow color="#eee" /> see project
+					</a>
 				</div>
 				<p id="link-card__content-body">{desc}</p>
 				<p id="link-card__content-tags">{tags.map(tag => <small>{tag}</small>)}</p>
@@ -112,6 +114,7 @@ const { title, desc, tags, } = Astro.props;
 		margin: 0;
 		color: var(--white);
 		transition: text-decoration .2s ease-in-out;
+		font-size: .9rem;
 	}#link-card__content-links a:hover {
 		margin: 0;
 		text-decoration: underline;
