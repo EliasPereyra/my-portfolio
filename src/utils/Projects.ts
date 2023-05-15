@@ -19,12 +19,12 @@ export const projects: Projects[] = [
     repo_link: "https://github.com/eliaspereyra/expense-tracker",
   },
   {
-    title: "Memories",
-    desc: "This app was made with the MERN stack. Allows you to share memories with the people, attaching an image. A memory is a post which has a title and a description of you like, altogether with a photo or an image.",
-    project_img: "/assets/memories-app.webp",
-    tags: ["React.js ", "Node.js ", "Express.js ", "MongoDB ", "Material UI"],
-    live_link: "https://imagery-app.netlify.app",
-    repo_link: "https://github.com/eliaspereyra/memories-project",
+    title: "Digcoin News",
+    desc: "A SPA app which displays the current price of the most known digital coins currently at the market, and also the latest news about the crypto world.",
+    project_img: "/assets/digcoin.webp",
+    tags: ["React.js ", "Redux Toolkit", "Ant Design", "Chart.js"],
+    live_link: "https://digcoinnews.netlify.app",
+    repo_link: "https://github.com/eliaspereyra/cryptocurrency-news",
   },
   {
     title: "yonni.art",
