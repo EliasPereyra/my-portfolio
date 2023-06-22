@@ -1,6 +1,6 @@
 #contact {
   padding: 10em 6em;
-  background: #15111c;
+  background: var(--dark-bckg);
   position: relative;
   isolation: isolate;
   z-index: 10;
