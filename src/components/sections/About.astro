@@ -15,6 +15,7 @@ import CVButton from "../atoms/CV_Button.astro";
           <strong>{t("about.greeting")}</strong> {t("about.first-paragraph")}
         </p>
         <p class="about-desc">{t("about.second-paragraph")}</p>
+        <p class="about-desc">{t("about.third-paragraph")}</p>
         <CVButton />
       </article>
 
@@ -27,15 +28,10 @@ import CVButton from "../atoms/CV_Button.astro";
       <h3>{t("about.tools")}</h3>
       <p>
         <strong>{t("about.libraries")}: </strong>
-          <i>
-            <a href="https://github.com/EliasPereyra?tab=repositories&q=react" target="_blank" rel="noreferrer">React.js</a>, 
-            <a href="https://github.com/EliasPereyra?tab=repositories&q=astro" target="_blank" rel="noreferrer">Astro.js</a>, 
-            <a href="https://github.com/EliasPereyra?tab=repositories&q=express" target="_blank" rel="noreferrer">Express.js</a>
-          </i>.<br/>
-        <strong>{t("about.languages")}: </strong><i>HTML, CSS, JavaScript, TypeScript y Go.</i><br/>
-        <strong>{t("about.other_tools")}: </strong><i>Git, Figma, Penpot, Docker, MongoDB, Dbeaver (for DBs)</i>
+          <i>React.js, Astro.js, Gatsby.js, Express.js</i>.<br/>
+        <strong>{t("about.languages")}: </strong><i>HTML, CSS, JavaScript, TypeScript, Go.</i><br/>
+        <strong>{t("about.other_tools")}: </strong><i>Git, Figma, Penpot, Docker, MongoDB, PostreSQL, Sequelize, Prisma</i>
       </p>
-      <p>{t("about.final_words")}</p>
     </article>
   </div>
 </section>
