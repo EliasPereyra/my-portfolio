@@ -5,7 +5,7 @@
       "first-part": "Mi nombre es",
       "final-part": "Elias Pereyra"
     },
-    "description": "Desarrollador Fullstack enfocado en mejora de rendimiento web y en diseño UI agradables para los usuarios",
+    "description": "Desarrollador con especialización en Frontend, enfocado en mejora de rendimiento web y en diseño UI agradables",
     "button": "Mira mis proyectos"
   },
   "navbar": {
@@ -16,20 +16,19 @@
   },
   "portfolio": {
     "title": "Mis Últimos Proyectos",
-    "description": "Estos son los proyectos que realizo como hobby, utilizando distintas herramientas como Astro.js, React.js y muchas otras más, combinándolas, y experimentando nuevas cosas.",
+    "description": "",
     "button": "Ver más"
   },
   "about": {
     "title": "Sobre mí",
     "greeting": "Hola!",
-    "first-paragraph": "Mi nombre es Elías Pereyra Gómez, del país de Argentina. El entusiasmo por el mundo de la web comenzó en 2015, cuando me encontré por primera vez con los lenguajes de marcado: HTML y CSS. Al ingresar en la universidad, aprendí los conceptos de la Ciencia de la Computación, adentrándome también con lenguajes de programación C y C++. Luego, me encontré por primera vez con el desarrollo web fullstack con el lenguaje de Java y React.js. Desde entonces, sigo profundizando más sobre el desarrollo web y estoy al tanto de las nuevas tecnologías y mejoras que surgen.",
-    "second-paragraph": "El mundo de IT es inmenso, tiene muchas ramas muy buenas. Entre esas ramas, también me gusta el diseño UI/UX, DevOps y Cybersecurity. Cada de estos temas se complementan uno con el otro y por esa razón me gusta extender mis conocimientos del área web a estas otras áreas.",
-    "subheader": "Estas son las áreas que me gustan aprender:",
-    "tools": "Herramientas que utilizo",
+    "first-paragraph": "Mi nombre Elías Pereyra Gómez, de Argentina. Conocí del desarrollo web cuando estudiaba en la secundaria con los típicos lenguajes: HTML, CSS y un poco de PHP con MariaDB. Luego ingresé a la universidad y es donde me adentré en profundizar sobre los conceptos sobre Ingeniería de Software para especializarme en ésta área.",
+    "second-paragraph": "Realizo un voluntariado contribuyendo con la organización freeCodeCamp en realizar traducciones de artículos hechos por la comunidad, de inglés-español.  Puedes ver las traducciones que he realizado aquí.",
+    "third-paragraph": "En mi tiempo libre, leo con mucha frecuencia las últimas noticias sobre Tecnología, blogs para aprender cosas nuevas, conferencias, y además de la tecnología, me encanta aprender nuevos idiomas y realizar ejercicio.",
+    "tools": "Herramientas que generalmente utilizo:",
     "libraries": "Frameworks y librerías",
     "languages": "Lenguajes",
-    "other_tools": "Otras Herramientas",
-    "final_words": "Me gusta ser curioso y aprender distintas herramientas, cómo funcionan, qué hacen, qué beneficios y resultados ortogan."
+    "other_tools": "Otras Herramientas"
   },
   "contact": {
     "title": "Te gustaría trabajar conmigo?",

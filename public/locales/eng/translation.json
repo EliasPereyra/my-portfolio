@@ -5,7 +5,7 @@
       "first-part": "My name is",
       "final-part": "Elias Pereyra"
     },
-    "description": "Fullstack Developer focused on improvement for web perfomance and pleasant UI interfaces for the users",
+    "description": "Developer with specialization in Frontend, focused on web performance and pleasant UI designs",
     "button": "See my works"
   },
   "navbar": {
@@ -16,20 +16,19 @@
   },
   "portfolio": {
     "title": "My Recent Projects",
-    "description": "These are project I make as a hobby, using different tools like Astro.js, React.js and many more, combining them, and experimenting new stuff.",
+    "description": "",
     "button": "See more"
   },
   "about": {
     "title": "About me",
     "greeting": "Hi!",
-    "first-paragraph": "My name is Elías Pereyra Gómez. The enthusiasm for the world of the web started in 2015, when I met for the first time the markup languages: HTML and CSS. Later, I was getting deeper into the programming languages, like PHP, Java and JavaScript.",
-    "second-paragraph": "In web development there are many areas, and of the many, fullstack development and UI design fascinate me.",
-    "subheader": "These are the areas that I like to learn:",
-    "tools": "Tools I use",
+    "first-paragraph": "My name is Elías Pereyra Gómez, from Argentina. I came across with web development when I studied at high school with the most common languages: HTML, CSS and a little bit of PHP with MariaDB. Then I went to university and there's where I got to know in deep about the concepts of Software Engineering to specialize on this area.",
+    "second-paragraph": "I do a volunteering by contibuting with the freeCodeCamp organization doing translations of tech articles made by the community, from english-spanish.",
+    "third-paragraph": "In my spare time, I read frequently the latest news about Technology, blogs for learning new stuff, conferences, and in addition to technology, I love learning new languages and to work out.",
+    "tools": "Tools I generally use:",
     "libraries": "Frameworks and libraries",
     "languages": "Languages",
-    "other_tools": "Other Tools",
-    "final_words": "I like to be curious and learn other tools, how they work, what they do, what benefits and results they provide."
+    "other_tools": "Other Tools"
   },
   "contact": {
     "title": "Would you like to work with me?",
