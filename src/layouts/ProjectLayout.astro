@@ -57,4 +57,17 @@ const { title, author, description } = Astro.props as PageConfig;
 		margin: 0;
 		padding: 0;
 	}
+	body::-webkit-scrollbar {
+		width: .67rem;
+	}
+	body::-webkit-scrollbar-thumb {
+		border: 4px solid transparent;
+    background-clip: padding-box;
+    border-radius: 9999px;
+    background-color: #9797f7;
+	}
+	body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3.2rem #0e0e1b;
+    cursor: pointer!important;
+	}
 </style>
