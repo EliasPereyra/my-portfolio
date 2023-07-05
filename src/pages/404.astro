@@ -1,0 +1,46 @@
+---
+  import LeftArrowIcon from "../components/atoms/LeftArrowIcon.astro";
+import ProjectLayout from "../layouts/ProjectLayout.astro";
+---
+
+<ProjectLayout>
+  <section>
+    <a href="/#portfolio"><LeftArrowIcon color="#ddd" />Ir atrás</a>
+    <h3 class="error-code">404</h3>
+    <h3 class="error-desc">Página no encontrada</h3>
+  </section>
+</ProjectLayout>
+
+<style>
+  section {
+    background-color: #111;
+    padding: 8em; 
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .error-code {
+    font-size: 2.5rem;
+    color: var(--orange);
+  }
+  
+  .error-desc {
+    color: #ddd;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  a {
+    display: flex;
+		gap: 5px;
+		align-items: center;
+		color: #ddd;
+    transition: color .3s ease-in-out;
+  }a:hover {
+    color: #fff;
+  }
+</style>
