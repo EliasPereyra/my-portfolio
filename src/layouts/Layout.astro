@@ -28,7 +28,7 @@ const { title, author, description } = Astro.props as Props;
 	</body>
 </html>
 
-<script>
+<script defer>
 	const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -120,4 +120,10 @@ const { title, author, description } = Astro.props as Props;
     opacity: 1;
     transform: translateY(0);
   }
+
+	@keyframes fade-in {
+		from{
+			opacity: 0;
+		}
+	}
 </style>
