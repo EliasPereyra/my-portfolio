@@ -8,14 +8,16 @@ export interface Props {
 }
 
 const { title, desc, tags, } = Astro.props;
+
+const projectTitle = title.toLocaleLowerCase().replace(' ', '_')
 ---
 
-<li class="link-card">
+<li class="link-card" style={`view-transition-name: ${projectTitle}`}>
 		<div id="link-card__wrapper">		
 			<div id="link-card__content">
 				<div id="link-card__content-links" >
 					<h3>{title}</h3>	
-					<a href={`/eng/projects/${title.toLocaleLowerCase().replace(' ', '_')}`}>
+					<a href={`/eng/projects/${projectTitle}`}>
 						<LinkNewWindow color="#eee" /> see project
 					</a>
 				</div>
