@@ -1,6 +1,6 @@
 {
   "name": "my-portfolio",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "author": "Elias Pereyra",
   "description": "My personal portfolio",
   "keywords": [
@@ -26,7 +26,7 @@
     "@types/react": "18.0.22",
     "@types/react-dom": "18.0.7",
     "@typescript-eslint/parser": "5.41.0",
-    "astro": "2.3.0",
+    "astro": "2.9.7",
     "eslint": "8.23.1",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-astro": "0.19.0",
@@ -35,13 +35,13 @@
     "prettier-plugin-astro": "0.5.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "4.8.3"
+    "typescript": "5.1.6"
   },
   "dependencies": {
     "@astrojs/netlify": "2.2.2",
-    "@astrojs/react": "2.1.1",
+    "@astrojs/react": "2.2.1",
     "@emailjs/browser": "^3.10.0",
     "astro-i18next": "1.0.0-beta.18",
-    "i18next": "^22.4.10"
+    "i18next": "22.4.10"
   }
 }
