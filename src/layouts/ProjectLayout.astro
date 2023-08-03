@@ -1,4 +1,6 @@
 ---
+import {ViewTransitions} from '../../node_modules/astro/components'
+
 import Footer from '../components/sections/Footer.astro';
 import Navbar from '../components/sections/Navbar.astro';
 
@@ -16,6 +18,7 @@ const { title, author, description } = Astro.props as PageConfig;
 		<meta name="author" content={author} />
 		<meta name="description" content={description} />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
 	<body>
 		<Navbar />

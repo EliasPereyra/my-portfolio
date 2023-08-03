@@ -1,4 +1,6 @@
 ---
+import {ViewTransitions} from '../../node_modules/astro/components'
+
 import Footer from '../components/sections/Footer.astro';
 import Navbar from '../components/sections/Navbar.astro';
 
@@ -21,6 +23,7 @@ const { title, author, description } = Astro.props as Props;
 		<meta name="description" content={description} />
 		<meta name="view-transition" content="same-origin" />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
 	<body>
 		<Navbar />
@@ -43,26 +46,6 @@ const { title, author, description } = Astro.props as Props;
   elements.forEach((element) => {
     observer.observe(element)
   })
-
-	if (document.startViewTransition) {
-		document.startViewTransition(() => {
-			window.navigation.addEventListener('navigate', (event) => {
-				const toUrl = new URL(event.destination.url)
-
-				event.intercept({
-					async handler() {
-						const response = await fetch(toUrl.pathname)
-						const text = await response.text()
-						
-						document.startViewTransition(() => {
-							document.body.innerHTML = text
-							document.documentElement.scrollTop = 0
-						})
-					}
-				})
-			})
-		})
-	}
 </script>
 
 <style is:global>
@@ -141,10 +124,4 @@ const { title, author, description } = Astro.props as Props;
     opacity: 1;
     transform: translateY(0);
   }
-
-	@keyframes fade-in {
-		from{
-			opacity: 0;
-		}
-	}
 </style>
