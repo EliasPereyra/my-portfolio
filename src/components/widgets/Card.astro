@@ -12,19 +12,19 @@ const { title, desc, tags, } = Astro.props;
 const projectTitle = title.toLocaleLowerCase().replace(' ', '_')
 ---
 
-<li class="link-card" style={`view-transition-name: ${projectTitle}`}>
+<li class="link-card">
 		<div id="link-card__wrapper">		
 			<div id="link-card__content">
 				<div id="link-card__content-links" >
 					<h3>{title}</h3>	
-					<a href={`/eng/projects/${projectTitle}`}>
+					<a transition:name="see-project" transition:animate="slide" href={`/eng/projects/${projectTitle}`}>
 						<LinkNewWindow color="#eee" /> see project
 					</a>
 				</div>
 				<p id="link-card__content-body">{desc}</p>
 				<p id="link-card__content-tags">{tags.map(tag => <small>{tag}</small>)}</p>
 			</div>
-		</div>
+		</di>
 </li>
 
 <style>

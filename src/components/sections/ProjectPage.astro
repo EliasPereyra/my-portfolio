@@ -4,13 +4,13 @@ import LeftArrowIcon from "../../components/atoms/LeftArrowIcon.astro";
 const { title, desc, project_img, live_link, repo_link } = Astro.props
 ---
 
-<section style="view-transition-name: projectTitle">
+<section>
   <div id="texture"></div>
   <div>
     <div id="underlay"></div>
-    <img src={project_img} alt="Drawer's portfolio" />
+    <img  src={project_img} alt="Drawer's portfolio" />
     <div id="go-back">
-      <a href="/#portfolio">
+      <a transition:name="see-project" href="/#portfolio">
         <LeftArrowIcon color="#fa5f3c" /> go back
     </a>
     </div>
