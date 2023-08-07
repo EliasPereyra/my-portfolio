@@ -1,9 +1,9 @@
 ---
 import { t, changeLanguage } from "i18next";
-import ProjectLayout from "../../../layouts/ProjectLayout.astro";
 import { PageConfig } from "../../../utils/PageConfig";
 import { projects } from "../../../utils/Projects";
 import ProjectPage from "../../../components/sections/ProjectPage.astro";
+import Layout from "../../../layouts/Layout.astro";
 
 changeLanguage("eng");
 
@@ -27,7 +27,7 @@ const { title } = Astro.params;
 const { project_title, desc, live_link, repo_link, project_img } = Astro.props;
 ---
 
-<ProjectLayout
+<Layout
   title={PageConfig.title} 
   author={PageConfig.author} 
   description={t("description")}
@@ -38,4 +38,4 @@ const { project_title, desc, live_link, repo_link, project_img } = Astro.props;
     project_img={project_img} 
     live_link={live_link} 
     repo_link={repo_link} />
-</ProjectLayout>
+</Layout>
