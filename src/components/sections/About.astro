@@ -1,29 +1,10 @@
 ---
 import { t } from "i18next";
-
-import CVButton from "../atoms/CV_Button.astro";
 ---
 
 <section id="about">
   <div id="noise"></div>
   <div id="about-desc-container">
-    <div id="underlay"></div>
-    <div id="about-me" class="animate">
-      <article>
-        <h2>{t("about.title")}</h2>
-        <p class="about-desc">
-          <strong>{t("about.greeting")}</strong> {t("about.first-paragraph")}
-        </p>
-        <p class="about-desc">{t("about.second-paragraph")}</p>
-        <p class="about-desc">{t("about.third-paragraph")}</p>
-        <CVButton />
-      </article>
-
-      <div id="photo-container" class="animate">
-        <img id="photo" width="276" height="366" src="/assets/profile-removebg.webp" alt="Foto de perfil" />
-      </div>
-    </div>
-
     <article id="skills" class="animate">
       <h3>{t("about.tools")}</h3>
       <p>
