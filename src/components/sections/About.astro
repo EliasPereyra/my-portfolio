@@ -6,12 +6,19 @@ import { t } from "i18next";
   <div id="noise"></div>
   <div id="about-desc-container">
     <article id="skills" class="animate">
-      <h3>{t("about.tools")}</h3>
-      <p>
-        <strong>{t("about.libraries")}: </strong>
-          <i>React.js, Astro.js, Gatsby.js, Express.js</i>.<br/>
-        <strong>{t("about.languages")}: </strong><i>HTML, CSS, JavaScript, TypeScript, Go.</i><br/>
-        <strong>{t("about.other_tools")}: </strong><i>Git, Figma, Penpot, Docker, MongoDB, PostreSQL, Sequelize, Prisma</i>
+      <h2>{t("about.tools")}</h2>
+        <div id="tools">
+          <div>
+            <h5>{t("about.libraries")}: </h5>
+          <i>React.js, NextAuth</i>
+          <h5>{t("about.frameworks")}: </h5>
+          <i>Next.js, Astro.js, Gatsby.js, Express.js</i>
+          </div>
+        <div>
+          <h5>{t("about.languages")}: </h5><i>HTML, CSS, JavaScript, TypeScript, Go.</i><br/>
+        <h5>{t("about.other_tools")}: </h5><i>Git, Figma, Penpot, Docker, MongoDB, PostreSQL, Sequelize, Prisma</i>
+        </div>
+        </div>
       </p>
     </article>
   </div>
@@ -19,19 +26,13 @@ import { t } from "i18next";
 
 <style>
   section { 
+    padding: 0 4em;
     position: relative; 
     background: var(--dark-bckg);
     background-size: 100%;
     color: #eee;
     isolation: isolate;
     z-index: 10;
-  }
-
-  a {
-    color: var(--white);
-    transiton: text-decoration .2s ease-in;
-  }a:hover {
-    text-decoration: underline;
   }
 
   #noise {
@@ -43,36 +44,12 @@ import { t } from "i18next";
     opacity: .1;
   }
 
-  h2 {
-    font-size: 2.5rem;
-  }h2::before {
-    content: "";
-    width: 10em;
-    height: 4px;
-    background: linear-gradient(to right, hsl(263, 53%, 51%), hsl(263, 53%, 51%));
-    border-radius: 1px;
-    display: block;
-    margin-bottom: 6px;
-  }
-
-  @media (max-width: 768px) {
-    h2::before {
-      content: "";
-      margin: 0 auto 8px auto;
-  }
-  }
-
-  h3 { 
-    margin: 0; 
-    font-size: 1.5rem;
-  }
-
   #about-desc-container {
     display: flex;
     flex-direction: column;
     gap: 10em;
     align-items: center;
-    padding: 12em 3em; 
+    padding: 12em 0; 
   }
   #about-desc-container::before {
     position: absolute;
@@ -100,72 +77,10 @@ import { t } from "i18next";
     inset: 0;
   }
 
-  .about-desc {
-    font-weight: 400;
-    width: 50ch;
-    line-height: 1.5em;
-    margin-bottom: 1em;
-  }
-  
-  @media (max-width: 768px) {
-    h2 { font-size: 1.7rem; }
-    .about-desc {
-      font-size: 1.1rem;
-    }
-  }
-  
-  @media (max-width: 425px) {
-    .about-desc {
-      width: 37ch;
-      font-size: 1rem;
-    }
-  }
-
-  @media (max-width: 320px) {
-    .about-desc {
-      width: 30ch;
-      font-size: 1rem;
-    }
-  }
-
-  #about-me {
-    display: flex;
-    align-items: center;
-    gap: 8em;
-  }
-
-  @media (max-width: 768px){
-    #about-me {
-      gap: 2em;
-      flex-direction: column-reverse;
-    }
-  }
-
-  @media (max-width: 425px){
-    #about-me {
-      flex-direction: column-reverse;
-    }
-  }
-
-  #photo-container {
-    position: relative;
-  }
-
-  #photo {
-    border: 5px solid hsl(263,53%,51%);
-    border-radius: 50%;
-    background: #e8f88e;
-    position: relative;
-    
-  }
-
   #skills {
-    border-width: 1px;
-    border-color: #eee;
-    border-style: dashed;
-    padding: 2em;
-    text-align: left;
-    width: 50em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   @media (max-width: 768px){
@@ -185,5 +100,33 @@ import { t } from "i18next";
     #skills {
       width: 15em;
     }
+  }
+
+  h2 {
+    text-shadow: 1px 1px 10px rgb(255 255 255 / 20%);
+    color: white;
+    font-size: 2.3rem;
+    text-align: center;
+    width: 27ch;
+  }h2:before {
+    content: "";
+    width: 10em;
+    height: 4px;
+    background: linear-gradient(to right, hsl(263, 53%, 51%), hsl(263, 53%, 51%));
+    border-radius: 1px;
+    display: block;
+    margin-bottom: 10px;
+    margin: auto;
+  }
+
+  #tools {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 30em;
+  }
+
+  h5 {
+    color: var(--light-purple);
+    font-size: 1rem;
   }
 </style>
