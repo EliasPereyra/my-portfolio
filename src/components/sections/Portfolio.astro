@@ -12,26 +12,21 @@ import Card from "../widgets/Card.astro";
     <h2>{t("portfolio.title")}</h2>
     <p>{t("portfolio.description")}</p>
     <ul class="animate">
-      {projects.map(({title, desc, tags }) => (
+      {projects.map(({title, desc, tags, project_img }) => (
         <Card 
           title={title} 
           desc={t("projects.expense_tracker.desc")} 
           tags={tags} 
+          img={project_img}
         />
       ))}  
     </ul>
-    <a
-      href="https://github.com/EliasPereyra"
-      target="_blank"
-      rel="noreferrer">
-      <strong>{t("portfolio.button")}</strong>
-    </a>
   </div>
 </main>
 
 <style>
   main {
-    padding: 6em 4em;
+    padding: 4em 4em;
     background: var(--dark-bckg);
     background-size: 100%;
     position: relative;
@@ -39,39 +34,10 @@ import Card from "../widgets/Card.astro";
     z-index: 10;
   }
 
-  #noise {
-    position: absolute;
-    background-image: url("/assets/noise.webp");
-    z-index: -20; 
-    mix-blend-mode: overlay;
-    inset: 0;
-    opacity: .1;
-  }
-
-  #content::before {
-    position: absolute;
-    content: "";
-    z-index: -1;
-    top: 0%;
-    left: 0%;
-    bottom: 0%;
-    width: 100%;
-    background: url(/assets/noise.webp) repeat,linear-gradient(174deg,#000 0%,#1d0a2b 20%,#412f64 40%,#060C22 78.22%,#060C22 100%);
-    background-blend-mode: overlay;
-    -webkit-mask-image: radial-gradient(rgb(0 0 0 / 84%),transparent 90%);
-  }
-
-  #underlay {
-    position: absolute;
-    z-index: -30;
-    inset: 0;
-  }
-
   h2 {
     padding-top: 6em;
     text-align: left;
     text-shadow: 1px 1px 10px rgb(255 255 255 / 20%);
-    margin: 0em 0 .5em 1.7em;
     color: white;
     transition: all 1s;
     font-size: 2.3rem;
@@ -89,7 +55,6 @@ import Card from "../widgets/Card.astro";
     h2 {
       text-align: center;
       font-size: 2rem;
-      margin: 0 auto .5em auto;
     }h2::before {
       content: "";
       margin: 0 auto 6px auto;
@@ -148,8 +113,7 @@ import Card from "../widgets/Card.astro";
   ul {
     color: hsl(233, 53%, 27%);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-items: center;
+    grid-template-columns: 1fr;
     padding: 0;
   }
   @media (max-width: 768px) {
