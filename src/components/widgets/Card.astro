@@ -1,10 +1,11 @@
 ---
 import LinkNewWindow from '../atoms/LinkNewWindow.astro';
+import type {TagData} from "../../utils/Projects"
 
 export interface Props {
 	title: string;
 	desc: string;
-	tags: string[];
+	tags: TagData[];
 	img: string;
 }
 
@@ -24,7 +25,11 @@ const projectTitle = title.toLocaleLowerCase().replace(' ', '_')
 			</div>
 			<p id="link-card__content-body">{desc}</p>
 			<h5>Tech</h5>
-			<p id="link-card__content-tags">{tags.map(tag => <small>{tag}</small>)}</p>
+			<p id="link-card__content-tags">{
+				tags.map(({tagColor, tagName}) => 
+					<small style=`border: 1px solid ${tagColor}` >{tagName}</small>
+				)}
+			</p>
 			<a transition:name="see-project" transition:animate="slide" href={`/eng/projects/${projectTitle}`}>
 				<LinkNewWindow color="#eee" /> see project
 			</a>
@@ -140,9 +145,9 @@ const projectTitle = title.toLocaleLowerCase().replace(' ', '_')
 	small {
 		font-size: .7rem;
 		padding: .3em .5em;
-		background-color: rgb(228, 227, 227);
 		border-radius: 10px;
 		margin-right: 5px;
+		color: var(--white);
 	}
 
 	@media(max-width: 360px) {
