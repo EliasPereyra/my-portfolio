@@ -21,12 +21,9 @@
   },
   "about": {
     "title": "About me",
-    "greeting": "Hi!",
-    "first-paragraph": "My name is Elías Pereyra Gómez, from Argentina. I came across with web development when I studied at high school with the most common languages: HTML, CSS and a little bit of PHP with MariaDB. Then I went to university and there's where I got to know in deep about the concepts of Software Engineering to specialize on this area.",
-    "second-paragraph": "I do a volunteering by contibuting with the freeCodeCamp organization doing translations of tech articles made by the community, from english-spanish.",
-    "third-paragraph": "In my spare time, I read frequently the latest news about Technology, blogs for learning new stuff, conferences, and in addition to technology, I love learning new languages and to work out.",
     "tools": "Tools I generally use:",
-    "libraries": "Frameworks and libraries",
+    "frameworks": "Frameworks",
+    "libraries": "Libraries",
     "languages": "Languages",
     "other_tools": "Other Tools"
   },
@@ -42,5 +39,9 @@
     "expense_tracker": {
       "desc": "An app designed for tracking different types of transactions: incomes and expenses. The project is built with React.js, using the Speechly AI library."
     }
+  },
+  "not_found": {
+    "go_back": "Go back",
+    "desc": "Page not found"
   }
 }

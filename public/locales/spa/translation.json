@@ -21,12 +21,9 @@
   },
   "about": {
     "title": "Sobre mí",
-    "greeting": "Hola!",
-    "first-paragraph": "Mi nombre Elías Pereyra Gómez, de Argentina. Conocí del desarrollo web cuando estudiaba en la secundaria con los típicos lenguajes: HTML, CSS y un poco de PHP con MariaDB. Luego ingresé a la universidad y es donde me adentré en profundizar sobre los conceptos sobre Ingeniería de Software para especializarme en ésta área.",
-    "second-paragraph": "Realizo un voluntariado contribuyendo con la organización freeCodeCamp en realizar traducciones de artículos hechos por la comunidad, de inglés-español.  Puedes ver las traducciones que he realizado aquí.",
-    "third-paragraph": "En mi tiempo libre, leo con mucha frecuencia las últimas noticias sobre Tecnología, blogs para aprender cosas nuevas, conferencias, y además de la tecnología, me encanta aprender nuevos idiomas y realizar ejercicio.",
     "tools": "Herramientas que generalmente utilizo:",
-    "libraries": "Frameworks y librerías",
+    "frameworks": "Frameworks",
+    "libraries": "Librerías",
     "languages": "Lenguajes",
     "other_tools": "Otras Herramientas"
   },
@@ -42,5 +39,9 @@
     "expense_tracker": {
       "desc": "Una app diseñada para hacer seguimientos de diferentes tipos de transacciones: ingresos y gastos. El proyecto está construido con React.js, usando la librería Speechly AI."
     }
+  },
+  "not_found": {
+    "go_back": "Ir atrás",
+    "desc": "No se encuentra la página"
   }
 }
