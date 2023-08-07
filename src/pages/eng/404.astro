@@ -1,0 +1,49 @@
+---
+import { t, changeLanguage } from "i18next";
+import LeftArrowIcon from "../../components/atoms/LeftArrowIcon.astro";
+import Layout from "../../layouts/Layout.astro";
+
+changeLanguage("eng");
+---
+
+<Layout title="Página no encontrada" author="EliasPereyra" description="La página que se busca no existe">
+  <section>
+    <a href="/#portfolio"><LeftArrowIcon color="#ddd" />{t("not_found.go_back")}</a>
+    <h3 class="error-code">404</h3>
+    <h3 class="error-desc">{t("not_found.desc")}</h3>
+  </section>
+</Layout>
+
+<style>
+  section {
+    background-color: #111;
+    padding: 8em; 
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .error-code {
+    font-size: 2.5rem;
+    color: var(--orange);
+  }
+  
+  .error-desc {
+    color: #ddd;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  a {
+    display: flex;
+		gap: 5px;
+		align-items: center;
+		color: #ddd;
+    transition: color .3s ease-in-out;
+  }a:hover {
+    color: #fff;
+  }
+</style>
