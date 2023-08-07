@@ -1,15 +1,18 @@
 ---
-  import LeftArrowIcon from "../components/atoms/LeftArrowIcon.astro";
-import ProjectLayout from "../layouts/ProjectLayout.astro";
+import { t, changeLanguage } from "i18next";
+import LeftArrowIcon from "../components/atoms/LeftArrowIcon.astro";
+import Layout from "../layouts/Layout.astro";
+
+changeLanguage("spa");
 ---
 
-<ProjectLayout>
+<Layout title="Página no encontrada" author="EliasPereyra" description="La página que se busca no existe">
   <section>
-    <a href="/#portfolio"><LeftArrowIcon color="#ddd" />Ir atrás</a>
+    <a href="/#portfolio"><LeftArrowIcon color="#ddd" />{t("not_found.go_back")}</a>
     <h3 class="error-code">404</h3>
-    <h3 class="error-desc">Página no encontrada</h3>
+    <h3 class="error-desc">{t("not_found.desc")}</h3>
   </section>
-</ProjectLayout>
+</Layout>
 
 <style>
   section {
