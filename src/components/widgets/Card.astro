@@ -5,26 +5,31 @@ export interface Props {
 	title: string;
 	desc: string;
 	tags: string[];
+	img: string;
 }
 
-const { title, desc, tags, } = Astro.props;
+const { title, desc, tags, img } = Astro.props;
 
 const projectTitle = title.toLocaleLowerCase().replace(' ', '_')
 ---
 
 <li class="link-card">
-		<div id="link-card__wrapper">		
-			<div id="link-card__content">
-				<div id="link-card__content-links" >
-					<h3>{title}</h3>	
-					<a transition:name="see-project" transition:animate="slide" href={`/eng/projects/${projectTitle}`}>
-						<LinkNewWindow color="#eee" /> see project
-					</a>
-				</div>
-				<p id="link-card__content-body">{desc}</p>
-				<p id="link-card__content-tags">{tags.map(tag => <small>{tag}</small>)}</p>
+	<div id="link-card__project-img">
+		<img id="link-card__project-img" src={img} alt={desc} width="620" height="300" />
+	</div>
+	<div id="link-card__wrapper">		
+		<div id="link-card__content">
+			<div id="link-card__content-header">
+				<h3>{title}</h3>	
 			</div>
-		</di>
+			<p id="link-card__content-body">{desc}</p>
+			<h5>Tech</h5>
+			<p id="link-card__content-tags">{tags.map(tag => <small>{tag}</small>)}</p>
+			<a transition:name="see-project" transition:animate="slide" href={`/eng/projects/${projectTitle}`}>
+				<LinkNewWindow color="#eee" /> see project
+			</a>
+		</div>
+	</div>
 </li>
 
 <style>
@@ -35,7 +40,7 @@ const projectTitle = title.toLocaleLowerCase().replace(' ', '_')
 	.link-card {
 		list-style: none;
 		display: flex;
-		flex-direction: column;
+		align-items: flex-start;
 		padding: .15rem;
 		border-radius: 5px;
 		transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
@@ -54,10 +59,13 @@ const projectTitle = title.toLocaleLowerCase().replace(' ', '_')
 			width: 15em;
 		}
 	}
+
+	#link-card__project-img {
+		border-radius: 6px;
+	}
 	
 	#link-card__wrapper {
 		display: flex;
-		flex-direction: column;
 	}@media (max-width: 768px) {
 		#link-card__content {
 			flex-direction: row;
@@ -65,20 +73,40 @@ const projectTitle = title.toLocaleLowerCase().replace(' ', '_')
 	}
 
 	#link-card__content {
-		background-color: #38244f;
-		transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		padding: 1em;
-		border-radius: 5px;
+		padding: 0 1em;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}#link-card__content h5 {
+		margin-bottom: 0;
+		color: var(--white);
+	}#link-card__content a {
+		margin: 2em 0;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		text-decoration: none;
+		color: var(--orange);
 	}
 
-	#link-card__content:is(:hover, :focus-within) {
-		background-position: 0;
+	#link-card__content-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: var(--white);
+	}#link-card__content-header h3 {
+		background: var(--light-orange-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+		font-size: 1.7rem;
+		margin: 0;
 	}
 
 	#link-card__content-body {
-		width: 42ch;
+		line-height: 25px;
+		width: 55ch;
 		font-weight: 300;
-		color: rgb(224, 224, 224);
+		color: var(--white);
 	}
 
 	@media (max-width: 375px) {
@@ -95,45 +123,6 @@ const projectTitle = title.toLocaleLowerCase().replace(' ', '_')
 			width: 20ch;
 			margin: 10px auto;
 		}
-	}
-
-	#link-card__content-links {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: .5em;
-	}#link-card__content-links h3 {
-		margin: 0;
-		color: white;
-		font-size: var(--font-size-lg);
-	}#link-card__content-links a {
-		display: flex;
-		align-items: center;
-		margin: 0;
-		color: var(--white);
-		transition: text-decoration .2s ease-in-out;
-		font-size: .9rem;
-	}#link-card__content-links a:hover {
-		margin: 0;
-		text-decoration: underline;
-	}
-
-	@media (max-width: 768px) {
-		#link-card__content-links {
-			flex-direction: column;
-			justify-content: center;
-		}
-
-		link-card__content-links a {
-			font-size: .6rem;
-		}
-	}
-
-	#img-container img {
-		border-top-left-radius: 6px;
-		border-top-right-radius: 6px;
-		width: 100%;
-		height: 100%;
 	}
 
 	p {
