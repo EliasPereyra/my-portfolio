@@ -50,7 +50,7 @@ import Card from "../widgets/Card.astro";
     margin-bottom: 6px;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 768px) and (max-width: 1024px) {
     h2 {
       text-align: center;
       font-size: 2rem;
@@ -115,11 +115,9 @@ import Card from "../widgets/Card.astro";
     grid-template-columns: 1fr;
     padding: 0;
   }
-  @media (max-width: 768px) {
+  @media (min-width: 768px) and (max-width: 1024px) {
     ul {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-items: center;
     }
   }
 
