@@ -10,9 +10,9 @@ import { t } from "i18next";
         <div id="tools">
           <div>
             <h5>{t("about.libraries")}: </h5>
-          <i>React.js, NextAuth</i>
-          <h5>{t("about.frameworks")}: </h5>
-          <i>Next.js, Astro.js, Gatsby.js, Express.js</i>
+            <i>React.js, NextAuth</i>
+            <h5>{t("about.frameworks")}: </h5>
+            <i>Next.js, Astro.js, Gatsby.js, Express.js</i>
           </div>
         <div>
           <h5>{t("about.languages")}: </h5><i>HTML, CSS, JavaScript, TypeScript, Go.</i><br/>
@@ -89,16 +89,10 @@ import { t } from "i18next";
     }
   }
 
-  @media (max-width: 375px){
+  @media (max-width: 320px){
     #skills {
       padding: 1em;
       width: 20em;
-    }
-  }
-
-  @media (max-width: 375px){
-    #skills {
-      width: 15em;
     }
   }
 
@@ -117,12 +111,24 @@ import { t } from "i18next";
     display: block;
     margin-bottom: 10px;
     margin: auto;
+  }@media (min-width: 320px) and (max-width: 425px) {
+    h2 {
+      font-size: 1.5rem;
+      width: 20ch;
+    }
   }
 
   #tools {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 30em;
+  }
+
+  @media(min-width: 320px) and (max-width: 425px) {
+    #tools {
+      grid-template-columns: 1fr;
+      width: 20em;
+    }
   }
 
   h5 {
