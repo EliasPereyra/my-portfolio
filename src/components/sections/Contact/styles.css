@@ -33,7 +33,7 @@
   -webkit-mask-image: radial-gradient(rgba(0, 0, 0, 0.541), transparent 90%);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) and (min-width: 320px) {
   #contact-container {
     gap: 2em;
     flex-direction: column;
@@ -42,12 +42,6 @@
 
 #contact-container p {
   width: 40ch;
-}
-
-@media (max-width: 375px) {
-  #contact-container {
-    flex-direction: column;
-  }
 }
 
 #noise {
@@ -74,7 +68,7 @@
   font-size: 2rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 1024px) {
   #contact-container__right-side h2,
   p {
     text-align: center;
