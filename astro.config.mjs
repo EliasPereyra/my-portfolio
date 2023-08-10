@@ -8,6 +8,7 @@ export default defineConfig({
   adapter: netlify(),
   integrations: [react(), astroI18next()],
   experimental: {
-    viewTransitions: true
+    viewTransitions: true,
+    assets: true
   }
 });
