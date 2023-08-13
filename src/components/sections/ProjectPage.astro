@@ -8,7 +8,7 @@ const { title, desc, project_img, live_link, repo_link } = Astro.props
   <div id="texture"></div>
   <div>
     <div id="underlay"></div>
-    <img  src={project_img} alt="Drawer's portfolio" />
+    <img id="project-img" src={project_img} alt="Drawer's portfolio" />
     <div id="go-back">
       <a href="/#portfolio">
         <LeftArrowIcon color="#fa5f3c" /> go back
@@ -28,7 +28,7 @@ const { title, desc, project_img, live_link, repo_link } = Astro.props
           </a>
         </div>
       </div>
-      <p>{desc}</p>
+      <p id="project-desc">{desc}</p>
     </div>
   </div>
 </section>
@@ -40,12 +40,29 @@ const { title, desc, project_img, live_link, repo_link } = Astro.props
     isolation: isolate;
   }
 
-  img {
+  @media(max-width: 425px) {
+    section {
+      padding: 6em 2em 2em 2em;
+    }
+  }
+
+  #project-img {
     width: 50em;
     margin: auto;
     transition: transform .2s ease;
     border-radius: 2px;
     box-shadow: 1px -2px 90px 10px rgba(255, 255, 255, 0.12);
+  }
+
+  @media (max-width: 768px) {
+    #project-img {
+      width: 35em;
+    }
+  }
+  @media(min-width: 320px) and (max-width: 425px) {
+    #project-img {
+      width: 17em;
+    }
   }
 
   #go-back {
@@ -72,11 +89,23 @@ const { title, desc, project_img, live_link, repo_link } = Astro.props
     border-radius: 2px;
   }
 
+  @media(min-width: 320px) and (max-width: 425px){
+    #content {
+      padding: 1em;
+    }
+  }
+
   #content-header {
     display: flex;
     gap: 1em;
     align-items: center;
     margin: 0;
+  }
+
+  @media(min-width: 320px) and (max-width: 425px) {
+    #content-header {
+      flex-direction: column;
+    }
   }
 
   h3 {
@@ -87,10 +116,15 @@ const { title, desc, project_img, live_link, repo_link } = Astro.props
     margin: 0;
   }
 
-  p {
+  #project-desc {
     color: var(--white);
     width: 70ch;
     font-size: .9rem;
+  }
+  @media(min-width: 320px) and (max-width: 425px) {
+    #project-desc {
+      width: 30ch;
+    }
   }
 
   #texture {
@@ -104,6 +138,17 @@ const { title, desc, project_img, live_link, repo_link } = Astro.props
     display: flex;
     gap: 0.5em;
 	}
+
+  @media(max-width: 320px) and (max-width: 425px) {
+    #links {
+      gap: .3em;
+      flex-direction: column;
+    }
+
+    #links a {
+      font-size: .8rem;
+    }
+  }
 
   :where(#live-link, #repo-link) {
     padding: .5em .7em;
