@@ -30,7 +30,7 @@ const projectTitle = title.toLocaleLowerCase().replace(' ', '_')
 					<small style=`border: 1px solid ${tagColor}` >{tagName}</small>
 				)}
 			</p>
-			<a transition:name="see-project" transition:animate="slide" href={`/eng/projects/${projectTitle}`}>
+			<a transition:name="see-project" href={`/eng/projects/${projectTitle}`}>
 				<LinkNewWindow color="#eee" /> see project
 			</a>
 		</div>
