@@ -12,6 +12,9 @@ const tailwindCssColor = Symbol("#06B6D4")
 const expressjsColor = Symbol("#fff")
 const sequelizeColor = Symbol("#52B0E7")
 const postgreSqlColor = Symbol("#4169E1")
+const reactHookFormColor = Symbol("#EC5990")
+const dotNetColor = Symbol("#512BD4")
+const sqlServerColor = Symbol("#CC2927")
 
 export interface TagData {
   tagName: string;
@@ -29,8 +32,24 @@ export interface Projects {
 
 export const projects: Projects[] = [
   {
+    title: "Red Comunidad",
+    desc: `${t("projects.redco.desc")}`,
+    project_img: "/assets/redco.webp",
+    tags: [
+      { tagName: "React.js", tagColor: reactColor.description },
+      { tagName: "TailwindCSS", tagColor: tailwindCssColor.description },
+      { tagName: "Axios", tagColor: axiosColor.description },
+      { tagName: "React Hook Form", tagColor: reactHookFormColor.description },
+      { tagName: "Cloudinary", tagColor: reactColor.description },
+      { tagName: ".Net", tagColor: dotNetColor.description },
+      { tagName: "SQL Server", tagColor: sqlServerColor.description },
+    ],
+    live_link: "s10nc.somee.com/",
+    repo_link: "https://github.com/No-Country/s10-20-t-csharp-react"
+  },
+  {
     title: "Multishop",
-    desc: `${t("projects.multishop")}`,
+    desc: `${t("projects.multishop.desc")}`,
     project_img: "/assets/multishop.webp",
     tags: [
       { tagName: "React.js", tagColor: reactColor.description },
@@ -60,7 +79,7 @@ export const projects: Projects[] = [
   },
   {
     title: "Digcoin News",
-    desc: "A SPA app which displays the current price of the most known digital coins currently at the market, and also the latest news about the crypto world.",
+    desc: `${t("projects.digcoinnews.desc")}`,
     project_img: "/assets/digcoin.webp",
     tags: [
       { tagName: "React.js", tagColor: reactColor.description },
