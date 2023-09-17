@@ -5,9 +5,6 @@ const materiaUIColor = Symbol("#007FFF")
 const rtkColor = Symbol("#764ABC")
 const antDesignColor = Symbol("#0170FE")
 const chartJsColor = Symbol("#FF6384")
-const htmlColor = Symbol("#E34F26")
-const sassColor = Symbol("#CC6699")
-const javaScriptColor = Symbol("#F7DF1E")
 const typescriptColor = Symbol("#3178C6")
 const reactRouterColor = Symbol("#CA4245")
 const axiosColor = Symbol("#5A29E4")
@@ -73,17 +70,5 @@ export const projects: Projects[] = [
     ],
     live_link: "https://digcoinnews.netlify.app",
     repo_link: "https://github.com/eliaspereyra/cryptocurrency-news",
-  },
-  {
-    title: "yonni.art",
-    desc: "A portfolio made for a drawer and designer from Argentina. It was made with HTML, Sass and JavaScript.",
-    project_img: "/assets/yonni-art.webp",
-    tags: [
-      { tagName: "HTML", tagColor: htmlColor.description },
-      { tagName: "Sass", tagColor: sassColor.description },
-      { tagName: "JavaScript", tagColor: javaScriptColor.description },
-    ],
-    live_link: "https://www.yonni.art/",
-    repo_link: "https://github.com/EliasPereyra/yonni-art",
-  },
+  }
 ]
