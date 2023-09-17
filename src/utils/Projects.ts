@@ -32,6 +32,24 @@ export interface Projects {
 
 export const projects: Projects[] = [
   {
+    title: "Multishop",
+    desc: `${t("projects.multishop")}`,
+    project_img: "/assets/multishop.webp",
+    tags: [
+      { tagName: "React.js", tagColor: reactColor.description },
+      { tagName: "TypeScript", tagColor: typescriptColor.description },
+      { tagName: "React Router", tagColor: reactRouterColor.description },
+      { tagName: "Zustand", tagColor: reactColor.description },
+      { tagName: "Axios", tagColor: axiosColor.description },
+      { tagName: "TailwindCSS", tagColor: tailwindCssColor.description },
+      { tagName: "Express.js", tagColor: expressjsColor.description },
+      { tagName: "Sequelize", tagColor: sequelizeColor.description },
+      { tagName: "PostgreSQL", tagColor: postgreSqlColor.description },
+    ],
+    live_link: "https://c12-28-t-node-react-wu3w.vercel.app/",
+    repo_link: "https://github.com/No-Country/c12-28-t-node-react"
+  },
+  {
     title: "Expense Tracker",
     desc: `${t("projects.expense_tracker.desc")}`,
     project_img: "/assets/expense-tracker.webp",
