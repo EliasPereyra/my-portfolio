@@ -10,14 +10,14 @@ import { t } from "i18next";
         <div id="tools">
           <div>
             <h5>{t("about.libraries")}: </h5>
-            <i>React.js, NextAuth</i>
+            <i>React.js, NextAuth, Redux Toolkit, Zustand</i>
             <h5>{t("about.frameworks")}: </h5>
             <i>Next.js, Astro.js, Gatsby.js, Express.js</i>
           </div>
-        <div>
-          <h5>{t("about.languages")}: </h5><i>HTML, CSS, JavaScript, TypeScript, Go.</i><br/>
-        <h5>{t("about.other_tools")}: </h5><i>Git, Figma, Penpot, Docker, MongoDB, PostreSQL, Sequelize, Prisma</i>
-        </div>
+          <div>
+            <h5>{t("about.languages")}: </h5><i>HTML, CSS, JavaScript, TypeScript, Go</i><br/>
+            <h5>{t("about.other_tools")}: </h><i>Git, Figma, Penpot, Docker, MongoDB, PostreSQL, Sequelize, Prisma</i>
+          </div>
         </div>
       </p>
     </article>
@@ -120,6 +120,7 @@ import { t } from "i18next";
 
   #tools {
     display: grid;
+    gap: 5px;
     grid-template-columns: repeat(2, 1fr);
     width: 30em;
   }
