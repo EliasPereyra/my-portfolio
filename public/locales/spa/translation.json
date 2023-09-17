@@ -36,8 +36,14 @@
     "send-button": "Enviar"
   },
   "projects": {
+    "multishop": {
+      "desc": "Este es una aplicación fullstack de un e-commerce multi-cliente donde tantos vendedores pueden publicar y vender sus productos como los clientes pueden encontrar productos de todo tipo."
+    },
     "expense_tracker": {
       "desc": "Una app diseñada para hacer seguimientos de diferentes tipos de transacciones: ingresos y gastos. El proyecto está construido con React.js, usando la librería Speechly AI."
+    },
+    "digcoin_news": {
+      "desc": "Una web app donde podrás obtener la última información sobre las cripto monedas, su cotización en el mercado y poder ver más detalles sobre cada cripto moneda. También puedes ver las últimas noticias sobre el mundo cripto."
     }
   },
   "not_found": {
