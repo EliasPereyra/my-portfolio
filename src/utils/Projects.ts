@@ -8,6 +8,13 @@ const chartJsColor = Symbol("#FF6384")
 const htmlColor = Symbol("#E34F26")
 const sassColor = Symbol("#CC6699")
 const javaScriptColor = Symbol("#F7DF1E")
+const typescriptColor = Symbol("#3178C6")
+const reactRouterColor = Symbol("#CA4245")
+const axiosColor = Symbol("#5A29E4")
+const tailwindCssColor = Symbol("#06B6D4")
+const expressjsColor = Symbol("#000000")
+const sequelizeColor = Symbol("#52B0E7")
+const postgreSqlColor = Symbol("#4169E1")
 
 export interface TagData {
   tagName: string;
