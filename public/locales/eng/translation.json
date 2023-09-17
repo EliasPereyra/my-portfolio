@@ -36,6 +36,9 @@
     "send-button": "Send"
   },
   "projects": {
+    "redco": {
+      "desc": "Red Comunidad a web of neighborhood and citizen complaints, where you may report and visibilize citizen problematics and/or of infrastructure which are common to everyone."
+    },
     "multishop": {
       "desc": "This is a multi-client e-commerce web app donde where sellers can publish and sell their products as also clients can find products of all kind."
     },

@@ -36,6 +36,9 @@
     "send-button": "Enviar"
   },
   "projects": {
+    "redco": {
+      "desc": "Red Comunidad es una Web de reclamos vecinales y ciudadanos, donde se podrá reportar y visibilizar problemáticas ciudadanas y/o de infraestructura comunes a todos."
+    },
     "multishop": {
       "desc": "Este es una aplicación fullstack de un e-commerce multi-cliente donde tantos vendedores pueden publicar y vender sus productos como los clientes pueden encontrar productos de todo tipo."
     },
