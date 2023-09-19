@@ -15,7 +15,7 @@ import Card from "../widgets/Card.astro";
       {projects.map(({title, desc, tags, project_img }) => (
         <Card 
           title={title} 
-          desc={t("projects.expense_tracker.desc")} 
+          desc={desc} 
           tags={tags} 
           img={project_img}
         />
