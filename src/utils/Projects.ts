@@ -44,7 +44,7 @@ export const projects: Projects[] = [
       { tagName: ".Net", tagColor: dotNetColor.description },
       { tagName: "SQL Server", tagColor: sqlServerColor.description },
     ],
-    live_link: "s10nc.somee.com/",
+    live_link: "https://s10nc.somee.com/",
     repo_link: "https://github.com/No-Country/s10-20-t-csharp-react"
   },
   {
@@ -79,7 +79,7 @@ export const projects: Projects[] = [
   },
   {
     title: "Digcoin News",
-    desc: `${t("projects.digcoinnews.desc")}`,
+    desc: `${t("projects.digcoin_news.desc")}`,
     project_img: "/assets/digcoin.webp",
     tags: [
       { tagName: "React.js", tagColor: reactColor.description },
