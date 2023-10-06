@@ -64,30 +64,5 @@ export const projects: Projects[] = [
     ],
     live_link: "https://c12-28-t-node-react-wu3w.vercel.app/",
     repo_link: "https://github.com/No-Country/c12-28-t-node-react"
-  },
-  {
-    title: "Expense Tracker",
-    desc: `${t("projects.expense_tracker.desc")}`,
-    project_img: "/assets/expense-tracker.webp",
-    tags: [
-      { tagName: "React.js", tagColor: reactColor.description },
-      { tagName: "Material UI", tagColor: materiaUIColor.description },
-      { tagName: "Speechly AI", tagColor: "" },
-    ],
-    live_link: "https://s-expensetracker.netlify.app",
-    repo_link: "https://github.com/eliaspereyra/expense-tracker",
-  },
-  {
-    title: "Digcoin News",
-    desc: `${t("projects.digcoin_news.desc")}`,
-    project_img: "/assets/digcoin.webp",
-    tags: [
-      { tagName: "React.js", tagColor: reactColor.description },
-      { tagName: "RTK", tagColor: rtkColor.description },
-      { tagName: "Ant Design", tagColor: antDesignColor.description },
-      { tagName: "Chart.js", tagColor: chartJsColor.description },
-    ],
-    live_link: "https://digcoinnews.netlify.app",
-    repo_link: "https://github.com/eliaspereyra/cryptocurrency-news",
   }
 ]
