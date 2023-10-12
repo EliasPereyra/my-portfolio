@@ -1,0 +1,20 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-container__input-element {
+  border-radius: 7px;
+  padding: 1em;
+  max-width: 48em;
+  min-width: 10em;
+}
+
+.search-container__tech-tags {
+  display: flex;
+  gap: 5px;
+  color: var(--white);
+  transition: color .2s ease-out;
+}.search-container__tech-tags small:hover {
+  color: var(--light-orange);
+}
