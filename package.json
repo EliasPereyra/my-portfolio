@@ -1,6 +1,6 @@
 {
   "name": "my-portfolio",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "author": "EliasPereyra",
   "description": "My personal portfolio",
   "repository": {
@@ -30,7 +30,7 @@
     "@astrojs/netlify": "3.0.0",
     "@astrojs/react": "3.0.0",
     "astro-i18next": "1.0.0-beta.21",
-    "i18next": "22.4.10"
+    "i18next": "23.7.16"
   },
   "devDependencies": {
     "@types/react": "18.0.22",
