@@ -5,5 +5,7 @@
     "astro", // Enable .astro
     "typescript", // Enable .ts
     "typescriptreact" // Enable .tsx
-  ]
+  ],
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSave": true
 }
