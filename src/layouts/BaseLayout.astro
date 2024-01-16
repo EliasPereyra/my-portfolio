@@ -1,0 +1,153 @@
+---
+
+import Footer from "@/components/sections/Footer.astro";
+import Navbar from "@/components/sections/Navbar.astro";
+import ProviderTheme from "@/components/ProviderTheme.astro";
+
+export interface Props {
+  title: string;
+  author: string;
+  description: string;
+}
+
+const { title, author, description } = Astro.props as Props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/assets/logo-w-v1.svg" />
+    <meta name="author" content={author} />
+    <meta name="description" content={description} />
+    <meta name="view-transition" content="same-origin" />
+    <title>{title}</title>
+    <link
+      rel="preload"
+      href="/fonts/Khand/Khand-SemiBold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <ProviderTheme />
+  </head>
+  <body>
+    <Navbar />
+    <slot />
+    <Footer />
+    <style is:global>
+      @font-face {
+        font-family: "Khand";
+        font-weight: semi-bold;
+        src: url("/fonts/Khand/Khand-SemiBold.ttf") format("ttf");
+      }
+
+      :root {
+        --primary-color: #030916;
+        --secondary-color: #9e1946;
+        --white-color: #f2f7f2;
+        --white-gray-color: #dbe1db;
+
+        --hero__light-bg: linear-gradient(169deg, #F9F8F8 -169.26%, #DBE5FC 144.3%);
+
+        --lg-desktop: 1440px;
+        --sm-desktop: 1330px;
+        --tablet: 1000px;
+        --vertical-phone: 780px;
+        --lg-mobile: 425px;
+        --md-mobile: 375px;
+        --sm-mobile: 325px;
+      }
+
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      body {
+        margin: 0;
+
+        ::-webkit-scrollbar {
+          width: 0.67rem;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          border: 4px solid transparent;
+          background-clip: padding-box;
+          border-radius: 9999px;
+          background-color: #9797f7;
+        }
+
+        ::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 3.2rem #0e0e1b;
+          cursor: pointer !important;
+        }
+      }
+
+      ul {
+        padding: 0;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      h1 {
+        font-family: "Open Sans", system-ui, sans-serif;
+        font-weight: 900;
+        font-size: 60px;
+      }
+
+      h2 {
+        font-family: "Hind", system-ui, sans-serif;
+        font-size: 50px;
+      }
+
+      h3 {
+        font-family: "Khand", sans-serif;
+        font-size: 50px;
+      }
+
+      p {
+        text-wrap: pretty;
+        line-height: 1.7rem;
+        font-size: 1.1rem;
+      }
+
+      :is(h1,h2,h3,h4) {
+        text-wrap: balance;
+      }
+
+      :is(p, a, li, small, button) {
+        font-family:
+          "Hind",
+          system-ui,
+          -apple-system,
+          "Helvetica Neue",
+          sans-serif;
+      }
+
+      .animate {
+        opacity: 0;
+        transform: translateY(4rem);
+        transition: all 0.7s ease-in-out;
+        transition-delay: 0.1s;
+      }
+
+      .is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </body>
+</html>
