@@ -1,39 +1,32 @@
 {
   "description": "Mi sitio web personal donde encontrarás todos mis últimos proyectos y, también, un poquito sobre quién soy",
-  "hero": {
-    "headline": {
-      "first-part": "Mi nombre es",
-      "final-part": "Elias Pereyra"
-    },
-    "description": "Desarrollador con especialización en Frontend, enfocado en mejora de rendimiento web y en diseño UI agradables",
-    "button": "Mira mis proyectos"
-  },
   "navbar": {
     "home": "Inicio",
     "about": "Sobre mí",
     "projects": "Mis proyectos",
     "contact": "Contacto"
   },
+  "hero": {
+    "available": "Disponible para trabajar",
+    "headline": "Hola! Me llamo Elias",
+    "description": "Desarrollador Fullstack con especialización en Frontend.  Enfocado en mejora de rendimiento web. ",
+    "button": "Mira mis proyectos"
+  },
   "portfolio": {
     "title": "Mis Últimos Proyectos",
-    "description": "",
-    "button": "Ver más"
-  },
+    "description": "Digital products (Web Apps, Websites) and design systems which are very pleasing easy to use"  },
   "about": {
     "title": "Sobre mí",
-    "tools": "Herramientas que generalmente utilizo:",
-    "frameworks": "Frameworks",
-    "libraries": "Librerías",
-    "languages": "Lenguajes",
-    "other_tools": "Otras Herramientas"
+    "1st-desc": "Desarrollador y diseñador de páginas y aplicaciones web. Mi objetivo es realizar productos innovativos y generen un buen impacto a los usuarios.",
+    "2nd-desc": "También realizo constribuciones Open Source traduciendo artículos al español en la comunidad de freeCodeCamp. Aquí puedes ver los artículos que voy traduciendo."
   },
   "contact": {
     "title": "Te gustaría trabajar conmigo?",
-    "comment": "Me gustaría escuchar tus propuestas y así poder hacer un trabajo increíble juntos",
-    "name": "Nombre",
-    "email": "Email",
-    "message": "Mensaje",
-    "send-button": "Enviar"
+    "comment": "Actualmente me encuentro disponible para trabajar. Contáctame. Envíame un mensaje y charlemos sobre tu propuesta.",
+    "button": "Envíame un mensaje"
+  },
+  "footer": {
+    "tool-used": "Desarrollado felizmente con "
   },
   "projects": {
     "redco": {
@@ -41,12 +34,6 @@
     },
     "multishop": {
       "desc": "Este es una aplicación fullstack de un e-commerce multi-cliente donde tantos vendedores pueden publicar y vender sus productos como los clientes pueden encontrar productos de todo tipo."
-    },
-    "expense_tracker": {
-      "desc": "Una app diseñada para hacer seguimientos de diferentes tipos de transacciones: ingresos y gastos. El proyecto está construido con React.js, usando la librería Speechly AI."
-    },
-    "digcoin_news": {
-      "desc": "Una web app donde podrás obtener la última información sobre las cripto monedas, su cotización en el mercado y poder ver más detalles sobre cada cripto moneda. También puedes ver las últimas noticias sobre el mundo cripto."
     }
   },
   "not_found": {

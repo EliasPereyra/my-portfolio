@@ -1,56 +1,42 @@
 {
-  "description": "My personal website where you'll find all my recent projects and, also, a little bit of who I am",
-  "hero": {
-    "headline": {
-      "first-part": "My name is",
-      "final-part": "Elias Pereyra"
-    },
-    "description": "Developer with specialization in Frontend, focused on web performance and pleasant UI designs",
-    "button": "See my works"
-  },
+  "description": "My website where you'll find all my latest projects and, also, a little bit about who I am.",
   "navbar": {
     "home": "Home",
     "about": "About me",
     "projects": "My projects",
     "contact": "Contact"
   },
-  "portfolio": {
-    "title": "My Recent Projects",
-    "description": "",
-    "button": "See more"
+  "hero": {
+    "available": "Available for work",
+    "headline": "Hi! My name is Elias",
+    "description": "Fullstack Developer con especialización en Frontend. Enfocado en mejora de rendimiento web."
   },
+  "portfolio": {
+    "title": "My latest projects",
+    "description": "Digital products (Web Apps, Websites) and design systems which are very pleasing easy to use"  },
   "about": {
     "title": "About me",
-    "tools": "Tools I generally use:",
-    "frameworks": "Frameworks",
-    "libraries": "Libraries",
-    "languages": "Languages",
-    "other_tools": "Other Tools"
+    "1st-desc": "Desarrollador y diseñador de páginas y aplicaciones web. Mi objetivo es realizar productos innovativos y generen un buen impacto a los usuarios.",
+    "2nd-desc": "También realizo constribuciones Open Source traduciendo artículos al español en la comunidad de freeCodeCamp. Aquí puedes ver los artículos que voy traduciendo."
   },
   "contact": {
     "title": "Would you like to work with me?",
-    "comment": "I'd like to hear your proposals and make an incredible work together",
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "send-button": "Send"
+    "comment": "Currently I'm up for work. Contact me. Send me a message and let's chat about your proposal.",
+    "button": "Send me a message"
+  },
+  "footer": {
+    "tool-used": "Happily developed with "
   },
   "projects": {
     "redco": {
-      "desc": "Red Comunidad a web of neighborhood and citizen complaints, where you may report and visibilize citizen problematics and/or of infrastructure which are common to everyone."
+      "desc": "Red Co. es una Web de reclamos vecinales y ciudadanos, donde se podrá reportar y visibilizar problemáticas ciudadanas y/o de infraestructura comunes a todos."
     },
     "multishop": {
-      "desc": "This is a multi-client e-commerce web app donde where sellers can publish and sell their products as also clients can find products of all kind."
-    },
-    "expense_tracker": {
-      "desc": "An SAP designed for making tracks of different types of transactions: incomes and expenses. The project is built with React.js and using the Context API."
-    },
-    "digcoin_news": {
-      "desc": "A web app where you can find thorough information about the crypto currencies, its price in the market and also be able to see more details about each crypto currency. And last but not least, you can see the latest news about the crypto world."
+      "desc": "Este es una aplicación fullstack de un e-commerce multi-cliente donde tantos vendedores pueden publicar y vender sus productos como los clientes pueden encontrar productos de todo tipo."
     }
   },
   "not_found": {
     "go_back": "Go back",
-    "desc": "Page not found"
+    "desc": "That page doesn't exist."
   }
 }
