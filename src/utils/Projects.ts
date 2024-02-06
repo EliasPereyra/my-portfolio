@@ -1,14 +1,10 @@
 import { t } from 'i18next'
 
 const reactColor = Symbol("#61DAFB")
-const materiaUIColor = Symbol("#007FFF")
-const rtkColor = Symbol("#764ABC")
-const antDesignColor = Symbol("#0170FE")
-const chartJsColor = Symbol("#FF6384")
-const typescriptColor = Symbol("#3178C6")
+const typescriptColor = Symbol("#007ACC")
 const reactRouterColor = Symbol("#CA4245")
 const axiosColor = Symbol("#5A29E4")
-const tailwindCssColor = Symbol("#06B6D4")
+const tailwindCssColor = Symbol("#2298BD")
 const expressjsColor = Symbol("#fff")
 const sequelizeColor = Symbol("#52B0E7")
 const postgreSqlColor = Symbol("#4169E1")
@@ -18,10 +14,10 @@ const sqlServerColor = Symbol("#CC2927")
 
 export interface TagData {
   tagName: string;
-  tagColor: string;
+  tagColor: string | undefined;
 }
 
-export interface Projects {
+export interface Project {
   title: string;
   desc: string;
   project_img: string;
@@ -30,7 +26,7 @@ export interface Projects {
   repo_link: string;
 }
 
-export const projects: Projects[] = [
+export const projects: Project[] = [
   {
     title: "Red Comunidad",
     desc: `${t("projects.redco.desc")}`,
