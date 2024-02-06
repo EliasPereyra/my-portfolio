@@ -15,6 +15,16 @@
   "portfolio": {
     "title": "Mis Últimos Proyectos",
     "description": "Digital products (Web Apps, Websites) and design systems which are very pleasing easy to use"  },
+    "cards": {
+      "redco": {
+        "title": "Red Comunidad",
+        "description": "Red Comunidad es una Web de reclamos vecinales y ciudadanos, donde se podrá reportar y visibilizar problemáticas ciudadanas y/o de infraestructura comunes a todos."
+      },
+      "multi": {
+        "title": "Multishop",
+        "description": "Este es una aplicación fullstack de un e-commerce multi-cliente donde tantos vendedores pueden publicar y vender sus productos como los clientes pueden encontrar productos de todo tipo."
+      }
+    },
   "about": {
     "title": "Sobre mí",
     "1st-desc": "Desarrollador y diseñador de páginas y aplicaciones web. Mi objetivo es realizar productos innovativos y generen un buen impacto a los usuarios.",
@@ -27,14 +37,6 @@
   },
   "footer": {
     "tool-used": "Desarrollado felizmente con "
-  },
-  "projects": {
-    "redco": {
-      "desc": "Red Comunidad es una Web de reclamos vecinales y ciudadanos, donde se podrá reportar y visibilizar problemáticas ciudadanas y/o de infraestructura comunes a todos."
-    },
-    "multishop": {
-      "desc": "Este es una aplicación fullstack de un e-commerce multi-cliente donde tantos vendedores pueden publicar y vender sus productos como los clientes pueden encontrar productos de todo tipo."
-    }
   },
   "not_found": {
     "go_back": "Ir atrás",
