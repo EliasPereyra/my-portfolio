@@ -3,137 +3,73 @@ import { t } from "i18next";
 ---
 
 <section id="about">
-  <div id="noise"></div>
   <div id="about-desc-container">
-    <article id="skills" class="animate">
-      <h2>{t("about.tools")}</h2>
-        <div id="tools">
-          <div>
-            <h5>{t("about.libraries")}: </h5>
-            <i>React.js, NextAuth, Redux Toolkit, Zustand</i>
-            <h5>{t("about.frameworks")}: </h5>
-            <i>Next.js, Astro.js, Gatsby.js, Express.js</i>
-          </div>
-          <div>
-            <h5>{t("about.languages")}: </h5><i>HTML, CSS, JavaScript, TypeScript, Go</i><br/>
-            <h5>{t("about.other_tools")}: </h><i>Git, Figma, Penpot, Docker, MongoDB, PostreSQL, Sequelize, Prisma</i>
-          </div>
-        </div>
+    <article id="skills" class="">
+      <h2>{t("about.title")}</h2>
+      <img src="/assets/profile.webp" alt="Foto de perfil" />
+      <p>
+        {t("about.1st-desc")}
+      </p>
+      <p>
+        {t("about.2nd-desc")}
       </p>
     </article>
   </div>
 </section>
 
 <style>
-  section { 
-    padding: 0 4em;
-    position: relative; 
-    background: var(--dark-bckg);
-    background-size: 100%;
-    color: #eee;
-    isolation: isolate;
-    z-index: 10;
-  }
+  section {
+    position: relative;
+    padding: 14em 80px;
+    background: linear-gradient(
+      143deg,
+      #223843 -227.71%,
+      #1b2d36 -109.44%,
+      #010715 116.37%
+    );
 
-  #noise {
-    position: absolute;
-    background-image: url("/assets/noise.webp");
-    z-index: -20; 
-    mix-blend-mode: overlay;
-    inset: 0;
-    opacity: .1;
-  }
-
-  #about-desc-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10em;
-    align-items: center;
-    padding: 12em 0; 
-  }
-  #about-desc-container::before {
-    position: absolute;
-    content: "";
-    z-index: -1;
-    top: 0%;
-    left: 0%;
-    bottom: 0%;
-    width: 100%;
-    background: url(/assets/noise.webp) repeat,linear-gradient(270deg,#0d0621 10%,#281a4b 49%,#21194d 87%,#2e1f52 97%);
-    background-blend-mode: overlay;
-    -webkit-mask-image: radial-gradient(rgba(0, 0, 0, 0.671),transparent 70%);
-  }
-  
-  @media (max-width: 768px) {
-    #about-desc-container {
-      flex-direction: column;
+    article {
       text-align: center;
+
+      :is(h2, p) {
+        color: var(--white-color);
+      }
+
+      h2 {
+        margin-bottom: 1.8rem;
+      }
+
+      img {
+        margin-top: 0;
+        width: 10em;
+        height: 10em;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-inline: auto;
+      }
+
+      p {
+        font-size: 1.1rem;
+        margin: 2em auto;
+        width: 60ch;
+      }
     }
   }
 
-  #underlay {
-    position: absolute;
-    z-index: -30;
-    inset: 0;
-  }
+  @media (prefers-color-scheme: light) {
+    section {
+      background: linear-gradient(
+        143deg,
+        #d6e3ea -227.71%,
+        #c0d6e0 -109.44%,
+        #eaebee 116.37%
+      );
 
-  #skills {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  @media (max-width: 768px){
-    #skills {
-      width: 25em;
+      article {
+        :is(h2, p) {
+          color: var(--primary-color);
+        }
+      }
     }
-  }
-
-  @media (max-width: 320px){
-    #skills {
-      padding: 1em;
-      width: 20em;
-    }
-  }
-
-  h2 {
-    text-shadow: 1px 1px 10px rgb(255 255 255 / 20%);
-    color: white;
-    font-size: 2.3rem;
-    text-align: center;
-    width: 27ch;
-  }h2:before {
-    content: "";
-    width: 10em;
-    height: 4px;
-    background: linear-gradient(to right, hsl(263, 53%, 51%), hsl(263, 53%, 51%));
-    border-radius: 1px;
-    display: block;
-    margin-bottom: 10px;
-    margin: auto;
-  }@media (min-width: 320px) and (max-width: 425px) {
-    h2 {
-      font-size: 1.5rem;
-      width: 20ch;
-    }
-  }
-
-  #tools {
-    display: grid;
-    gap: 5px;
-    grid-template-columns: repeat(2, 1fr);
-    width: 30em;
-  }
-
-  @media(min-width: 320px) and (max-width: 425px) {
-    #tools {
-      grid-template-columns: 1fr;
-      width: 20em;
-    }
-  }
-
-  h5 {
-    color: var(--light-purple);
-    font-size: 1rem;
   }
 </style>
