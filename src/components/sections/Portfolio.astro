@@ -1,60 +1,56 @@
 ---
-import {t} from "i18next"
+import { t } from "i18next";
 
 import { projects } from "../../utils/Projects";
 import Card from "../widgets/Card.astro";
-
 ---
+
 <main id="portfolio">
-  <div id="noise"></div>
   <div id="content">
-    <div id="underlay"></div>
     <h2>{t("portfolio.title")}</h2>
-    <p>{t("portfolio.description")}</p>
-    <ul class="animate">
-      {projects.map(({title, desc, tags, project_img }) => (
-        <Card 
-          title={title} 
-          desc={desc} 
-          tags={tags} 
-          img={project_img}
-        />
-      ))}  
+    <p>
+      {t("portfolio.description")}
+    </p>
+    <ul>
+      {
+        projects.map(
+          ({ title, desc, tags, project_img, live_link, repo_link }) => (
+            <Card
+              title={title}
+              desc={desc}
+              tags={tags}
+              img={project_img}
+              live_link={live_link}
+              repo_link={repo_link}
+            />
+          )
+        )
+      }
     </ul>
   </div>
 </main>
 
 <style>
   main {
-    padding: 4em 4em;
-    background: var(--dark-bckg);
-    background-size: 100%;
-    position: relative;
-    isolation: isolate;
-    z-index: 10;
+    padding: 10em 80px;
+    background: linear-gradient(204deg, #010613 -25.83%, #1b2d36 222.58%);
   }
 
   h2 {
-    padding-top: 6em;
-    text-align: left;
+    text-align: center;
     text-shadow: 1px 1px 10px rgb(255 255 255 / 20%);
-    color: white;
-    font-size: 2.3rem;
-  }h2::before {
-    content: "";
-    width: 10em;
-    height: 4px;
-    background: linear-gradient(to right, hsl(263, 53%, 51%), hsl(263, 53%, 51%));
-    border-radius: 1px;
-    display: block;
-    margin-bottom: 6px;
+    color: #f2f7f2;
+    position: relative;
+    font-size: 50px;
+    margin-bottom: 15px;
   }
 
   @media (min-width: 768px) and (max-width: 1024px) {
     h2 {
       text-align: center;
       font-size: 2rem;
-    }h2::before {
+    }
+    h2::before {
       content: "";
       margin: 0 auto 6px auto;
     }
@@ -75,11 +71,12 @@ import Card from "../widgets/Card.astro";
   }
 
   p {
-    font-size: 1.1rem;
-    color: var(--white);
+    text-align: center;
+    font-size: 1.3rem;
     font-weight: 300;
-    margin-top: 0;
-    margin-left: 3.5em;
+    line-height: 1.7rem;
+    color: var(--white-gray-color);
+    margin: 0 auto;
     width: 60ch;
   }
 
@@ -110,15 +107,13 @@ import Card from "../widgets/Card.astro";
   }
 
   ul {
+    margin: 0 auto;
     color: hsl(233, 53%, 27%);
     display: grid;
-    grid-template-columns: 1fr;
+    gap: 5em;
+    justify-items: center;
     padding: 0;
-  }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    ul {
-      justify-items: center;
-    }
+    margin-top: 9em;
   }
 
   a {
@@ -130,19 +125,29 @@ import Card from "../widgets/Card.astro";
     text-align: center;
     text-decoration: none;
     font-size: 0.8rem;
-    color: var(--white);
+    color: var(--white-color);
     background-color: none;
     border: 1px solid var(--light-purple);
     font-weight: bold;
-    transition: 
-      border .3s ease-in-out, 
-      color .3s ease-in-out,
-      letter-spacing .3s ease-in-out;
+    transition:
+      border 0.3s ease-in-out,
+      color 0.3s ease-in-out,
+      letter-spacing 0.3s ease-in-out;
   }
   a:hover {
     background: transparent;
-    border: solid .8px var(--orange);
+    border: solid 0.8px var(--orange);
     color: var(--orange);
     letter-spacing: 1px;
+  }
+
+  @media (prefers-color-scheme: light) {
+    main {
+      background: linear-gradient(204deg, #e5e7ed -19.36%, #d0dfe6 222.58%);
+
+      :is(h2, a, p) {
+        color: var(--primary-color);
+      }
+    }
   }
 </style>
