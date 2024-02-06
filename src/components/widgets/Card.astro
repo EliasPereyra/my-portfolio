@@ -1,158 +1,89 @@
 ---
-import LinkNewWindow from '../atoms/LinkNewWindow.astro';
-import type {TagData} from "../../utils/Projects"
+import WebIcon from "../atoms/WebIcon.astro";
+import GithubIcon from "../atoms/GithubIcon.astro";
+import type { TagData } from "../../utils/Projects";
 
 export interface Props {
-	title: string;
-	desc: string;
-	tags: TagData[];
-	img: string;
+  title: string;
+  desc: string;
+  tags: TagData[];
+  img: string;
+  live_link: string;
+  repo_link: string;
 }
 
-const { title, desc, tags, img } = Astro.props;
-
-const projectTitle = title.toLocaleLowerCase().replace(' ', '_')
+const { title, desc, tags, img, live_link, repo_link } = Astro.props;
 ---
 
 <li class="link-card">
-	<div id="link-card__project-img">
-		<img id="link-card__project-img" src={img} alt={desc} width="620" height="300" />
-	</div>
-	<div id="link-card__wrapper">		
-		<div id="link-card__content">
-			<div id="link-card__content-header">
-				<h3>{title}</h3>	
-			</div>
-			<p id="link-card__content-body">{desc}</p>
-			<h5>Tech</h5>
-			<p id="link-card__content-tags">{
-				tags.map(({tagColor, tagName}) => 
-					<small style =`border: 1px solid ${tagColor}` >{tagName}</small>
-				)}
-			</p>                                                                                                                                                               
-			<a transition:name="see-project" href={`/eng/projects/${projectTitle}`}>
-				<LinkNewWindow color="#eee" /> see project
-			</a>
-		</div>
-	</div>
+  <h3>{title}</h3>
+  <p>{desc}</p>
+  <ul>
+    {
+      tags.map((tag) => (
+        <li style=`border: 1px solid ${tag.tagColor}`>
+          <small>{tag.tagName}</small>
+        </li>
+      ))
+    }
+  </ul>
+  <div id="project-links">
+    <a href={live_link} target="_blank"><WebIcon pageLink={live_link} /></a>
+    <a href={repo_link} target="_blank"><GithubIcon width="28" height="28" /></a>
+  </div>
+  <img src={img} alt="Image" />
 </li>
 
 <style>
-	:root {
-		--link-gradient: linear-gradient(90deg, #ffffff, rgb(255, 237, 155) 50%, var(--color-border) 60%);
-	}
+  .link-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 40em;
 
-	.link-card {
-		list-style: none;
-		display: flex;
-		align-items: flex-start;
-		padding: .15rem;
-		border-radius: 5px;
-		transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		margin: 2em 0;
-	}
+    h3 {
+      color: hsla(340, 98%, 74%, 1);
+      font-size: 36px;
+      margin-bottom: 0;
+    }
 
-	@media (min-width: 320px) and (max-width: 1024px) {
-		.link-card {
-			flex-direction: column;
-		}
-	}
+    p {
+      margin: 0;
+      color: #dbe1db;
+      font-size: 1.1rem;
+      line-height: 1.5rem;
+    }
 
-	#link-card__project-img {
-		border-radius: 6px;
-		object-fit: cover;
-	}@media(min-width: 320px) and (max-width: 425px) {
-		#link-card__project-img {
-			width: 14em;
-			height: 7em;
-		}
-	}
-	
-	#link-card__wrapper {
-		display: flex;
-	}@media (max-width: 768px) {
-		#link-card__content {
-			flex-direction: row;
-		}	
-	}
+    ul {
+      color: var(--white-color);
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
 
-	#link-card__content {
-		padding: 0 1em;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}#link-card__content h5 {
-		margin-bottom: 0;
-		color: var(--white);
-	}#link-card__content a {
-		margin: 2em 0;
-		display: flex;
-		align-items: center;
-		gap: 5px;
-		text-decoration: none;
-		color: var(--orange);
-	}
+      li {
+        border: 1px solid var(--white-gray-color);
+        border-radius: 7px;
+        padding: 2px 9px;
+      }
+    }
 
-	@media (min-width: 320px) and (max-width: 1024px) {
-		#link-card__content {
-			padding: 0;
-		}
-	}
+    #project-links {
+      display: flex;
+      gap: .5em;
+    }
 
-	#link-card__content-header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		color: var(--white);
-	}#link-card__content-header h3 {
-		background: var(--light-orange-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-		font-size: 1.7rem;
-		margin: 0;
-	}
+    img {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
 
-	#link-card__content-body {
-		line-height: 25px;
-		width: 55ch;
-		font-weight: 300;
-		color: var(--white);
-	}
-
-	@media (min-width: 320px) and (max-width: 425px) {
-		#link-card__content-body {
-			font-size: 1rem;
-			width: 25ch;
-			text-align: left;
-		}
-	}
-
-	p {
-		margin-top: 0.75rem;
-		margin-bottom: 0;
-		font-size: .9rem;
-	}
-
-	#link-card__content-tags {
-		display: flex;
-		gap: 5px;
-    flex-wrap: wrap;
-	}
-
-	small {
-		font-size: .7rem;
-		padding: .3em .5em;
-		border-radius: 10px;
-		margin-right: 5px;
-		color: var(--white);
-	}
-
-	@media(max-width: 360px) {
-		#link-card__content-tags {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: .2em;
-		}
-	}
-
+  @media (prefers-color-scheme: light) {
+    .link-card {
+      :is(p, li) {
+        color: var(--primary-color);
+      })
+    }
+  }
 </style>
