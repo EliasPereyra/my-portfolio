@@ -1,106 +1,55 @@
 ---
-import {t} from "i18next"
-
+import { t } from "i18next";
 import LogoWhite from "../atoms/LogoWhite.astro";
-import GithubIcon from "../atoms/GithubIcon.astro";
-import LinkedinIcon from "../atoms/LinkedinIcon.astro";
-import AstroLightIcon from "../atoms/AstroLightIcon.astro";
-
+import AstroIcon from "../atoms/AstroIcon.astro";
 ---
 
 <footer>
-  <div id="noise"></div>
-  <div id="content">
-    <div id="overlay"></div>
-    <ul id="first-row">
-      <li><a href="/#">{t("navbar.home")}</a></li>
-      <li><a href="/#portfolio">{t("navbar.projects")}</a></li>
-      <li><a href="/#about">{t("navbar.about")}</a></li>
-      <li><a href="/#contact">{t("navbar.contact")}</a></li>
-    </ul>
-    <div id="second-row">
-      <a href="/"><LogoWhite /></a>
-      <GithubIcon color="#eee" />
-      <LinkedinIcon color="#eee" />
-    </div>
-    <div id="third-row">
-      <small><b>built with </b></small>
-      <a href="https://astro.build" target="_blank"><AstroLightIcon /></a>
-    </div>
+  <a href="/"> <LogoWhite width="143" height="143" /></a>
+  <div id="tool-used">
+    <small>{t("footer.tool-used")}</small>
+    <a href="https://astro.build" target="_blank"><AstroIcon /></a>
   </div>
 </footer>
 
 <style>
-  a {
-    font-size: .75rem;
-    text-decoration: none;
-    color: #eee;
-    font-weight: 500;
-    text-underline-offset: 10px;
-    transition: text-underline-offset .2s ease-in-out;
-  }a:hover {
-    color: #ddd;
-    text-decoration: underline #ddd;
-    text-decoration-thickness: 2px;
-  }
-
   footer {
-    background-color: #0a0a0a;
-    padding: 4em 0;
+    background: linear-gradient(
+      256deg,
+      #080808 33.47%,
+      #0b0b0b 51.39%,
+      #0c0b0b 67.53%
+    );
+    padding: 4em 80px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    isolation: isolate;
-    z-index: 10;
-  }
-
-  #noise {
-    position: absolute;
-    background-image: url("/assets/noise.webp");
-    z-index: -20;
-    mix-blend-mode: overlay;
-    inset: 0;
-    opacity: 0.1;
-  }
-
-  #underlay {
-    position: absolute;
-    z-index: -30;
-    inset: 0;
-  }
-
-  ul {
-    list-style: none;
-    display: flex;
-    gap: .7em;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    color: #fff;
-    padding: 0;
-  }
 
-  @media (max-width: 360px) {
-    #first-row {
-      display: none;
+    #tool-used {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      small {
+        color: var(--white-color);
+      }
     }
   }
 
-  #second-row {
-    display: flex;
-    gap: .7em;
-    justify-content: center;
-    align-items: center;
-    margin: 0.3em 0;
-  }
+  @media (prefers-color-scheme: light) {
+    footer {
+      background: linear-gradient(
+        9deg,
+        #cadae2 6.27%,
+        #f5f5f5 52.57%,
+        #f5f5f5 88.98%
+      );
 
-  #third-row {
-    text-align: center;
-    color: #fff;
-    margin-top: .7em;
-    margin-left: 0.9em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+      #tool-used {
+        small {
+          color: var(--primary-color);
+        }
+      }
+    }
   }
 </style>
