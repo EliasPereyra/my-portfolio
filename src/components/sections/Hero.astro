@@ -3,59 +3,100 @@ import { t } from "i18next";
 
 import GithubIcon from "../atoms/GithubIcon.astro";
 import LinkedinIcon from "../atoms/LinkedinIcon.astro";
-
+import PinkAurora from "../atoms/PinkAurora.astro";
+import LightBlueAurora from "../atoms/LightBlueAurora.astro";
 ---
+
 <section>
-  <div id="noise"></div>
-  <div id="hero-text-content">
-    <div id="underlay"></div>
-    <h1>
-      {t("hero.headline.first-part")}<br />
-      <span id="name"> {t("hero.headline.final-part")}</span>
-    </h1>
-    <p>
+  <PinkAurora />
+  <div id="hero__text-content">
+    <div id="avail-text">
+      <span></span>
+      <p id="over-title">{t("hero.available")}</p>
+    </div>
+    <h1>{t("hero.headline")}</h1>
+    <p id="hero-description">
       {t("hero.description")}
     </p>
     <div id="social-networks">
-      <GithubIcon color="#ddd"/>
-      <LinkedinIcon color="#ddd" />
+      <GithubIcon width="28" height="28" />
+      <LinkedinIcon />
     </div>
   </div>
 </section>
 
 <style>
   section {
-    background: var(--dark-bckg);
-		padding: 5em 0;
-    position: relative;
-    isolation: isolate;
-    z-index: 10;
-	}
+    background: linear-gradient(169deg, #223843 -100.26%, #010613 124.3%);
+    padding: 8em 0;
+    z-index: 5;
 
-  button { border: none; padding: 1em 4em; border-radius: 5px; }
+    #hero__text-content {
+      padding-top: 7em;
+      padding-bottom: 10em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.7rem;
+      margin: auto;
+      width: 80ch;
+      animation: fade-in 0.5s ease-in forwards;
+      animation-delay: 0.1s;
+      @media (min-width: 320px) and (max-width: 540px) {
+        #hero-text-content {
+          width: 30ch;
+        }
+      }
 
-  #hero-text-content {
-    padding-top: 5em;
-    padding-bottom: 10em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    width: 80ch;
-    opacity: 0;
-    animation: fade-in 0.5s ease-in forwards;
-    animation-delay: 0.1s;
-  }
+      #avail-text {
+        padding: 0.5rem;
+        color: var(--white-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid rgba(255, 125, 169, 0.85);
+        background: rgba(255, 125, 169, 0.08);
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+        width: 35%;
+        span {
+          padding: 0.5rem;
+          background-color: rgba(255, 125, 169, 0.85);
+          border-radius: 50%;
+          filter: drop-shadow(0px 0px 17px rgba(255, 40, 113, 0.7));
+        }
+        #over-title {
+          font-size: 14px;
+        }
+      }
 
-  #social-networks {
-    display: flex;
-    gap: 10px;
-  }
+      h1 {
+        margin: 0;
+        color: var(--white-color);
+        text-align: center;
+      }
 
-  @media (min-width: 320px) and (max-width: 540px) {
-    #hero-text-content {
-      width: 30ch;
+      @media (min-width: 320px) and (max-width: 425px) {
+        h1 {
+          font-size: 2.7rem;
+        }
+      }
+
+      #hero-description {
+        width: 50ch;
+        text-align: center;
+        color: var(--white-gray-color);
+        font-weight: 300;
+        font-size: 1.2rem;
+      }
+    }
+
+    #social-networks {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
   }
 
@@ -65,75 +106,23 @@ import LinkedinIcon from "../atoms/LinkedinIcon.astro";
     }
   }
 
-  #hero-text-content::before {
-    position: absolute;
-    content: "";
-    z-index: -1;
-    top: -10%;
-    left: 0%;
-    bottom: 0%;
-    width: 100%;
-    background: 
-      url(/assets/grunge-dusty-texture-background.webp) no-repeat,
-      linear-gradient(201deg,#000 0%,#201034 2%,#643696 17%,rgb(6,12,34) 100%);
-    background-blend-mode: overlay;
-    -webkit-mask-image: radial-gradient(rgb(0 0 0 / 94%),transparent 90%);
-  }
+  @media (prefers-color-scheme: light) {
+    section {
+      background: linear-gradient(169deg, #f9f8f8 -169.26%, #dbe5fc 144.3%);
 
-  #noise {
-    position: absolute;
-    background-image: url("/assets/noise.webp");
-    z-index: -20; 
-    mix-blend-mode: overlay;
-    inset: 0;
-    opacity: .1;
-  }
+      #hero__text-content {
+        h1 {
+          color: var(--primary-color);
+        }
 
-  #underlay {
-    position: absolute;
-    z-index: -30;
-    inset: 0;
-  }
+        #avail-text {
+          color: var(--primary-color);
+        }
 
-  h1 {
-    width: 12ch;
-    margin: 0;
-    font-size: 3.4rem;
-    color: var(--white);
-    text-align: center;
-  }
-
-  @media (min-width: 320px) and (max-width: 425px) {
-    h1 {
-      font-size: 2.7rem;
-    }
-  }
-
-  #name {
-    color: var(--light-purple);
-    text-decoration: underline;
-    text-decoration-thickness: 4px;
-  }  
-
-  p {
-    width: 40ch;
-    text-align: center;
-    color: var(--white);
-    font-weight: 400;
-    font-size: 1.1rem;
-  }
-
-  @media (max-width: 425px) {
-    p {
-      font-size: var(--font-size-lg);
-      width: 25ch;
-    }
-  }
-
-  @media (max-width: 320px) {
-    p {
-      font-size: 1rem;
-      width: 23ch;
+        #hero-description {
+          color: var(--primary-color);
+        }
+      }
     }
   }
 </style>
