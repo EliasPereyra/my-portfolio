@@ -1,61 +1,60 @@
 ---
 import DownArrow from "./DownArrow.astro";
 import LanguagesIcon from "./LanguagesIcon.astro";
-
 ---
 
 <div id="dropdown">
-  <button id="languages-button" aria-label="Languages button">
+  <button aria-label="Languages button">
     <LanguagesIcon />
     <DownArrow />
   </button>
   <ul id="dropdown-items">
-    <li><a href="/">Spanish</a></li>
-    <li><a href="/eng">English</a></li>
+    <li><a href="/">Español</a></li>
+    <li><a href="/eng">Inglés</a></li>
   </ul>
 </div>
 
 <style>
-  ul { list-style: none; }
-
-  a {
-    text-decoration: none;
-    color: var(--white);
-  }a:hover {
-    color: rgb(209, 202, 202);
-  }
-
   #dropdown {
     position: relative;
-  }
 
-  button {
-    border: none;
-    background: none;
-    padding: auto;
-    display: flex;
-    align-items: center;
-  }
+    &:hover #dropdown-items {
+      padding: 1rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
 
-  #dropdown-items {
-    border-radius: 3px;
-    display: none;
-    padding: 9px;
-    background: rgb(54, 53, 53);
-    position: absolute;
-    top: 1.2em;
-    right: auto;
-    overflow: auto;
-    text-align: center;
-    font-size: .85rem;
-    transition: display .2s ease-in;
-  }
+    button {
+      border: none;
+      background: none;
+      padding: auto;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
 
-  #dropdown:hover #dropdown-items {
-    padding: 10px 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
+    #dropdown-items {
+      list-style: none;
+      border-radius: 5px;
+      display: none;
+      padding: 1.2em;
+      background: rgba(17, 17, 17, 0.432);
+      position: absolute;
+      top: 2.2em;
+      right: auto;
+      overflow: auto;
+      text-align: center;
+      font-size: 0.85rem;
+
+      a {
+        text-decoration: none;
+        color: var(--white-color);
+        transition: color .15s ease-in;
+      }
+      a:hover {
+        color: rgba(209, 202, 202, 0.884);
+      }
+    }
   }
-  
 </style>
