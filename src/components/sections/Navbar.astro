@@ -2,64 +2,78 @@
 import { t } from "i18next";
 import Languages from "../atoms/Languages.astro";
 import LogoWhite from "../atoms/LogoWhite.astro";
-
+import ToggleTheme from "../atoms/ToggleTheme.astro";
 ---
 
 <nav>
-  <a href="/"><LogoWhite /></a>
+  <a href="/"><LogoWhite width="73" height="73" /></a>
   <ul id="navbar-items">
     <li><a href="/#">{t("navbar.home")}</a></li>
-		<li><a href="/#about">{t("navbar.about")}</a></li>
-		<li><a href="/#portfolio">{t("navbar.projects")}</a></li>
-		<li><a href="/#contact">{t("navbar.contact")}</a></li>
+    <li><a href="/#about">{t("navbar.about")}</a></li>
+    <li><a href="/#portfolio">{t("navbar.projects")}</a></li>
+    <li><a href="/#contact">{t("navbar.contact")}</a></li>
   </ul>
-  <Languages />
+  <div class="icons">
+    <!-- <ToggleTheme /> -->
+    <Languages />
+  </div>
 </nav>
 
 <style>
   nav {
-    width: 100%;
-    position: absolute;
-    padding: 1em 4em;
+    background: transparent;
     display: flex;
+    position: absolute;
+    padding: 20px 80px;
+    width: 100%;
+    z-index: 10;
     justify-content: space-between;
     align-items: center;
-    background: transparent;
-    z-index: 20;
-  }
-
-  @media (max-width: 375px) {
-    nav {
-    padding: 1em 2em;
+    @media (max-width: 375px) {
+      nav {
+        padding: 1em 2em;
+      }
     }
-  }
 
-  a {
-    text-decoration: none;
-    color: var(--white);
-    font-weight: 500;
-    text-underline-offset: 10px;
-    transition: text-underline-offset .2s ease-in-out;
-  }a:hover {
-    text-decoration: underline var(--white);
-    text-decoration-thickness: 2px;
-  }
+    a {
+      text-decoration: none;
+      color: var(--white-color);
+      font-weight: 500;
+    }
 
-  ul { margin: 0; }
-  li {
-		list-style: none;
-    font-size: .75rem;
-	}
+    @media (prefers-color-scheme: light) {
+      a {
+        color: var(--primary-color);
+      }
+    }
 
-  #navbar-items {
-    display: flex;
-    align-items: center;
-    gap: 1.9em;
-  }
+    ul {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 1.9em;
+      @media (max-width: 540px) {
+        ul {
+          display: none;
+        }
+      }
 
-  @media (max-width: 540px) {
-    #navbar-items {
-      display: none;
+      li {
+        list-style: none;
+        font-size: 0.8rem;
+        transition: text-decoration 1s ease-in-out;
+
+        :hover {
+          text-decoration: underline;
+          text-underline-offset: 10px;
+        }
+      }
+    }
+
+    .icons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
     }
   }
 </style>
