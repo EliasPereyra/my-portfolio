@@ -27,8 +27,8 @@
     },
   "about": {
     "title": "Sobre mí",
-    "1st-desc": "Desarrollador y diseñador de páginas y aplicaciones web. Mi objetivo es realizar productos innovativos y generen un buen impacto a los usuarios.",
-    "2nd-desc": "También realizo constribuciones Open Source traduciendo artículos al español en la comunidad de freeCodeCamp. Aquí puedes ver los artículos que voy traduciendo."
+    "first-desc": "Desarrollador y diseñador de páginas y aplicaciones web. Mi objetivo es realizar productos innovativos y generen un buen impacto a los usuarios.",
+    "second-desc": "También realizo constribuciones Open Source traduciendo artículos al español en la comunidad de freeCodeCamp."
   },
   "contact": {
     "title": "Te gustaría trabajar conmigo?",
