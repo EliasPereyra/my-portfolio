@@ -28,8 +28,8 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Red Comunidad",
-    desc: `${t("projects.redco.desc")}`,
+    title:"Red Comunidad", 
+    desc: "Red Comunidad es una Web de reclamos vecinales y ciudadanos, donde se podrá reportar y visibilizar problemáticas ciudadanas y/o de infraestructura comunes a todos.",
     project_img: "/assets/redco.webp",
     tags: [
       { tagName: "React.js", tagColor: reactColor.description },
@@ -45,7 +45,7 @@ export const projects: Project[] = [
   },
   {
     title: "Multishop",
-    desc: `${t("projects.multishop.desc")}`,
+    desc: "Este es una aplicación fullstack de un e-commerce multi-cliente donde tantos vendedores pueden publicar y vender sus productos como los clientes pueden encontrar productos de todo tipo.",
     project_img: "/assets/multishop.webp",
     tags: [
       { tagName: "React.js", tagColor: reactColor.description },
