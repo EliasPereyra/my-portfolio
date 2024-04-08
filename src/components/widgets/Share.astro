@@ -1,0 +1,20 @@
+---
+import LinkedinIcon from "../atoms/LinkedinIcon.astro";
+import XIcon from "../atoms/XIcon.astro";
+
+const PageURL = Astro.url.href;
+---
+
+<div class="share-links">
+  <LinkedinIcon href={PageURL} />
+  <XIcon href={PageURL} />
+</div>
+
+<style>
+  .share-links {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+</style>
