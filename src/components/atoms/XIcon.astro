@@ -1,0 +1,47 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a
+  href=`https://twitter.com/intent/tweet?text=${href}`
+  target="_blank"
+  aria-label="Share the article on Twitter"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="icon icon-tabler icon-tabler-brand-x"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="#eee"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+      d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path
+      d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg
+  >
+</a>
+<!-- Chore: apply color when in light mode -->
+
+<style>
+  svg {
+    stroke: var(--white-color);
+    transition: scale 0.3s ease-in-out;
+  }
+
+  svg:hover {
+    transform: scale(1.2);
+  }
+
+  @media (prefers-color-scheme: light) {
+    svg {
+      stroke: var(--primary-color);
+    }
+  }
+</style>
