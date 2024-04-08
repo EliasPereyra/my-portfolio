@@ -1,0 +1,14 @@
+---
+import { changeLanguage } from "i18next";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ListPosts from "@/components/sections/ListPosts.astro";
+import { getPosts } from "@/utils/posts";
+
+changeLanguage("spa");
+
+const posts = await getPosts();
+---
+
+<BaseLayout author="Elias Pereyra" title="My Blog" description="My Blog">
+    <ListPosts posts={posts} >
+</BaseLayout>
