@@ -1,0 +1,71 @@
+---
+import CheckIcon from "../atoms/CheckIcon.astro";
+import CopyIcon from "../atoms/CopyIcon.astro";
+---
+
+<pre
+  class="code-snippet__wrapper">
+  <button aria-label="copy-button" class="copy-btn">
+    <CopyIcon />
+  </button>
+  <span class="check-span__hidden">
+    <CheckIcon />
+  </span>
+  <slot />
+</pre>
+
+<style>
+  .code-snippet__wrapper {
+    background-color: #111827;
+    border-radius: 0.7rem;
+    padding: 1em;
+    position: relative;
+
+    .copy-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      opacity: 1;
+      z-index: 10;
+    }
+
+    .copy-btn__hidden {
+      opacity: 0;
+    }
+
+    .check-span__hidden {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      opacity: 0;
+    }
+
+    .check-span__show {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  const copyCodeSnippet = () => {
+    const code = document.querySelectorAll("pre");
+    const copyBtn = document.querySelector(".copy-btn");
+    const checkBtn = document.querySelector(".check-span__hidden");
+
+    code.forEach((code) => {
+      copyBtn!.addEventListener("click", () => {
+        navigator.clipboard.writeText(code.textContent?.trim() || "");
+
+        copyBtn?.classList.add("copy-btn__hidden");
+        checkBtn?.classList.add("check-span__show");
+
+        setTimeout(() => {
+          copyBtn?.classList.remove("copy-btn__hidden");
+          checkBtn?.classList.remove("check-span__show");
+        }, 2000);
+      });
+    });
+  };
+  copyCodeSnippet();
+  document.addEventListener("astro:after-swap", copyCodeSnippet);
+</script>
