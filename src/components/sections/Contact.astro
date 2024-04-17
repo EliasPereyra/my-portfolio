@@ -1,58 +1,73 @@
 ---
 import { t } from "i18next";
+import Form from "../widgets/Form.astro";
 ---
 
 <section id="contact">
-  <h2>{t("contact.title")}</h2>
-  <p>{t("contact.comment")}</p>
-  <button>{t("contact.button")}</button>
+  <div class="contact__text-content">
+    <h2 id="contact__title">{t("contact.title")}</h2>
+    <p id="contact__message">{t("contact.comment")}</p>
+  </div>
+  <Form />
 </section>
 
 <style>
-  section {
-    padding: 14em 80px;
-    background: #0e161b;
-    text-align: center;
+  #contact {
+    padding: 14em 10em;
+    background: #100e1b;
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    position: relative;
+    container-type: inline-size;
 
-    h2 {
-      color: var(--white-color);
-      font-size: 50px;
-      max-width: 23ch;
-      margin: 0 auto;
-      line-height: 60px;
+    .contact__text-content {
+      #contact__title {
+        color: var(--white-c-900);
+        font-size: 3.125rem;
+        max-width: 23ch;
+        line-height: 4rem;
+      }
+
+      #contact__message {
+        margin: 1.8rem 0;
+        color: var(--white-c-800);
+        line-height: 2rem;
+        width: 20em;
+      }
     }
+  }
 
-    p {
-      margin: 1.5rem auto;
-      color: var(--white-gray-color);
-      max-width: 60ch;
-      min-width: 45ch;
+  @media screen and (max-width: 1400px) {
+    #contact {
+      flex-direction: column;
     }
+  }
 
-    button {
-      color: var(--white-color);
-      padding: 1em;
-      border-radius: 10px;
-      font-size: 1rem;
-      border: 1px solid #5f3ea5;
-      background: #121111;
-      box-shadow: 0px 0px 18px 8px #1b2d36;
-      transition:
-        border,
-        box-shadow 0.2s ease-out;
-      &:hover {
-        box-shadow: 0px 0px 18px 8px #2d4b5a;
-        border: 1px solid #6c48b9;
+  @media screen and (max-width: 600px) {
+    #contact {
+      padding: 12em 2em;
+
+      .contact__text-content {
+        #contact__message {
+          width: 100%;
+        }
       }
     }
   }
 
   @media (prefers-color-scheme: light) {
-    section {
+    #contact {
       background: #e4ecf1;
 
-      :is(h2, p) {
-        color: var(--primary-color);
+      .contact__text-content {
+        #contact__title {
+          color: var(--primary-color);
+        }
+
+        #contact__message {
+          color: var(--primary-color);
+        }
       }
     }
   }
