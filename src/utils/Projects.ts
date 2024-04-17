@@ -1,16 +1,4 @@
-import { t } from 'i18next'
-
-const reactColor = Symbol("#61DAFB")
-const typescriptColor = Symbol("#007ACC")
-const reactRouterColor = Symbol("#CA4245")
-const axiosColor = Symbol("#5A29E4")
-const tailwindCssColor = Symbol("#2298BD")
-const expressjsColor = Symbol("#fff")
-const sequelizeColor = Symbol("#52B0E7")
-const postgreSqlColor = Symbol("#4169E1")
-const reactHookFormColor = Symbol("#EC5990")
-const dotNetColor = Symbol("#512BD4")
-const sqlServerColor = Symbol("#CC2927")
+import { axiosColor, dotNetColor, expressjsColor, postgreSqlColor, reactColor, reactHookFormColor, reactRouterColor, sequelizeColor, sqlServerColor, tailwindCssColor, typescriptColor } from "./TechColors";
 
 export interface TagData {
   tagName: string;
