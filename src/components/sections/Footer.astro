@@ -4,40 +4,61 @@ import LogoWhite from "../atoms/LogoWhite.astro";
 import AstroIcon from "../atoms/AstroIcon.astro";
 ---
 
-<footer>
-  <a href="/"> <LogoWhite width="143" height="143" /></a>
-  <div id="tool-used">
-    <small>{t("footer.tool-used")}</small>
-    <a href="https://astro.build" target="_blank"><AstroIcon /></a>
+<footer id="footer">
+  <div class="footer__content">
+    <a id="footer__my-logo" href="/"> <LogoWhite width="143" height="143" /></a>
+    <div id="footer__tool-used">
+      <small>{t("footer.tool-used")}</small>
+      <a href="https://astro.build" target="_blank"><AstroIcon /></a>
+    </div>
   </div>
 </footer>
 
 <style>
-  footer {
+  #footer {
     background: linear-gradient(
       256deg,
       #080808 33.47%,
       #0b0b0b 51.39%,
       #0c0b0b 67.53%
     );
-    padding: 4em 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 4em 10em;
+    container-type: inline-size;
 
-    #tool-used {
+    .footer__content {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 1rem;
+      #footer__tool-used {
+        display: flex;
+        align-items: center;
+        line-height: 9px;
 
-      small {
-        color: var(--white-color);
+        small {
+          color: var(--white-color);
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    #footer {
+      padding: 4em 2em;
+    }
+  }
+
+  @container (max-width: 590px) {
+    .footer__content {
+      flex-direction: column;
+
+      #footer__tool-used {
+        flex-direction: column;
       }
     }
   }
 
   @media (prefers-color-scheme: light) {
-    footer {
+    #footer {
       background: linear-gradient(
         9deg,
         #cadae2 6.27%,
@@ -45,7 +66,7 @@ import AstroIcon from "../atoms/AstroIcon.astro";
         #f5f5f5 88.98%
       );
 
-      #tool-used {
+      #footer__tool-used {
         small {
           color: var(--primary-color);
         }
