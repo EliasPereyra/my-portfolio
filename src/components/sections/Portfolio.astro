@@ -1,8 +1,8 @@
 ---
 import { t } from "i18next";
 
-import { projects } from "../../utils/Projects";
 import Card from "../widgets/Card.astro";
+import { projects } from "../../utils/Projects";
 ---
 
 <main id="portfolio">
@@ -29,121 +29,50 @@ import Card from "../widgets/Card.astro";
 
 <style>
   main {
-    padding: 10em 80px;
-    background: linear-gradient(204deg, #010613 -25.83%, #1b2d36 222.58%);
-  }
+    padding: 10em 10em;
+    background: linear-gradient(250deg, #010613 10%, #232243 320%);
+    container-type: inline-size;
 
-  h2 {
-    text-align: center;
-    text-shadow: 1px 1px 10px rgb(255 255 255 / 20%);
-    color: #f2f7f2;
-    position: relative;
-    font-size: 50px;
-    margin-bottom: 15px;
-  }
+    #content {
+      h2 {
+        text-align: center;
+        text-shadow: 1px 1px 10px rgb(255 255 255 / 20%);
+        color: #f2f7f2;
+        font-size: 50px;
+        margin-bottom: 3em;
+      }
 
-  @media (min-width: 768px) and (max-width: 1024px) {
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-    }
-    h2::before {
-      content: "";
-      margin: 0 auto 6px auto;
-    }
-  }
+      ul {
+        color: hsl(233, 53%, 27%);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4em;
+        justify-items: center;
+        padding: 0;
+      }
 
-  @media (max-width: 425px) {
-    h2::before {
-      content: "";
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 375px) {
-    h2 {
-      content: "";
-      font-size: 1.7rem;
+      @container (max-width: 1394px) {
+        ul {
+          grid-template-columns: 1fr;
+        }
+      }
     }
   }
 
-  p {
-    text-align: center;
-    font-size: 1.3rem;
-    font-weight: 300;
-    line-height: 1.7rem;
-    color: var(--white-gray-color);
-    margin: 0 auto;
-    width: 60ch;
-  }
-
-  @media (max-width: 768px) {
-    p {
-      width: 40ch;
-      text-align: center;
-      margin: auto;
+  @media screen and (max-width: 600px) {
+    main {
+      padding: 10em 2em;
     }
-  }
-
-  @media (max-width: 425px) {
-    p {
-      width: 35ch;
-    }
-  }
-
-  @media (max-width: 375px) {
-    p {
-      width: 30ch;
-    }
-  }
-
-  @media (max-width: 320px) {
-    p {
-      width: 25ch;
-    }
-  }
-
-  ul {
-    margin: 0 auto;
-    color: hsl(233, 53%, 27%);
-    display: grid;
-    gap: 5em;
-    justify-items: center;
-    padding: 0;
-    margin-top: 9em;
-  }
-
-  a {
-    display: block;
-    margin: 4em auto;
-    padding: 1em 3em;
-    border-radius: 5px;
-    width: 12em;
-    text-align: center;
-    text-decoration: none;
-    font-size: 0.8rem;
-    color: var(--white-color);
-    background-color: none;
-    border: 1px solid var(--light-purple);
-    font-weight: bold;
-    transition:
-      border 0.3s ease-in-out,
-      color 0.3s ease-in-out,
-      letter-spacing 0.3s ease-in-out;
-  }
-  a:hover {
-    background: transparent;
-    border: solid 0.8px var(--orange);
-    color: var(--orange);
-    letter-spacing: 1px;
   }
 
   @media (prefers-color-scheme: light) {
     main {
       background: linear-gradient(204deg, #e5e7ed -19.36%, #d0dfe6 222.58%);
 
-      :is(h2, a, p) {
-        color: var(--primary-color);
+      #content {
+        h2 {
+          color: var(--primary-color);
+        }
       }
     }
   }
