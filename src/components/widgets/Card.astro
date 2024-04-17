@@ -16,9 +16,9 @@ const { title, desc, tags, img, live_link, repo_link } = Astro.props;
 ---
 
 <li class="link-card">
-  <h3>{title}</h3>
-  <p>{desc}</p>
-  <ul>
+  <h3 id="link-card__title">{title}</h3>
+  <p id="link-card__description">{desc}</p>
+  <ul id="link-card__tag-items">
     {
       tags.map((tag) => (
         <li style=`border: 1px solid ${tag.tagColor}`>
@@ -27,11 +27,11 @@ const { title, desc, tags, img, live_link, repo_link } = Astro.props;
       ))
     }
   </ul>
-  <div id="project-links">
+  <div id="link-card__link-items">
     <a href={live_link} target="_blank"><WebIcon pageLink={live_link} /></a>
     <a href={repo_link} target="_blank"><GithubIcon width="28" height="28" /></a>
   </div>
-  <img src={img} alt="Image" />
+  <img id="link-card__cover-thumbnail" src={img} alt="Image" />
 </li>
 
 <style>
@@ -41,20 +41,20 @@ const { title, desc, tags, img, live_link, repo_link } = Astro.props;
     gap: 1rem;
     max-width: 40em;
 
-    h3 {
+    #link-card__title {
       color: hsla(340, 98%, 74%, 1);
       font-size: 36px;
       margin-bottom: 0;
     }
 
-    p {
+    #link-card__description{
       margin: 0;
-      color: #dbe1db;
+      color: var(--white-c-800);
       font-size: 1.1rem;
       line-height: 1.5rem;
     }
 
-    ul {
+    #link-card__tag-items {
       color: var(--white-color);
       display: flex;
       gap: .5rem;
@@ -67,12 +67,12 @@ const { title, desc, tags, img, live_link, repo_link } = Astro.props;
       }
     }
 
-    #project-links {
+    #link-card__link-items {
       display: flex;
       gap: .5em;
     }
 
-    img {
+    #link-card__cover-thumbnail {
       width: 100%;
       object-fit: cover;
       border-radius: 10px;
@@ -81,9 +81,9 @@ const { title, desc, tags, img, live_link, repo_link } = Astro.props;
 
   @media (prefers-color-scheme: light) {
     .link-card {
-      :is(p, li) {
+      :is(#link-card__description, #link-card__tag-items) {
         color: var(--primary-color);
-      })
+      }
     }
   }
 </style>
