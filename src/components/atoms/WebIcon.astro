@@ -11,7 +11,19 @@
 </svg>
 
 <style>
-  svg:hover {
-    transform: scale(1.22);
+  svg {
+    transition: transform 0.23s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    svg {
+      path {
+        fill: var(--primary-color);
+      }
+    }
   }
 </style>
