@@ -26,12 +26,12 @@ const { width, height } = Astro.props;
 
 <style>
   svg {
-    transition: scale 0.3s ease-in-out;
     fill: var(--white-color);
-  }
+    transition: transform 0.23s ease-in-out;
 
-  svg:hover {
-    transform: scale(1.2);
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   @media (max-width: 360px) {
