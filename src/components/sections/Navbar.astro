@@ -1,16 +1,23 @@
 ---
 import { t } from "i18next";
+
 import Languages from "../atoms/Languages.astro";
 import LogoWhite from "../atoms/LogoWhite.astro";
 import ToggleTheme from "../atoms/ToggleTheme.astro";
+import LogoDark from "../atoms/LogoDark.astro";
+
 ---
 
-<nav>
-  <a href="/"><LogoWhite width="73" height="73" /></a>
+<nav id="navbar" transition:animate="fade">
+  <a href="/">
+    <LogoWhite width="73" height="73" />
+    <!-- <LogoDark />  -->
+  </a>
   <ul id="navbar-items">
     <li><a href="/#">{t("navbar.home")}</a></li>
     <li><a href="/#about">{t("navbar.about")}</a></li>
     <li><a href="/#portfolio">{t("navbar.projects")}</a></li>
+    <!-- <li><a href="/blog">Blog</a></li> -->
     <li><a href="/#contact">{t("navbar.contact")}</a></li>
   </ul>
   <div class="icons">
@@ -20,13 +27,13 @@ import ToggleTheme from "../atoms/ToggleTheme.astro";
 </nav>
 
 <style>
-  nav {
+  #navbar {
     background: transparent;
     display: flex;
     position: absolute;
-    padding: 20px 80px;
+    padding: 1.2em 10em;
     width: 100%;
-    z-index: 10;
+    z-index: 100;
     justify-content: space-between;
     align-items: center;
     @media (max-width: 375px) {
@@ -52,20 +59,16 @@ import ToggleTheme from "../atoms/ToggleTheme.astro";
       display: flex;
       align-items: center;
       gap: 1.9em;
-      @media (max-width: 540px) {
-        ul {
-          display: none;
-        }
-      }
 
       li {
         list-style: none;
         font-size: 0.8rem;
-        transition: text-decoration 1s ease-in-out;
+        transition: color .15s ease-in-out, text-decoration: .15s ease-in-out;
 
         :hover {
           text-decoration: underline;
           text-underline-offset: 10px;
+          color: var(--secondary-lighter__color);
         }
       }
     }
@@ -74,6 +77,17 @@ import ToggleTheme from "../atoms/ToggleTheme.astro";
       display: flex;
       gap: 10px;
       align-items: center;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    #navbar {
+      padding: 1.2em 2em;
+ 
+      ul {
+        display: none;
+
+      }
     }
   }
 </style>
