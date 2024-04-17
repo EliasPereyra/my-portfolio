@@ -1,12 +1,26 @@
+---
+interface Props {
+  forSharing?: true;
+  href: string;
+}
+
+const { forSharing, href } = Astro.props;
+
+const isSharing = forSharing
+  ? `https://www.linkedin.com/shareArticle?mini=true&url=${href}`
+  : href;
+---
+
 <a
   aria-label="Redirect to my linkedin account"
-  href="https://www.linkedin.com/in/elias-pereyra-gomez/"
+  href={isSharing}
   target="_blank"
   rel="no-referrer"
+  aria-label="Share the article on Linkedin"
 >
   <svg
-    width="28"
-    height="28"
+    width="35"
+    height="35"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 448 512"
     ><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -19,11 +33,11 @@
 <style>
   svg {
     fill: var(--white-color);
-    transition: scale 0.3s ease-in-out;
-  }
+    transition: transform 0.23s ease-in-out;
 
-  svg:hover {
-    transform: scale(1.2);
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   @media (max-width: 360px) {
