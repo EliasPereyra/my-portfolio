@@ -9,7 +9,7 @@
   "hero": {
     "available": "Disponible para trabajar",
     "headline": "Hola! Me llamo Elias",
-    "description": "Desarrollador Fullstack con especialización en Frontend.  Enfocado en mejora de rendimiento web. ",
+    "description": "Desarrollador Fullstack con especialización en Frontend. Enfocado en mejora de rendimiento web. ",
     "button": "Mira mis proyectos"
   },
   "portfolio": {
@@ -27,8 +27,9 @@
     },
   "about": {
     "title": "Sobre mí",
-    "first-desc": "Desarrollador y diseñador de páginas y aplicaciones web. Mi objetivo es realizar productos innovativos y generen un buen impacto a los usuarios.",
-    "second-desc": "También realizo constribuciones Open Source traduciendo artículos al español en la comunidad de freeCodeCamp."
+    "first-desc": "Hola! Me llamo Elias Pereyra Gómez, soy de Argentina. Soy Desarrollador Web Fullstack, con mucho gusto al diseño y mucho entusiasmo en realizar proyectos innovativos! Siempre estoy siempre al tanto de las últimas mejoras que surgen en el mundo del desarrollo de software y experimentando diversas herramientas.",
+    "second-desc": "Realizo un voluntariado, haciendo constribuciones Open Source traduciendo artículos al español en la comunidad de freeCodeCamp. Puedes ver los últimos artículos que he traducido ",
+    "third-desc": "aquí."
   },
   "contact": {
     "title": "Te gustaría trabajar conmigo?",
