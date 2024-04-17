@@ -23,6 +23,7 @@ import LanguagesIcon from "./LanguagesIcon.astro";
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      border: 1px solid var(--secondary-color);
     }
 
     button {
@@ -38,8 +39,8 @@ import LanguagesIcon from "./LanguagesIcon.astro";
       list-style: none;
       border-radius: 5px;
       display: none;
-      padding: 1.2em;
-      background: rgba(17, 17, 17, 0.432);
+      padding: 2.2em;
+      background: var(--primary-color);
       position: absolute;
       top: 2.2em;
       right: auto;
@@ -53,7 +54,7 @@ import LanguagesIcon from "./LanguagesIcon.astro";
         transition: color .15s ease-in;
       }
       a:hover {
-        color: rgba(209, 202, 202, 0.884);
+        color: var(--secondary-lighter__color);
       }
     }
   }
