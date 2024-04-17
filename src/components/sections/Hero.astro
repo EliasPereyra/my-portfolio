@@ -7,29 +7,86 @@ import PinkAurora from "../atoms/PinkAurora.astro";
 import LightBlueAurora from "../atoms/LightBlueAurora.astro";
 ---
 
-<section>
+<section id="hero">
+  <div id="overlay"></div>
+  <div id="radial-gradient__effect"></div>
   <PinkAurora />
   <div id="hero__text-content">
-    <div id="avail-text">
-      <span></span>
+    <div id="hero__avail-text">
+      <div id="effect-wrapper">
+        <span id="effect"></span>
+        <span></span>
+      </div>
       <p id="over-title">{t("hero.available")}</p>
     </div>
-    <h1>{t("hero.headline")}</h1>
-    <p id="hero-description">
+    <h1 id="hero__headline-title" class="dark">{t("hero.headline")}</h1>
+    <p id="hero__description-text">
       {t("hero.description")}
     </p>
     <div id="social-networks">
-      <GithubIcon width="28" height="28" />
-      <LinkedinIcon />
+      <GithubIcon width="35" height="35" />
+      <LinkedinIcon href="https://www.linkedin.com/in/elias-pereyra-gomez/" />
     </div>
   </div>
 </section>
 
 <style>
+  @keyframes ping {
+    75%,
+    to {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
   section {
-    background: linear-gradient(169deg, #223843 -100.26%, #010613 124.3%);
-    padding: 8em 0;
+    background: var(--hero__dark-bg);
+    padding: 8em 2em;
     z-index: 5;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url("/assets/grid.svg");
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      opacity: 0.4;
+      filter: invert(0.85);
+      mask-image: radial-gradient(ellipse at center, transparent 10%, black);
+    }
+
+    #overlay {
+      width: 100%;
+      height: 100%;
+      z-index: 19;
+      background-color: rgb(2 6 23 / 0.5);
+    }
+
+    #radial-gradient__effect {
+      background-image: radial-gradient(
+          at 27% 37%,
+          hsla(215, 98%, 61%, 1) 0px,
+          transparent 0%
+        ),
+        radial-gradient(at 97% 21%, rgb(219, 114, 254) 0px, transparent 50%),
+        radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),
+        radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
+        radial-gradient(at 97% 96%, rgb(228, 153, 149) 0px, transparent 50%),
+        radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
+        radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 1) 0px, transparent 50%);
+      position: absolute;
+      width: 60em;
+      z-index: -1;
+      height: 90%;
+      filter: blur(120px) saturate(200%);
+      opacity: 0.1;
+      top: 0;
+      right: 10em;
+    }
 
     #hero__text-content {
       padding-top: 7em;
@@ -38,65 +95,75 @@ import LightBlueAurora from "../atoms/LightBlueAurora.astro";
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 0.7rem;
+      gap: 1.4rem;
       margin: auto;
-      width: 80ch;
       animation: fade-in 0.5s ease-in forwards;
       animation-delay: 0.1s;
-      @media (min-width: 320px) and (max-width: 540px) {
-        #hero-text-content {
-          width: 30ch;
-        }
-      }
 
-      #avail-text {
+      #hero__avail-text {
+        container-type: inline-size;
         padding: 0.5rem;
         color: var(--white-color);
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 10px;
-        border: 1px solid rgba(255, 125, 169, 0.85);
+        gap: 1rem;
+        border: 1px solid rgba(255, 125, 169, 0.55);
         background: rgba(255, 125, 169, 0.08);
         border-radius: 1rem;
         margin-bottom: 1rem;
-        width: 35%;
-        span {
-          padding: 0.5rem;
-          background-color: rgba(255, 125, 169, 0.85);
-          border-radius: 50%;
-          filter: drop-shadow(0px 0px 17px rgba(255, 40, 113, 0.7));
+        width: 20em;
+
+        #effect-wrapper {
+          position: relative;
+          width: 0.5rem;
+          height: 0.5rem;
+
+          #effect {
+            inset: 0;
+            margin: auto;
+            position: absolute;
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            padding: 0.5rem;
+            background-color: rgba(255, 125, 169, 0.85);
+            border-radius: 50%;
+          }
+
+          span {
+            inset: 0;
+            margin: auto;
+            position: absolute;
+            padding: 0.5rem;
+            background-color: rgba(255, 125, 169, 0.85);
+            border-radius: 50%;
+            filter: drop-shadow(0px 0px 17px rgba(255, 40, 113, 0.7));
+          }
         }
+
         #over-title {
-          font-size: 14px;
+          font-size: 0.8rem;
         }
       }
 
-      h1 {
+      #hero__headline-title {
         margin: 0;
         color: var(--white-color);
         text-align: center;
       }
 
-      @media (min-width: 320px) and (max-width: 425px) {
-        h1 {
-          font-size: 2.7rem;
-        }
-      }
-
-      #hero-description {
-        width: 50ch;
+      #hero__description-text {
+        max-width: 30em;
         text-align: center;
-        color: var(--white-gray-color);
-        font-weight: 300;
-        font-size: 1.2rem;
+        color: var(--white-c-800);
+        font-weight: 400;
+        font-size: clamp(1.3rem, 1.05rem + 0.21vw, 1.6rem);
       }
     }
 
     #social-networks {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 1rem;
     }
   }
 
@@ -106,20 +173,30 @@ import LightBlueAurora from "../atoms/LightBlueAurora.astro";
     }
   }
 
+  @media screen and (max-width: 500px) {
+    section {
+      #hero__text-content {
+        #hero__avail-text {
+          width: 10em;
+        }
+      }
+    }
+  }
+
   @media (prefers-color-scheme: light) {
     section {
-      background: linear-gradient(169deg, #f9f8f8 -169.26%, #dbe5fc 144.3%);
+      background: var(--hero__light-bg);
 
       #hero__text-content {
-        h1 {
+        #hero__headline-title {
           color: var(--primary-color);
         }
 
-        #avail-text {
+        #hero__avail-text {
           color: var(--primary-color);
         }
 
-        #hero-description {
+        #hero__description-text {
           color: var(--primary-color);
         }
       }
