@@ -6,7 +6,7 @@ const PageURL = Astro.url.href;
 ---
 
 <div class="share-links">
-  <LinkedinIcon href={PageURL} />
+  <LinkedinIcon href={PageURL} forSharing={true} />
   <XIcon href={PageURL} />
 </div>
 
