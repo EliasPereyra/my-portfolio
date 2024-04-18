@@ -1,0 +1,64 @@
+---
+import type { CollectionEntry } from "astro:content";
+import PostCard from "../widgets/PostCard.astro";
+import BigPost from "../widgets/BigPost.astro";
+
+type Props = {
+  posts: CollectionEntry<"posts">[];
+};
+
+const { posts } = Astro.props;
+---
+
+<section>
+  <h3>Latest posts</h3>
+  <!-- list of 3 posts -->
+  <ul id="list-posts">
+    {
+      posts.map((post) => (
+        <PostCard
+          img={post.data.coverImg}
+          title={post.data.title}
+          description={post.data.description}
+          tags={post.data.tags}
+          pubDate={post.data.publishDate.toDateString()}
+        />
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  section {
+    padding: 12em 10em;
+    background: linear-gradient(380deg, #010613 -20%, #232243 400%);
+    position: relative;
+    z-index: 10;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url("/assets/grid.svg");
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      opacity: 0.4;
+      filter: invert(0.85);
+      mask-image: radial-gradient(ellipse at center, transparent 10%, black);
+    }
+
+    h3 {
+      color: var(--white-color);
+    }
+
+    #list-posts {
+      margin-top: 6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1em;
+    }
+  }
+</style>
