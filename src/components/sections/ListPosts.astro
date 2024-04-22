@@ -11,6 +11,7 @@ const { posts } = Astro.props;
 ---
 
 <section>
+  <div id="radial-gradient__effect"></div>
   <h3>Latest posts</h3>
   <!-- list of 3 posts -->
   <ul id="list-posts">
@@ -34,6 +35,29 @@ const { posts } = Astro.props;
     background: linear-gradient(380deg, #010613 -20%, #232243 400%);
     position: relative;
     z-index: 10;
+    position: relative;
+
+    #radial-gradient__effect {
+      background-image: radial-gradient(
+          at 27% 37%,
+          hsla(215, 98%, 61%, 1) 0px,
+          transparent 0%
+        ),
+        radial-gradient(at 97% 21%, rgb(219, 114, 254) 0px, transparent 50%),
+        radial-gradient(at 52% 99%, rgb(253, 58, 129) 0px, transparent 50%),
+        radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
+        radial-gradient(at 97% 96%, rgb(203, 149, 228) 0px, transparent 50%),
+        radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
+        radial-gradient(at 79% 53%, rgb(238, 165, 200) 0px, transparent 50%);
+      position: absolute;
+      width: 60em;
+      z-index: -1;
+      height: 90%;
+      filter: blur(120px) saturate(200%);
+      opacity: 0.1;
+      top: 0;
+      right: 10em;
+    }
 
     &::before {
       content: "";
