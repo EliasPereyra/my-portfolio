@@ -7,7 +7,7 @@ const { tag } = Astro.props;
 ---
 
 <li>
-  <a href="#">
+  <a href={`/tags/${tag?.toLocaleLowerCase()}`}>
     <small>{tag}</small>
   </a>
 </li>
