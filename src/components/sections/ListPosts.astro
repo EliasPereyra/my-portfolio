@@ -79,10 +79,11 @@ const { posts } = Astro.props;
 
     #list-posts {
       margin-top: 6rem;
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       justify-content: space-between;
       align-items: center;
-      gap: 1em;
+      gap: 2em;
     }
   }
 </style>
