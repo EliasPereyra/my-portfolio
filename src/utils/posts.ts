@@ -1,4 +1,4 @@
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
 export const getPosts = async () => {
   const result = await getCollection("posts");
@@ -6,14 +6,24 @@ export const getPosts = async () => {
   return result;
 };
 
-export const getPostsByCategory = async () => {
-  const allPosts = await getCollection("posts");
+export const getPostTags = async () => {
+  const allPosts = await getPosts();
 
-  return allPosts.map((post) => post.data);
+  const _tags = new Set<string>();
+
+  allPosts.forEach((post) => {
+    post.data.tags.forEach((tag) => {
+      _tags.add(tag);
+    });
+  });
+  return Array.from(_tags);
 };
 
-const searchPostsByCategory = async (tag: string) => {
-  const allPosts = await getCollection("posts");
+export const getPostsByTag = async (tag: string) => {
+  const allPosts = await getPosts();
+  const tagInLowerCase = tag.toLocaleLowerCase();
 
-  return allPosts.filter((post) => post.data.tags.includes(tag));
+  return allPosts.filter((post) =>
+    post.data.tags.some((tag) => tag.toLocaleLowerCase() === tagInLowerCase),
+  );
 };
