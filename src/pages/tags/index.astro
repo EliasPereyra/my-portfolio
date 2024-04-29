@@ -1,13 +1,10 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Footer from "@/components/sections/Footer.astro";
 import Tag from "@/components/atoms/Tag.astro";
 
-import { getPostsByCategory } from "../../utils/posts";
+import { getPostTags } from "../../utils/posts";
 
-const posts = await getPostsByCategory();
-
-const [postTags] = posts;
+const posts = await getPostTags();
 
 // Chore: the categories should be in a set structure, avoiding repetition
 ---
@@ -16,7 +13,7 @@ const [postTags] = posts;
   <section id="tag-section__wrapper">
     <h2>Tags</h2>
     <ul>
-      {postTags.tags.map((tag) => <Tag tag={tag} />)}
+      {posts.map((tag) => <Tag tag={tag} />)}
     </ul>
   </section>
 </BaseLayout>
