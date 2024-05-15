@@ -9,11 +9,10 @@
   "hero": {
     "available": "Available for work",
     "headline": "Hi! My name is Elias",
-    "description": "Fullstack Developer con especialización en Frontend. Enfocado en mejora de rendimiento web."
+    "description": "Fullstack Developer with specialization on Frontend."
   },
   "portfolio": {
-    "title": "My latest projects",
-    "description": "Digital products (Web Apps, Websites) and design systems which are very pleasing easy to use"},
+    "title": "Latest projects",
     "cards": {
       "redco": {
         "title": "Red Comunidad",
@@ -23,11 +22,12 @@
         "title": "Multishop",
         "description": "An ecommerce fullstack app where both sellers and clients can publish and sell their products."
       }
-    },
+    }
+  },
   "about": {
     "title": "About me",
     "first-desc": "Hey! My name is Elias Pereyra Gomez, from Argentina. I'm a Fullstack Web Developer, with a great taste in design and a lot of enthusiasm in making innovative projects! I'm always up to date with latest improvements that arise in the world of software development and experimenting with several tools.",
-    "second-desc": "I do a volunteering, making Open Source contributions translating articles to spanish for the freeCodeCamp community. You can see the latest articles I've translated ",
+    "second-desc": "In addition to development, I do a volunteering, making Open Source contributions in translations of tech articles to spanish for the freeCodeCamp community. You can see the latest articles I've translated ",
     "third-desc": "here."
   },
   "contact": {
