@@ -1,12 +1,12 @@
 ---
+import { changeLanguage } from "i18next";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Tag from "@/components/atoms/Tag.astro";
-
 import { getPostTags } from "../../utils/posts";
 
-const posts = await getPostTags();
+changeLanguage("spa");
 
-// Chore: the categories should be in a set structure, avoiding repetition
+const posts = await getPostTags();
 ---
 
 <BaseLayout author="Elias Pereyra" title="" description="">
