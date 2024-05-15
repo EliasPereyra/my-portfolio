@@ -5,6 +5,7 @@ import astroI18next from "astro-i18next";
 
 // https://astro.build/config
 export default defineConfig({
+  output: "hybrid",
   site: "https://eliaspereyra.netlify.app",
   adapter: netlify(),
   markdown: {
