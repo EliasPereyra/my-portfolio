@@ -23,7 +23,9 @@ export const getPostsByTag = async (tag: string) => {
   const allPosts = await getPosts();
   const tagInLowerCase = tag.toLocaleLowerCase();
 
-  return allPosts.filter((post) =>
-    post.data.tags.some((tag) => tag.toLocaleLowerCase() === tagInLowerCase),
-  );
+  return allPosts.filter((post) => {
+    return post.data.tags.some(
+      (tag) => tag.toLocaleLowerCase() === tagInLowerCase,
+    );
+  });
 };
