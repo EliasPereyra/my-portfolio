@@ -1,0 +1,74 @@
+---
+import { t } from "i18next";
+import Form from "../widgets/Form.astro";
+---
+
+<section id="contact">
+  <div class="contact__text-content">
+    <h2 id="contact__title">{t("contact.title")}</h2>
+    <p id="contact__message">{t("contact.comment")}</p>
+  </div>
+  <Form />
+</section>
+
+<style>
+  #contact {
+    padding: 14em 10em;
+    background: #100e1b;
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    position: relative;
+    container-type: inline-size;
+
+    .contact__text-content {
+      #contact__title {
+        color: var(--white-c-900);
+        font-size: 3.125rem;
+        max-width: 23ch;
+        line-height: 4rem;
+      }
+
+      #contact__message {
+        margin: 1.8rem 0;
+        color: var(--white-c-800);
+        line-height: 2rem;
+        width: 20em;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1400px) {
+    #contact {
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    #contact {
+      padding: 12em 2em;
+
+      .contact__text-content {
+        #contact__message {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    #contact {
+      background: #e4ecf1;
+
+      .contact__text-content {
+        #contact__title {
+          color: var(--primary-color);
+        }
+
+        #contact__message {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+</style>

@@ -1,139 +1,98 @@
 ---
+import { Image } from "astro:assets";
 import { t } from "i18next";
+
+import ProfilePhoto from "@/assets/imgs/profile.webp";
 ---
 
-<section id="about">
-  <div id="noise"></div>
-  <div id="about-desc-container">
-    <article id="skills" class="animate">
-      <h2>{t("about.tools")}</h2>
-        <div id="tools">
-          <div>
-            <h5>{t("about.libraries")}: </h5>
-            <i>React.js, NextAuth, Redux Toolkit, Zustand</i>
-            <h5>{t("about.frameworks")}: </h5>
-            <i>Next.js, Astro.js, Gatsby.js, Express.js</i>
-          </div>
-          <div>
-            <h5>{t("about.languages")}: </h5><i>HTML, CSS, JavaScript, TypeScript, Go</i><br/>
-            <h5>{t("about.other_tools")}: </h><i>Git, Figma, Penpot, Docker, MongoDB, PostreSQL, Sequelize, Prisma</i>
-          </div>
-        </div>
-      </p>
-    </article>
-  </div>
+<section id="about-section">
+  <h2 id="about" class="about__title">{t("about.title")}</h2>
+  <Image id="about__profile-photo" src={ProfilePhoto} alt="Foto de perfil" />
+  <p class="about__description-text">
+    {t("about.first-desc")}
+  </p>
+  <p class="about__description-text">
+    {t("about.second-desc")}
+    <a
+      href="https://www.freecodecamp.org/espanol/news/author/elias-pereyra/"
+      target="_blank">{t("about.third-desc")}</a
+    >
+  </p>
+
+  <!-- Chore: Show last 3 translated articles from freeCodeCamp  -->
 </section>
 
 <style>
-  section { 
-    padding: 0 4em;
-    position: relative; 
-    background: var(--dark-bckg);
-    background-size: 100%;
-    color: #eee;
-    isolation: isolate;
-    z-index: 10;
-  }
-
-  #noise {
-    position: absolute;
-    background-image: url("/assets/noise.webp");
-    z-index: -20; 
-    mix-blend-mode: overlay;
-    inset: 0;
-    opacity: .1;
-  }
-
-  #about-desc-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10em;
-    align-items: center;
-    padding: 12em 0; 
-  }
-  #about-desc-container::before {
-    position: absolute;
-    content: "";
-    z-index: -1;
-    top: 0%;
-    left: 0%;
-    bottom: 0%;
-    width: 100%;
-    background: url(/assets/noise.webp) repeat,linear-gradient(270deg,#0d0621 10%,#281a4b 49%,#21194d 87%,#2e1f52 97%);
-    background-blend-mode: overlay;
-    -webkit-mask-image: radial-gradient(rgba(0, 0, 0, 0.671),transparent 70%);
-  }
-  
-  @media (max-width: 768px) {
-    #about-desc-container {
-      flex-direction: column;
-      text-align: center;
-    }
-  }
-
-  #underlay {
-    position: absolute;
-    z-index: -30;
-    inset: 0;
-  }
-
-  #skills {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  @media (max-width: 768px){
-    #skills {
-      width: 25em;
-    }
-  }
-
-  @media (max-width: 320px){
-    #skills {
-      padding: 1em;
-      width: 20em;
-    }
-  }
-
-  h2 {
-    text-shadow: 1px 1px 10px rgb(255 255 255 / 20%);
-    color: white;
-    font-size: 2.3rem;
+  #about-section {
+    position: relative;
+    padding: 14em 5rem;
     text-align: center;
-    width: 27ch;
-  }h2:before {
-    content: "";
-    width: 10em;
-    height: 4px;
-    background: linear-gradient(to right, hsl(263, 53%, 51%), hsl(263, 53%, 51%));
-    border-radius: 1px;
-    display: block;
-    margin-bottom: 10px;
-    margin: auto;
-  }@media (min-width: 320px) and (max-width: 425px) {
-    h2 {
-      font-size: 1.5rem;
-      width: 20ch;
+    background: linear-gradient(
+      -250deg,
+      #1c1b44 -150%,
+      #201d4d -120%,
+      #010715 100%
+    );
+
+    .about__title {
+      color: var(--white-c-900);
+      margin-bottom: 1.8rem;
+    }
+
+    #about__profile-photo {
+      margin-top: 0;
+      width: 10em;
+      height: 10em;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-inline: auto;
+      border: 0.15rem solid var(--secondary-color);
+    }
+
+    .about__description-text {
+      color: var(--white-c-800);
+      font-size: 1.3rem;
+      margin: 2em auto;
+      line-height: 2.22rem;
+      width: 30em;
+
+      a {
+        color: var(--white-gray__color);
+        text-decoration: underline;
+        transition: color 0.15s ease-in-out;
+        &:hover {
+          color: var(--secondary-lighter__color);
+        }
+      }
     }
   }
 
-  #tools {
-    display: grid;
-    gap: 5px;
-    grid-template-columns: repeat(2, 1fr);
-    width: 30em;
-  }
-
-  @media(min-width: 320px) and (max-width: 425px) {
-    #tools {
-      grid-template-columns: 1fr;
-      width: 20em;
+  @media screen and (max-width: 1000px) {
+    #about-section {
+      .about__description-text {
+        width: 100%;
+      }
     }
   }
 
-  h5 {
-    color: var(--light-purple);
-    font-size: 1rem;
+  @media screen and (max-width: 600px) {
+    #about-section {
+      padding: 12em 2rem;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    #about-section {
+      background: linear-gradient(
+        143deg,
+        #d6e3ea -227.71%,
+        #c0d6e0 -109.44%,
+        #eaebee 116.37%
+      );
+
+      :is(h2, p) {
+        color: var(--primary-color);
+      }
+    }
   }
 </style>

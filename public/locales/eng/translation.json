@@ -1,56 +1,45 @@
 {
-  "description": "My personal website where you'll find all my recent projects and, also, a little bit of who I am",
-  "hero": {
-    "headline": {
-      "first-part": "My name is",
-      "final-part": "Elias Pereyra"
-    },
-    "description": "Developer with specialization in Frontend, focused on web performance and pleasant UI designs",
-    "button": "See my works"
-  },
+  "description": "My website where you'll find all my latest projects and, also, a little bit about who I am.",
   "navbar": {
     "home": "Home",
     "about": "About me",
     "projects": "My projects",
     "contact": "Contact"
   },
+  "hero": {
+    "available": "Available for work",
+    "headline": "Hi! My name is Elias",
+    "description": "Fullstack Developer with specialization on Frontend."
+  },
   "portfolio": {
-    "title": "My Recent Projects",
-    "description": "",
-    "button": "See more"
+    "title": "Latest projects",
+    "cards": {
+      "redco": {
+        "title": "Red Comunidad",
+        "description": "Red Comunidad (Community Net) is a website for neighborhood and citizen complaints, where you may report and see citizen problems and/or of infrastructure which are common to everyone."
+      },
+      "multi": {
+        "title": "Multishop",
+        "description": "An ecommerce fullstack app where both sellers and clients can publish and sell their products."
+      }
+    }
   },
   "about": {
     "title": "About me",
-    "tools": "Tools I generally use:",
-    "frameworks": "Frameworks",
-    "libraries": "Libraries",
-    "languages": "Languages",
-    "other_tools": "Other Tools"
+    "first-desc": "Hey! My name is Elias Pereyra Gomez, from Argentina. I'm a Fullstack Web Developer, with a great taste in design and a lot of enthusiasm in making innovative projects! I'm always up to date with latest improvements that arise in the world of software development and experimenting with several tools.",
+    "second-desc": "In addition to development, I do a volunteering, making Open Source contributions in translations of tech articles to spanish for the freeCodeCamp community. You can see the latest articles I've translated ",
+    "third-desc": "here."
   },
   "contact": {
     "title": "Would you like to work with me?",
-    "comment": "I'd like to hear your proposals and make an incredible work together",
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "send-button": "Send"
+    "comment": "Currently I'm up for work. Contact me. Send me a message and let's chat about your proposal.",
+    "button": "Send me a message"
   },
-  "projects": {
-    "redco": {
-      "desc": "Red Comunidad a web of neighborhood and citizen complaints, where you may report and visibilize citizen problematics and/or of infrastructure which are common to everyone."
-    },
-    "multishop": {
-      "desc": "This is a multi-client e-commerce web app donde where sellers can publish and sell their products as also clients can find products of all kind."
-    },
-    "expense_tracker": {
-      "desc": "An SAP designed for making tracks of different types of transactions: incomes and expenses. The project is built with React.js and using the Context API."
-    },
-    "digcoin_news": {
-      "desc": "A web app where you can find thorough information about the crypto currencies, its price in the market and also be able to see more details about each crypto currency. And last but not least, you can see the latest news about the crypto world."
-    }
+  "footer": {
+    "tool-used": "Happily developed with "
   },
   "not_found": {
     "go_back": "Go back",
-    "desc": "Page not found"
+    "desc": "That page doesn't exist."
   }
 }

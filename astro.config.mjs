@@ -1,10 +1,32 @@
 import { defineConfig } from "astro/config";
-import react from '@astrojs/react';
 import netlify from "@astrojs/netlify/functions";
-import astroI18next from 'astro-i18next'
+import mdx from "@astrojs/mdx";
+import astroI18next from "astro-i18next";
 
 // https://astro.build/config
 export default defineConfig({
+  output: "hybrid",
+  site: "https://eliaspereyra.netlify.app",
   adapter: netlify(),
-  integrations: [react(), astroI18next()],
+  markdown: {
+    drafts: true,
+    shikiConfig: {
+      theme: "github-dark",
+      wrap: true,
+    },
+  },
+  integrations: [
+    astroI18next(),
+    mdx({
+      syntaxHighlight: "shiki",
+      shikiConfig: {
+        experimentalThemes: {
+          light: "github-dark",
+          dark: "github-dark",
+        },
+        wrap: true,
+      },
+      drafts: true,
+    }),
+  ],
 });

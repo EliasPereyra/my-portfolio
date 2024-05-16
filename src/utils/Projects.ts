@@ -1,27 +1,11 @@
-import { t } from 'i18next'
-
-const reactColor = Symbol("#61DAFB")
-const materiaUIColor = Symbol("#007FFF")
-const rtkColor = Symbol("#764ABC")
-const antDesignColor = Symbol("#0170FE")
-const chartJsColor = Symbol("#FF6384")
-const typescriptColor = Symbol("#3178C6")
-const reactRouterColor = Symbol("#CA4245")
-const axiosColor = Symbol("#5A29E4")
-const tailwindCssColor = Symbol("#06B6D4")
-const expressjsColor = Symbol("#fff")
-const sequelizeColor = Symbol("#52B0E7")
-const postgreSqlColor = Symbol("#4169E1")
-const reactHookFormColor = Symbol("#EC5990")
-const dotNetColor = Symbol("#512BD4")
-const sqlServerColor = Symbol("#CC2927")
+import { axiosColor, dotNetColor, expressjsColor, postgreSqlColor, reactColor, reactHookFormColor, reactRouterColor, sequelizeColor, sqlServerColor, tailwindCssColor, typescriptColor } from "./TechColors";
 
 export interface TagData {
   tagName: string;
-  tagColor: string;
+  tagColor: string | undefined;
 }
 
-export interface Projects {
+export interface Project {
   title: string;
   desc: string;
   project_img: string;
@@ -30,10 +14,10 @@ export interface Projects {
   repo_link: string;
 }
 
-export const projects: Projects[] = [
+export const projects: Project[] = [
   {
-    title: "Red Comunidad",
-    desc: `${t("projects.redco.desc")}`,
+    title:"Red Comunidad", 
+    desc: "Red Comunidad es una Web de reclamos vecinales y ciudadanos, donde se podrá reportar y visibilizar problemáticas ciudadanas y/o de infraestructura comunes a todos.",
     project_img: "/assets/redco.webp",
     tags: [
       { tagName: "React.js", tagColor: reactColor.description },
@@ -49,7 +33,7 @@ export const projects: Projects[] = [
   },
   {
     title: "Multishop",
-    desc: `${t("projects.multishop.desc")}`,
+    desc: "Este es una aplicación fullstack de un e-commerce multi-cliente donde tantos vendedores pueden publicar y vender sus productos como los clientes pueden encontrar productos de todo tipo.",
     project_img: "/assets/multishop.webp",
     tags: [
       { tagName: "React.js", tagColor: reactColor.description },

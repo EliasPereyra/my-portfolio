@@ -1,0 +1,127 @@
+---
+import { t } from "i18next";
+
+import { Resend } from "resend";
+
+const resend = new Resend("re_123456789");
+
+// sanitizar las entradas
+
+async function sendMail() {
+  if (Astro.request.method === "POST") {
+    try {
+      const data = await Astro.request.formData();
+      const name = data.get("name");
+      const email = data.get("email");
+      const subject = data.get("subject");
+      const message = data.get("message");
+
+      console.log({ name, email, subject, message });
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error.message);
+      }
+    }
+  }
+
+  const { data, error } = await resend.emails.send({
+    from: "Acme <onboarding@resend.dev>",
+    to: ["delivered@resend.dev"],
+    subject: "Hello World",
+    html: "<strong>It works!</strong>",
+  });
+
+  if (error) {
+    return console.error({ error });
+  }
+
+  console.log({ data });
+}
+---
+
+<form method="POST" class="form-wrapper">
+  <label>Nombre:</label>
+  <input type="text" name="name" required />
+  <label>Email:</label>
+  <input type="email" name="email" required />
+  <label>Subject:</label>
+  <input type="text" name="subject" required />
+  <label>Your message:</label>
+  <textarea rows="3" cols="20" name="message" required></textarea>
+  <div class="form-wrapper__btn-wrapper">
+    <button id="form-wrapper__send-btn">{t("contact.button")}</button>
+  </div>
+  <!-- usar la funcion sendMail -->
+</form>
+
+<style>
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 35em;
+    gap: 1em;
+
+    label {
+      font-size: 1.3rem;
+      color: var(--white-c-800);
+    }
+
+    :is(input, textarea) {
+      color: var(--black-c-800);
+      padding: 0.9em 0.7em;
+      background-color: var(--white-c-700);
+      border-radius: 0.5rem;
+    }
+
+    textarea {
+      resize: none;
+      min-height: 10em;
+    }
+
+    .form-wrapper__btn-wrapper {
+      margin-top: 2em;
+
+      #form-wrapper__send-btn {
+        color: var(--white-color);
+        padding: 1em;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid #5f3ea5;
+        background: #121111;
+        box-shadow: 0px 0px 18px 8px #1b2d36;
+        transition:
+          border,
+          box-shadow 0.2s ease-out;
+        &:hover {
+          box-shadow: 0px 0px 18px 8px #2d4b5a;
+          border: 1px solid #6c48b9;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .form-wrapper {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    .form-wrapper {
+      label {
+        color: var(--primary-color);
+      }
+
+      .form-wrapper__btn-wrapper {
+        #form-wrapper__send-btn {
+          box-shadow: 0px 0px 38px 5px #4aa9d870;
+
+          &:hover {
+            box-shadow: 0px 0px 38px 8px rgba(100, 198, 248, 0.907);
+            border: 1px solid var(secondary-lighter__color);
+          }
+        }
+      }
+    }
+  }
+</style>

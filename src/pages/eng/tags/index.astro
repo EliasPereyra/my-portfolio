@@ -1,0 +1,35 @@
+---
+import { changeLanguage } from "i18next";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Tag from "@/components/atoms/Tag.astro";
+import { getPostTags } from "../../../utils/posts";
+
+changeLanguage("eng");
+
+const posts = await getPostTags();
+---
+
+<BaseLayout author="Elias Pereyra" title="" description="">
+  <section id="tag-section__wrapper">
+    <h2>Tags</h2>
+    <ul>
+      {posts.map((tag) => <Tag tag={tag} />)}
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  #tag-section__wrapper {
+    padding: 12em 10em 24em 10em;
+    background: linear-gradient(380deg, #010613 -20%, #232243 400%);
+
+    h2 {
+      margin-bottom: 2rem;
+    }
+
+    ul {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+</style>

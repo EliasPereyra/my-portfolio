@@ -1,0 +1,51 @@
+---
+import { changeLanguage } from "i18next";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+import { getPostTags, getPostsByTag } from "@/utils/posts";
+import PostCard from "@/components/widgets/PostCard.astro";
+
+changeLanguage("spa");
+
+export async function getStaticPaths() {
+  const tags = await getPostTags();
+  return tags.map((tag) => ({
+    params: { tag: tag.toLocaleLowerCase() },
+    props: { tag },
+  }));
+}
+const { tag } = Astro.props;
+const posts = await getPostsByTag(tag);
+---
+
+<BaseLayout author="Elias Pereyra" title="" description="">
+  <section>
+    <h2>{tag}</h2>
+    {
+      posts.length > 0 ? (
+        posts.map((post) => (
+          <PostCard
+            title={post.data.title}
+            description={post.data.description}
+            tags={post.data.tags}
+            img={post.data.coverImg}
+            pubDate={post.data.publishDate.toDateString()}
+          />
+        ))
+      ) : (
+        <p>There are no posts available</p>
+      )
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  section {
+    padding: 12em 10em 24em 8em;
+    background: linear-gradient(380deg, #010613 -20%, #232243 400%);
+
+    h2 {
+      margin-bottom: 4em;
+    }
+  }
+</style>

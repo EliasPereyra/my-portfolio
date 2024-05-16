@@ -1,0 +1,238 @@
+---
+import Footer from "@/components/sections/Footer.astro";
+import Navbar from "@/components/sections/Navbar.astro";
+import { ViewTransitions } from "astro:transitions";
+
+export interface Props {
+  title: string;
+  author: string;
+  description: string;
+}
+
+const { title, author, description } = Astro.props as Props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/assets/logo-w-v1.svg" />
+    <meta name="author" content={author} />
+    <meta name="description" content={description} />
+    <meta name="view-transition" content="same-origin" />
+    <title>{title}</title>
+    <ViewTransitions />
+    <link
+      rel="preload"
+      href="/fonts/OpenSans/open-sans-cyrillic-700-normal.woff"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+  </head>
+  <body>
+    <Navbar />
+    <slot />
+    <Footer />
+    <style is:global>
+      @font-face {
+        font-family: "Hind";
+        src: url("/fonts/Hind/hind-latin-400-normal.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Open Sans";
+        src: url("/fonts/OpenSans/open-sans-cyrillic-800-normal.woff")
+          format("woff");
+        font-style: normal;
+      }
+
+      :root {
+        --black-c: #030916;
+        --white-c: #f2f7f2;
+
+        --black-c-900: color-mix(in lch, var(--black-c), var(--white-c) 5%);
+        --black-c-800: color-mix(in lch, var(--black-c), var(--white-c) 15%);
+        --black-c-700: color-mix(in lch, var(--black-c), var(--white-c) 25%);
+        --black-c-600: color-mix(in lch, var(--black-c), var(--white-c) 35%);
+        --black-c-500: color-mix(in lch, var(--black-c), var(--white-c) 45%);
+        --black-c-400: color-mix(in lch, var(--black-c), var(--white-c) 55%);
+        --black-c-300: color-mix(in lch, var(--black-c), var(--white-c) 65%);
+        --black-c-200: color-mix(in lch, var(--black-c), var(--white-c) 75%);
+        --black-c-100: color-mix(in lch, var(--black-c), var(--white-c) 85%);
+
+        --white-c-900: color-mix(in lch, var(--white-c), var(--black-c) 5%);
+        --white-c-800: color-mix(in lch, var(--white-c), var(--black-c) 15%);
+        --white-c-700: color-mix(in lch, var(--white-c), var(--black-c) 25%);
+        --white-c-600: color-mix(in lch, var(--white-c), var(--black-c) 35%);
+        --white-c-500: color-mix(in lch, var(--white-c), var(--black-c) 45%);
+        --white-c-400: color-mix(in lch, var(--white-c), var(--black-c) 55%);
+        --white-c-300: color-mix(in lch, var(--white-c), var(--black-c) 65%);
+        --white-c-200: color-mix(in lch, var(--white-c), var(--black-c) 75%);
+        --white-c-100: color-mix(in lch, var(--white-c), var(--black-c) 85%);
+
+        --primary-color: var(--black-c-900);
+        --secondary-color: #9e1946;
+        --secondary-lighter__color: #e05181;
+        --white-color: var(--white-c-900);
+        --white-gray__color: #ced3ce;
+
+        --dark-rb-gradient: linear-gradient(
+          90deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        --hero__dark-bg: linear-gradient(-200deg, #232243 -79%, #010613 90%);
+
+        --lg-desktop: 1440px;
+        --sm-desktop: 1330px;
+        --tablet: 1000px;
+        --vertical-phone: 780px;
+        --lg-mobile: 425px;
+        --md-mobile: 375px;
+        --sm-mobile: 325px;
+      }
+
+      :root.light {
+        color: var(--white-c-800);
+        --hero__light-bg: linear-gradient(
+          169deg,
+          #f9f8f8 -169.26%,
+          #dbe5fc 144.3%
+        );
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          color: var(--white-c-800);
+          --hero__light-bg: linear-gradient(
+            169deg,
+            #f9f8f8 -169.26%,
+            #dbe5fc 144.3%
+          );
+        }
+
+        :root.dark {
+          --hero__dark-bg: linear-gradient(-200deg, #232243 -79%, #010613 90%);
+          --primary-color: var(--black-c-900);
+        }
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      html,
+      body {
+        position: relative;
+        font-size: 100%;
+        color-scheme: dark light;
+
+        ::-webkit-scrollbar {
+          width: 0.87rem;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          border: 4px solid transparent;
+          background-clip: padding-box;
+          border-radius: 9999px;
+          background-color: #9797f7;
+        }
+
+        ::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 3.2rem #0e0e1b;
+          cursor: pointer !important;
+        }
+      }
+
+      button {
+        border: none;
+        background-color: transparent;
+      }
+
+      input,
+      textarea {
+        border: none;
+
+        &:focus {
+          outline-color: var(--secondary-lighter__color);
+        }
+      }
+
+      ul {
+        padding: 0;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      h1 {
+        font-family: "Khand Bold", system-ui, sans-serif;
+        font-size: clamp(1.5rem, 2.31rem + 1.39vw, 5rem);
+      }
+
+      h2 {
+        font-family: "Hind", system-ui, sans-serif;
+        font-size: clamp(1.5rem, 1.05rem + 1.53vw, 3rem);
+      }
+
+      h3 {
+        font-family: "Hind", sans-serif;
+        font-size: 3.5rem;
+      }
+
+      h4 {
+        font-family: "Hind", sans-serif;
+        font-size: 1.5rem;
+      }
+
+      p {
+        text-wrap: pretty;
+        line-height: 1.7rem;
+        font-size: clamp(1.3rem, 1.24rem + 0.14vw, 1.5rem);
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      :is(h1, h2, h3, h4) {
+        text-wrap: balance;
+      }
+
+      :is(p, a, li, small, button, label, input, textarea) {
+        font-family: "Hind", sans-serif;
+      }
+
+      .animate {
+        opacity: 0;
+        transform: translateY(4rem);
+        transition: all 0.7s ease-in-out;
+        transition-delay: 0.1s;
+      }
+
+      .is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </body>
+</html>

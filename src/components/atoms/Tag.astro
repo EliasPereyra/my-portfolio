@@ -1,0 +1,33 @@
+---
+interface Props {
+  tag?: string;
+}
+
+const { tag } = Astro.props;
+---
+
+<li>
+  <a href={`/tags/${tag?.toLocaleLowerCase()}`}>
+    <small>{tag}</small>
+  </a>
+</li>
+
+<style>
+  li {
+    border: 1px solid var(--white-gray__color);
+    border-radius: 7px;
+    padding: 2px 9px;
+
+    a {
+      color: var(--white-color);
+
+      small {
+        transition: opacity 0.32s ease-in-out;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+</style>

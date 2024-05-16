@@ -1,148 +1,79 @@
 ---
-import {t} from "i18next"
+import { t } from "i18next";
 
-import { projects } from "../../utils/Projects";
 import Card from "../widgets/Card.astro";
-
+import { projects } from "../../utils/Projects";
 ---
+
 <main id="portfolio">
-  <div id="noise"></div>
   <div id="content">
-    <div id="underlay"></div>
     <h2>{t("portfolio.title")}</h2>
-    <p>{t("portfolio.description")}</p>
-    <ul class="animate">
-      {projects.map(({title, desc, tags, project_img }) => (
-        <Card 
-          title={title} 
-          desc={desc} 
-          tags={tags} 
-          img={project_img}
-        />
-      ))}  
+    <ul>
+      {
+        projects.map(
+          ({ title, desc, tags, project_img, live_link, repo_link }) => (
+            <Card
+              title={title}
+              desc={desc}
+              tags={tags}
+              img={project_img}
+              live_link={live_link}
+              repo_link={repo_link}
+            />
+          )
+        )
+      }
     </ul>
   </div>
 </main>
 
 <style>
   main {
-    padding: 4em 4em;
-    background: var(--dark-bckg);
-    background-size: 100%;
-    position: relative;
-    isolation: isolate;
-    z-index: 10;
-  }
+    padding: 10em 10em;
+    background: linear-gradient(250deg, #010613 10%, #232243 320%);
+    container-type: inline-size;
 
-  h2 {
-    padding-top: 6em;
-    text-align: left;
-    text-shadow: 1px 1px 10px rgb(255 255 255 / 20%);
-    color: white;
-    font-size: 2.3rem;
-  }h2::before {
-    content: "";
-    width: 10em;
-    height: 4px;
-    background: linear-gradient(to right, hsl(263, 53%, 51%), hsl(263, 53%, 51%));
-    border-radius: 1px;
-    display: block;
-    margin-bottom: 6px;
-  }
+    #content {
+      h2 {
+        text-align: center;
+        text-shadow: 1px 1px 10px rgb(255 255 255 / 20%);
+        color: #f2f7f2;
+        font-size: 50px;
+        margin-bottom: 3em;
+      }
 
-  @media (min-width: 768px) and (max-width: 1024px) {
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-    }h2::before {
-      content: "";
-      margin: 0 auto 6px auto;
+      ul {
+        color: hsl(233, 53%, 27%);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4em;
+        justify-items: center;
+        padding: 0;
+      }
+
+      @container (max-width: 1394px) {
+        ul {
+          grid-template-columns: 1fr;
+        }
+      }
     }
   }
 
-  @media (max-width: 425px) {
-    h2::before {
-      content: "";
-      width: 100%;
+  @media screen and (max-width: 600px) {
+    main {
+      padding: 10em 2em;
     }
   }
 
-  @media (max-width: 375px) {
-    h2 {
-      content: "";
-      font-size: 1.7rem;
+  @media (prefers-color-scheme: light) {
+    main {
+      background: linear-gradient(204deg, #e5e7ed -19.36%, #d0dfe6 222.58%);
+
+      #content {
+        h2 {
+          color: var(--primary-color);
+        }
+      }
     }
-  }
-
-  p {
-    font-size: 1.1rem;
-    color: var(--white);
-    font-weight: 300;
-    margin-top: 0;
-    margin-left: 3.5em;
-    width: 60ch;
-  }
-
-  @media (max-width: 768px) {
-    p {
-      width: 40ch;
-      text-align: center;
-      margin: auto;
-    }
-  }
-
-  @media (max-width: 425px) {
-    p {
-      width: 35ch;
-    }
-  }
-
-  @media (max-width: 375px) {
-    p {
-      width: 30ch;
-    }
-  }
-
-  @media (max-width: 320px) {
-    p {
-      width: 25ch;
-    }
-  }
-
-  ul {
-    color: hsl(233, 53%, 27%);
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 0;
-  }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    ul {
-      justify-items: center;
-    }
-  }
-
-  a {
-    display: block;
-    margin: 4em auto;
-    padding: 1em 3em;
-    border-radius: 5px;
-    width: 12em;
-    text-align: center;
-    text-decoration: none;
-    font-size: 0.8rem;
-    color: var(--white);
-    background-color: none;
-    border: 1px solid var(--light-purple);
-    font-weight: bold;
-    transition: 
-      border .3s ease-in-out, 
-      color .3s ease-in-out,
-      letter-spacing .3s ease-in-out;
-  }
-  a:hover {
-    background: transparent;
-    border: solid .8px var(--orange);
-    color: var(--orange);
-    letter-spacing: 1px;
   }
 </style>

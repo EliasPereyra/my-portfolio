@@ -1,0 +1,137 @@
+---
+import { changeLanguage } from "i18next";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CodeSnippet from "@/components/mdx/CodeSnippet.astro";
+import LeftArrowIcon from "@/components/atoms/LeftArrowIcon.astro";
+import Tag from "@/components/atoms/Tag.astro";
+import Share from "@/components/widgets/Share.astro";
+
+import { createSlug } from "@/utils/createSlug";
+import { formatDate } from "@/utils/formatDate";
+import { getPosts } from "@/utils/posts";
+
+changeLanguage("spa");
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    params: { slug: createSlug(post.data.title) },
+    props: post,
+  }));
+}
+const post = Astro.props;
+const { title, description, tags, publishDate } = post.data;
+
+const { Content } = await post.render();
+---
+
+<BaseLayout author="Elias Pereyra" title={title} description={description}>
+  <article id="blog-post__article">
+    <a href="/blog"><LeftArrowIcon color="#eee" /></a>
+    <!-- Add the post image on the back, with a transparent gradient upwards pointing to the navbar  -->
+    <header id="blog-post__header">
+      <h1 id="blog-post__title">{title}</h1>
+      <small>{formatDate(publishDate)}</small>
+      <ul id="blog-post__tag-items">
+        {tags.map((tag) => <Tag tag={tag} />)}
+      </ul>
+    </header>
+
+    <section id="blog-post__content-wrapper">
+      <Content components={{ pre: CodeSnippet }} />
+    </section>
+
+    <footer id="blog-post__footer-article">
+      <h4 id="blog-post__footer-title">Share this with your friends</h4>
+      <Share />
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  #blog-post__article {
+    background: linear-gradient(380deg, #010613 -20%, #232243 400%);
+    padding: 12em 10em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+
+    :is(h2, h3, h4, p, code, small) {
+      color: var(--white-color);
+    }
+
+    #blog-post__header {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      align-items: center;
+
+      #blog-post__tag-items {
+        display: flex;
+        gap: 0.5em;
+        color: var(--white-gray__color);
+
+        li {
+          border: 1px solid var(--white-gray__color);
+          border-radius: 7px;
+          padding: 2px 9px;
+
+          small {
+            transition: opacity 0.32s ease-in-out;
+
+            &:hover {
+              opacity: 0.7;
+            }
+          }
+        }
+      }
+    }
+
+    #blog-post__content-wrapper {
+      padding: 0 10em;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 70em;
+
+      h3 {
+        font-size: 2.2rem;
+      }
+
+      p {
+        color: var(--white-gray__color);
+        font-size: 1.2rem;
+        max-width: 70ch;
+        line-height: 2rem;
+      }
+
+      code {
+        line-height: 1.7rem;
+        font-family: "CommitMono";
+      }
+
+      li {
+        font-size: 1.2rem;
+
+        list-style: disc;
+        list-style-position: inside;
+        color: var(--white-gray__color);
+      }
+    }
+
+    #blog-post__footer-article {
+      margin-top: 1rem;
+      padding: 1em;
+      border-radius: 0.77rem;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    #blog-post__section {
+      background: var(--hero__light-bg);
+    }
+  }
+</style>

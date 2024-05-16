@@ -1,21 +1,24 @@
 ---
-import { t, changeLanguage, } from "i18next";
-import { PageConfig } from "../utils/PageConfig";
-import Layout from "../layouts/Layout.astro";
-import Portfolio from "../components/sections/Portfolio.astro";
-import Contact from "../components/sections/Contact";
-import Hero from "../components/sections/Hero.astro";
-import About from "../components/sections/About.astro";
+import { t, changeLanguage } from "i18next";
+import { PageConfig } from "@/utils/PageConfig";
+
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+import Hero from "@/components/sections/Hero.astro";
+import Portfolio from "@/components/sections/Portfolio.astro";
+import About from "@/components/sections/About.astro";
+import Contact from "@/components/sections/Contact.astro";
 
 changeLanguage("spa");
 ---
 
-<Layout 
-		title={PageConfig.title} 
-		author={PageConfig.author} 
-		description={t("description")} >
-	<Hero />
-	<Portfolio />
-	<About />
-	<Contact />
-</Layout>
+<BaseLayout
+  title={PageConfig.title}
+  author={PageConfig.author}
+  description={t("description")}
+>
+  <Hero />
+  <Portfolio />
+  <About />
+  <Contact />
+</BaseLayout>

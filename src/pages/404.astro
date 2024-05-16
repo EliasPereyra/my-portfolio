@@ -1,23 +1,28 @@
 ---
 import { t, changeLanguage } from "i18next";
 import LeftArrowIcon from "../components/atoms/LeftArrowIcon.astro";
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 changeLanguage("spa");
 ---
 
-<Layout title="Página no encontrada" author="EliasPereyra" description="La página que se busca no existe">
+<BaseLayout
+  title="Página no encontrada"
+  author="EliasPereyra"
+  description="La página que se busca no existe">
   <section>
-    <a href="/#portfolio"><LeftArrowIcon color="#ddd" />{t("not_found.go_back")}</a>
+    <a href="/#portfolio"
+      ><LeftArrowIcon color="#ddd" />{t("not_found.go_back")}
+    </a>
     <h3 class="error-code">404</h3>
     <h3 class="error-desc">{t("not_found.desc")}</h3>
   </section>
-</Layout>
+</BaseLayout>
 
 <style>
   section {
     background-color: #111;
-    padding: 8em; 
+    padding: 8em;
     display: flex;
     gap: 1em;
     flex-direction: column;
@@ -28,7 +33,7 @@ changeLanguage("spa");
     font-size: 2.5rem;
     color: var(--orange);
   }
-  
+
   .error-desc {
     color: #ddd;
   }
@@ -39,11 +44,12 @@ changeLanguage("spa");
 
   a {
     display: flex;
-		gap: 5px;
-		align-items: center;
-		color: #ddd;
-    transition: color .3s ease-in-out;
-  }a:hover {
+    gap: 5px;
+    align-items: center;
+    color: #ddd;
+    transition: color 0.3s ease-in-out;
+  }
+  a:hover {
     color: #fff;
   }
 </style>

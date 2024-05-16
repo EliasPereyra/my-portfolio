@@ -1,53 +1,42 @@
 {
   "description": "Mi sitio web personal donde encontrarás todos mis últimos proyectos y, también, un poquito sobre quién soy",
-  "hero": {
-    "headline": {
-      "first-part": "Mi nombre es",
-      "final-part": "Elias Pereyra"
-    },
-    "description": "Desarrollador con especialización en Frontend, enfocado en mejora de rendimiento web y en diseño UI agradables",
-    "button": "Mira mis proyectos"
-  },
   "navbar": {
     "home": "Inicio",
     "about": "Sobre mí",
     "projects": "Mis proyectos",
     "contact": "Contacto"
   },
+  "hero": {
+    "available": "Disponible para trabajar",
+    "headline": "Hola! Me llamo Elias",
+    "description": "Desarrollador Fullstack con especialización en Frontend."
+  },
   "portfolio": {
-    "title": "Mis Últimos Proyectos",
-    "description": "",
-    "button": "Ver más"
+    "title": "Últimos Proyectos"
+  },
+  "cards": {
+    "redco": {
+      "title": "Red Comunidad",
+      "description": "Red Comunidad es una Web de reclamos vecinales y ciudadanos, donde se podrá reportar y visibilizar problemáticas ciudadanas y/o de infraestructura comunes a todos."
+    },
+    "multi": {
+      "title": "Multishop",
+      "description": "Este es una aplicación fullstack de un e-commerce multi-cliente donde tantos vendedores pueden publicar y vender sus productos como los clientes pueden encontrar productos de todo tipo."
+    }
   },
   "about": {
     "title": "Sobre mí",
-    "tools": "Herramientas que generalmente utilizo:",
-    "frameworks": "Frameworks",
-    "libraries": "Librerías",
-    "languages": "Lenguajes",
-    "other_tools": "Otras Herramientas"
+    "first-desc": "Hola! Me llamo Elias Pereyra Gómez, soy de Argentina. Desarrollador Web Fullstack, con mucho gusto al diseño y mucho entusiasmo en realizar proyectos innovativos! Siempre estoy siempre al tanto de las últimas mejoras que surgen en el mundo del desarrollo de software y experimentando diversas herramientas.",
+    "second-desc": "Además del desarrollo, realizo un voluntariado, haciendo constribuciones Open Source en traducciones de artículos al español en la comunidad de freeCodeCamp. Puedes ver los últimos artículos que he traducido ",
+    "third-desc": "aquí."
   },
   "contact": {
     "title": "Te gustaría trabajar conmigo?",
-    "comment": "Me gustaría escuchar tus propuestas y así poder hacer un trabajo increíble juntos",
-    "name": "Nombre",
-    "email": "Email",
-    "message": "Mensaje",
-    "send-button": "Enviar"
+    "comment": "Actualmente me encuentro disponible para trabajar. Contáctame. Envíame un mensaje y charlemos sobre tu propuesta.",
+    "button": "Envíame un mensaje"
   },
-  "projects": {
-    "redco": {
-      "desc": "Red Comunidad es una Web de reclamos vecinales y ciudadanos, donde se podrá reportar y visibilizar problemáticas ciudadanas y/o de infraestructura comunes a todos."
-    },
-    "multishop": {
-      "desc": "Este es una aplicación fullstack de un e-commerce multi-cliente donde tantos vendedores pueden publicar y vender sus productos como los clientes pueden encontrar productos de todo tipo."
-    },
-    "expense_tracker": {
-      "desc": "Una app diseñada para hacer seguimientos de diferentes tipos de transacciones: ingresos y gastos. El proyecto está construido con React.js, usando la librería Speechly AI."
-    },
-    "digcoin_news": {
-      "desc": "Una web app donde podrás obtener la última información sobre las cripto monedas, su cotización en el mercado y poder ver más detalles sobre cada cripto moneda. También puedes ver las últimas noticias sobre el mundo cripto."
-    }
+  "footer": {
+    "tool-used": "Desarrollado felizmente con "
   },
   "not_found": {
     "go_back": "Ir atrás",

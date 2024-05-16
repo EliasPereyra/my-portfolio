@@ -3,59 +3,167 @@ import { t } from "i18next";
 
 import GithubIcon from "../atoms/GithubIcon.astro";
 import LinkedinIcon from "../atoms/LinkedinIcon.astro";
-
+import PinkAurora from "../atoms/PinkAurora.astro";
+import LightBlueAurora from "../atoms/LightBlueAurora.astro";
 ---
-<section>
-  <div id="noise"></div>
-  <div id="hero-text-content">
-    <div id="underlay"></div>
-    <h1>
-      {t("hero.headline.first-part")}<br />
-      <span id="name"> {t("hero.headline.final-part")}</span>
-    </h1>
-    <p>
+
+<section id="hero">
+  <div id="overlay"></div>
+  <div id="radial-gradient__effect"></div>
+  <!-- <PinkAurora /> -->
+  <div id="hero__text-content">
+    <div id="hero__avail-text">
+      <div id="effect-wrapper">
+        <span id="effect"></span>
+        <span></span>
+      </div>
+      <p id="over-title">{t("hero.available")}</p>
+    </div>
+    <h1 id="hero__headline-title" class="dark">{t("hero.headline")}</h1>
+    <p id="hero__description-text">
       {t("hero.description")}
     </p>
     <div id="social-networks">
-      <GithubIcon color="#ddd"/>
-      <LinkedinIcon color="#ddd" />
+      <GithubIcon width="35" height="35" />
+      <LinkedinIcon href="https://www.linkedin.com/in/elias-pereyra-gomez/" />
     </div>
   </div>
 </section>
 
 <style>
+  @keyframes ping {
+    75%,
+    to {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
   section {
-    background: var(--dark-bckg);
-		padding: 5em 0;
+    background: var(--hero__dark-bg);
+    padding: 8em 2em;
+    z-index: 5;
     position: relative;
-    isolation: isolate;
-    z-index: 10;
-	}
 
-  button { border: none; padding: 1em 4em; border-radius: 5px; }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url("/assets/grid.svg");
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      opacity: 0.4;
+      filter: invert(0.85);
+      mask-image: radial-gradient(ellipse at center, transparent 10%, black);
+    }
 
-  #hero-text-content {
-    padding-top: 5em;
-    padding-bottom: 10em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    width: 80ch;
-    opacity: 0;
-    animation: fade-in 0.5s ease-in forwards;
-    animation-delay: 0.1s;
-  }
+    #overlay {
+      width: 100%;
+      height: 100%;
+      z-index: 19;
+      background-color: rgb(2 6 23 / 0.5);
+    }
 
-  #social-networks {
-    display: flex;
-    gap: 10px;
-  }
+    #radial-gradient__effect {
+      background-image: radial-gradient(
+          at 27% 37%,
+          hsla(215, 98%, 61%, 1) 0px,
+          transparent 0%
+        ),
+        radial-gradient(at 97% 21%, rgb(219, 114, 254) 0px, transparent 50%),
+        radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),
+        radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
+        radial-gradient(at 97% 96%, rgb(228, 153, 149) 0px, transparent 50%),
+        radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
+        radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 1) 0px, transparent 50%);
+      position: absolute;
+      width: 60em;
+      z-index: -1;
+      height: 90%;
+      filter: blur(120px) saturate(200%);
+      opacity: 0.1;
+      top: 0;
+      right: 10em;
+    }
 
-  @media (min-width: 320px) and (max-width: 540px) {
-    #hero-text-content {
-      width: 30ch;
+    #hero__text-content {
+      padding-top: 7em;
+      padding-bottom: 10em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1.4rem;
+      margin: auto;
+      animation: fade-in 0.5s ease-in forwards;
+      animation-delay: 0.1s;
+
+      #hero__avail-text {
+        container-type: inline-size;
+        padding: 0.5rem;
+        color: var(--white-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        border: 1px solid rgba(255, 125, 169, 0.55);
+        background: rgba(255, 125, 169, 0.08);
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+        width: 20em;
+
+        #effect-wrapper {
+          position: relative;
+          width: 0.5rem;
+          height: 0.5rem;
+
+          #effect {
+            inset: 0;
+            margin: auto;
+            position: absolute;
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            padding: 0.5rem;
+            background-color: rgba(255, 125, 169, 0.85);
+            border-radius: 50%;
+          }
+
+          span {
+            inset: 0;
+            margin: auto;
+            position: absolute;
+            padding: 0.5rem;
+            background-color: rgba(255, 125, 169, 0.85);
+            border-radius: 50%;
+            filter: drop-shadow(0px 0px 17px rgba(255, 40, 113, 0.7));
+          }
+        }
+
+        #over-title {
+          font-size: 0.8rem;
+        }
+      }
+
+      #hero__headline-title {
+        margin: 0;
+        color: var(--white-color);
+        text-align: center;
+      }
+
+      #hero__description-text {
+        max-width: 30em;
+        text-align: center;
+        color: var(--white-c-800);
+        font-weight: 400;
+        font-size: clamp(1.3rem, 1.05rem + 0.21vw, 1.6rem);
+      }
+    }
+
+    #social-networks {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
   }
 
@@ -65,75 +173,33 @@ import LinkedinIcon from "../atoms/LinkedinIcon.astro";
     }
   }
 
-  #hero-text-content::before {
-    position: absolute;
-    content: "";
-    z-index: -1;
-    top: -10%;
-    left: 0%;
-    bottom: 0%;
-    width: 100%;
-    background: 
-      url(/assets/grunge-dusty-texture-background.webp) no-repeat,
-      linear-gradient(201deg,#000 0%,#201034 2%,#643696 17%,rgb(6,12,34) 100%);
-    background-blend-mode: overlay;
-    -webkit-mask-image: radial-gradient(rgb(0 0 0 / 94%),transparent 90%);
-  }
-
-  #noise {
-    position: absolute;
-    background-image: url("/assets/noise.webp");
-    z-index: -20; 
-    mix-blend-mode: overlay;
-    inset: 0;
-    opacity: .1;
-  }
-
-  #underlay {
-    position: absolute;
-    z-index: -30;
-    inset: 0;
-  }
-
-  h1 {
-    width: 12ch;
-    margin: 0;
-    font-size: 3.4rem;
-    color: var(--white);
-    text-align: center;
-  }
-
-  @media (min-width: 320px) and (max-width: 425px) {
-    h1 {
-      font-size: 2.7rem;
+  @media screen and (max-width: 500px) {
+    section {
+      #hero__text-content {
+        #hero__avail-text {
+          width: 10em;
+        }
+      }
     }
   }
 
-  #name {
-    color: var(--light-purple);
-    text-decoration: underline;
-    text-decoration-thickness: 4px;
-  }  
+  @media (prefers-color-scheme: light) {
+    section {
+      background: var(--hero__light-bg);
 
-  p {
-    width: 40ch;
-    text-align: center;
-    color: var(--white);
-    font-weight: 400;
-    font-size: 1.1rem;
-  }
+      #hero__text-content {
+        #hero__headline-title {
+          color: var(--primary-color);
+        }
 
-  @media (max-width: 425px) {
-    p {
-      font-size: var(--font-size-lg);
-      width: 25ch;
-    }
-  }
+        #hero__avail-text {
+          color: var(--primary-color);
+        }
 
-  @media (max-width: 320px) {
-    p {
-      font-size: 1rem;
-      width: 23ch;
+        #hero__description-text {
+          color: var(--primary-color);
+        }
+      }
     }
   }
 </style>

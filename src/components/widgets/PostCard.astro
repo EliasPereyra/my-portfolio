@@ -1,0 +1,87 @@
+---
+import { Image } from "astro:assets";
+
+import { createSlug } from "@/utils/createSlug";
+
+interface Props {
+  img: string;
+  title: string;
+  description: string;
+  tags: string[];
+  pubDate: string;
+}
+
+const { img, title, description, tags, pubDate } = Astro.props;
+---
+
+<article id="post-card">
+  <a id="post-card__slug-link" href={`/posts/${createSlug(title)}`}>
+    <Image
+      id="post-card__cover-thumbnail"
+      src={img}
+      alt="Image about"
+      width={600}
+      height={300}
+    />
+    <h4 id="post-card__title">{title}</h4>
+    <small id="post-card__pub-date">{pubDate}</small>
+    <ul id="post-card__tag-items">
+      {
+        tags.map((tag) => (
+          <li>
+            <small>{tag}</small>
+          </li>
+        ))
+      }
+    </ul>
+    <p id="post-card__brief-desc">{description}</p>
+  </a>
+</article>
+
+<style>
+  #post-card {
+    #post-card__slug-link {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7em;
+      max-width: 25em;
+
+      #post-card__cover-thumbnail {
+        border-radius: 0.7em;
+        aspect-ratio: 16/9;
+        object-fit: contain;
+      }
+
+      #post-card__title {
+        font-size: 2rem;
+        color: var(--white-color);
+      }
+
+      #post-card__pub-date {
+        color: var(--white-gray__color);
+      }
+
+      #post-card__tag-items {
+        display: flex;
+        gap: 0.5em;
+        color: var(--white-gray__color);
+
+        li {
+          border: 1px solid var(--white-gray__color);
+          border-radius: 7px;
+          padding: 2px 9px;
+        }
+      }
+
+      #post-card__brief-desc {
+        display: -webkit-box;
+        font-size: 1rem;
+        color: var(--white-gray__color);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+      }
+    }
+  }
+</style>
