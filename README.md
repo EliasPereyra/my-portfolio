@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://github.com/EliasPereyra/my-portfolio/blob/main/public/assets/logo-white.svg" width="250" />
+    <img src="https://github.com/EliasPereyra/my-portfolio/blob/main/public/assets/logo-w-v2.svg" width="250" />
   <h1>Personal Web Page</h1>
   <p>My personal website, where you can learn about me and see projects that I make.</p>
 </div>
