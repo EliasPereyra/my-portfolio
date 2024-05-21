@@ -1,7 +1,7 @@
 ---
+import Heads from "@/components/Heads.astro";
 import Footer from "@/components/sections/Footer.astro";
 import Navbar from "@/components/sections/Navbar.astro";
-import { ViewTransitions } from "astro:transitions";
 
 export interface Props {
   title: string;
@@ -15,21 +15,7 @@ const { title, author, description } = Astro.props as Props;
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/x-icon" href="/assets/logo-w-v1.svg" />
-    <meta name="author" content={author} />
-    <meta name="description" content={description} />
-    <meta name="view-transition" content="same-origin" />
-    <title>{title}</title>
-    <ViewTransitions />
-    <link
-      rel="preload"
-      href="/fonts/OpenSans/open-sans-cyrillic-700-normal.woff"
-      as="font"
-      type="font/ttf"
-      crossorigin
-    />
+    <Heads title={title} author={author} description={description} />
   </head>
   <body>
     <Navbar />
