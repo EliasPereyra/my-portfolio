@@ -1,6 +1,5 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import { join } from "path";
 
 export interface Props {
   title: string;
@@ -8,7 +7,8 @@ export interface Props {
   description: string;
 }
 
-const canonicalUrl = new URL(Astro.url.pathname);
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const socialImageUrl = new URL("/assets/imgs/social-media.jpg", Astro.url);
 
 const { title, author, description } = Astro.props as Props;
 ---
@@ -27,55 +27,23 @@ const { title, author, description } = Astro.props as Props;
 <link rel="canonical" href={canonicalUrl} />
 
 <!-- Primary Meta Tags -->
-<title>Elias Pereyra Gomez | Fullstack, JavaScript, React.js</title>
-<meta
-  name="title"
-  content="Elias Pereyra Gomez | Fullstack, JavaScript, React.js"
-/>
-<meta
-  name="description"
-  content="Mi sitio web personal donde encontrarás todos mis últimos proyectos y, también, un poquito sobre quién soy"
-/>
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://eliaspereyra.netlify.app/" />
-<meta
-  property="og:title"
-  content="Elias Pereyra Gomez | Fullstack, JavaScript, React.js"
-/>
-<meta
-  property="og:description"
-  content="Mi sitio web personal donde encontrarás todos mis últimos proyectos y, también, un poquito sobre quién soy"
-/>
-<meta
-  property="og:image"
-  content={join(process.cwd(), "src", "assets", "imgs", "social-media.jpg")}
-/>
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={socialImageUrl} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content="https://eliaspereyra.netlify.app/" />
-<meta
-  property="twitter:title"
-  content="Elias Pereyra Gomez | Fullstack, JavaScript, React.js"
-/>
-<meta
-  property="twitter:description"
-  content="Mi sitio web personal donde encontrarás todos mis últimos proyectos y, también, un poquito sobre quién soy"
-/>
-<meta
-  property="twitter:image"
-  content="https://metatags.io/images/meta-tags.png"
-/>
-
-<!-- Meta Tags Generated with https://metatags.io -->
-<meta
-  property="twitter:image"
-  content="https://metatags.io/images/meta-tags.png"
-/>
-
-<title>{title}</title>
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={socialImageUrl} />
 
 <ViewTransitions />
 
