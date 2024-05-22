@@ -26,7 +26,12 @@ const { title, description, tags, publishDate } = post.data;
 const { Content } = await post.render();
 ---
 
-<BaseLayout author="Elias Pereyra" title={title} description={description}>
+<BaseLayout
+  author="Elias Pereyra"
+  title={title}
+  description={description}
+  articleDate={publishDate}
+>
   <article id="blog-post__article">
     <a href="/blog"><LeftArrowIcon color="#eee" /></a>
     <!-- Add the post image on the back, with a transparent gradient upwards pointing to the navbar  -->
