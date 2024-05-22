@@ -7,9 +7,10 @@ export interface Props {
   title: string;
   author: string;
   description: string;
+  articleDate?: Date;
 }
 
-const { title, author, description } = Astro.props as Props;
+const { title, author, description, articleDate } = Astro.props as Props;
 ---
 
 <!doctype html>
