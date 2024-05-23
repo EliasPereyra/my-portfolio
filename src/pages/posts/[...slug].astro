@@ -56,7 +56,11 @@ const { Content } = await post.render();
 
 <style>
   #blog-post__article {
-    background: linear-gradient(380deg, #010613 -20%, #232243 400%);
+    background: conic-gradient(
+      from 0.35turn at 85% -22%,
+      #010613,
+      #232243 150%
+    );
     padding: 12em 10em;
     display: flex;
     flex-direction: column;
