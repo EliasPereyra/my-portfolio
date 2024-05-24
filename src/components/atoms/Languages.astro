@@ -1,6 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import DownArrow from "./DownArrow.astro";
 import LanguagesIcon from "./LanguagesIcon.astro";
+
+import SpainFlagIcon from "@/assets/imgs/flag-of-spain.svg";
+import GBFlagIcon from "@/assets/imgs/flag-of-gb.svg";
 ---
 
 <div id="dropdown">
@@ -9,8 +13,26 @@ import LanguagesIcon from "./LanguagesIcon.astro";
     <DownArrow />
   </button>
   <ul id="dropdown-items">
-    <li><a href="/">Español</a></li>
-    <li><a href="/eng">Inglés</a></li>
+    <li>
+      <a href="/"
+        ><Image
+          src={SpainFlagIcon}
+          alt="The icon of a flag of Spain"
+          width={30}
+          height={30}
+        /> Español</a
+      >
+    </li>
+    <li>
+      <a href="/eng"
+        ><Image
+          src={GBFlagIcon}
+          alt="The icon of a flag of Great Britain"
+          width={30}
+          height={30}
+        /> Inglés</a
+      >
+    </li>
   </ul>
 </div>
 
@@ -19,9 +41,11 @@ import LanguagesIcon from "./LanguagesIcon.astro";
     position: relative;
 
     &:hover #dropdown-items {
-      padding: 1rem 1.2rem;
+      padding: 0.8rem;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       gap: 1rem;
       border: 1px solid var(--secondary-color);
     }
@@ -39,19 +63,21 @@ import LanguagesIcon from "./LanguagesIcon.astro";
       list-style: none;
       border-radius: 5px;
       display: none;
-      padding: 2.2em;
       background: var(--primary-color);
       position: absolute;
       top: 1.7em;
       right: auto;
-      overflow: auto;
-      text-align: center;
       font-size: 0.85rem;
+      overflow: hidden;
+      width: 8em;
 
       a {
         text-decoration: none;
         color: var(--white-color);
         transition: color 0.15s ease-in;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
       }
       a:hover {
         color: var(--secondary-lighter__color);
