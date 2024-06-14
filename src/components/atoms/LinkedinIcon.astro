@@ -2,9 +2,11 @@
 interface Props {
   forSharing?: true;
   href: string;
+  width?: string;
+  height?: string;
 }
 
-const { forSharing, href } = Astro.props;
+const { forSharing, href, width, height } = Astro.props;
 
 const isSharing = forSharing
   ? `https://www.linkedin.com/shareArticle?mini=true&url=${href}`
@@ -19,8 +21,8 @@ const isSharing = forSharing
   aria-label="Share the article on Linkedin"
 >
   <svg
-    width="35"
-    height="35"
+    width={(width) ?? "30"}
+    height={(height) ?? "30"}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 448 512"
     ><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
