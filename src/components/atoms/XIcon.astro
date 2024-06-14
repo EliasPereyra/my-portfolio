@@ -1,21 +1,28 @@
 ---
 interface Props {
-  href: string;
+  account?: string;
+  href?: string;
+  width?: string;
+  height?: string;
 }
 
-const { href } = Astro.props;
+const { href, account, width, height } = Astro.props;
+
+const isForSharing = href
+  ? `https://twitter.com/intent/tweet?text=${href}`
+  : account;
 ---
 
 <a
-  href=`https://twitter.com/intent/tweet?text=${href}`
+  href={isForSharing}
   target="_blank"
   aria-label="Share the article on Twitter"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
     class="icon icon-tabler icon-tabler-brand-x"
-    width="24"
-    height="24"
+    width={width ?? "30"}
+    height={height ?? "30"}
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="#eee"
