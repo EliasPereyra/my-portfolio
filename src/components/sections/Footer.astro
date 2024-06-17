@@ -2,11 +2,27 @@
 import { t } from "i18next";
 import LogoWhite from "../atoms/LogoWhite.astro";
 import AstroIcon from "../atoms/AstroIcon.astro";
+import LinkedinIcon from "../atoms/LinkedinIcon.astro";
+import GithubIcon from "../atoms/GithubIcon.astro";
+import XIcon from "../atoms/XIcon.astro";
 ---
 
 <footer id="footer">
   <div class="footer__content">
-    <a id="footer__my-logo" href="/"> <LogoWhite width="143" height="143" /></a>
+    <div class="footer__social-wrapper">
+      <a id="footer__my-logo" href="/">
+        <LogoWhite width="143" height="143" /></a
+      >
+      <div class="footer__social-links">
+        <GithubIcon width="27" height="27" />
+        <LinkedinIcon
+          width="27"
+          height="27"
+          href="https://linkedin.com/in/elias-pereyra-gomez"
+        />
+        <XIcon width="27" height="27" />
+      </div>
+    </div>
     <div id="footer__tool-used">
       <small>{t("footer.tool-used")}</small>
       <a href="https://astro.build" target="_blank"><AstroIcon /></a>
@@ -16,12 +32,8 @@ import AstroIcon from "../atoms/AstroIcon.astro";
 
 <style>
   #footer {
-    background: linear-gradient(
-      256deg,
-      #080808 33.47%,
-      #0b0b0b 51.39%,
-      #0c0b0b 67.53%
-    );
+    border-top: 0.2px solid hsl(225 33% 15% / 1);
+    background: hsl(225 33% 6% / 1);
     padding: 4em 10em;
     container-type: inline-size;
 
@@ -29,6 +41,20 @@ import AstroIcon from "../atoms/AstroIcon.astro";
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      .footer__social-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        .footer__social-links {
+          margin-top: -0.9rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+        }
+      }
+
       #footer__tool-used {
         display: flex;
         align-items: center;
