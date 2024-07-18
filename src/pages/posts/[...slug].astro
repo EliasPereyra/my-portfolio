@@ -1,12 +1,10 @@
 ---
 import { changeLanguage } from "i18next";
-
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CodeSnippet from "@/components/mdx/CodeSnippet.astro";
 import LeftArrowIcon from "@/components/atoms/LeftArrowIcon.astro";
 import Tag from "@/components/atoms/Tag.astro";
 import Share from "@/components/widgets/Share.astro";
-
 import { createSlug } from "@/utils/createSlug";
 import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/posts";
@@ -14,15 +12,14 @@ import { getPosts } from "@/utils/posts";
 changeLanguage("spa");
 
 export async function getStaticPaths() {
-  const posts = await getPosts();
-  return posts.map((post) => ({
-    params: { slug: createSlug(post.data.title) },
-    props: post,
-  }));
+    const posts = await getPosts();
+    return posts.map((post) => ({
+        params: { slug: createSlug(post.data.title) },
+        props: post,
+    }));
 }
 const post = Astro.props;
 const { title, description, tags, publishDate } = post.data;
-
 const { Content } = await post.render();
 ---
 
@@ -57,7 +54,7 @@ const { Content } = await post.render();
 <style>
   #blog-post__article {
     background: conic-gradient(
-      from 0.35turn at 85% -22%,
+      from 0.35turn at 85% -32%,
       #010613,
       #232243 150%
     );

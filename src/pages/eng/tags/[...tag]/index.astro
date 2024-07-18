@@ -2,6 +2,7 @@
 import { changeLanguage } from "i18next";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getPostTags, getPostsByTag } from "@/utils/posts";
+import PostCard from "@/components/widgets/PostCard.astro";
 
 changeLanguage("eng");
 
@@ -21,7 +22,15 @@ const posts = await getPostsByTag(tag);
     <h2>{tag}</h2>
     {
       posts.length > 0 ? (
-        posts.map((post) => <p>{post}</p>)
+        posts.map((post) => (
+          <PostCard
+            title={post.data.title}
+            description={post.data.description}
+            tags={post.data.tags}
+            img={post.data.coverImg}
+            pubDate={post.data.publishDate.toDateString()}
+          />
+        ))
       ) : (
         <p>There are no posts available</p>
       )

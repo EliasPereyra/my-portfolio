@@ -23,7 +23,12 @@ const { title, description, tags, publishDate } = post.data;
 const { Content } = await post.render();
 ---
 
-<BaseLayout author="Elias Pereyra" title={title} description={description}>
+<BaseLayout
+  author="Elias Pereyra"
+  title={title}
+  description={description}
+  articleDate={publishDate}
+>
   <article id="blog-post__article">
     <a href="/blog"><LeftArrowIcon color="#eee" /></a>
     <!-- Add the post image on the back, with a transparent gradient upwards pointing to the navbar  -->
@@ -48,7 +53,11 @@ const { Content } = await post.render();
 
 <style>
   #blog-post__article {
-    background: linear-gradient(380deg, #010613 -20%, #232243 400%);
+    background: conic-gradient(
+      from 0.35turn at 85% -32%,
+      #010613,
+      #232243 150%
+    );
     padding: 12em 10em;
     display: flex;
     flex-direction: column;

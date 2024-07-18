@@ -1,18 +1,17 @@
 ---
 import { changeLanguage } from "i18next";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-
 import { getPostTags, getPostsByTag } from "@/utils/posts";
 import PostCard from "@/components/widgets/PostCard.astro";
 
 changeLanguage("spa");
 
 export async function getStaticPaths() {
-  const tags = await getPostTags();
-  return tags.map((tag) => ({
-    params: { tag: tag.toLocaleLowerCase() },
-    props: { tag },
-  }));
+    const tags = await getPostTags();
+    return tags.map((tag) => ({
+        params: { tag: tag.toLocaleLowerCase() },
+        props: { tag },
+    }));
 }
 const { tag } = Astro.props;
 const posts = await getPostsByTag(tag);
