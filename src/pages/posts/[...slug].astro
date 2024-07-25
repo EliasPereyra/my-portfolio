@@ -1,10 +1,12 @@
 ---
 import { changeLanguage } from "i18next";
+
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CodeSnippet from "@/components/mdx/CodeSnippet.astro";
 import LeftArrowIcon from "@/components/atoms/LeftArrowIcon.astro";
 import Tag from "@/components/atoms/Tag.astro";
 import Share from "@/components/widgets/Share.astro";
+
 import { createSlug } from "@/utils/createSlug";
 import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/posts";
@@ -12,11 +14,11 @@ import { getPosts } from "@/utils/posts";
 changeLanguage("spa");
 
 export async function getStaticPaths() {
-    const posts = await getPosts();
-    return posts.map((post) => ({
-        params: { slug: createSlug(post.data.title) },
-        props: post,
-    }));
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    params: { slug: createSlug(post.data.title) },
+    props: post,
+  }));
 }
 const post = Astro.props;
 const { title, description, tags, publishDate } = post.data;
@@ -103,15 +105,38 @@ const { Content } = await post.render();
       gap: 2rem;
       max-width: 70em;
 
-      h3 {
+      h1 {
         font-size: 2.2rem;
       }
 
+      h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+      }
+
+      hr {
+        border: 1px solid var(--white-c-600);
+        border-radius: 110px;
+      }
+
       p {
-        color: var(--white-gray__color);
+        color: var(--white-c-700);
         font-size: 1.2rem;
         max-width: 70ch;
         line-height: 2rem;
+      }
+
+      strong {
+        color: var(--white-c-800);
+      }
+
+      a {
+        text-decoration: underline;
+        color: var(--white-c-600);
       }
 
       code {
@@ -121,7 +146,7 @@ const { Content } = await post.render();
 
       li {
         font-size: 1.2rem;
-
+        padding: 1rem;
         list-style: disc;
         list-style-position: inside;
         color: var(--white-gray__color);
