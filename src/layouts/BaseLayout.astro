@@ -26,16 +26,18 @@ const { title, author, description, articleDate } = Astro.props as Props;
       @font-face {
         font-family: "Hind";
         src: url("/fonts/Hind/hind-latin-400-normal.woff") format("woff");
-        font-weight: normal;
+        font-weight: 300 700;
         font-style: normal;
         font-display: swap;
       }
 
       @font-face {
         font-family: "Open Sans";
-        src: url("/fonts/OpenSans/open-sans-cyrillic-800-normal.woff")
+        src: url("/fonts/OpenSans/open-sans-cyrillic-700-normal.woff")
           format("woff");
         font-style: normal;
+        font-weight: 500 700;
+        font-display: swap;
       }
 
       :root {
@@ -171,13 +173,14 @@ const { title, author, description, articleDate } = Astro.props as Props;
       }
 
       h1 {
-        font-family: "Khand Bold", system-ui, sans-serif;
+        font-family: "Open Sans", system-ui, sans-serif;
         font-size: clamp(1.5rem, 2.31rem + 1.39vw, 5rem);
       }
 
       h2 {
         font-family: "Hind", system-ui, sans-serif;
         font-size: clamp(1.5rem, 1.05rem + 1.53vw, 3rem);
+        font-weight: 700;
       }
 
       h3 {
