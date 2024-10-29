@@ -15,22 +15,12 @@ import GBFlagIcon from "@/assets/imgs/flag-of-gb.svg";
   <ul id="dropdown-items">
     <li>
       <a href="/"
-        ><Image
-          src={SpainFlagIcon}
-          alt="The icon of a flag of Spain"
-          width={30}
-          height={30}
-        /> Español</a
+        ><Image src={SpainFlagIcon} alt="The icon of a flag of Spain" /> Español</a
       >
     </li>
     <li>
       <a href="/eng"
-        ><Image
-          src={GBFlagIcon}
-          alt="The icon of a flag of Great Britain"
-          width={30}
-          height={30}
-        /> Inglés</a
+        ><Image src={GBFlagIcon} alt="The icon of a flag of Great Britain" /> Inglés</a
       >
     </li>
   </ul>
@@ -45,9 +35,9 @@ import GBFlagIcon from "@/assets/imgs/flag-of-gb.svg";
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: start;
       gap: 1rem;
-      border: 1px solid var(--secondary-color);
+      border: 1px solid var(--blue-color);
     }
 
     button {
@@ -61,26 +51,35 @@ import GBFlagIcon from "@/assets/imgs/flag-of-gb.svg";
 
     #dropdown-items {
       list-style: none;
-      border-radius: 5px;
+      border-radius: 0.55rem;
       display: none;
-      background: var(--primary-color);
+      background: rgb(9 15 26);
       position: absolute;
       top: 1.7em;
       right: auto;
-      font-size: 0.85rem;
       overflow: hidden;
-      width: 8em;
+      width: 7em;
 
-      a {
-        text-decoration: none;
-        color: var(--white-color);
-        transition: color 0.15s ease-in;
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-      }
-      a:hover {
-        color: var(--secondary-lighter__color);
+      li {
+        margin-inline: auto;
+
+        a {
+          text-decoration: none;
+          color: var(--white-color);
+          transition: color 0.15s ease-in;
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+
+          &:hover {
+            color: var(--blue-color);
+          }
+        }
+        img {
+          width: 20px;
+          height: 20px;
+          margin: 0;
+        }
       }
     }
   }
