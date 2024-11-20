@@ -1,15 +1,24 @@
-export const htmlColor = Symbol("#E34F26")
-export const cssColor = Symbol("#1572B6")
-export const jsColor = Symbol("#F7DF1E")
-export const typescriptColor = Symbol("#007ACC")
-
-export const reactColor = Symbol("#61DAFB")
-export const reactRouterColor = Symbol("#CA4245")
-export const axiosColor = Symbol("#5A29E4")
-export const tailwindCssColor = Symbol("#2298BD")
-export const expressjsColor = Symbol("#fff")
-export const sequelizeColor = Symbol("#52B0E7")
-export const postgreSqlColor = Symbol("#4169E1")
-export const reactHookFormColor = Symbol("#EC5990")
-export const dotNetColor = Symbol("#512BD4")
-export const sqlServerColor = Symbol("#CC2927")
+export const techColors = {
+  HTML: Symbol("#E34F26"),
+  CSS: Symbol("#1572B6"),
+  JS: Symbol("#F7DF1E"),
+  TS: Symbol("#007ACC"),
+  NextJs: Symbol("#000000"),
+  ShadcnUI: Symbol("#000000"),
+  React: Symbol("#61DAFB"),
+  ReactRouter: Symbol("#CA4245"),
+  Appwrite: {
+    logo: "/assets/logos/appwrite-logo.svg",
+    color: Symbol("#FD366E"),
+  },
+  Zod: Symbol("#3E67B1"),
+  Axios: Symbol("#5A29E4"),
+  TailwindCSS: Symbol("#2298BD"),
+  ExpressJs: Symbol("#fff"),
+  Sequelize: Symbol("#52B0E7"),
+  PostgreSQL: Symbol("#4169E1"),
+  reactHookForm: Symbol("#EC5990"),
+  ReactTable: Symbol("#FF4154"),
+  DotNet: Symbol("#512BD4"),
+  SQLServer: Symbol("#CC2927"),
+};
