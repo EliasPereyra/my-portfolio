@@ -8,31 +8,36 @@
   },
   "hero": {
     "available": "Disponible para trabajar",
-    "headline": "Hola! Me llamo Elias",
+    "headline": "Hola! Me llamo Elias Pereyra",
     "description": "Desarrollador Fullstack | Contribuidor Open Source"
   },
   "portfolio": {
-    "title": "Últimos Proyectos"
+    "title": "Proyectos"
   },
   "cards": {
-    "redco": {
-      "title": "Red Comunidad",
-      "description": "Red Comunidad es una Web de reclamos vecinales y ciudadanos, donde se podrá reportar y visibilizar problemáticas ciudadanas y/o de infraestructura comunes a todos."
-    },
-    "multi": {
-      "title": "Multishop",
-      "description": "Este es una aplicación fullstack de un e-commerce multi-cliente donde tantos vendedores pueden publicar y vender sus productos como los clientes pueden encontrar productos de todo tipo."
+    "turnos": {
+      "title": "Turnos Doctor",
+      "first-paragraph": "Un sistema de turnos para la consulta de pacientes. Puedes registrarte, ingresar tus datos y reservar un turno. Luego recibirás una notificación por sms si se confirmó el turno o no.",
+      "second-paragraph": "El sistema está desarrollado con Appwrite (un BaaS - servicio basado en la nube) y Next.js. Este proyecto me ayudó a ver el potencial de Appwrite, el cual facilita el desarrollo de aplicaciones web Fullstack."
     }
   },
   "about": {
     "title": "Sobre mí",
-    "first-desc": "Hola! Me llamo Elias Pereyra Gómez, soy de Argentina. Desarrollador Web Fullstack, con mucho gusto al diseño y mucho entusiasmo en realizar proyectos innovativos! Siempre estoy siempre al tanto de las últimas mejoras que surgen en el mundo del desarrollo de software y experimentando diversas herramientas.",
-    "second-desc": "Además del desarrollo, realizo un voluntariado, haciendo constribuciones Open Source en traducciones de artículos al español en la comunidad de freeCodeCamp. Puedes ver los últimos artículos que he traducido ",
+    "work": {
+      "title": "Lo que hago",
+      "first-desc": "Desarrollador Web Fullstack con experiencia en programación/desarrollo web, con mucho gusto al diseño. Estoy al tanto de las últimas mejoras que surgen en el mundo del desarrollo de software para mejorar mis habilidades y mis trabajos.",
+      "second-desc": "Además del desarrollo web, realizo un voluntariado, haciendo constribuciones open source en traducciones de artículos al español en la comunidad de freeCodeCamp. Puedes ver los últimos artículos que he traducido "
+    },
+    "personal": {
+      "title": "Mi lado personal",
+      "first-desc": "Una de las características que resaltan en mi es la curiosidad. Me gusta investigar y aprender las cosas a fondo. Por ello, también tengo una gran gusto por la programación de bajo nivel y la programación de sistemas.",
+      "second-desc": "Sin embargo, además de esto, me gusta poner en práctica los conceptos que voy aprendiendo. Me gusta ser de mente abierta y flexible, para poder expandir mas mis conocimientos."
+    },
     "third-desc": "aquí."
   },
   "contact": {
-    "title": "Te gustaría trabajar conmigo?",
-    "comment": "Actualmente me encuentro disponible para trabajar. Contáctame. Envíame un mensaje y charlemos sobre tu propuesta.",
+    "title": "¿Te gustaría contactarme?",
+    "comment": "Puedes contactarme y con mucho gusto te respondo. Envíame un mensaje y charlemos sobre tu propuesta.",
     "button": "Envíame un mensaje"
   },
   "footer": {
