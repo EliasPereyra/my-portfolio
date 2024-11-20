@@ -1,19 +1,17 @@
 ---
 import { t } from "i18next";
-import Form from "../widgets/Form.astro";
 ---
 
 <section id="contact">
-  <div class="contact__text-content">
-    <h2 id="contact__title">{t("contact.title")}</h2>
-    <p id="contact__message">{t("contact.comment")}</p>
+  <div class="cont__text-content">
+    <h2 id="tc__title">{t("contact.title")}</h2>
+    <p id="tc__comment">{t("contact.comment")}</p>
   </div>
-  <div id="contact__copy-wrapper">
-    <a href="mailto:eliaspereyra_gomez@hotmail.com" id="contact__copy-btn"
+  <div id="cont__copy-wrapper">
+    <a href="mailto:eliaspereyra_gomez@hotmail.com" id="cw__copy-btn"
       >{t("contact.button")}</a
     >
   </div>
-  <!-- <Form /> -->
 </section>
 
 <script>
@@ -49,7 +47,7 @@ import Form from "../widgets/Form.astro";
     container-type: inline-size;
     text-align: center;
 
-    .contact__text-content {
+    .cont__text-content {
       display: flex;
       flex-direction: column;
       #contact__title {
@@ -59,15 +57,19 @@ import Form from "../widgets/Form.astro";
         line-height: 4rem;
       }
 
-      #contact__message {
+      #tc__comment {
         margin: 1.8rem auto;
         color: var(--white-c-800);
         line-height: 2rem;
-        width: 20em;
+        width: 35ch;
+
+        @media (max-width: 600px) {
+          width: 20ch;
+        }
       }
     }
 
-    #contact__copy-wrapper {
+    #cont__copy-wrapper {
       color: var(--white-color);
       padding: 1em 2em;
       border-radius: 0.5rem;
@@ -83,7 +85,7 @@ import Form from "../widgets/Form.astro";
         border: 1px solid #6c48b9;
       }
 
-      #contact__copy-btn {
+      #cw__copy-btn {
         color: var(--white-c-800);
       }
     }
@@ -97,9 +99,8 @@ import Form from "../widgets/Form.astro";
 
   @media screen and (max-width: 600px) {
     #contact {
-      padding: 12em 2em;
-
-      .contact__text-content {
+      padding: 12em 2rem;
+      .cont__text-content {
         #contact__message {
           width: 100%;
         }
@@ -111,13 +112,28 @@ import Form from "../widgets/Form.astro";
     #contact {
       background: #e4ecf1;
 
-      .contact__text-content {
-        #contact__title {
+      .cont__text-content {
+        #tc__title {
           color: var(--primary-color);
         }
 
-        #contact__message {
+        #tc__comment {
           color: var(--primary-color);
+        }
+      }
+
+      #cont__copy-wrapper {
+        background: #cedaf0;
+        border: 1px solid #92add6;
+        box-shadow: 0px 0px 18px 8px #b0d8ec;
+
+        &:hover {
+          box-shadow: 0px 0px 18px 8px #7fb9f0;
+          border: 1px solid #487db9;
+        }
+
+        #cw__copy-btn {
+          color: var(--black-c-800);
         }
       }
     }
