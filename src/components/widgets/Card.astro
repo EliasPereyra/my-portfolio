@@ -2,6 +2,7 @@
 import WebIcon from "../atoms/WebIcon.astro";
 import GithubIcon from "../atoms/GithubIcon.astro";
 import type { TagData } from "../../utils/Projects";
+import { t } from "i18next";
 
 export interface Props {
   title: string;
@@ -16,33 +17,53 @@ const { title, desc, tags, img, live_link, repo_link } = Astro.props;
 ---
 
 <li class="link-card">
-  <h3 id="link-card__title">{title}</h3>
-  <p id="link-card__description">{desc}</p>
-  <ul id="link-card__tag-items">
-    {
-      tags.map((tag) => (
-        <li style=`border: 1px solid ${tag.tagColor}`>
-          <small>{tag.tagName}</small>
-        </li>
-      ))
-    }
-  </ul>
-  <div id="link-card__link-items">
-    <a href={live_link} target="_blank"><WebIcon pageLink={live_link} /></a>
-    <a href={repo_link} target="_blank"><GithubIcon width="28" height="28" /></a>
+  <div id="link-card__content">
+    <h3 id="link-card__title">{title}</h3>
+    <p id="link-card__description">{t("cards.turnos.first-paragraph")}</p>
+    <p id="link-card__description">{t("cards.turnos.second-paragraph")}</p>
+    <ul id="link-card__tag-items">
+      {
+        tags.map((tag) => (
+          <li style=`--tag-color: ${tag.tagColor}`>
+            <div class="tag-item">
+              <img src={tag.tagIcon} alt={tag.tagName} width="20" height="20" />
+              <small>{tag.tagName}</small>
+              </div>
+          </li>
+        ))
+      }
+    </ul>
+    <div id="link-card__link-items">
+      <a href={live_link} target="_blank"><WebIcon width="28" height="28" /></a>
+      <a href={repo_link} target="_blank"><GithubIcon width="28" height="28" /></a>
+    </div>
   </div>
-  <img id="link-card__cover-thumbnail" src={img} alt="Image" />
+  <img id="link-card__cover-thumbnail" src={img} alt="Image" width="120" height="320" /> 
 </li>
 
 <style>
   .link-card {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 40em;
-
+    gap: 6rem;
+    max-width: 70em;
+    padding: 4em;
+    background: linear-gradient(to right, rgb(9 15 26) 0%, transparent);
+    border-radius: 3rem;
+    
+    @media (max-width: 1210px) {
+      padding: 2rem;
+      flex-direction: column-reverse;
+      gap: 2rem;
+    }
+    
+    #link-card__content {
+      display: flex;
+      flex-direction: column;
+      gap: .99rem;
+      max-width: 40em;
+    }
     #link-card__title {
-      color: hsla(340, 98%, 74%, 1);
+      color: #5a8af2;
       font-size: 36px;
       margin-bottom: 0;
     }
@@ -59,11 +80,27 @@ const { title, desc, tags, img, live_link, repo_link } = Astro.props;
       display: flex;
       gap: .5rem;
       flex-wrap: wrap;
+      font-size: .78rem;
 
       li {
-        border: 1px solid var(--white-gray-color);
-        border-radius: 7px;
-        padding: 2px 9px;
+        border-radius: 1rem;
+        padding: .32rem .87rem;
+        transition: background-color 0.12s ease-in-out;
+        border: 1px solid var(--tag-color);
+
+        &:hover {
+          background-color: color-mix(in srgb, var(--tag-color), black 70%);
+        }
+
+        .tag-item {
+          display: flex;
+          align-items: center;
+          gap: .7rem;
+
+          img {
+            filter: invert(1);
+          }
+        }
       }
     }
 
@@ -73,14 +110,21 @@ const { title, desc, tags, img, live_link, repo_link } = Astro.props;
     }
 
     #link-card__cover-thumbnail {
-      width: 100%;
-      object-fit: cover;
-      border-radius: 10px;
+      width: 30em;
+      object-fit: contain;
+      border-radius: .77rem;
+      box-shadow: 0 0 30px 1px rgba(228, 228, 228, 0.075);
+      transition: box-shadow 0.12s ease-in-out;
+
+      &:hover {
+        box-shadow: 0 0 30px 1px rgba(228, 228, 228, 0.15);
+      }
     }
   }
 
   @media (prefers-color-scheme: light) {
     .link-card {
+    background: linear-gradient(to right, rgb(208, 221, 243) 0%, transparent);
       :is(#link-card__description, #link-card__tag-items) {
         color: var(--primary-color);
       }
