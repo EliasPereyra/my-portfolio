@@ -9,21 +9,23 @@ import XIcon from "../atoms/XIcon.astro";
 
 <footer id="footer">
   <div class="footer__content">
-    <div class="footer__social-wrapper">
-      <a id="footer__my-logo" href="/">
-        <LogoWhite width="143" height="143" /></a
-      >
-      <div class="footer__social-links">
+    <div class="fc__social-wrapper">
+      <a id="sw__my-logo" href="/"> <LogoWhite width="143" height="143" /></a>
+      <div class="sw__social-links">
         <GithubIcon width="27" height="27" />
         <LinkedinIcon
           width="27"
           height="27"
           href="https://linkedin.com/in/elias-pereyra-gomez"
         />
-        <XIcon width="27" height="27" />
+        <XIcon
+          account="https://twitter.com/EliasPereyraGo1"
+          width="27"
+          height="27"
+        />
       </div>
     </div>
-    <div id="footer__tool-used">
+    <div id="fc__tool-used">
       <small>{t("footer.tool-used")}</small>
       <a href="https://astro.build" target="_blank"><AstroIcon /></a>
     </div>
@@ -42,11 +44,11 @@ import XIcon from "../atoms/XIcon.astro";
       justify-content: space-between;
       align-items: center;
 
-      .footer__social-wrapper {
+      .fc__social-wrapper {
         display: flex;
         flex-direction: column;
 
-        .footer__social-links {
+        .sw__social-links {
           margin-top: -0.9rem;
           display: flex;
           align-items: center;
@@ -55,13 +57,19 @@ import XIcon from "../atoms/XIcon.astro";
         }
       }
 
-      #footer__tool-used {
+      #fc__tool-used {
         display: flex;
         align-items: center;
         line-height: 9px;
 
         small {
-          color: var(--white-color);
+          top: 0;
+          left: 0;
+          font-size: 0.73rem;
+          color: var(--white-c-800);
+        }
+        a {
+          margin-top: 0;
         }
       }
     }
@@ -85,16 +93,20 @@ import XIcon from "../atoms/XIcon.astro";
 
   @media (prefers-color-scheme: light) {
     #footer {
+      border-top: 0.2px solid hsl(227, 70%, 87%);
+
       background: linear-gradient(
         9deg,
-        #cadae2 6.27%,
+        #cad6e2 6.27%,
         #f5f5f5 52.57%,
         #f5f5f5 88.98%
       );
 
-      #footer__tool-used {
-        small {
-          color: var(--primary-color);
+      .footer__content {
+        #fc__tool-used {
+          small {
+            color: var(--black-c-700);
+          }
         }
       }
     }
