@@ -1,112 +1,119 @@
 ---
-import { Image } from "astro:assets";
 import { t } from "i18next";
 
-import ProfilePhoto from "@/assets/imgs/profile.webp";
-import XIcon from "../atoms/XIcon.astro";
 ---
 
-<section id="about-section">
-  <div id="about__content-wrapper">
-    <h2 id="about" id="about__title">{t("about.title")}</h2>
-    <div id="about__content__columns-wrapper">
-      <div id="about__content__first-column">
-        <Image
-          id="about__profile-photo"
-          src={ProfilePhoto}
-          alt="Foto de perfil"
-        />
+<section id="abt-section">
+  <h2 id="about" id="abt-section__title">{t("about.title")}</h2>
+  <div id="abt-section__content">
+    <article class="cont-wrapper">
+      <div class="cols-wrapper">
+        <h3 class="col-title">{t("about.work.title")}</h3>
+        <div id="first-column">
+          <p class="description-text">
+            {t("about.work.first-desc")}
+          </p>
+          <p class="description-text">
+            {t("about.work.second-desc")}
+            <a
+              style="color: #5a70f2"
+              href="https://www.freecodecamp.org/espanol/news/author/elias-pereyra/"
+              target="_blank">{t("about.third-desc")}</a
+            >
+          </p>
+        </div>
       </div>
-
-      <div id="about__content__second-column">
-        <p class="about__description-text">
-          {t("about.first-desc")}
-        </p>
-        <p class="about__description-text">
-          {t("about.second-desc")}
-          <a
-            href="https://www.freecodecamp.org/espanol/news/author/elias-pereyra/"
-            target="_blank">{t("about.third-desc")}</a
-          >
-        </p>
-        <!-- <p id="about__follow-text" class="about__description-text">
-          También me puedes seguir en <XIcon
-            account="https://twitter.com/EliasPereyraGo1"
-          />
-        </p> -->
+    </article>
+    <article class="cont-wrapper">
+      <div class="cols-wrapper">
+        <h3 class="col-title">{t("about.personal.title")}</h3>
+        <div id="first-column">
+          <p class="description-text">
+            {t("about.personal.first-desc")}
+          </p>
+          <p class="description-text">
+            {t("about.personal.second-desc")}
+            <a
+              href="https://www.freecodecamp.org/espanol/news/author/elias-pereyra/"
+              target="_blank">{t("about.third-desc")}</a
+            >
+          </p>
+        </div>
       </div>
-    </div>
+    </article>
   </div>
-  <!-- Chore: Show last 3 translated articles from freeCodeCamp  -->
 </section>
 
 <style>
-  #about-section {
+  #abt-section {
     border-top: 1px solid hsl(225, 17%, 6%);
     position: relative;
-    padding: 14em 5rem;
+    padding: 14em 10em;
     background: linear-gradient(250deg, #060912 10%, #14161c 320%);
 
-    #about__content-wrapper {
-      background: linear-gradient(
-        90deg,
-        #2e2d6023 -150%,
-        #37346c23 -120%,
-        #17274d4c 100%
-      );
-      padding: 1.5rem;
-      border: 1px solid #1c1b44;
-      border-radius: 0.77rem;
-      width: 60em;
-      margin-inline: auto;
+    @media (max-width: 1000px) {
+      padding: 12em 4rem;
+    }
 
-      #about__content__columns-wrapper {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-        gap: 3em;
+    #abt-section__title {
+      margin-bottom: 4rem;
+    }
 
-        #about__content__first-column {
-          #about__title {
+    #abt-section__content {
+      display: flex;
+      gap: 1rem;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+
+      .cont-wrapper {
+        background: linear-gradient(
+          90deg,
+          #2e2d6023 -150%,
+          #37346c23 -120%,
+          #17274d4c 100%
+        );
+        padding: 1.5rem;
+        border: 1px solid #1c1b44;
+        border-radius: 0.77rem;
+        margin-inline: auto;
+
+        .cols-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 1em;
+          
+          .col-title {
             color: var(--white-c-900);
-            margin-bottom: 1rem;
+            font-size: 1.9rem;
           }
+          
+          #first-column {
+            .description-text {
+              color: var(--white-c-800);
+              font-size: 1.12rem;
+              margin-inline: auto;
+              margin-bottom: 2em;
+              line-height: 1.9rem;
+              width: fit-content;
 
-          #about__profile-photo {
-            margin-top: 0.5rem;
-            width: 14em;
-            height: 14em;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 0.15rem solid var(--secondary-color);
-          }
-        }
-
-        #about__content__second-column {
-          .about__description-text {
-            color: var(--white-c-800);
-            font-size: 1.3rem;
-            margin-inline: auto;
-            margin-top: 1em;
-            margin-bottom: 2em;
-            line-height: 2.22rem;
-            width: 30em;
-
-            a {
-              color: var(--white-gray__color);
-              text-decoration: underline;
-              transition: color 0.15s ease-in-out;
-              &:hover {
-                color: var(--secondary-lighter__color);
+              a {
+                color: var(--white-gray__color);
+                text-decoration: underline;
+                transition: color 0.15s ease-in-out;
+                &:hover {
+                  color: var(--secondary-lighter__color);
+                }
               }
-            }
 
-            #about__follow-text {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              gap: 0.5rem;
-              color: lightblue;
+              #about__follow-text {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 0.5rem;
+                color: lightblue;
+              }
             }
           }
         }
@@ -115,30 +122,52 @@ import XIcon from "../atoms/XIcon.astro";
   }
 
   @media screen and (max-width: 1000px) {
-    #about-section {
-      .about__description-text {
+    #abt-section {
+      .description-text {
         width: 100%;
       }
     }
   }
 
   @media screen and (max-width: 600px) {
-    #about-section {
+    #abt-section {
       padding: 12em 2rem;
     }
   }
 
   @media (prefers-color-scheme: light) {
-    #about-section {
+    #abt-section {
+    border-top: 1px solid hsl(228, 78%, 86%);
       background: linear-gradient(
         143deg,
         #d6e3ea -227.71%,
         #c0d6e0 -109.44%,
         #eaebee 116.37%
       );
+      color: var(--primary-color);
 
-      :is(h2, p) {
-        color: var(--primary-color);
+      #abt-section__content {
+        .cont-wrapper {
+          background: linear-gradient(
+            90deg,
+            #9b9ac923 -150%,
+            #8c89c023 -120%,
+            #98aee04c 100%
+          );
+        border: 1px solid #bcbbe9;
+
+
+          .cols-wrapper {
+            .col-title {
+              color: var(--black-c-700);
+            }
+
+            #first-column {
+              .description-text {
+              color: var(--black-c-700);
+            }
+            }
+          }
       }
     }
   }
