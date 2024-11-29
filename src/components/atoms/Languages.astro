@@ -7,80 +7,92 @@ import SpainFlagIcon from "@/assets/imgs/flag-of-spain.svg";
 import GBFlagIcon from "@/assets/imgs/flag-of-gb.svg";
 ---
 
-<div id="dropdown">
-  <button aria-label="Languages button">
-    <LanguagesIcon />
-    <DownArrow />
-  </button>
-  <ul id="dropdown-items">
-    <li>
-      <a href="/"
-        ><Image src={SpainFlagIcon} alt="The icon of a flag of Spain" /> Español</a
-      >
-    </li>
-    <li>
-      <a href="/eng"
-        ><Image src={GBFlagIcon} alt="The icon of a flag of Great Britain" /> Inglés</a
-      >
-    </li>
-  </ul>
+<div class="dropdown-wrapper">
+  <div id="dropdown">
+    <button class="dropdown-btn" popovertarget="dropdown-items" aria-label="Languages button">
+      <LanguagesIcon />
+      <DownArrow />
+    </button>
+  </div>
+  <dialog popover id="dropdown-items">
+    <a href="/"
+      ><Image src={SpainFlagIcon} alt="The icon of a flag of Spain" /> Español</a
+    >
+    <a href="/eng"
+      ><Image src={GBFlagIcon} alt="The icon of a flag of Great Britain" /> Inglés</a
+    >
+  </dialog>
 </div>
 
 <style>
+  .dropdown-wrapper{
   #dropdown {
-    position: relative;
-
-    &:hover #dropdown-items {
-      padding: 0.8rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: start;
-      gap: 1rem;
-      border: 1px solid var(--blue-color);
-    }
-
-    button {
-      border: none;
-      background: none;
-      padding: auto;
+    .dropdown-btn {
       display: flex;
       align-items: center;
       gap: 7px;
+      anchor-name: --btn;
+    }
+  }
+
+  #dropdown-items {
+    /* Posicionamiento y estructura */
+    position-anchor: --btn;
+    position: absolute;
+    inset: auto;
+    top: anchor(bottom);
+    left: anchor(left);
+    overflow: hidden;
+    margin: 0;
+    padding: .55rem .77rem;
+    position-try-fallbacks: --left;
+    /* Visualización */
+    display: none;
+    opacity: 0;
+    border-radius: 0.55rem;
+    background: rgb(9 15 26);
+    border: 1px solid var(--blue-color);
+    transition: display .2s, opacity .2s;
+    transition-behavior: allow-discrete;
+
+    & > * {
+      padding: .5rem;
     }
 
-    #dropdown-items {
-      list-style: none;
-      border-radius: 0.55rem;
-      display: none;
-      background: rgb(9 15 26);
-      position: absolute;
-      top: 1.7em;
-      right: auto;
-      overflow: hidden;
-      width: 7em;
+    &:popover-open {
+      display: grid;
+      opacity: 1;
 
-      li {
-        margin-inline: auto;
+      @starting-style {
+        display: grid;
+        opacity: 0;
+      }
+    }
 
-        a {
-          text-decoration: none;
-          color: var(--white-color);
-          transition: color 0.15s ease-in;
-          display: flex;
-          gap: 0.5rem;
-          align-items: center;
+    a {
+        text-decoration: none;
+        color: var(--white-color);
+        transition: color 0.15s ease-in;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
 
-          &:hover {
-            color: var(--blue-color);
-          }
+        &:hover {
+          color: var(--blue-color);
         }
-        img {
-          width: 20px;
-          height: 20px;
-          margin: 0;
-        }
+      }
+      img {
+        aspect-ratio: 1/1;
+        width: 20px;
+        height: 20px;
       }
     }
   }
+}
+
+@position-try --left {
+    inset: auto;
+    top: anchor(bottom);
+    right: anchor(right);
+}
 </style>
