@@ -8,17 +8,23 @@
   },
   "hero": {
     "available": "Disponible para trabajar",
-    "headline": "Hola! Me llamo Elias Pereyra",
-    "description": "Desarrollador Fullstack | Contribuidor Open Source"
+    "headline": "¡Hola! Me llamo Elias Pereyra",
+    "first-col": "Desarrollador Fullstack",
+    "second-col": {
+      "with": "Con",
+      "specialization": "especialización",
+      "in": "en ",
+      "and": "y con mucho gusto al desarrollo"
+    }
   },
   "portfolio": {
     "title": "Proyectos"
   },
   "cards": {
     "turnos": {
-      "title": "Turnos Doctor",
-      "first-paragraph": "Un sistema de turnos para la consulta de pacientes. Puedes registrarte, ingresar tus datos y reservar un turno. Luego recibirás una notificación por sms si se confirmó el turno o no.",
-      "second-paragraph": "El sistema está desarrollado con Appwrite (un BaaS - servicio basado en la nube) y Next.js. Este proyecto me ayudó a ver el potencial de Appwrite, el cual facilita el desarrollo de aplicaciones web Fullstack."
+      "first-paragraph": "Un sistema de gestión de turnos para la consulta de pacientes. Puedes registrarte, ingresar tus datos y reservar un turno. Luego recibirás una notificación por sms si se confirmó el turno o no.",
+      "second-paragraph": "Esto ayuda en la simplificación de los procesos para adquirir un turno con el doctor. Ahorra tiempo de espera para el paciente y agiliza más el proceso de gestión de turnos para el doctor.",
+      "third-paragraph": "El sistema está desarrollado con Appwrite (un BaaS - servicio basado en la nube) y Next.js. Este proyecto me ayudó a ver el potencial de Appwrite, el cual facilita el desarrollo de aplicaciones web Fullstack."
     }
   },
   "about": {

@@ -8,26 +8,30 @@
   },
   "hero": {
     "available": "Available for work",
-    "headline": "Hi! My name is Elias",
-    "description": "Fullstack Developer | Open Source Contributor"
+    "headline": "Hi! My name is Elias Pereyra",
+    "first-col": "Fullstack Developer",
+    "second-col": {
+      "with": "With",
+      "specialization": "specialization",
+      "in": "in ",
+      "and": "and with a great taste for"
+    }
   },
   "portfolio": {
-    "title": "Latest projects",
-    "cards": {
-      "redco": {
-        "title": "Red Comunidad",
-        "description": "Red Comunidad (Community Net) is a website for neighborhood and citizen complaints, where you may report and see citizen problems and/or of infrastructure which are common to everyone."
-      },
-      "multi": {
-        "title": "Multishop",
-        "description": "An ecommerce fullstack app where both sellers and clients can publish and sell their products."
-      }
-    }
+    "title": "Projects"
   },
   "about": {
     "title": "About me",
-    "first-desc": "Hey! My name is Elias Pereyra Gomez, from Argentina. I'm a Fullstack Web Developer, with a great taste in design and a lot of enthusiasm in making innovative projects! I'm always up to date with latest improvements that arise in the world of software development and experimenting with several tools.",
-    "second-desc": "In addition to development, I do a volunteering, making Open Source contributions in translations of tech articles to spanish for the freeCodeCamp community. You can see the latest articles I've translated ",
+    "work": {
+      "title": "What I do",
+      "first-desc": "Fullstack Web Developer with experience in web development, with great taste in design. I'm aware of the latest improvements that arise in the field of software development to improve my abilities and my works.",
+      "second-desc": "In addition to web development, I do a volunteering, making open source contributions in translating article to spanish in the community of freeCodeCamp. You can see the latest articles I've translated "
+    },
+    "personal": {
+      "title": "My personal side",
+      "first-desc": "One of the characteristic that stands out in me is curiosity. I like to investigate and learn things in depth. For this reason, I also have a great taste for low-level programming and system programming.",
+      "second-desc": "However, in addition to this, I like to put in practice the concepts I learn. I like to be open-minded and flexible, so I can expand my knowledge."
+    },
     "third-desc": "here."
   },
   "contact": {
