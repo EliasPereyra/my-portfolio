@@ -5,6 +5,8 @@ import GithubIcon from "../atoms/GithubIcon.astro";
 import LinkedinIcon from "../atoms/LinkedinIcon.astro";
 import PinkAurora from "../atoms/PinkAurora.astro";
 import LightBlueAurora from "../atoms/LightBlueAurora.astro";
+import EmailIcon from "../atoms/EmailIcon.astro";
+import CVIcon from "../atoms/CVIcon.astro";
 ---
 
 <section id="hero">
@@ -20,29 +22,34 @@ import LightBlueAurora from "../atoms/LightBlueAurora.astro";
       <p id="tc__over-title">{t("hero.available")}</p>
     </div>
     <h1 id="tc__headline-title" class="dark">{t("hero.headline")}</h1>
-    <p id="tc__description-text">
-      {t("hero.description")}
+    <p class="description-text first-col">
+      <strong>{t("hero.first-col")}</strong>
+    </p>
+    <p class="description-text second-col">
+      {t("hero.second-col.with")}
+      <span style="color: var(--blue-color)"
+        >{t("hero.second-col.specialization")}</span
+      >
+      {t("hero.second-col.in")}<strong style="color: var(--blue-color)"
+        >Front-end</strong
+      >
+      {t("hero.second-col.and")}
+      <span style="color: var(--blue-color)">Back-end</span>
     </p>
     <div id="tc__social-networks">
       <GithubIcon width="35" height="35" />
       <LinkedinIcon href="https://www.linkedin.com/in/elias-pereyra-gomez/" />
+      <EmailIcon />
+      <CVIcon />
     </div>
   </div>
 </section>
 
 <style>
-  @keyframes ping {
-    75%,
-    to {
-      transform: scale(2);
-      opacity: 0;
-    }
-  }
-
   section {
     background: var(--hero__dark-bg);
-    padding: 8em 2em;
-    z-index: 5;
+    padding: 6em 2em;
+    z-index: 1000;
     position: relative;
 
     &::before {
@@ -105,7 +112,6 @@ import LightBlueAurora from "../atoms/LightBlueAurora.astro";
       animation-delay: 0.1s;
 
       #tc__avail-text {
-        container-type: inline-size;
         padding: 0.5rem;
         color: var(--white-color);
         display: flex;
@@ -116,7 +122,7 @@ import LightBlueAurora from "../atoms/LightBlueAurora.astro";
         background: rgba(255, 125, 169, 0.08);
         border-radius: 1rem;
         margin-bottom: 1rem;
-        width: 20em;
+        min-width: min(100%, 20em);
 
         #effect-wrapper {
           position: relative;
@@ -153,12 +159,21 @@ import LightBlueAurora from "../atoms/LightBlueAurora.astro";
         text-align: center;
       }
 
-      #tc__description-text {
+      .description-text {
         max-width: 30em;
         text-align: center;
         color: var(--white-c-800);
-        font-weight: 400;
         font-size: clamp(1.3rem, 1.05rem + 0.21vw, 1.6rem);
+      }
+
+      .first-col {
+        font-size: 1.74rem;
+        color: var(--secondary-lighter__color);
+      }
+
+      .second-col {
+        font-size: 1.15rem;
+        max-width: 40ch;
       }
     }
 
@@ -166,6 +181,14 @@ import LightBlueAurora from "../atoms/LightBlueAurora.astro";
       display: flex;
       align-items: center;
       gap: 1rem;
+    }
+  }
+
+  @keyframes ping {
+    75%,
+    to {
+      transform: scale(2);
+      opacity: 0;
     }
   }
 
@@ -198,7 +221,7 @@ import LightBlueAurora from "../atoms/LightBlueAurora.astro";
           color: var(--primary-color);
         }
 
-        #tc__description-text {
+        .description-text {
           color: var(--primary-color);
         }
       }
