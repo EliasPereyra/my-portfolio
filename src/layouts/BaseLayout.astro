@@ -26,49 +26,55 @@ const { title, author, description, articleDate } = Astro.props as Props;
       @font-face {
         font-family: "Hind";
         src: url("/fonts/Hind/hind-latin-400-normal.woff") format("woff");
-        font-weight: 300 700;
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Hind Bold";
+        src: url("/fonts/Hind/hind-latin-500-normal.woff") format("woff");
         font-style: normal;
         font-display: swap;
       }
 
       @font-face {
         font-family: "Open Sans";
-        src: url("/fonts/OpenSans/open-sans-cyrillic-700-normal.woff")
+        src: url("/fonts/OpenSans/open-sans-cyrillic-800-normal.woff")
           format("woff");
         font-style: normal;
-        font-weight: 500 700;
+        font-weight: 700;
         font-display: swap;
       }
 
       :root {
-        --black-c: #030916;
-        --white-c: #f2f7f2;
+        --black-c-900: color-mix(
+          in lch,
+          hsl(221, 76%, 5%),
+          hsl(120, 24%, 96%) 5%
+        );
+        --black-c-800: color-mix(
+          in lch,
+          hsl(221, 76%, 5%),
+          hsl(120, 24%, 96%) 15%
+        );
 
-        --black-c-900: color-mix(in lch, var(--black-c), var(--white-c) 5%);
-        --black-c-800: color-mix(in lch, var(--black-c), var(--white-c) 15%);
-        --black-c-700: color-mix(in lch, var(--black-c), var(--white-c) 25%);
-        --black-c-600: color-mix(in lch, var(--black-c), var(--white-c) 35%);
-        --black-c-500: color-mix(in lch, var(--black-c), var(--white-c) 45%);
-        --black-c-400: color-mix(in lch, var(--black-c), var(--white-c) 55%);
-        --black-c-300: color-mix(in lch, var(--black-c), var(--white-c) 65%);
-        --black-c-200: color-mix(in lch, var(--black-c), var(--white-c) 75%);
-        --black-c-100: color-mix(in lch, var(--black-c), var(--white-c) 85%);
-
-        --white-c-900: color-mix(in lch, var(--white-c), var(--black-c) 5%);
-        --white-c-800: color-mix(in lch, var(--white-c), var(--black-c) 15%);
-        --white-c-700: color-mix(in lch, var(--white-c), var(--black-c) 25%);
-        --white-c-600: color-mix(in lch, var(--white-c), var(--black-c) 35%);
-        --white-c-500: color-mix(in lch, var(--white-c), var(--black-c) 45%);
-        --white-c-400: color-mix(in lch, var(--white-c), var(--black-c) 55%);
-        --white-c-300: color-mix(in lch, var(--white-c), var(--black-c) 65%);
-        --white-c-200: color-mix(in lch, var(--white-c), var(--black-c) 75%);
-        --white-c-100: color-mix(in lch, var(--white-c), var(--black-c) 85%);
+        --white-c-900: color-mix(
+          in lch,
+          hsl(120, 24%, 96%),
+          hsl(221, 76%, 5%) 5%
+        );
+        --white-c-800: color-mix(
+          in lch,
+          hsl(120, 24%, 96%),
+          hsl(221, 76%, 5%) 15%
+        );
 
         --primary-color: var(--black-c-900);
-        --secondary-color: #9e1946;
-        --secondary-lighter__color: #e05181;
+        --secondary-color: hsl(160, 73%, 36%);
+        --secondary-lighter__color: hsl(273, 88%, 68%);
+        --blue-color: hsl(212, 100%, 70%);
         --white-color: var(--white-c-900);
-        --white-gray__color: #ced3ce;
 
         --dark-rb-gradient: linear-gradient(
           90deg,
@@ -76,23 +82,6 @@ const { title, author, description, articleDate } = Astro.props as Props;
           var(--secondary-color) 100%
         );
         --hero__dark-bg: linear-gradient(-200deg, #232243 -79%, #010613 90%);
-
-        --lg-desktop: 1440px;
-        --sm-desktop: 1330px;
-        --tablet: 1000px;
-        --vertical-phone: 780px;
-        --lg-mobile: 425px;
-        --md-mobile: 375px;
-        --sm-mobile: 325px;
-      }
-
-      :root.light {
-        color: var(--white-c-800);
-        --hero__light-bg: linear-gradient(
-          169deg,
-          #f9f8f8 -169.26%,
-          #dbe5fc 144.3%
-        );
       }
 
       @media (prefers-color-scheme: light) {
@@ -111,12 +100,31 @@ const { title, author, description, articleDate } = Astro.props as Props;
         }
       }
 
+      /* CSS Reset */
       *,
       *::before,
       *::after {
         box-sizing: border-box;
+      }
+
+      * {
         padding: 0;
         margin: 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        text-wrap: balance;
+      }
+
+      p {
+        text-wrap: pretty;
+        line-height: 1.7rem;
+        font-size: clamp(1.3rem, 1.24rem + 0.14vw, 1.5rem);
       }
 
       html {
@@ -155,15 +163,6 @@ const { title, author, description, articleDate } = Astro.props as Props;
         background-color: transparent;
       }
 
-      input,
-      textarea {
-        border: none;
-
-        &:focus {
-          outline-color: var(--secondary-lighter__color);
-        }
-      }
-
       ul {
         padding: 0;
       }
@@ -173,8 +172,8 @@ const { title, author, description, articleDate } = Astro.props as Props;
       }
 
       h1 {
-        font-family: "Open Sans", system-ui, sans-serif;
-        font-size: clamp(1.5rem, 2.31rem + 1.39vw, 5rem);
+        font-family: "Opens Sans", system-ui, sans-serif;
+        font-size: clamp(1.5rem, 2.01rem + 1.39vw, 5rem);
       }
 
       h2 {
@@ -193,35 +192,13 @@ const { title, author, description, articleDate } = Astro.props as Props;
         font-size: 1.5rem;
       }
 
-      p {
-        text-wrap: pretty;
-        line-height: 1.7rem;
-        font-size: clamp(1.3rem, 1.24rem + 0.14vw, 1.5rem);
-      }
-
       img {
         display: block;
         max-width: 100%;
       }
 
-      :is(h1, h2, h3, h4) {
-        text-wrap: balance;
-      }
-
       :is(p, a, li, small, button, label, input, textarea) {
         font-family: "Hind", sans-serif;
-      }
-
-      .animate {
-        opacity: 0;
-        transform: translateY(4rem);
-        transition: all 0.7s ease-in-out;
-        transition-delay: 0.1s;
-      }
-
-      .is-visible {
-        opacity: 1;
-        transform: translateY(0);
       }
     </style>
   </body>
