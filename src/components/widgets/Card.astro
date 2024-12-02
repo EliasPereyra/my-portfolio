@@ -1,19 +1,19 @@
 ---
+import { t } from "i18next";
+
 import WebIcon from "../atoms/WebIcon.astro";
 import GithubIcon from "../atoms/GithubIcon.astro";
 import type { TagData } from "../../utils/Projects";
-import { t } from "i18next";
 
 export interface Props {
   title: string;
-  desc: string;
   tags: TagData[];
   img: string;
   live_link: string;
   repo_link: string;
 }
 
-const { title, desc, tags, img, live_link, repo_link } = Astro.props;
+const { title, tags, img, live_link, repo_link } = Astro.props;
 ---
 
 <li class="link-card">
@@ -21,6 +21,7 @@ const { title, desc, tags, img, live_link, repo_link } = Astro.props;
     <h3 id="link-card__title">{title}</h3>
     <p id="link-card__description">{t("cards.turnos.first-paragraph")}</p>
     <p id="link-card__description">{t("cards.turnos.second-paragraph")}</p>
+    <p id="link-card__description">{t("cards.turnos.third-paragraph")}</p>
     <ul id="link-card__tag-items">
       {
         tags.map((tag) => (
@@ -38,13 +39,14 @@ const { title, desc, tags, img, live_link, repo_link } = Astro.props;
       <a href={repo_link} target="_blank"><GithubIcon width="28" height="28" /></a>
     </div>
   </div>
-  <img id="link-card__cover-thumbnail" src={img} alt="Image" width="120" height="320" /> 
+  <img id="link-card__cover-thumbnail" src={img} alt={`Thumbnail of ${title}`} width="120" height="320" arial-label={`Thumbnail of ${title}`} /> 
 </li>
 
 <style>
   .link-card {
     display: flex;
-    gap: 6rem;
+    align-items: center;
+    gap: 4.5rem;
     max-width: 70em;
     padding: 4em;
     background: linear-gradient(to right, rgb(9 15 26) 0%, transparent);
@@ -72,7 +74,7 @@ const { title, desc, tags, img, live_link, repo_link } = Astro.props;
       margin: 0;
       color: var(--white-c-800);
       font-size: 1.1rem;
-      line-height: 1.5rem;
+      line-height: 1.6rem;
     }
 
     #link-card__tag-items {
@@ -110,7 +112,9 @@ const { title, desc, tags, img, live_link, repo_link } = Astro.props;
     }
 
     #link-card__cover-thumbnail {
-      width: 30em;
+      width: 23em;
+      height: 20em;
+      aspect-ratio: 16/9;
       object-fit: contain;
       border-radius: .77rem;
       box-shadow: 0 0 30px 1px rgba(228, 228, 228, 0.075);
