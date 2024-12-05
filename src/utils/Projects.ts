@@ -8,7 +8,6 @@ export interface TagData {
 
 export interface Project {
   title: string;
-  desc: string;
   project_img: string;
   tags: TagData[];
   live_link: string;
@@ -17,8 +16,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Turnos Doctor",
-    desc: "Red Comunidad es una Web de reclamos vecinales y ciudadanos, donde se podrá reportar y visibilizar problemáticas ciudadanas y/o de infraestructura comunes a todos.",
+    title: "DocHeal",
     project_img: "/assets/turnos-doctor.jpg",
     tags: [
       {
@@ -67,7 +65,7 @@ export const projects: Project[] = [
         tagColor: techColors.TS.description,
       },
     ],
-    live_link: "",
+    live_link: "https://docheal.vercel.app/",
     repo_link: "https://github.com/EliasPereyra/docheal",
   },
 ];
