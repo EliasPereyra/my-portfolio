@@ -8,7 +8,7 @@ import { t } from "i18next";
   <div id="abt-section__content">
     <article class="cont-wrapper">
       <div class="cols-wrapper">
-        <h3 class="col-title">{t("about.work.title")}</h3>
+        <h3 class="col-title work">{t("about.work.title")}</h3>
         <div id="first-column">
           <p class="description-text">
             {t("about.work.first-desc")}
@@ -21,12 +21,30 @@ import { t } from "i18next";
               target="_blank">{t("about.third-desc")}</a
             >
           </p>
+          <div class="card-wrapper">
+            <div class="card">
+              <a href="https://www.freecodecamp.org/espanol/news/explotacion-de-cors-como-probar-vulnerabilidades/" target="_blank">
+                <h5>Explotación de CORS: Cómo probar vulnerabilidades de recursos compartidos entre orígenes</h5>
+              </a>
+            </div>
+            <div class="card">
+              <a href="https://www.freecodecamp.org/espanol/news/gitting-things-done-una-guia-visual-y-practica-para-git-libro-completo/" target="_blank">
+                <h5>Gitting Things Done – Una guía visual y práctica para Git [Libro completo]</h5>
+              </a>
+            </div>
+            <div class="card">
+              <a href="https://www.freecodecamp.org/espanol/news/learn-linux-for-beginners-from-basics-to-advanced-techniques-full-book/" target="_blank">
+                <h5>Aprender Linux para Principiantes: Desde las Bases a Técnicas Avanzadas [Libro Completo]</h5>
+              </a>
+            </div>
+          </div>
         </div>
+        
       </div>
     </article>
     <article class="cont-wrapper">
       <div class="cols-wrapper">
-        <h3 class="col-title">{t("about.personal.title")}</h3>
+        <h3 class="col-title personal">{t("about.personal.title")}</h3>
         <div id="first-column">
           <p class="description-text">
             {t("about.personal.first-desc")}
@@ -41,11 +59,28 @@ import { t } from "i18next";
 </section>
 
 <style>
+  
+
   #abt-section {
     border-top: 1px solid hsl(225, 17%, 6%);
     position: relative;
-    padding: 14em 10em;
+    padding: 16em 10em;
+    z-index: 5;
     background: linear-gradient(250deg, #060912 10%, #14161c 320%);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url("/assets/grid.svg");
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      opacity: 0.34;
+      filter: invert(0.85);
+      mask-image: linear-gradient(350deg, transparent 70%, black);
+    }
 
     @media (max-width: 1000px) {
       padding: 12em 4rem;
@@ -79,38 +114,78 @@ import { t } from "i18next";
           display: flex;
           flex-direction: column;
           gap: 1em;
-          
+
           .col-title {
             color: var(--white-c-900);
             font-size: 1.9rem;
           }
+
+          .work {
+            color: #91ff90;
+          }
+
+          .personal {
+            color: #adc3ff;
+          }
           
           #first-column {
+            position: relative;
             .description-text {
               color: var(--white-c-800);
               font-size: 1.12rem;
               margin-inline: auto;
               margin-bottom: 2em;
-              line-height: 1.9rem;
+              line-height: 1.6rem;
               width: fit-content;
+            }
 
-              a {
-                color: var(--white-gray__color);
-                text-decoration: underline;
-                transition: color 0.15s ease-in-out;
-                &:hover {
-                  color: var(--secondary-lighter__color);
+            .card-wrapper {
+              .card {
+                padding: 1.4em 1em;
+                border: 1px solid #1c1b44;
+                border-radius: 0.5em;
+                width: 8em;
+                height: auto;
+                position: absolute;
+                bottom: 10;
+                left: 12em;
+                background: linear-gradient(250deg, #060912 10%, #14161c 320%);
+                transition: transform 0.23s ease-in-out;
+
+                h5 {
+                  color: var(--white-c-900);
+                  font-size: 0.9rem;
+
+                  &:hover {
+                    text-decoration: underline;
+                  }
+                }
+
+                &:nth-child(1) {
+                  transform: translateX(-5em) rotate(-10deg);
+
+                  &:hover {
+                    transform: translateX(-8em) rotate(0deg) scale(1.2);
+                  }
+                }
+
+                &:nth-child(2){
+                  transform: rotate(0deg); 
+                  z-index: 5;
+
+                  &:hover {
+                    transform: translateX(0em) scale(1.2);
+                  }
+                }
+
+                &:nth-child(3){
+                  transform: translateX(5em) rotate(10deg);
+
+                  &:hover {
+                    transform: translateX(8em) rotate(0deg) scale(1.2);
+                  }
                 }
               }
-
-              #about__follow-text {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 0.5rem;
-                color: lightblue;
-              }
-            }
           }
         }
       }
@@ -127,7 +202,7 @@ import { t } from "i18next";
 
   @media screen and (max-width: 600px) {
     #abt-section {
-      padding: 12em 2rem;
+      padding: 12em 1rem;
     }
   }
 
