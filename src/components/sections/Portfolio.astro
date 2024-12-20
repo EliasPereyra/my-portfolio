@@ -10,18 +10,15 @@ import { projects } from "../../utils/Projects";
     <h2>{t("portfolio.title")}</h2>
     <ul>
       {
-        projects.map(
-          ({ title, desc, tags, project_img, live_link, repo_link }) => (
-            <Card
-              title={title}
-              desc={desc}
-              tags={tags}
-              img={project_img}
-              live_link={live_link}
-              repo_link={repo_link}
-            />
-          )
-        )
+        projects.map(({ title, tags, project_img, live_link, repo_link }) => (
+          <Card
+            title={title}
+            tags={tags}
+            img={project_img}
+            live_link={live_link}
+            repo_link={repo_link}
+          />
+        ))
       }
     </ul>
   </div>
@@ -33,7 +30,7 @@ import { projects } from "../../utils/Projects";
     background: #060912;
 
     @media screen and (max-width: 810px) {
-      padding: 10em 4em;
+      padding: 10em 1em;
     }
 
     #content {
@@ -50,7 +47,7 @@ import { projects } from "../../utils/Projects";
         max-width: 90em;
         color: hsl(233, 53%, 27%);
         display: grid;
-        gap: 10em;
+        gap: 5em;
         justify-items: center;
         padding: 0;
       }
