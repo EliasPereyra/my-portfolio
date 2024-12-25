@@ -1,6 +1,6 @@
 {
   "name": "my-portfolio",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "author": "EliasPereyra",
   "description": "My personal portfolio",
   "repository": {
@@ -39,19 +39,19 @@
     "astro-i18next": "1.0.0-beta.21",
     "i18next": "23.7.20",
     "resend": "3.2.0",
-    "tinacms": "1.5.28"
+    "tinacms": "2.5.2"
   },
   "devDependencies": {
     "@astrojs/mdx": "^4.0.3",
-    "@tinacms/cli": "^1.6.10",
+    "@tinacms/cli": "^1.7.0",
     "@types/node": "^20.11.19",
     "@types/toastify-js": "^1.12.3",
     "@typescript-eslint/parser": "^7.5.0",
-    "eslint": "^9.0.0",
+    "eslint": "9.0.0",
     "eslint-plugin-astro": "^0.34.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "toastify-js": "^1.12.0",
-    "typescript": "5.3.3"
+    "typescript": "^5.3.3"
   }
 }

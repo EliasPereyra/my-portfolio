@@ -1,17 +1,12 @@
-import { defineConfig } from "tinacms";
+import { defineStaticConfig } from "tinacms";
 
 // Your hosting provider likely exposes this as an environment variable
-const branch =
-  process.env.GITHUB_BRANCH ||
-  process.env.HEAD ||
-  "newversion";
+const branch = process.env.GITHUB_BRANCH || process.env.HEAD || "main";
 
-export default defineConfig({
+export default defineStaticConfig({
   branch,
-
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   token: process.env.TINA_TOKEN,
-
   build: {
     outputFolder: "admin",
     publicFolder: "public",
@@ -26,9 +21,9 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "posts",
+        name: "post",
         label: "Blog posts",
-        path: "src/content/posts",
+        path: "src/content/blog",
         format: "mdx",
         fields: [
           {
@@ -46,23 +41,23 @@ export default defineConfig({
           },
           {
             type: "datetime",
-            name: "publishDate", 
+            name: "publishDate",
             label: "Publication Date",
-            required: true
+            required: true,
           },
           {
             type: "image",
             name: "coverImg",
             label: "Cover Image",
             required: true,
-            description: "A cover image used for each post"
+            description: "A cover image used for each post",
           },
           {
             type: "datetime",
             name: "lengReadingTime",
             label: "Content Length Reading Time",
             required: false,
-            description: "The time estimated for reading a post"
+            description: "The time estimated for reading a post",
           },
           {
             type: "string",
@@ -76,8 +71,8 @@ export default defineConfig({
             type: "boolean",
             name: "draft",
             label: "Draft",
-            description: "If it's a draft, then it's not published yet"
-          }
+            description: "If it's a draft, then it's not published yet",
+          },
         ],
       },
     ],
