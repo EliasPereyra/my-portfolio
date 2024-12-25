@@ -1,6 +1,6 @@
 {
   "name": "my-portfolio",
-  "version": "4.1.1",
+  "version": "4.2.0",
   "author": "EliasPereyra",
   "description": "My personal portfolio",
   "repository": {
@@ -32,17 +32,17 @@
     "i18n:generate": "astro-i18next generate"
   },
   "dependencies": {
-    "@astrojs/netlify": "5.5.4",
+    "@astrojs/netlify": "6.0.1",
     "@fontsource/quicksand": "^5.1.0",
-    "@sentry/astro": "8.35.0",
-    "astro": "4.16.7",
+    "@sentry/astro": "8.47.0",
+    "astro": "5.1.1",
     "astro-i18next": "1.0.0-beta.21",
     "i18next": "23.7.20",
     "resend": "3.2.0",
     "tinacms": "1.5.28"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.1.1",
+    "@astrojs/mdx": "^4.0.3",
     "@tinacms/cli": "^1.6.10",
     "@types/node": "^20.11.19",
     "@types/toastify-js": "^1.12.3",
