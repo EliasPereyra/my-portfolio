@@ -3,15 +3,12 @@ import { t } from "i18next";
 
 import Languages from "../atoms/Languages.astro";
 import LogoWhite from "../atoms/LogoWhite.astro";
-import LogoDark from "../atoms/LogoDark.astro";
-import TagsIcon from "../atoms/TagsIcon.astro";
 
 ---
 
 <nav id="navbar" transition:animate="fade">
   <a href="/">
     <LogoWhite width="73" height="73" />
-    <!-- <LogoDark />  -->
   </a>
   <ul id="navbar-items">
     <li><a href="/#">{t("navbar.home")}</a></li>
@@ -21,7 +18,6 @@ import TagsIcon from "../atoms/TagsIcon.astro";
     <li><a href="/#contact">{t("navbar.contact")}</a></li>
   </ul>
   <div class="icons">
-    <!-- <TagsIcon /> -->
     <Languages />
   </div>
 </nav>
