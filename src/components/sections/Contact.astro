@@ -37,15 +37,30 @@ import { t } from "i18next";
 <style>
   #contact {
     padding: 14em 10em;
-    background: radial-gradient(#4c6dff02 15%, #080a10 80%);
     display: flex;
     flex-direction: column;
     gap: 1em;
     justify-content: center;
     align-items: center;
-    position: relative;
     container-type: inline-size;
     text-align: center;
+    position: relative;
+    z-index: 5;
+    background: linear-gradient(250deg, #060912 10%, #0c0f16 320%);
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: auto;
+      background-image: url("/assets/grid.svg");
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      opacity: 0.34;
+      filter: saturate(100%) invert(0.85) drop-shadow(0 0 0.75rem #2d97d4fa)
+        hue-rotate(90deg);
+      mask-image: radial-gradient(ellipse at center, #060912, transparent);
+    }
 
     .cont__text-content {
       display: flex;
