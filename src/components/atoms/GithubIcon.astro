@@ -1,17 +1,14 @@
 ---
 export interface Props {
+  link: string;
   width: string;
   height: string;
 }
 
-const { width, height } = Astro.props;
+const { link, width, height } = Astro.props;
 ---
 
-<a
-  aria-label="Redirect to my github account"
-  href="https://github.com/EliasPereyra"
-  target="_blank"
->
+<a aria-label="Redirect to my github account" href={link} target="_blank">
   <svg
     width={width}
     height={height}
