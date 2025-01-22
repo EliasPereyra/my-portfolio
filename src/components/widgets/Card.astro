@@ -51,8 +51,8 @@ const { title, tags, img, live_link, repo_link } = Astro.props;
   .link-card {
     display: flex;
     gap: 2em;
-    max-width: 50em;
-    padding: 2em;
+    max-width: 70em;
+    padding: 3em;
     position: relative;
 
     > * {
@@ -65,7 +65,7 @@ const { title, tags, img, live_link, repo_link } = Astro.props;
       top: -3px;
       left: -3px;
       border-radius: 3rem;
-      background: linear-gradient(160deg, #131924, #081122 40%, #060912 60%, #060912 80%);
+      background: linear-gradient(160deg, #2b3952, #0b1525 40%, #060912 60%, #060912 80%);
       z-index: 1;
       width: calc(100% + 10px);
       height: calc(100% + 10px);
@@ -93,7 +93,7 @@ const { title, tags, img, live_link, repo_link } = Astro.props;
       display: flex;
       flex-direction: column;
       gap: .99rem;
-      max-width: 40em;
+      max-width: 30em;
       
       .link-card__header {
         display: flex;
@@ -126,12 +126,11 @@ const { title, tags, img, live_link, repo_link } = Astro.props;
       gap: 1rem;
 
       .link-card__cover-thumbnail {
-        width: 15em;
+        width: 30em;
         height: 15em;
         aspect-ratio: 16/9;
         object-fit: contain;
         border-radius: .77rem;
-        box-shadow: 0 0 30px 1px #060912;
       }
 
       #link-card__tag-items {
