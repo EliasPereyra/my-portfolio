@@ -31,13 +31,15 @@
     "title": "Sobre mí",
     "work": {
       "title": "Lo que hago",
-      "first-desc": "Desarrollador Web Fullstack con experiencia en programación/desarrollo web, con mucho gusto al diseño. Estoy al tanto de las últimas mejoras que surgen en el mundo del desarrollo de software para mejorar mis habilidades y mis trabajos.",
-      "second-desc": "Además del desarrollo web, realizo un voluntariado, haciendo constribuciones open source en traducciones de artículos al español en la comunidad de freeCodeCamp. Puedes ver los últimos artículos que he traducido "
+      "first-desc": "Me especializo en el Desarrollo Front-end, haciendo énfasis en una buena optimización de la página, asegurándome en proveer una buena estética y una buena experiencia de uso para el usuario. ",
+      "second-desc": "Los proyectos que realizo de forma autónoma también los diseño yo mismo, y utilizo dos herramientas favoritas, de forma intercambiable, para este proceso: Figma y Penpot.",
+      "third-desc": "Además del desarrollo web, realizo un voluntariado, haciendo contribuciones open source en traducciones de artículos al español en la comunidad de freeCodeCamp. Puedes ver los artículos que he traducido "
     },
     "personal": {
       "title": "Mi lado personal",
-      "first-desc": "Una de las características que resaltan en mi es la curiosidad. Me gusta investigar y aprender las cosas a fondo. Por ello, también tengo una gran gusto por la programación de bajo nivel y la programación de sistemas.",
-      "second-desc": "Sin embargo, además de esto, me gusta poner en práctica los conceptos que voy aprendiendo. Me gusta ser de mente abierta y flexible, para poder expandir mas mis conocimientos."
+      "first-desc": "Una de las características que resaltan en mí es la curiosidad (me lleva más allá de lo ordinario), ser independiente (me gusta tener un balance entre colaboración y autonomía) y ser resiliente (no me rindo hasta lograr el resultado que busco).",
+      "second-desc": "Me gusta investigar y aprender cómo funcionan las cosas desde sus fundamentos. Es por ello también que tengo una gran gusto por la programación de bajo nivel, la programación de sistemas, la ciberseguridad, Sistema Operativos, etc., saber estos fundamentos me beneficia en tener una visión más amplia sobre el desarrollo de software.",
+      "third-desc": "Y sumando a todo lo anterior, me gusta ser de mente abierta y flexible en aprender nuevas herramientas, para expandir y obtener más experiencia en distintas áreas del desarrollo. Y, me encanta aprender nuevos idiomas, una pasión que viene hace más de 10 años."
     },
     "third-desc": "aquí."
   },
