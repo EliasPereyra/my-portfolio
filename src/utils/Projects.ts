@@ -17,7 +17,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "DocHeal",
-    project_img: "/assets/turnos-doctor.jpg",
+    project_img: "/assets/turnos.jpg",
     tags: [
       {
         tagName: "React.js",
