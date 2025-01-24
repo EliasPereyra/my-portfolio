@@ -3,24 +3,33 @@ import { t } from "i18next";
 
 ---
 
-<section id="abt-section">
+<section id="abt-section" transition:persist>
   <h2 id="about" class="abt-section__title">{t("about.title")}</h2>
   <div id="abt-section__content">
-    <article class="cont-wrapper">
+    <article class="cont-wrapper" >
       <div class="glows"></div>
       <div class="cols-wrapper">
         <h3 class="col-title work">{t("about.work.title")}</h3>
         <div id="first-column">
           <p class="description-text">
             {t("about.work.first-desc")}
+            <strong style="color: var(--light-green);">{t("about.work.optimizacion")}</strong>
+            {t("about.work.first-part")}
+            <strong style="color: var(--light-green);">{t("about.work.estetica")}</strong>
+            {t("about.work.second-part")}
+            <strong style="color: var(--light-green);">{t("about.work.experiencia")}</strong>
+            {t("about.work.third-part")}
           </p>
           <p class="description-text">
             {t("about.work.second-desc")}
+            <strong style="color: var(--light-green);">{t("about.work.figma")}</strong>
+            {t("about.work.y")}
+            <strong style="color: var(--light-green);">{t("about.work.penpot")}</strong>
           </p>
           <p class="description-text">
             {t("about.work.third-desc")}
             <a
-              style="color: #5a70f2"
+              style="color: var(--light-green);"
               href="https://www.freecodecamp.org/espanol/news/author/elias-pereyra/"
               target="_blank">{t("about.third-desc")}</a
             >
@@ -46,19 +55,35 @@ import { t } from "i18next";
         
       </div>
     </article>
-    <article class="cont-wrapper">
+    <article class="cont-wrapper" transition:persist>
       <div class="glows"></div>
       <div class="cols-wrapper">
         <h3 class="col-title personal">{t("about.personal.title")}</h3>
         <div id="first-column">
           <p class="description-text">
             {t("about.personal.first-desc")}
+            <strong style="color: var(--light-blue);">{t("about.personal.curiosidad")}</strong>
+            {t("about.personal.first-part")}
+            <strong style="color: var(--light-blue);">{t("about.personal.independiente")}</strong>
+            {t("about.personal.second-part")}
+            <strong style="color: var(--light-blue);">{t("about.personal.resiliente")}</strong>
+            {t("about.personal.third-part")}
           </p>
           <p class="description-text">
             {t("about.personal.second-desc")}
+            <strong style="color: var(--light-blue);">{t("about.personal.investigar")}</strong>
+            {t("about.personal.fourth-part")}
+            <strong style="color: var(--light-blue);">{t("about.personal.fundamentos")}</strong>
+            {t("about.personal.fifth-part")}
           </p>
           <p class="description-text">
             {t("about.personal.third-desc")}
+            <strong style="color: var(--light-blue);">{t("about.personal.mente")}</strong>
+            {t("about.personal.sixth-part")}
+            <strong style="color: var(--light-blue);">{t("about.personal.flexible")}</strong>
+            {t("about.personal.seventh-part")}
+            <strong style="color: var(--light-blue);">{t("about.personal.idiomas")}</strong>
+            {t("about.personal.eighth-part")}
           </p>
         </div>
       </div>
@@ -71,6 +96,8 @@ import { t } from "i18next";
     --border-radius: 0.77rem;
     --border-width: 2px;
     --blur: 10px;
+    --light-green: #91ff90;
+    --light-blue: #adc3ff;
   }
 
   @property --start {
@@ -118,7 +145,7 @@ import { t } from "i18next";
 
       .cont-wrapper {
         --start: 0;
-        --active: 0.15;
+        --active: 0.12;
         background: linear-gradient(156deg, #3548c1 -150%, #131f40f2 -120%, #070c18d9 100%);
         padding: 1.5rem;
         border: 1px solid #1c1b44;
@@ -149,7 +176,7 @@ import { t } from "i18next";
             mask-composite: intersect;
             mask-clip: padding-box, border-box;
             opacity: var(--active);
-            transition: opacity .5s;
+            transition: opacity .3s;
           }
         }
 
@@ -161,7 +188,7 @@ import { t } from "i18next";
           background-attachment: fixed;
           border-radius: var(--border-radius);
           opacity: var(--active);
-          transition: opacity .5s;
+          transition: opacity .3s;
         }
 
         &::before {
@@ -184,7 +211,7 @@ import { t } from "i18next";
           mask-clip: padding-box, border-box;
           mask-composite: intersect;
           opacity: var(--active);
-          transition: opacity .5s;
+          transition: opacity .3s;
         }
 
         &::after {
@@ -223,11 +250,11 @@ import { t } from "i18next";
           }
 
           .work {
-            color: #91ff90;
+            color: var(--light-green);
           }
 
           .personal {
-            color: #adc3ff;
+            color: var(--light-blue);
           }
           
           #first-column {
@@ -374,15 +401,15 @@ import { t } from "i18next";
   const CARDS = document.querySelectorAll("article")
 
   const CONFIG = {
-    proximity: 40,
-    spread: 50,
-    blur: 20,
-    gap: 32,
+    proximity: 7,
+    spread: 25,
+    blur: 25,
+    gap: 22,
     vertical: false,
     opacity: 0
   }
 
-  const PROXIMITY = 10
+  const PROXIMITY = 3
 
   const UPDATE = (e) => {
     for (const CARD of CARDS) {
@@ -403,7 +430,7 @@ import { t } from "i18next";
 
       ANGLE = ANGLE < 0 ? ANGLE + 360 : ANGLE;
 
-      CARD.style.setProperty("--start", ANGLE + 90)
+      CARD.style.setProperty("--start", ANGLE + 60)
     }
   }
 
