@@ -124,13 +124,22 @@ const { title, tags, img, live_link, repo_link } = Astro.props;
       display: flex;
       flex-direction: column;
       gap: 1rem;
-
+      
       .link-card__cover-thumbnail {
+        margin-bottom: 1rem;
         width: 30em;
-        height: 15em;
+        height: 16em;
         aspect-ratio: 16/9;
         object-fit: contain;
-        border-radius: .77rem;
+        border-radius: 2rem;
+        transform: perspective(120rem) rotateY(-25deg);
+        filter: drop-shadow(0 0 0.75rem #9abacc15);
+        transition: transform 0.23s ease-in-out, filter 0.23s ease-in-out;
+
+        &:hover {
+          transform: perspective(100rem) rotateY(0deg);
+          filter: drop-shadow(0 0 0.75rem #bfe8ff2f);
+        }
       }
 
       #link-card__tag-items {
