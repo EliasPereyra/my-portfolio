@@ -31,15 +31,40 @@
     "title": "Sobre mí",
     "work": {
       "title": "Lo que hago",
-      "first-desc": "Me especializo en el Desarrollo Front-end, haciendo énfasis en una buena optimización de la página, asegurándome en proveer una buena estética y una buena experiencia de uso para el usuario. ",
-      "second-desc": "Los proyectos que realizo de forma autónoma también los diseño yo mismo, y utilizo dos herramientas favoritas, de forma intercambiable, para este proceso: Figma y Penpot.",
+      "first-desc": "Mi enfoque principal es el Desarrollo Front-end, haciendo énfasis en una ",
+      "optimizacion": "buena optimización de la página",
+      "first-part": ", asegurándome en proveer una ",
+      "estetica": "buena estética",
+      "second-part": "y una ",
+      "experiencia": "buena experiencia de uso",
+      "third-part": "para el usuario.",
+      "second-desc": "Los proyectos que realizo de forma autónoma también los diseño yo mismo, y utilizo dos herramientas favoritas, de forma intercambiable, para este proceso: ",
+      "figma": "Figma",
+      "y": "y ",
+      "penpot": "Penpot.",
       "third-desc": "Además del desarrollo web, realizo un voluntariado, haciendo contribuciones open source en traducciones de artículos al español en la comunidad de freeCodeCamp. Puedes ver los artículos que he traducido "
     },
     "personal": {
       "title": "Mi lado personal",
-      "first-desc": "Una de las características que resaltan en mí es la curiosidad (me lleva más allá de lo ordinario), ser independiente (me gusta tener un balance entre colaboración y autonomía) y ser resiliente (no me rindo hasta lograr el resultado que busco).",
-      "second-desc": "Me gusta investigar y aprender cómo funcionan las cosas desde sus fundamentos. Es por ello también que tengo una gran gusto por la programación de bajo nivel, la programación de sistemas, la ciberseguridad, Sistema Operativos, etc., saber estos fundamentos me beneficia en tener una visión más amplia sobre el desarrollo de software.",
-      "third-desc": "Y sumando a todo lo anterior, me gusta ser de mente abierta y flexible en aprender nuevas herramientas, para expandir y obtener más experiencia en distintas áreas del desarrollo. Y, me encanta aprender nuevos idiomas, una pasión que viene hace más de 10 años."
+      "first-desc": "Una de las características que resaltan en mí es la ",
+      "curiosidad": "curiosidad",
+      "first-part": "(me lleva más allá de lo ordinario), ",
+      "independiente": "ser independiente",
+      "second-part": "(me gusta tener un balance entre colaboración y autonomía) y ",
+      "resiliente": "ser resiliente",
+      "third-part": "(no me rindo hasta lograr el resultado que busco).",
+      "second-desc": "",
+      "investigar": "Me gusta investigar ",
+      "fourth-part": "y aprender cómo funcionan las cosas ",
+      "fundamentos": "desde sus fundamentos",
+      "fifth-part": ". Es por ello también que tengo una gran gusto por la programación de bajo nivel, la programación de sistemas, la ciberseguridad, Sistema Operativos, etc., saber estos fundamentos me benefician en tener una visión más amplia sobre el desarrollo de software.",
+      "third-desc": "Y sumando a todo lo anterior, me gusta ser de ",
+      "mente": "mente abierta",
+      "sixth-part": "y ",
+      "flexible": "flexible",
+      "seventh-part": "en aprender nuevas herramientas, para expandir y obtener más experiencia en distintas áreas del desarrollo. Y, me encanta ",
+      "idiomas": "aprender nuevos idiomas",
+      "eighth-part": ", una pasión que viene hace más de 10 años."
     },
     "third-desc": "aquí."
   },
@@ -50,6 +75,9 @@
   },
   "footer": {
     "tool-used": "Desarrollado felizmente con "
+  },
+  "blog": {
+    "title": "Últimas publicaciones"
   },
   "not_found": {
     "go_back": "Ir atrás",

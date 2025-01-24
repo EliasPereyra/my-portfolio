@@ -20,17 +20,51 @@
   "portfolio": {
     "title": "Projects"
   },
+  "cards": {
+    "turnos": {
+      "first-paragraph": "A patient consultation appointment management system. You can register, enter your details, and book an appointment. You will then receive an SMS notification confirming whether the appointment was approved or not.",
+      "second-paragraph": "This helps simplify the process of booking an appointment with the doctor. It reduces waiting time for the patient and streamlines the appointment management process for the doctor.",
+      "third-paragraph": "The system is developed with Appwrite (a BaaS - cloud-based service) and Next.js. This project helped me see the potential of Appwrite, which simplifies the development of Fullstack web applications."
+    }
+  },
   "about": {
     "title": "About me",
     "work": {
       "title": "What I do",
-      "first-desc": "Fullstack Web Developer with experience in web development, with great taste in design. I'm aware of the latest improvements that arise in the field of software development to improve my abilities and my works.",
-      "second-desc": "In addition to web development, I do a volunteering, making open source contributions in translating article to spanish in the community of freeCodeCamp. You can see the latest articles I've translated "
+      "first-desc": "My main focus is Front-end Development, emphasizing ",
+      "optimizacion": "good optimization of the page",
+      "first-part": ", ensuring that I provide a ",
+      "estetica": "good aesthetics",
+      "second-part": "and a ",
+      "experiencia": "good user experience",
+      "third-part": "for the user.",
+      "second-desc": "The projects I carry out independently are also designed by me, and I use two favorite tools interchangeably for this process:  and Penpot. ",
+      "figma": "Figma",
+      "y": "and",
+      "penpot": "Penpot.",
+      "third-desc": "In addition to web development, I volunteer by making open-source contributions, translating articles into Spanish for the freeCodeCamp community. You can check out the articles I've translated "
     },
     "personal": {
       "title": "My personal side",
-      "first-desc": "One of the characteristic that stands out in me is curiosity. I like to investigate and learn things in depth. For this reason, I also have a great taste for low-level programming and system programming.",
-      "second-desc": "However, in addition to this, I like to put in practice the concepts I learn. I like to be open-minded and flexible, so I can expand my knowledge."
+      "first-desc": "One of the traits that stand out in me is ",
+      "curiosidad": "curiosity",
+      "first-part": "(it takes me takes me beyond the ordinary), ",
+      "independiente": "being independent",
+      "second-part": "(I like to get a balance between collaboration and autonomy) and ",
+      "resiliente": "being resilient",
+      "third-part": "(I don't give up until I achieve the result I'm aiming for).",
+      "second-desc": "I ",
+      "investigar": "enjoy researching",
+      "fourth-part": "and learning how things work ",
+      "fundamentos": "from the ground up",
+      "fifth-part": ". This is also why I have a strong interest in low-level programming, systems programming, cybersecurity, operating systems, and more. Understanding these fundamentals benefits me by providing a broader perspective on software development.",
+      "third-desc": "And adding to everything mentioned above, I like to be ",
+      "mente": "open-minded",
+      "sixth-part": "and ",
+      "flexible": "flexible",
+      "seventh-part": "in learning new tools to expand and gain more experience in different areas of development. And, I love ",
+      "idiomas": "learning new languages",
+      "eighth-part": ", a passion that has been with me for more than 10 years."
     },
     "third-desc": "here."
   },
@@ -41,6 +75,9 @@
   },
   "footer": {
     "tool-used": "Happily developed with "
+  },
+  "blog": {
+    "title": "Latest posts"
   },
   "not_found": {
     "go_back": "Go back",
