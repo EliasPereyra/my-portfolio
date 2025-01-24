@@ -4,6 +4,9 @@ import { t } from "i18next";
 import Languages from "../atoms/Languages.astro";
 import LogoWhite from "../atoms/LogoWhite.astro";
 
+const {pathname} = Astro.url
+
+const currentBlogPathName = pathname === "/" ? "/blog": "/eng/blog"
 ---
 
 <nav id="navbar" transition:animate="fade">
@@ -14,7 +17,7 @@ import LogoWhite from "../atoms/LogoWhite.astro";
     <li><a href="/#">{t("navbar.home")}</a></li>
     <li><a href="/#about">{t("navbar.about")}</a></li>
     <li><a href="/#portfolio">{t("navbar.projects")}</a></li>
-    <li><a href="/blog">Blog</a></li>
+    <li><a href={currentBlogPathName}>Blog</a></li>
     <li><a href="/#contact">{t("navbar.contact")}</a></li>
   </ul>
   <div class="icons">
