@@ -30,19 +30,20 @@ const { Content } = await post.render();
   articleDate={publishDate}
 >
   <article id="blog-post__article">
-    <a href="/blog"><LeftArrowIcon color="#eee" /></a>
-    <!-- Add the post image on the back, with a transparent gradient upwards pointing to the navbar  -->
-    <header id="blog-post__header">
-      <h1 id="blog-post__title">{title}</h1>
-      <small>{formatDate(publishDate)}</small>
-      <ul id="blog-post__tag-items">
-        {tags.map((tag) => <Tag tag={tag} />)}
-      </ul>
-    </header>
+    <LeftArrowIcon color="#eee" />
+    <div class="content-wrapper">
+      <header id="blog-post__header">
+        <h1 id="blog-post__title">{title}</h1>
+        <small>{formatDate(publishDate)}</small>
+        <ul id="blog-post__tag-items">
+          {tags.map((tag) => <Tag tag={tag} />)}
+        </ul>
+      </header>
 
-    <section id="blog-post__content-wrapper">
-      <Content components={{ pre: CodeSnippet }} />
-    </section>
+      <section class="content">
+        <Content components={{ pre: CodeSnippet }} />
+      </section>
+    </div>
 
     <footer id="blog-post__footer-article">
       <h4 id="blog-post__footer-title">Share this with your friends</h4>
@@ -65,66 +66,95 @@ const { Content } = await post.render();
     gap: 1em;
 
     :is(h2, h3, h4, p, code, small) {
-      color: var(--white-color);
+      color: var(--white-c-700);
     }
 
-    #blog-post__header {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      align-items: center;
-
-      #blog-post__tag-items {
+    .content-wrapper {
+      #blog-post__header {
         display: flex;
-        gap: 0.5em;
-        color: var(--white-gray__color);
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        align-items: center;
 
-        li {
-          border: 1px solid var(--white-gray__color);
-          border-radius: 7px;
-          padding: 2px 9px;
+        #blog-post__tag-items {
+          display: flex;
+          gap: 0.5em;
+          color: var(--white-c-700);
 
-          small {
-            transition: opacity 0.32s ease-in-out;
+          li {
+            border: 1px solid var(--white-c-600);
+            border-radius: 7px;
+            padding: 2px 9px;
 
-            &:hover {
-              opacity: 0.7;
+            small {
+              transition: opacity 0.32s ease-in-out;
+
+              &:hover {
+                opacity: 0.7;
+              }
             }
           }
         }
       }
-    }
 
-    #blog-post__content-wrapper {
-      padding: 0 10em;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      max-width: 70em;
+      .content {
+        padding: 2em 10em;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        max-width: 70em;
 
-      h3 {
-        font-size: 2.2rem;
-      }
+        img {
+          object-fit: contain;
+        }
 
-      p {
-        color: var(--white-gray__color);
-        font-size: 1.2rem;
-        max-width: 70ch;
-        line-height: 2rem;
-      }
+        h1 {
+          font-size: 2.2rem;
+        }
 
-      code {
-        line-height: 1.7rem;
-        font-family: "CommitMono";
-      }
+        h2 {
+          font-size: 1.8rem;
+          font-weight: 700;
+        }
 
-      li {
-        font-size: 1.2rem;
+        h3 {
+          font-size: 1.2rem;
+        }
 
-        list-style: disc;
-        list-style-position: inside;
-        color: var(--white-gray__color);
+        hr {
+          border: 1px solid var(--white-c-600);
+          border-radius: 110px;
+        }
+
+        p {
+          color: var(--white-c-700);
+          font-size: 1.2rem;
+          max-width: 70ch;
+          line-height: 2rem;
+        }
+
+        strong {
+          color: var(--white-c-800);
+        }
+
+        a {
+          text-decoration: underline;
+          color: var(--white-c-600);
+        }
+
+        code {
+          line-height: 1.7rem;
+          font-family: "CommitMono";
+        }
+
+        li {
+          font-size: 1.2rem;
+          padding: 1rem;
+          list-style: disc;
+          list-style-position: inside;
+          color: var(--white-c-600);
+        }
       }
     }
 
@@ -136,8 +166,37 @@ const { Content } = await post.render();
   }
 
   @media (prefers-color-scheme: light) {
-    #blog-post__section {
+    #blog-post__article {
       background: var(--hero__light-bg);
+
+      :is(h2, code, small) {
+        color: var(--black-c-800);
+      }
+      #blog-post__header {
+        #blog-post__title {
+          color: var(--black-c-800);
+        }
+        #blog-post__tag-items {
+          li {
+            border: 1px solid var(--black-c-800);
+          }
+        }
+      }
+      #blog-post__content-wrapper {
+        :is(h1, h4, p, li, a) {
+          color: var(--black-c-800);
+        }
+
+        code {
+          color: var(--white-c-700);
+        }
+      }
+    }
+
+    #blog-post__footer-article {
+      #blog-post__footer-title {
+        color: var(--black-c-800);
+      }
     }
   }
 </style>
