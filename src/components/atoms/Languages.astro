@@ -5,6 +5,11 @@ import LanguagesIcon from "./LanguagesIcon.astro";
 
 import SpainFlagIcon from "@/assets/imgs/flag-of-spain.svg";
 import GBFlagIcon from "@/assets/imgs/flag-of-gb.svg";
+
+const {pathname} = Astro.url
+
+const isBlogPathname = pathname.includes("/blog")
+const currentEngPathname = isBlogPathname ? "/eng/blog" : "/eng"
 ---
 
 <div class="dropdown-wrapper">
@@ -15,10 +20,10 @@ import GBFlagIcon from "@/assets/imgs/flag-of-gb.svg";
     </button>
   </div>
   <dialog popover id="dropdown-items">
-    <a href="/"
+    <a href={isBlogPathname ? "/blog" : "/"}
       ><Image src={SpainFlagIcon} alt="The icon of a flag of Spain" /> Español</a
     >
-    <a href="/eng"
+    <a href={isBlogPathname ? "/eng/blog" : "/eng"}
       ><Image src={GBFlagIcon} alt="The icon of a flag of Great Britain" /> Inglés</a
     >
   </dialog>
