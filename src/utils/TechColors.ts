@@ -21,4 +21,11 @@ export const techColors = {
   ReactTable: Symbol("#FF4154"),
   DotNet: Symbol("#512BD4"),
   SQLServer: Symbol("#CC2927"),
+  Vitest: Symbol("#6E9F18"),
+  Wordpress: Symbol("#21759B"),
+  GraphQL: Symbol("#E10098"),
+  Penpot: Symbol("#000000"),
+  MockServiceWorker: Symbol("#FF6A33"),
+  Figma: Symbol("#F24E1E"),
+  Playwright: Symbol("#45ba4b"),
 };
