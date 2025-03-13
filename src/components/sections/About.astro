@@ -6,32 +6,26 @@ import { t } from "i18next";
 <section id="abt-section" transition:persist>
   <h2 id="about" class="abt-section__title">{t("about.title")}</h2>
   <div id="abt-section__content">
-    <article class="cont-wrapper" >
+    <article class="cont-wrapper first-col" >
       <div class="glows"></div>
       <div class="cols-wrapper">
         <h3 class="col-title work">{t("about.work.title")}</h3>
-        <div id="first-column">
+        <div class="first-column">
           <p class="description-text">
             {t("about.work.first-desc")}
-            <strong style="color: var(--light-green);">{t("about.work.optimizacion")}</strong>
-            {t("about.work.first-part")}
-            <strong style="color: var(--light-green);">{t("about.work.estetica")}</strong>
-            {t("about.work.second-part")}
-            <strong style="color: var(--light-green);">{t("about.work.experiencia")}</strong>
-            {t("about.work.third-part")}
           </p>
           <p class="description-text">
             {t("about.work.second-desc")}
-            <strong style="color: var(--light-green);">{t("about.work.figma")}</strong>
-            {t("about.work.y")}
-            <strong style="color: var(--light-green);">{t("about.work.penpot")}</strong>
           </p>
           <p class="description-text">
             {t("about.work.third-desc")}
+          </p>
+          <p class="description-text">
+            {t("about.work.fourth-desc")}
             <a
               style="color: var(--light-green);"
               href="https://www.freecodecamp.org/espanol/news/author/elias-pereyra/"
-              target="_blank">{t("about.third-desc")}</a
+              target="_blank">aquí.</a
             >
           </p>
           <div class="card-wrapper">
@@ -55,11 +49,11 @@ import { t } from "i18next";
         
       </div>
     </article>
-    <article class="cont-wrapper" transition:persist>
+    <article class="cont-wrapper second-col" transition:persist>
       <div class="glows"></div>
       <div class="cols-wrapper">
         <h3 class="col-title personal">{t("about.personal.title")}</h3>
-        <div id="first-column">
+        <div class="first-column">
           <p class="description-text">
             {t("about.personal.first-desc")}
             <strong style="color: var(--light-blue);">{t("about.personal.curiosidad")}</strong>
@@ -114,7 +108,11 @@ import { t } from "i18next";
     background: linear-gradient(250deg, #060912 10%, #14161c 320%);
 
     .abt-section__title {
-      margin-bottom: 2rem;
+      background-image: linear-gradient(to bottom, #fefefe, #f8f8f8);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-align: center;
+      margin-bottom: 4rem;
     }
 
     &::before {
@@ -143,13 +141,21 @@ import { t } from "i18next";
         flex-direction: column;
       }
 
+      .first-col {
+        background: radial-gradient(at center top, rgba(56, 215, 122, 0.021), rgba(6, 28, 15, 0.038)), radial-gradient(at center bottom, rgba(45, 215, 209, 0.05), rgba(5, 22, 21, 0.08));
+          border: 1px solid #92ff9060;
+        }
+
+        .second-col {
+          background: radial-gradient(at top center, rgba(56, 143, 215, 0.05), rgba(6, 16, 28, 0.08)), radial-gradient(at center bottom, rgba(45, 113, 215, 0.05), rgba(5, 14, 22, 0.08));
+          border: 1px solid #adc3ff60;
+        }
+
       .cont-wrapper {
         --start: 0;
         --active: 0.12;
-        background: linear-gradient(156deg, #3548c1 -150%, #131f40f2 -120%, #070c18d9 100%);
-        padding: 1.5rem;
-        border: 1px solid #1c1b44;
-        border-radius: 0.77rem;
+        padding: 2.19rem;
+        border-radius: 1.77rem;
         margin-inline: auto;
         position: relative;
 
@@ -257,7 +263,7 @@ import { t } from "i18next";
             color: var(--light-blue);
           }
           
-          #first-column {
+          .first-column {
             position: relative;
             .description-text {
               color: var(--white-c-800);
@@ -265,7 +271,7 @@ import { t } from "i18next";
               margin-inline: auto;
               margin-bottom: 2em;
               line-height: 1.6rem;
-              width: 30em;
+              width: fit-content
             }
             
             .card-wrapper {
@@ -401,15 +407,13 @@ import { t } from "i18next";
   const CARDS = document.querySelectorAll("article")
 
   const CONFIG = {
-    proximity: 7,
-    spread: 25,
-    blur: 25,
-    gap: 22,
+    proximity: 2,
+    spread: 35,
+    blur: 55,
+    gap: 1,
     vertical: false,
     opacity: 0
   }
-
-  const PROXIMITY = 3
 
   const UPDATE = (e) => {
     for (const CARD of CARDS) {
