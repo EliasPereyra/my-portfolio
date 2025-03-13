@@ -3,8 +3,6 @@ import { t } from "i18next";
 
 import GithubIcon from "../atoms/GithubIcon.astro";
 import LinkedinIcon from "../atoms/LinkedinIcon.astro";
-import PinkAurora from "../atoms/PinkAurora.astro";
-import LightBlueAurora from "../atoms/LightBlueAurora.astro";
 import EmailIcon from "../atoms/EmailIcon.astro";
 import CVIcon from "../atoms/CVIcon.astro";
 ---
@@ -104,7 +102,7 @@ import CVIcon from "../atoms/CVIcon.astro";
     }
 
     #h__text-content {
-      padding-top: 7em;
+      padding-top: 4em;
       padding-bottom: 10em;
       display: flex;
       flex-direction: column;
@@ -116,7 +114,7 @@ import CVIcon from "../atoms/CVIcon.astro";
       animation-delay: 0.1s;
 
       #tc__avail-text {
-        padding: 0.5rem;
+        padding: 1rem 0.5rem;
         color: var(--white-color);
         display: flex;
         justify-content: center;
@@ -124,7 +122,7 @@ import CVIcon from "../atoms/CVIcon.astro";
         gap: 1.5rem;
         border: 1px solid rgba(255, 125, 169, 0.55);
         background: rgba(255, 125, 169, 0.08);
-        border-radius: 1rem;
+        border-radius: 100vw;
         margin-bottom: 1rem;
         min-width: min(100%, 20em);
 
@@ -154,6 +152,7 @@ import CVIcon from "../atoms/CVIcon.astro";
         #tc__over-title {
           font-family: "Arial", sans-serif;
           font-size: 0.8rem;
+          text-box: cap alphabetic;
         }
       }
 
