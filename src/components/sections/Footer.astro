@@ -45,20 +45,6 @@ import XIcon from "../atoms/XIcon.astro";
     position: relative;
     z-index: 5;
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-image: url("/assets/grid.svg");
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      opacity: 0.34;
-      filter: invert(0.85);
-      mask-image: linear-gradient(180deg, transparent 49%, black);
-    }
-
     .footer__content {
       display: flex;
       justify-content: space-between;
@@ -101,11 +87,11 @@ import XIcon from "../atoms/XIcon.astro";
     }
   }
 
-  @container (max-width: 590px) {
+  @media (max-width: 590px) {
     .footer__content {
       flex-direction: column;
-
-      #footer__tool-used {
+      #fc__tool-used {
+        margin-top: 2em;
         flex-direction: column;
       }
     }
