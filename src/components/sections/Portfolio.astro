@@ -10,15 +10,18 @@ import { projects } from "../../utils/Projects";
     <h2>{t("portfolio.title")}</h2>
     <ul>
       {
-        projects.map(({ title, tags, project_img, live_link, repo_link }) => (
-          <Card
-            title={title}
-            tags={tags}
-            img={project_img}
-            live_link={live_link}
-            repo_link={repo_link}
-          />
-        ))
+        projects.map(
+          ({ title, description, tags, project_img, live_link, repo_link }) => (
+            <Card
+              title={title}
+              description={description}
+              tags={tags}
+              img={project_img}
+              live_link={live_link}
+              repo_link={repo_link}
+            />
+          )
+        )
       }
     </ul>
   </div>
