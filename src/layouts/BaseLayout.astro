@@ -101,7 +101,7 @@ const { title, author, description, articleDate } = Astro.props as Props;
       p {
         text-wrap: pretty;
         line-height: 1.7rem;
-        font-size: clamp(1.3rem, 1.24rem + 0.14vw, 1.5rem);
+        font-size: clamp(1.12rem, 1.24rem + 0.14vw, 1.5rem);
       }
 
       html {
@@ -151,24 +151,24 @@ const { title, author, description, articleDate } = Astro.props as Props;
       h1 {
         font-family: "Quicksand", system-ui, sans-serif;
         font-weight: 800;
-        font-size: clamp(1.5rem, 2.01rem + 1.39vw, 5rem);
+        font-size: clamp(1.9rem, 2.01rem + 1.39vw, 5rem);
       }
 
       h2 {
         font-family: "Quicksand", system-ui, sans-serif;
-        font-size: clamp(1.5rem, 1.05rem + 1.53vw, 3rem);
+        font-size: clamp(1.4rem, 1.85rem + 1.39vw, 3rem);
         font-weight: 600;
       }
 
       h3 {
         font-family: "Quicksand", sans-serif;
         font-weight: 500;
-        font-size: 3.5rem;
+        font-size: clamp(1.3rem, 1.55rem + 1.39vw, 2.5rem);
       }
 
       h4 {
         font-family: "Quicksand", sans-serif;
-        font-size: 1.5rem;
+        font-size: clamp(1.25rem, 1.25rem + 1.39vw, 2.5rem);
         font-weight: 500;
       }
 
