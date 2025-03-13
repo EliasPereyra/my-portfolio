@@ -22,9 +22,14 @@
   },
   "cards": {
     "turnos": {
-      "first-paragraph": "A patient consultation appointment management system. You can register, enter your details, and book an appointment. You will then receive an SMS notification confirming whether the appointment was approved or not.",
-      "second-paragraph": "This helps simplify the process of booking an appointment with the doctor. It reduces waiting time for the patient and streamlines the appointment management process for the doctor.",
-      "third-paragraph": "The system is developed with Appwrite (a BaaS - cloud-based service) and Next.js. This project helped me see the potential of Appwrite, which simplifies the development of Fullstack web applications."
+      "first-paragraph": "An appointment management system for patient consultations. You can sign up, enter your personal and medical information, and book an appointment. Then, you will receive an SMS notification if the doctor confirms the appointment or not.",
+      "second-paragraph": "This type of system helps streamline the process of booking an appointment with a doctor. It saves waiting time for patients, provides basic information in advance, and speeds up the appointment management process for doctors and medical resources.",
+      "third-paragraph": "The system is developed with Next.js and Appwrite (a BaaS - cloud-based service). The pages and components were designed in Figma."
+    },
+    "workstart": {
+      "first-paragraph": "A platform for finding jobs with no experience required, covering various industries in Argentina. No registration is needed—simply select the job you like and send an email to the company.",
+      "second-paragraph": "Applying directly to the company saves a lot of time and helps personalize the contact. Additionally, each job listing displays key details such as salary, work mode, schedule, responsibilities, and benefits. The platform is designed so that these details are mandatory for posting job openings.",
+      "third-paragraph": "The system is developed with Next.js and WordPress as a CMS, communicating through a GraphQL API. The design of all pages and components was created in Penpot and Figma."
     }
   },
   "about": {

@@ -22,27 +22,24 @@
   },
   "cards": {
     "turnos": {
-      "first-paragraph": "Un sistema de gestión de turnos para la consulta de pacientes. Puedes registrarte, ingresar tus datos y reservar un turno. Luego recibirás una notificación por sms si se confirmó el turno o no.",
-      "second-paragraph": "Esto ayuda en la simplificación de los procesos para adquirir un turno con el doctor. Ahorra tiempo de espera para el paciente y agiliza más el proceso de gestión de turnos para el doctor.",
-      "third-paragraph": "El sistema está desarrollado con Appwrite (un BaaS - servicio basado en la nube) y Next.js. Este proyecto me ayudó a ver el potencial de Appwrite, el cual facilita el desarrollo de aplicaciones web Fullstack."
+      "first-paragraph": "Un sistema de gestión de turnos para la consulta de pacientes. Puedes registrarte, ingresar tus datos personales y médicos, y reservar un turno. Luego recibirás una notificación por sms si el doctor confirmó el turno o no.",
+      "second-paragraph": "Este tipo de sistema ayuda en la simplificación de los procesos para adquirir un turno con el doctor. Ahorra tiempo de espera para el paciente, provee información básica de antemano y agiliza más el proceso de gestión de turnos para el doctor y recursos materiales.",
+      "third-paragraph": "El sistema está desarrollado con Next.js y Appwrite (un BaaS - servicio basado en la nube). Las páginas al igual que los componentes fueron diseñados en Figma."
+    },
+    "workstart": {
+      "first-paragraph": "Una plataforma para encontrar trabajos sin experiencia, abarcando distintos tipos de rubros en Argentina. No hace falta registrarse, simplemente selecciona la vacante que te gusta y envía a la empresa un email.",
+      "second-paragraph": "Postular directamente a la empresa ahorra mucho tiempo y ayuda a personalizar el contacto. Además cada vacante muestra los detalles más relevantes como el sueldo, modalidad, horario laboral, responsabilidades y los beneficios. La plataforma está diseñada de forma en que los puntos anteriores sean puntos obligatorios para poder publicar vacantes.",
+      "third-paragraph": "El sistema está desarrollado con Next.js y Wordpress como CMS, comunicándose a través de una API de GraphQL. El diseño de todas las páginas y los componentes fueron diseñados en Penpot y Figma."
     }
   },
   "about": {
     "title": "Sobre mí",
     "work": {
       "title": "Lo que hago",
-      "first-desc": "Mi enfoque principal es el Desarrollo Front-end, haciendo énfasis en una ",
-      "optimizacion": "buena optimización de la página",
-      "first-part": ", asegurándome en proveer una ",
-      "estetica": "buena estética",
-      "second-part": "y una ",
-      "experiencia": "buena experiencia de uso",
-      "third-part": "para el usuario.",
-      "second-desc": "Los proyectos que realizo de forma autónoma también los diseño yo mismo, y utilizo dos herramientas favoritas, de forma intercambiable, para este proceso: ",
-      "figma": "Figma",
-      "y": "y ",
-      "penpot": "Penpot.",
-      "third-desc": "Además del desarrollo web, realizo un voluntariado, haciendo contribuciones open source en traducciones de artículos al español en la comunidad de freeCodeCamp. Puedes ver los artículos que he traducido "
+      "first-desc": "Soy un desarrollador Fullstack con un enfoque en la creación de interfaces web optimizadas, accesibles y visualmente atractivas. Mis proyectos propios me han permitido desarrollar habilidades en rendimiento, diseño responsivo y usabilidad, proveyendo una experiencia fluida e intuitiva para los usuarios.",
+      "second-desc": "Me especializo especialmente en el Desarrollo Front-end, empezando por el diseño y usando herramientas como Figma y Penpot para generar resultados atractivos y limpios. Tengo conocimientos sólidos en HTML, CSS, JavaScript y frameworks modernos como React.js, así como Node.js y bases de datos en el backend.",
+      "third-desc": "Además del desarrollo web, participo como voluntario en la comunidad de freeCodeCamp, contribuyendo al ecosistema open source mediante la traducción de artículos al español. Mi objetivo es hacer que el conocimiento técnico sea más accesible para hispanohablantes, facilitando el aprendizaje de desarrollo web y programación para una comunidad más amplia.",
+      "fourth-desc": "Creo que todos necesitamos el acceso a la educación y en la importancia de compartir el conocimiento. A través de estas traducciones, ayudo a que más personas puedan aprender sin la barrera el idioma. Puedes ver las traducciones en las que he colaborado "
     },
     "personal": {
       "title": "Mi lado personal",
