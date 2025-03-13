@@ -9,6 +9,11 @@ export interface TagData {
 export interface Project {
   title: string;
   project_img: string;
+  description: {
+    firstParagraph: string;
+    secondParagraph: string;
+    thirdParagraph: string;
+  };
   tags: TagData[];
   live_link: string;
   repo_link: string;
@@ -16,18 +21,86 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "DocHeal",
-    project_img: "/assets/turnos.jpg",
+    title: "WorkStart",
+    project_img: "/assets/workstart.png",
+    description: {
+      firstParagraph: "cards.workstart.first-paragraph",
+      secondParagraph: "cards.workstart.second-paragraph",
+      thirdParagraph: "cards.workstart.third-paragraph",
+    },
     tags: [
+      {
+        tagName: "Next.js",
+        tagIcon: "/assets/icons/nextdotjs.svg",
+        tagColor: techColors.NextJs.description,
+      },
       {
         tagName: "React.js",
         tagIcon: "/assets/icons/react.svg",
         tagColor: techColors.React.description,
       },
       {
+        tagName: "TypeScript",
+        tagIcon: "/assets/icons/typescript.svg",
+        tagColor: techColors.TS.description,
+      },
+      {
+        tagName: "Wordpress",
+        tagIcon: "/assets/icons/wordpress.svg",
+        tagColor: techColors.Wordpress.description,
+      },
+      {
+        tagName: "GraphQL",
+        tagIcon: "/assets/icons/graphql.svg",
+        tagColor: techColors.GraphQL.description,
+      },
+      {
+        tagName: "Apollo GraphQL",
+        tagIcon: "/assets/icons/apollographql.svg",
+        tagColor: techColors.ApolloGraphQL.description,
+      },
+      {
+        tagName: "Vitest",
+        tagIcon: "/assets/icons/vitest.svg",
+        tagColor: techColors.Vitest.description,
+      },
+      {
+        tagName: "Penpot",
+        tagIcon: "/assets/icons/penpot.svg",
+        tagColor: techColors.Penpot.description,
+      },
+      {
+        tagName: "Mock Service Worker",
+        tagIcon: "/assets/icons/mockserviceworker.svg",
+        tagColor: techColors.MockServiceWorker.description,
+      },
+    ],
+    live_link: "",
+    repo_link: "https://github.com/EliasPereyra/job-platform",
+  },
+  {
+    title: "DocHeal",
+    project_img: "/assets/turnos.jpg",
+    description: {
+      firstParagraph: "cards.turnos.first-paragraph",
+      secondParagraph: "cards.turnos.second-paragraph",
+      thirdParagraph: "cards.turnos.third-paragraph",
+    },
+    tags: [
+      {
         tagName: "Next.js",
         tagIcon: "/assets/icons/nextdotjs.svg",
         tagColor: techColors.NextJs.description,
+      },
+      {
+        tagName: "React.js",
+        tagIcon: "/assets/icons/react.svg",
+        tagColor: techColors.React.description,
+      },
+      {
+        tagName: "TypeScript",
+        tagIcon: "/assets/icons/typescript.svg",
+        tagColor: techColors.TS.description,
       },
       {
         tagName: "Shadcn",
@@ -60,9 +133,14 @@ export const projects: Project[] = [
         tagColor: techColors.DotNet.description,
       },
       {
-        tagName: "TypeScript",
-        tagIcon: "/assets/icons/typescript.svg",
-        tagColor: techColors.TS.description,
+        tagName: "Playwright",
+        tagIcon: "/assets/icons/playwright.svg",
+        tagColor: techColors.Playwright.description,
+      },
+      {
+        tagName: "Figma",
+        tagIcon: "/assets/icons/figma.svg",
+        tagColor: techColors.Figma.description,
       },
     ],
     live_link: "https://docheal.vercel.app/",
