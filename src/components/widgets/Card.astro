@@ -61,6 +61,12 @@ const { firstParagraph, secondParagraph, thirdParagraph } = description;
     padding: 3em;
     position: relative;
 
+    @media screen and (width: 320px) {
+      .link-card {
+        padding: 1em;
+      }
+    }
+
     > * {
       z-index: 9999;
     }
@@ -101,15 +107,19 @@ const { firstParagraph, secondParagraph, thirdParagraph } = description;
       gap: .99rem;
       max-width: 30em;
       z-index: 10;
+
+      @media screen and (width: 320px) {
+        width: 100%;
+      }
       
       .link-card__header {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         gap: 1em;
 
         #link-card__title {
           color: #5a8af2;
-          font-size: 36px;
           margin-bottom: 0;
         }
 
