@@ -28,4 +28,5 @@ export const techColors = {
   MockServiceWorker: Symbol("#FF6A33"),
   Figma: Symbol("#F24E1E"),
   Playwright: Symbol("#45ba4b"),
+  ApolloGraphQL: Symbol("#311C87"),
 };
