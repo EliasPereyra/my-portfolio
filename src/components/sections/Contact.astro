@@ -3,6 +3,7 @@ import { t } from "i18next";
 ---
 
 <section id="contact">
+  <div class="radial-gradient"></div>
   <div class="cont__text-content">
     <h2 id="tc__title">{t("contact.title")}</h2>
     <p id="tc__comment">{t("contact.comment")}</p>
@@ -62,6 +63,25 @@ import { t } from "i18next";
       mask-image: radial-gradient(ellipse at center, #070a12, #070a120d 30%);
     }
 
+    .radial-gradient {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-image: linear-gradient(
+          rgb(255 255 255 / 5%) 1px,
+          #00000000 1px
+        ),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, #00000000 1px);
+      background-size: 20px 20px;
+      mask-image: radial-gradient(
+          ellipse at center,
+          #070a120d 40%,
+          #070a12 310%
+        ),
+        radial-gradient(ellipse at bottom, #070a12, #070a120d 10%);
+      z-index: 1;
+    }
+
     .cont__text-content {
       display: flex;
       flex-direction: column;
@@ -85,6 +105,7 @@ import { t } from "i18next";
     }
 
     #cont__copy-wrapper {
+      z-index: 2;
       color: var(--white-color);
       padding: 1em 2em;
       border-radius: 0.5rem;
