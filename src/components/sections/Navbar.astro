@@ -8,12 +8,11 @@ const {pathname} = Astro.url
 
 const currentBlogPathName = pathname === "/" ? "/blog": "/eng/blog"
 ---
-
 <nav id="navbar" transition:animate="fade">
   <a href="/">
     <LogoWhite width="73" height="73" />
   </a>
-  <ul id="navbar-items">
+  <ul class="navbar-items">
     <li><a href="/#">{t("navbar.home")}</a></li>
     <li><a href="/#about">{t("navbar.about")}</a></li>
     <li><a href="/#portfolio">{t("navbar.projects")}</a></li>
@@ -26,15 +25,45 @@ const currentBlogPathName = pathname === "/" ? "/blog": "/eng/blog"
 </nav>
 
 <style>
+  @keyframes stickyNav {
+    0% {
+      border-radius: 0;
+    }
+
+    100% {
+      top: .3rem;
+      background-color: var(--_surfaceColorEnd);
+      border-radius: 100vw;
+    }
+  }
+
   #navbar {
+    --_animationStartsAfter: 60vh;
+    --_animationDistance: 500px;
+    --_surfaceColorStart: hsl(242, 45%, 14%);
+    --_surfaceColorEnd: hsl(0 50% 90% / 0.1);
+
+    --_logoAfterAnimation: none;
+    position: sticky;
+    z-index: 9999;
+    top: 0;
+    width: 100%;;
+    background-color: var(--_surfaceColorStart);
+
+    @supports (animation-timeline: view()) {
+      top: -5rem;
+      backdrop-filter: blur(100px) saturate(130%) drop-shadow(0 0 0.75rem #2d59d4fa); 
+
+      animation: stickyNav linear forwards;
+      animation-timeline: view();
+      animation-range-start: calc(100vh + var(--_animationStartsAfter));
+      animation-range-end: calc(100vh + var(--_animationStartsAfter) + var(--_animationDistance));
+    }
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    position: absolute;
-    z-index: 9999;
-    padding: .34em 10em;
-    background: transparent;
+    padding: .04em 10em;
 
     @media (max-width: 375px) {
       nav {
