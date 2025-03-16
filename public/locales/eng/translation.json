@@ -36,18 +36,11 @@
     "title": "About me",
     "work": {
       "title": "What I do",
-      "first-desc": "My main focus is Front-end Development, emphasizing ",
-      "optimizacion": "good optimization of the page",
-      "first-part": ", ensuring that I provide a ",
-      "estetica": "good aesthetics",
-      "second-part": "and a ",
-      "experiencia": "good user experience",
-      "third-part": "for the user.",
-      "second-desc": "The projects I carry out independently are also designed by me, and I use two favorite tools interchangeably for this process:  and Penpot. ",
-      "figma": "Figma",
-      "y": "and",
-      "penpot": "Penpot.",
-      "third-desc": "In addition to web development, I volunteer by making open-source contributions, translating articles into Spanish for the freeCodeCamp community. You can check out the articles I've translated "
+      "first-desc": "I am a Fullstack developer with a focus on creating optimized, accessible, and visually appealing web interfaces. My personal projects have allowed me to develop skills in performance, responsive design, and usability, providing a smooth and intuitive experience for users.",
+      "second-desc": "Specialized mainly in Front-end Development, starting with design and using tools like Figma and Penpot to create clean and visually appealing results. I have solid knowledge of HTML, CSS, JavaScript, and modern frameworks like React.js, as well as Node.js and databases on the backend.",
+      "third-desc": "In addition to web development, I volunteer in the freeCodeCamp community, contributing to the open-source ecosystem by translating articles into Spanish. My goal is to make technical knowledge more accessible to Spanish speakers, facilitating the learning of web development and programming for a broader community.",
+      "fourth-desc": "I believe that everyone should have access to education and that sharing knowledge is essential. Through these translations, I help more people learn without the language barrier. You can see the translations I have contributed to ",
+      "fifth-desc": "here."
     },
     "personal": {
       "title": "My personal side",
@@ -70,8 +63,7 @@
       "seventh-part": "in learning new tools to expand and gain more experience in different areas of development. And, I love ",
       "idiomas": "learning new languages",
       "eighth-part": ", a passion that has been with me for more than 10 years."
-    },
-    "third-desc": "here."
+    }
   },
   "contact": {
     "title": "Would you like to work with me?",

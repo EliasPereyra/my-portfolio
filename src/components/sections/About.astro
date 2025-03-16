@@ -3,7 +3,7 @@ import { t } from "i18next";
 
 ---
 
-<section id="abt-section" transition:persist>
+<section id="abt-section">
   <h2 id="about" class="abt-section__title">{t("about.title")}</h2>
   <div id="abt-section__content">
     <article class="cont-wrapper first-col" >
@@ -25,7 +25,7 @@ import { t } from "i18next";
             <a
               style="color: var(--light-green);"
               href="https://www.freecodecamp.org/espanol/news/author/elias-pereyra/"
-              target="_blank">aquí.</a
+              target="_blank">{t("about.work.fifth-desc")}</a
             >
           </p>
           <div class="card-wrapper">
@@ -49,7 +49,7 @@ import { t } from "i18next";
         
       </div>
     </article>
-    <article class="cont-wrapper second-col" transition:persist>
+    <article class="cont-wrapper second-col">
       <div class="glows"></div>
       <div class="cols-wrapper">
         <h3 class="col-title personal">{t("about.personal.title")}</h3>
@@ -94,12 +94,6 @@ import { t } from "i18next";
     --light-blue: #adc3ff;
   }
 
-  @property --start {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-  }
-
   #abt-section {
     border-top: 1px solid hsl(225, 17%, 6%);
     position: relative;
@@ -113,6 +107,10 @@ import { t } from "i18next";
       color: transparent;
       text-align: center;
       margin-bottom: 4rem;
+      text-decoration: underline;
+        text-decoration-color: #2d97d4fa;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 20px;
     }
 
     &::before {
@@ -152,16 +150,10 @@ import { t } from "i18next";
         }
 
       .cont-wrapper {
-        --start: 0;
-        --active: 0.12;
         padding: 2.19rem;
         border-radius: 1.77rem;
         margin-inline: auto;
         position: relative;
-
-        &:is(:hover, :focus-visible) {
-          z-index: 2;
-        }
 
         .glows {
           position: absolute;
@@ -169,80 +161,6 @@ import { t } from "i18next";
           filter: blur(calc(var(--blur) * 1px));
           pointer-events: none;
           
-          &::before, &::after {
-            content: "";
-            position: absolute;
-            inset: -5px;
-            border: 10px solid transparent;
-            border-radius: var(--border-radius);
-            background: var(--gradient);
-            background-attachment: fixed;
-            mask: linear-gradient(#0000, #0000),
-            conic-gradient(from calc((var(--start) - (var(--spread) * 0.5)) * 1deg), #000 0deg, #fff, #0000 calc(var(--spread) * 1deg));
-            mask-composite: intersect;
-            mask-clip: padding-box, border-box;
-            opacity: var(--active);
-            transition: opacity .3s;
-          }
-        }
-
-        &::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: var(--gradient);
-          background-attachment: fixed;
-          border-radius: var(--border-radius);
-          opacity: var(--active);
-          transition: opacity .3s;
-        }
-
-        &::before {
-          position: absolute;
-          inset: 0;
-          border: var(--border-width) solid transparent;
-          content: "";
-          border-radius: var(--border-radius);
-          pointer-events: none;
-          background: var(--border);
-          background-attachment: fixed;
-          border-radius: var(--border-radius);
-          mask:
-            linear-gradient(#0000, #0000),
-            conic-gradient(
-              from calc(((var(--start) + (var(--spread) * 0.25)) - (var(--spread) * 1.5)) * 1deg),
-              hsl(0 0% 100% / 0.15) 0deg,
-              white,
-              hsl(0 0% 100% / 0.15) calc(var(--spread) * 2.5deg));
-          mask-clip: padding-box, border-box;
-          mask-composite: intersect;
-          opacity: var(--active);
-          transition: opacity .3s;
-        }
-
-        &::after {
-          --bg-size: 100%;
-          content: "";
-          pointer-events: none;
-          position: absolute;
-          background: var(--gradient);
-          background-attachment: fixed;
-          border-radius: var(--border-radius);
-          opacity: var(--active, 0);
-          transition: opacity 1s;
-          --alpha: 0;
-          inset: 0;
-          border: var(--border-width) solid transparent;
-          mask:
-            linear-gradient(#0000, #0000),
-            conic-gradient(from calc(((var(--start) + (var(--spread) * 0.25)) - (var(--spread) * 0.5)) * 1deg), #0000 0deg, #fff, #0000 calc(var(--spread) * 0.5deg));
-          filter: brightness(1.5);
-          mask-clip: padding-box, border-box;
-          mask-composite: intersect;
-        }
-        
-        &::>*:is(:hover, :focus-visible) {
-          opacity: 1;
         }
 
         .cols-wrapper {
@@ -399,54 +317,3 @@ import { t } from "i18next";
     }
   }
 </style>
-
-<script>
-  // @ts-nocheck
-  const CONTAINER = document.querySelector("#abt-section__content")
-
-  const CARDS = document.querySelectorAll("article")
-
-  const CONFIG = {
-    proximity: 2,
-    spread: 35,
-    blur: 55,
-    gap: 1,
-    vertical: false,
-    opacity: 0
-  }
-
-  const UPDATE = (e) => {
-    for (const CARD of CARDS) {
-      const CARD_BOUNDS = CARD.getBoundingClientRect()
-
-      if (e?.x > CARD_BOUNDS.left - CONFIG.proximity && e?.x < CARD_BOUNDS.left + CARD_BOUNDS.width + CONFIG.proximity && e?.y > CARD_BOUNDS.top - CONFIG.proximity && e?.y < CARD_BOUNDS.top + CARD_BOUNDS.height + CONFIG.proximity && e?.y < CARD_BOUNDS.top + CARD_BOUNDS.height + CONFIG.proximity) { 
-        CARD.style.setProperty("--active", 1)        
-      } else {
-        CARD.style.setProperty("--active", CONFIG.opacity)
-      }
-
-      const CARD_CENTER = [
-        CARD_BOUNDS.left + CARD_BOUNDS.width * 0.5,
-        CARD_BOUNDS.top + CARD_BOUNDS.height * 0.5
-      ]
-
-      let ANGLE = Math.atan2(e?.y - CARD_CENTER[1], e?.x - CARD_CENTER[0]) * 180 / Math.PI
-
-      ANGLE = ANGLE < 0 ? ANGLE + 360 : ANGLE;
-
-      CARD.style.setProperty("--start", ANGLE + 60)
-    }
-  }
-
-  document.body.addEventListener("pointermove", UPDATE)
-
-  const RESTYLE = () => {
-    CONTAINER.style.setProperty("--gap", CONFIG.gap)
-    CONTAINER.style.setProperty("--blur", CONFIG.blur)
-    CONTAINER.style.setProperty("--spread", CONFIG.spread)
-    CONTAINER.style.setProperty("--direction", CONFIG.vertical ? 'column' : 'row')
-  }
-
-  RESTYLE()
-  UPDATE()
-</script>

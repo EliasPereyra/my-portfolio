@@ -39,7 +39,8 @@
       "first-desc": "Soy un desarrollador Fullstack con un enfoque en la creación de interfaces web optimizadas, accesibles y visualmente atractivas. Mis proyectos propios me han permitido desarrollar habilidades en rendimiento, diseño responsivo y usabilidad, proveyendo una experiencia fluida e intuitiva para los usuarios.",
       "second-desc": "Me especializo especialmente en el Desarrollo Front-end, empezando por el diseño y usando herramientas como Figma y Penpot para generar resultados atractivos y limpios. Tengo conocimientos sólidos en HTML, CSS, JavaScript y frameworks modernos como React.js, así como Node.js y bases de datos en el backend.",
       "third-desc": "Además del desarrollo web, participo como voluntario en la comunidad de freeCodeCamp, contribuyendo al ecosistema open source mediante la traducción de artículos al español. Mi objetivo es hacer que el conocimiento técnico sea más accesible para hispanohablantes, facilitando el aprendizaje de desarrollo web y programación para una comunidad más amplia.",
-      "fourth-desc": "Creo que todos necesitamos el acceso a la educación y en la importancia de compartir el conocimiento. A través de estas traducciones, ayudo a que más personas puedan aprender sin la barrera el idioma. Puedes ver las traducciones en las que he colaborado "
+      "fourth-desc": "Creo que todos necesitamos el acceso a la educación y en la importancia de compartir el conocimiento. A través de estas traducciones, ayudo a que más personas puedan aprender sin la barrera el idioma. Puedes ver las traducciones en las que he colaborado ",
+      "fifth-desc": "aquí."
     },
     "personal": {
       "title": "Mi lado personal",
@@ -62,8 +63,7 @@
       "seventh-part": "en aprender nuevas herramientas, para expandir y obtener más experiencia en distintas áreas del desarrollo. Y, me encanta ",
       "idiomas": "aprender nuevos idiomas",
       "eighth-part": ", una pasión que viene hace más de 10 años."
-    },
-    "third-desc": "aquí."
+    }
   },
   "contact": {
     "title": "¿Te gustaría contactarme?",
