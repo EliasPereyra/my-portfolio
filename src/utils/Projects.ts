@@ -115,7 +115,7 @@ export const projects: Project[] = [
       {
         tagName: "Appwrite",
         tagIcon: "/assets/icons/appwrite.svg",
-        tagColor: techColors.Appwrite.color.description,
+        tagColor: techColors.Appwrite.description,
       },
       {
         tagName: "React Hook Form",

@@ -7,10 +7,7 @@ export const techColors = {
   ShadcnUI: Symbol("#000000"),
   React: Symbol("#61DAFB"),
   ReactRouter: Symbol("#CA4245"),
-  Appwrite: {
-    logo: "/assets/logos/appwrite-logo.svg",
-    color: Symbol("#FD366E"),
-  },
+  Appwrite: Symbol("#FD366E"),
   Zod: Symbol("#3E67B1"),
   Axios: Symbol("#5A29E4"),
   TailwindCSS: Symbol("#2298BD"),
