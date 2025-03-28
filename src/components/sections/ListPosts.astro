@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import PostCard from "../widgets/PostCard.astro";
-import BigPost from "../widgets/BigPost.astro";
+import { t } from "i18next";
 
 type Props = {
   posts: CollectionEntry<"posts">[];
@@ -12,7 +12,7 @@ const { posts } = Astro.props;
 
 <section>
   <div id="radial-gradient__effect"></div>
-  <h3>Latest posts</h3>
+  <h2>{t("blog.title")}</h2>
   <!-- list of 3 posts -->
   <ul id="list-posts">
     {
@@ -22,7 +22,7 @@ const { posts } = Astro.props;
           title={post.data.title}
           description={post.data.description}
           tags={post.data.tags}
-          pubDate={post.data.publishDate.toDateString()}
+          pubDate={post.data.publishDate}
         />
       ))
     }
@@ -31,7 +31,7 @@ const { posts } = Astro.props;
 
 <style>
   section {
-    padding: 12em 10em;
+    padding: 8em 10em;
     background: linear-gradient(380deg, #010613 -20%, #232243 400%);
     position: relative;
     z-index: 10;
@@ -73,8 +73,9 @@ const { posts } = Astro.props;
       mask-image: radial-gradient(ellipse at center, transparent 10%, black);
     }
 
-    h3 {
+    h2 {
       color: var(--white-color);
+      margin-bottom: 1em;
     }
 
     #list-posts {
@@ -83,6 +84,16 @@ const { posts } = Astro.props;
       justify-content: space-between;
       align-items: center;
       gap: 2em;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    section {
+      background: var(--hero__light-bg);
+
+      h3 {
+        color: var(--black-c-800);
+      }
     }
   }
 </style>
