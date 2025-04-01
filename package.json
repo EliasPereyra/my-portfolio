@@ -17,7 +17,7 @@
   },
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@9.0.6",
+  "packageManager": "pnpm@10.7.1",
   "eslintConfig": {
     "extends": [
       "eslint"
@@ -33,25 +33,25 @@
   },
   "dependencies": {
     "@astrojs/netlify": "6.0.1",
-    "@fontsource/quicksand": "^5.1.0",
+    "@fontsource/quicksand": "5.1.0",
     "@sentry/astro": "8.47.0",
-    "astro": "5.1.1",
+    "astro": "5.1.10",
     "astro-i18next": "1.0.0-beta.21",
-    "i18next": "23.7.20",
+    "i18next": "23.16.8",
     "resend": "3.2.0",
-    "tinacms": "2.5.2"
+    "tinacms": "2.7.3"
   },
   "devDependencies": {
     "@astrojs/mdx": "^4.0.3",
-    "@tinacms/cli": "^1.7.0",
-    "@types/node": "^20.11.19",
+    "@tinacms/cli": "^1.9.3",
+    "@types/node": "^20.17.29",
     "@types/toastify-js": "^1.12.3",
-    "@typescript-eslint/parser": "^7.5.0",
+    "@typescript-eslint/parser": "8.28.0",
     "eslint": "9.0.0",
     "eslint-plugin-astro": "^0.34.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "toastify-js": "^1.12.0",
-    "typescript": "^5.3.3"
+    "typescript": "5.8.2"
   }
 }
