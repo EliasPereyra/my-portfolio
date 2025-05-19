@@ -4,8 +4,8 @@ import { t } from "i18next";
 ---
 
 <section id="abt-section">
-  <h2 id="about" class="abt-section__title">{t("about.title")}</h2>
-  <div id="abt-section__content">
+  <h2 id="about" class="main-title">{t("about.title")}</h2>
+  <div class="cont">
     <article class="cont-wrapper first-col" >
       <div class="glows"></div>
       <div class="cols-wrapper">
@@ -90,27 +90,36 @@ import { t } from "i18next";
     --border-radius: 0.77rem;
     --border-width: 2px;
     --blur: 10px;
-    --light-green: #91ff90;
-    --light-blue: #adc3ff;
+    --light-green: #5ec95c;
+    --light-blue: #758fd7;
   }
 
   #abt-section {
-    border-top: 1px solid hsl(225, 17%, 6%);
     position: relative;
-    padding: 16em 10em;
     z-index: 5;
+    padding: 16em 10em;
+    border-top: 1px solid hsl(220, 33%, 4%);
     background: linear-gradient(250deg, #060912 10%, #14161c 320%);
+    @media (prefers-color-scheme: light) {
+      & {
+        background: linear-gradient(21deg, #d0dfe6 -19.36%, #e5e7ed -19.36%, #d0dfe6 222.58%);
+        border-top: 1px solid hsl(226, 47%, 85%);
+      }
+    }
 
-    .abt-section__title {
-      background-image: linear-gradient(to bottom, #fefefe, #f8f8f8);
-      -webkit-background-clip: text;
-      color: transparent;
+    .main-title {
       text-align: center;
       margin-bottom: 4rem;
       text-decoration: underline;
-        text-decoration-color: #2d97d4fa;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 20px;
+      text-decoration-color: #2d97d4fa;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 20px;
+      color: #f2f7f2;
+      @media (prefers-color-scheme: light) {
+        & {
+          color: var(--primary-color);
+        }
+      }
     }
 
     &::before {
@@ -118,20 +127,20 @@ import { t } from "i18next";
       position: absolute;
       top: 0;
       left: 0;
-      background-image: url("/assets/grid.svg");
       z-index: -1;
       width: 100%;
       height: 100%;
-      opacity: 0.34;
-      filter: saturate(200%) invert(0.85) drop-shadow(0 0 0.75rem #2d97d4fa) hue-rotate(80deg);
-      mask-image: linear-gradient(350deg, transparent 70%, black);
+      background-image: url("/assets/grid.svg");
+      opacity: 0.03;
+      filter: invert(0.10) drop-shadow(0 0 .75rem #2d97d4fa);
+      mask-image: linear-gradient(0deg, transparent 75%, rgb(5, 6, 10));
     }
 
     @media (max-width: 1000px) {
       padding: 12em 2em;
     }
 
-    #abt-section__content {
+    .cont {
       display: flex;
       gap: 1rem;
 
@@ -170,7 +179,11 @@ import { t } from "i18next";
 
           .col-title {
             color: var(--white-c-900);
-            font-size: 1.9rem;
+            @media (prefers-color-scheme: light) {
+              & {
+                color: var(--primary-color);
+              }
+            }
           }
 
           .work {
@@ -184,31 +197,33 @@ import { t } from "i18next";
           .first-column {
             position: relative;
             .description-text {
-              color: var(--white-c-800);
-              font-size: 1.12rem;
               margin-inline: auto;
               margin-bottom: 2em;
               line-height: 1.6rem;
-              width: fit-content
+              width: fit-content;
+              color: var(--white-c-800);
+              @media (prefers-color-scheme: light) {
+                & {
+                  color: var(--primary-color);
+                }
+              }
             }
             
             .card-wrapper {
               .card {
-                padding: 1.4em 1em;
-                border-radius: 0.5em;
-                width: 9.4em;
-                height: auto;
                 position: absolute;
-                bottom: -12em;
                 left: 12em;
-                transition: transform 0.23s ease-in-out;
+                bottom: -12em;
+                height: auto;
+                width: 9.4em;
+                padding: 1.4em 1em;
                 border: 1px solid #15171d;
-
+                border-radius: 0.5em;
+                transition: transform 0.23s ease-in-out;
                 @media (max-width: 768px) {
                   bottom: -38em;
                   left: 10em;
                 }
-
                 @media (max-width: 660px) {
                   display: none;
                 }
@@ -217,18 +232,17 @@ import { t } from "i18next";
                   color: var(--white-c-900);
                   font-size: 0.9rem;
                   text-align: center;
-
                   &:hover {
                     text-decoration: underline;
                   }
                 }
                 
                 &:nth-child(1) {
-                  background: linear-gradient(250deg, #0a132bfa 10%, #14161c 320%);
                   transform: translateX(-7em) rotate(-10deg);
-                  border: 5px solid;
-                  border-image-source: linear-gradient(200deg, #5c66f7fa 10%, #ca2866 120%);
-                  border-image-slice: 1;
+                  border: 5px solid transparent;
+                  background: 
+                    linear-gradient(250deg, #0a132bfa 10%, #14161c 320%) padding-box,
+                    linear-gradient(200deg, #5c66f7fa 10%, #ca2866 120%) border-box;
 
                   &:hover {
                     transform: translateX(-10em) rotate(0deg) scale(1.2);
@@ -236,11 +250,11 @@ import { t } from "i18next";
                 }
 
                 &:nth-child(2){
-                  background: linear-gradient(250deg, #0b0a2bfa 10%, #030818 320%);
                   transform: rotate(0deg);
-                  border: 5px solid;
-                  border-image-source: linear-gradient(150deg, #5cf7d5fa 10%, #6628ca 100%);
-                  border-image-slice: 1; 
+                  border: 5px solid transparent;
+                  background: 
+                    linear-gradient(250deg, #0b0a2bfa 10%, #030818 320%) padding-box,
+                    linear-gradient(150deg, #5cf7d5fa 10%, #6628ca 100%) border-box;
                   z-index: 5;
 
                   &:hover {
@@ -249,11 +263,11 @@ import { t } from "i18next";
                 }
 
                 &:nth-child(3){
-                  background: linear-gradient(250deg, #0a132bfa 10%, #14161c 320%);
                   transform: translateX(7em) rotate(10deg);
-                  border: 5px solid;
-                  border-image-source: linear-gradient(150deg, #c65cf7fa 10%, #286eca 100%);
-                  border-image-slice: 1; 
+                  border: 5px solid transparent;
+                  background: 
+                    linear-gradient(250deg, #0a132bfa 10%, #14161c 320%) padding-box,
+                    linear-gradient(150deg, #c65cf7fa 10%, #286eca 100%), border-box;
 
                   &:hover {
                     transform: translateX(10em) rotate(0deg) scale(1.2);
