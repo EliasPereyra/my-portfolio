@@ -2,14 +2,14 @@
 import { t } from "i18next";
 ---
 
-<section id="contact">
+<section class="contact" id="contact">
   <div class="radial-gradient"></div>
-  <div class="cont__text-content">
-    <h2 id="tc__title">{t("contact.title")}</h2>
-    <p id="tc__comment">{t("contact.comment")}</p>
+  <div class="text-content">
+    <h2 class="title">{t("contact.title")}</h2>
+    <p class="comment">{t("contact.comment")}</p>
   </div>
-  <div id="cont__copy-wrapper">
-    <a href="mailto:eliaspereyra_gomez@hotmail.com" id="cw__copy-btn"
+  <div class="copy-wrapper">
+    <a href="mailto:eliaspereyra_gomez@hotmail.com" class="copy-btn"
       >{t("contact.button")}</a
     >
   </div>
@@ -36,28 +36,28 @@ import { t } from "i18next";
 </script>
 
 <style>
-  #contact {
-    padding: 14em 10em;
+  .contact {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 1em;
     justify-content: center;
     align-items: center;
-    container-type: inline-size;
+    gap: 1em;
+    padding: 14em 10em;
     text-align: center;
-    position: relative;
     z-index: 5;
+    container-type: inline-size;
     background: linear-gradient(250deg, #060912 10%, #0c0f16 320%);
 
     &::before {
       content: "";
       position: absolute;
       inset: auto;
-      background-image: url("/assets/grid.svg");
       z-index: -1;
       width: 100%;
       height: 100%;
       opacity: 0.34;
+      background-image: url("/assets/grid.svg");
       filter: saturate(30%) invert(0.78) drop-shadow(0 0 1.75rem #2d97d4fa)
         hue-rotate(160deg);
       mask-image: radial-gradient(ellipse at center, #070a12, #070a120d 30%);
@@ -82,62 +82,62 @@ import { t } from "i18next";
       z-index: 1;
     }
 
-    .cont__text-content {
+    .text-content {
       display: flex;
       flex-direction: column;
-      #contact__title {
-        color: var(--white-c-900);
-        font-size: 3.125rem;
+
+      .title {
         max-width: 23ch;
-        line-height: 4rem;
+        color: var(--white-c-900);
       }
 
-      #tc__comment {
-        margin: 1rem auto;
-        color: var(--white-c-800);
+      .comment {
         line-height: 1.8rem;
-        width: 35ch;
-
+        margin: 1rem auto;
+        width: 45ch;
+        color: var(--white-c-800);
         @media (max-width: 600px) {
           width: 20ch;
         }
       }
     }
 
-    #cont__copy-wrapper {
+    .copy-wrapper {
+      font-size: 1rem;
+      padding: 1em 2em;
+      border: 1px solid #375085;
+      border-radius: 0.5rem;
       z-index: 2;
       color: var(--white-color);
-      padding: 1em 2em;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-      border: 1px solid #383785;
-      background: linear-gradient(to right, #0b0c16, #0e0e27, #090a1a);
-      box-shadow: 0px 0px 38px 12px #1b2036;
+      background: linear-gradient(to right, #0b0e16, #0e1527, #090e1a);
+      box-shadow: 0px 0px 38px 12px #1b2436;
       transition:
         border,
         box-shadow 0.2s ease-out;
       &:hover {
-        box-shadow: 0px 0px 28px 0px #2d305a;
-        border: 1px solid #6c48b9;
+        box-shadow: 0px 0px 28px 0px #2d395a;
+        border: 1px solid #486cb9;
       }
 
-      #cw__copy-btn {
+      .copy-btn {
         color: var(--white-c-800);
+        user-select: none;
       }
     }
   }
 
   @media screen and (max-width: 1400px) {
-    #contact {
+    .contact {
       flex-direction: column;
     }
   }
 
   @media screen and (max-width: 600px) {
-    #contact {
+    .contact {
       padding: 12em 2rem;
-      .cont__text-content {
-        #contact__message {
+
+      .text-content {
+        .message {
           width: 100%;
         }
       }
@@ -145,20 +145,20 @@ import { t } from "i18next";
   }
 
   @media (prefers-color-scheme: light) {
-    #contact {
+    .contact {
       background: #e4ecf1;
 
-      .cont__text-content {
-        #tc__title {
+      .text-content {
+        .title {
           color: var(--primary-color);
         }
 
-        #tc__comment {
+        .comment {
           color: var(--primary-color);
         }
       }
 
-      #cont__copy-wrapper {
+      .copy-wrapper {
         background: #cedaf0;
         border: 1px solid #92add6;
         box-shadow: 0px 0px 18px 8px #b0d8ec;
@@ -168,7 +168,7 @@ import { t } from "i18next";
           border: 1px solid #487db9;
         }
 
-        #cw__copy-btn {
+        .copy-btn {
           color: var(--black-c-800);
         }
       }
