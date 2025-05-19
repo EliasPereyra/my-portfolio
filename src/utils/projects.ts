@@ -1,3 +1,4 @@
+import { getCollection, type CollectionEntry } from "astro:content";
 import { techColors } from "./TechColors";
 
 export interface TagData {
@@ -147,3 +148,9 @@ export const projects: Project[] = [
     repo_link: "https://github.com/EliasPereyra/docheal",
   },
 ];
+
+export const getProjects = async (): Promise<CollectionEntry<"projects">[]> => {
+  const projects = await getCollection("projects");
+
+  return projects;
+};
