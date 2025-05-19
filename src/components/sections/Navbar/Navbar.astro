@@ -1,8 +1,8 @@
 ---
 import { t } from "i18next";
 
-import Languages from "../atoms/Languages.astro";
-import LogoWhite from "../atoms/LogoWhite.astro";
+import Languages from "./Languages.astro";
+import LogoWhite from "@/components/atoms/LogoWhite.astro";
 
 const {pathname} = Astro.url
 
@@ -40,16 +40,10 @@ const currentBlogPathName = pathname === "/" ? "/blog": "/eng/blog"
   #navbar {
     --_animationStartsAfter: 60vh;
     --_animationDistance: 500px;
-    --_surfaceColorStart: hsl(242, 45%, 14%);
+    --_surfaceColorStart: hsl(223, 44%, 14%);
+    --_surfaceLightColorStart: #e4ecf1;
     --_surfaceColorEnd: hsl(0 50% 90% / 0.1);
-
     --_logoAfterAnimation: none;
-    position: sticky;
-    z-index: 9999;
-    top: 0;
-    width: 100%;;
-    background-color: var(--_surfaceColorStart);
-
     @supports (animation-timeline: view()) {
       top: -5rem;
       backdrop-filter: blur(100px) saturate(130%) drop-shadow(0 0 0.75rem #2d59d4fa); 
@@ -60,10 +54,20 @@ const currentBlogPathName = pathname === "/" ? "/blog": "/eng/blog"
       animation-range-end: calc(100vh + var(--_animationStartsAfter) + var(--_animationDistance));
     }
 
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: .04em 10em;
+    background-color: var(--_surfaceColorStart);
+    @media (prefers-color-scheme: light) {
+      & {
+        background-color: var(--_surfaceLightColorStart);
+      }
+    }
 
     @media (max-width: 375px) {
       nav {

@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+
 import DownArrow from "./DownArrow.astro";
 import LanguagesIcon from "./LanguagesIcon.astro";
 
@@ -32,11 +33,11 @@ const currentEngPathname = isBlogPathname ? "/eng/blog" : "/eng"
 <style>
   .dropdown-wrapper{
   #dropdown {
+    anchor-name: --btn;
     .dropdown-btn {
       display: flex;
       align-items: center;
       gap: 7px;
-      anchor-name: --btn;
     }
   }
 
@@ -50,7 +51,6 @@ const currentEngPathname = isBlogPathname ? "/eng/blog" : "/eng"
     overflow: hidden;
     margin: 0;
     padding: .55rem .77rem;
-    position-try-fallbacks: --left;
     /* Visualización */
     display: none;
     opacity: 0;
@@ -59,6 +59,13 @@ const currentEngPathname = isBlogPathname ? "/eng/blog" : "/eng"
     border: 1px solid var(--secondary-lighter__color);
     transition: display .2s, opacity .2s;
     transition-behavior: allow-discrete;
+    @media (max-width: 425px) {
+      #dropdown-items {
+        top: anchor(bottom);
+        left: none;
+        right: anchor(right);
+      }
+    }     
 
     & > * {
       padding: .5rem;
@@ -100,5 +107,11 @@ const currentEngPathname = isBlogPathname ? "/eng/blog" : "/eng"
     inset: auto;
     top: anchor(bottom);
     right: anchor(right);
+}
+
+@position-try --right {
+    inset: auto;
+    top: anchor(bottom);
+    left: anchor(left);
 }
 </style>
