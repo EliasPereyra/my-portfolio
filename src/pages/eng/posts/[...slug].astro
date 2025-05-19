@@ -8,9 +8,14 @@ import Share from "@/components/widgets/Share.astro";
 import { createSlug } from "@/utils/createSlug";
 import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/posts";
+import { techColors } from "@/utils/TechColors";
 
 changeLanguage("eng");
 
+type Tag = {
+    tag: string;
+    tagColor: string | undefined;
+};
 export async function getStaticPaths() {
     const posts = await getPosts();
     return posts.map((post) => ({
@@ -20,12 +25,27 @@ export async function getStaticPaths() {
 }
 const post = Astro.props;
 const { title, description, tags, publishDate } = post.data;
+const formattedTags = tags.map((tag, i) => {
+    let tagsFormatted: Tag = {
+        tag: "",
+        tagColor: undefined,
+    };
+    Object.values(techColors).forEach((key) => {
+        if (key.description?.toLowerCase() === tag.toLowerCase()) {
+            tagsFormatted = {
+                tag: tag,
+                tagColor: key.description,
+            };
+        }
+    });
+    return tagsFormatted;
+});
 const { Content } = await post.render();
 ---
 
 <BaseLayout
-  author="Elias Pereyra"
   title={title}
+  author="Elias Pereyra"
   description={description}
   articleDate={publishDate}
 >
@@ -36,7 +56,11 @@ const { Content } = await post.render();
         <h1 id="blog-post__title">{title}</h1>
         <small>{formatDate(publishDate)}</small>
         <ul id="blog-post__tag-items">
-          {tags.map((tag) => <Tag tag={tag} />)}
+          {
+            formattedTags.map(({ tag, tagColor }) => (
+              <Tag tag={tag} tagColor={tagColor} />
+            ))
+          }
         </ul>
       </header>
 
@@ -59,7 +83,7 @@ const { Content } = await post.render();
       #010613,
       #232243 150%
     );
-    padding: 12em 10em;
+    padding: 8em 10em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,6 +131,7 @@ const { Content } = await post.render();
 
         img {
           object-fit: contain;
+          border-radius: 0.7em;
         }
 
         h1 {

@@ -1,0 +1,51 @@
+---
+interface Props {
+  tagName: string;
+  tagIcon: string;
+  tagColor: string;
+}
+
+const { tagName, tagIcon, tagColor } = Astro.props;
+---
+
+<li class="tag" style=`--tag-color: ${tagColor}`>
+  <div class="tag-item">
+    <img src={tagIcon} alt={tagName} width="20" height="20" />
+    <small>{tagName}</small>
+  </div>
+</li>
+
+<style>
+  .tag {
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--tag-color);
+    border-radius: 1rem;
+    transition: background-color 0.12s ease-in-out;
+    z-index: 2;
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--tag-color), black 70%);
+    }
+    @media (prefers-color-scheme: light) {
+      &:hover {
+        background-color: color-mix(in srgb, var(--tag-color), white 70%);
+      }
+    }
+
+    .tag-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+
+      img {
+        filter: invert(1);
+      }
+
+      @media (prefers-color-scheme: light) {
+        small {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+</style>

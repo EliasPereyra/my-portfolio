@@ -1,0 +1,60 @@
+<button class="button" onclick="window.scrollTo(0, 0);">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    width="24"
+    height="24"
+    stroke-width="2"
+  >
+    <path
+      d="M9 20v-8h-3.586a1 1 0 0 1 -.707 -1.707l6.586 -6.586a1 1 0 0 1 1.414 0l6.586 6.586a1 1 0 0 1 -.707 1.707h-3.586v8a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"
+    ></path>
+  </svg>
+</button>
+
+<style>
+  @keyframes moveUp {
+    from {
+      transform: translateY(var(--_animationDistance));
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .button {
+    --_animationStartsAfter: 1vh;
+    --_animationDistance: 900px;
+
+    position: fixed;
+    right: 2em;
+    bottom: 2em;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    cursor: pointer;
+
+    @supports (animation-timeline: view()) {
+      animation: moveUp linear forwards;
+      animation-timeline: view();
+      animation-range-start: calc(5vh + var(--_animationStartsAfter));
+      animation-range-end: calc(
+        5vh + var(--_animationStartsAfter) + var(--_animationDistance)
+      );
+    }
+
+    svg {
+      stroke: var(--white-c-900);
+      fill: var(--white-c-900);
+    }
+  }
+</style>

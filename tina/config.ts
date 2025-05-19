@@ -1,3 +1,4 @@
+import { title } from "process";
 import { defineStaticConfig } from "tinacms";
 
 // Your hosting provider likely exposes this as an environment variable
@@ -72,6 +73,83 @@ export default defineStaticConfig({
             name: "draft",
             label: "Draft",
             description: "If it's a draft, then it's not published yet",
+          },
+        ],
+      },
+      {
+        name: "projects",
+        label: "Projects",
+        path: "src/content/projects",
+        format: "mdx",
+        fields: [
+          {
+            name: "title",
+            type: "string",
+            label: "Title",
+            isTitle: true,
+            required: true,
+            description: "Title of the project",
+          },
+          {
+            name: "description",
+            type: "string",
+            label: "Description",
+            required: true,
+            description: "A short description of the project",
+          },
+          {
+            name: "project_img",
+            type: "string",
+            label: "Project Image",
+            required: true,
+            description: "The cover image of the project",
+          },
+          {
+            name: "github_repo",
+            type: "string",
+            label: "Github Repo",
+            required: true,
+            description: "The link to the github repo",
+          },
+          {
+            name: "live_link",
+            type: "string",
+            label: "Live Link",
+            required: false,
+            description: "The link to the live version of the project",
+          },
+          {
+            name: "summary",
+            type: "string",
+            label: "Summary",
+            required: true,
+            description: "A short summary of the project",
+          },
+          {
+            name: "key_features",
+            type: "string",
+            list: true,
+            label: "Key Features",
+            required: true,
+            description: "The key features of the project",
+          },
+          {
+            name: "design_goals",
+            type: "object",
+            list: true,
+            fields: [
+              {
+                name: "title",
+                type: "string",
+              },
+              {
+                name: "description",
+                type: "string",
+              },
+            ],
+            label: "Design Goals",
+            required: false,
+            description: "The design goals of the project",
           },
         ],
       },

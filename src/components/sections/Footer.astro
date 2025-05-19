@@ -1,5 +1,6 @@
 ---
 import { t } from "i18next";
+
 import LogoWhite from "../atoms/LogoWhite.astro";
 import AstroIcon from "../atoms/AstroIcon.astro";
 import LinkedinIcon from "../atoms/LinkedinIcon.astro";
@@ -7,12 +8,13 @@ import GithubIcon from "../atoms/GithubIcon.astro";
 import XIcon from "../atoms/XIcon.astro";
 ---
 
-<footer id="footer">
-  <div class="footer__content">
-    <div class="fc__social-wrapper">
+<footer class="footer" id="footer">
+  <div class="content">
+    <div class="social-wrapper">
       <a id="sw__my-logo" href="/"> <LogoWhite width="143" height="143" /></a>
-      <div class="sw__social-links">
+      <div class="social-links">
         <GithubIcon
+          type="icon"
           link="https://github.com/EliasPereyra"
           width="27"
           height="27"
@@ -29,7 +31,7 @@ import XIcon from "../atoms/XIcon.astro";
         />
       </div>
     </div>
-    <div id="fc__tool-used">
+    <div class="tool-used">
       <small>{t("footer.tool-used")}</small>
       <a href="https://astro.build" target="_blank"><AstroIcon /></a>
     </div>
@@ -37,7 +39,7 @@ import XIcon from "../atoms/XIcon.astro";
 </footer>
 
 <style>
-  #footer {
+  .footer {
     border-top: 0.2px solid hsl(225 33% 15% / 1);
     background: hsl(225 33% 6% / 1);
     padding: 4em 10em;
@@ -45,16 +47,16 @@ import XIcon from "../atoms/XIcon.astro";
     position: relative;
     z-index: 5;
 
-    .footer__content {
+    .content {
       display: flex;
       justify-content: space-between;
       align-items: center;
 
-      .fc__social-wrapper {
+      .social-wrapper {
         display: flex;
         flex-direction: column;
 
-        .sw__social-links {
+        .social-links {
           margin-top: -0.9rem;
           display: flex;
           align-items: center;
@@ -63,7 +65,7 @@ import XIcon from "../atoms/XIcon.astro";
         }
       }
 
-      #fc__tool-used {
+      .tool-used {
         display: flex;
         align-items: center;
         line-height: 9px;
@@ -81,26 +83,27 @@ import XIcon from "../atoms/XIcon.astro";
     }
   }
 
+  /* When screen size changes */
   @media screen and (max-width: 500px) {
-    #footer {
+    .footer {
       padding: 4em 2em;
     }
   }
 
   @media (max-width: 590px) {
-    .footer__content {
+    .content {
       flex-direction: column;
-      #fc__tool-used {
+      .tool-used {
         margin-top: 2em;
         flex-direction: column;
       }
     }
   }
 
+  /* When theme changes */
   @media (prefers-color-scheme: light) {
-    #footer {
+    .footer {
       border-top: 0.2px solid hsl(227, 70%, 87%);
-
       background: linear-gradient(
         9deg,
         #cad6e2 6.27%,
@@ -108,8 +111,8 @@ import XIcon from "../atoms/XIcon.astro";
         #f5f5f5 88.98%
       );
 
-      .footer__content {
-        #fc__tool-used {
+      .content {
+        .tool-used {
           small {
             color: var(--primary-color);
           }

@@ -1,14 +1,14 @@
 ---
 import { t } from "i18next";
 
-import Card from "../widgets/Card.astro";
-import { projects } from "../../utils/Projects";
+import Card from "@/components/widgets/Card.astro";
+import { projects } from "@/utils/projects";
 ---
 
-<main class="port-wrapper" id="portfolio-section">
-  <div id="content">
-    <h2>{t("portfolio.title")}</h2>
-    <ul>
+<main class="port-wrapper" id="portfolio">
+  <div class="content">
+    <h2 class="main-title">{t("portfolio.title")}</h2>
+    <ul class="cards">
       {
         projects.map(
           ({ title, description, tags, project_img, live_link, repo_link }) => (
@@ -28,9 +28,14 @@ import { projects } from "../../utils/Projects";
 </main>
 
 <style>
-  main {
+  .port-wrapper {
     padding: 10em 10em;
-    background: #060912;
+    background-color: #060912;
+    @media (prefers-color-scheme: light) {
+      & {
+        background: linear-gradient(204deg, #e5e7ed -19.36%, #d0dfe6 222.58%);
+      }
+    }
     position: relative;
 
     @media screen and (max-width: 810px) {
@@ -56,27 +61,34 @@ import { projects } from "../../utils/Projects";
         saturate(200%) opacity(0.22);
     }
 
-    #content {
-      h2 {
-        text-align: center;
-        color: #f2f7f2;
-        margin-bottom: 3em;
+    .content {
+      .main-title {
         position: relative;
+        z-index: 2;
+        margin-bottom: 3em;
+        text-align: center;
         text-decoration: underline;
         text-decoration-color: #2d97d4fa;
         text-decoration-thickness: 1px;
         text-underline-offset: 20px;
-        z-index: 2;
+        color: #f2f7f2;
+        @media (prefers-color-scheme: light) {
+          & {
+            color: var(--primary-color);
+          }
+        }
       }
 
-      ul {
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        align-items: center;
+        gap: 2em;
+        justify-items: center;
+        padding: 0;
         margin-inline: auto;
         max-width: 90em;
         color: hsl(233, 53%, 27%);
-        display: grid;
-        gap: 5em;
-        justify-items: center;
-        padding: 0;
       }
     }
   }
@@ -85,8 +97,8 @@ import { projects } from "../../utils/Projects";
     main {
       background: linear-gradient(204deg, #e5e7ed -19.36%, #d0dfe6 222.58%);
 
-      #content {
-        h2 {
+      .content {
+        .main-title {
           color: var(--primary-color);
         }
       }

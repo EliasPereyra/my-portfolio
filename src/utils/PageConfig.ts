@@ -5,7 +5,9 @@ export interface PageConfig {
 }
 
 export const PageConfig: PageConfig = {
-  title: "Elias Pereyra Gomez | Fullstack, JavaScript, React.js",
-  description: "My personal website where you'll find all my recent projects and, also, a little bit of who I am",
-  author: "Elias Pereyra Gomez"
-}
+  title:
+    "Elias Pereyra Gomez | Fullstack especializado en Front-end con Next.js y React.js",
+  description:
+    "Mi página personal donde encontrarás todos mis últimos proyectos y, también, un poquito sobre quién soy",
+  author: "Elias Pereyra Gomez",
+};

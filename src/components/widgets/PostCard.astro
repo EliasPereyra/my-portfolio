@@ -2,13 +2,19 @@
 import { Image } from "astro:assets";
 
 import { createSlug } from "@/utils/createSlug";
+import { formatDate } from "@/utils/formatDate";
 
 interface Props {
-  img: string;
+  img: {
+    height: number;
+    src: string;
+    width: number;
+    format: "avif" | "png" | "webp" | "jpeg" | "jpg" | "svg" | "tiff" | "gif";
+  };
   title: string;
   description: string;
   tags: string[];
-  pubDate: string;
+  pubDate: Date;
 }
 
 const { img, title, description, tags, pubDate } = Astro.props;
@@ -24,7 +30,7 @@ const { img, title, description, tags, pubDate } = Astro.props;
       height={300}
     />
     <h4 id="post-card__title">{title}</h4>
-    <small id="post-card__pub-date">{pubDate}</small>
+    <small id="post-card__pub-date">{formatDate(pubDate)}</small>
     <ul id="post-card__tag-items">
       {
         tags.map((tag) => (
@@ -58,16 +64,16 @@ const { img, title, description, tags, pubDate } = Astro.props;
       }
 
       #post-card__pub-date {
-        color: var(--white-gray__color);
+        color: var(--white-c-800);
       }
 
       #post-card__tag-items {
         display: flex;
         gap: 0.5em;
-        color: var(--white-gray__color);
+        color: var(--white-c-800);
 
         li {
-          border: 1px solid var(--white-gray__color);
+          border: 1px solid var(--white-c-800);
           border-radius: 7px;
           padding: 2px 9px;
         }
@@ -76,11 +82,36 @@ const { img, title, description, tags, pubDate } = Astro.props;
       #post-card__brief-desc {
         display: -webkit-box;
         font-size: 1rem;
-        color: var(--white-gray__color);
+        color: var(--white-c-800);
         text-overflow: ellipsis;
         overflow: hidden;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
+      }
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    #post-card {
+      #post-card__slug-link {
+        #post-card__title {
+          color: var(--black-c-800);
+        }
+
+        #post-card__pub-date {
+          color: var(--black-c-800);
+        }
+
+        #post-card__tag-items {
+          color: var(--black-c-800);
+          li {
+            border: 1px solid var(--black-c-800);
+          }
+        }
+
+        #post-card__brief-desc {
+          color: var(--black-c-800);
+        }
       }
     }
   }
