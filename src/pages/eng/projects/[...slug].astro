@@ -1,0 +1,234 @@
+---
+import { changeLanguage } from "i18next";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import GithubIcon from "@/components/atoms/GithubIcon.astro";
+import { getProjects } from "@/utils/projects";
+import LeftArrowIcon from "@/components/atoms/LeftArrowIcon.astro";
+
+changeLanguage("eng");
+
+export async function getStaticPaths() {
+    const projects = await getProjects();
+    return projects.map((project) => ({
+        params: { slug: project.slug.toLocaleLowerCase() },
+        props: { project },
+    }));
+}
+const { project } = Astro.props;
+const { title, description, summary, project_img, github_repo, key_features, design_goals, } = project.data;
+---
+
+<BaseLayout
+  author="Elias Pereyra"
+  title={project.data.title}
+  description={project.data.description}
+>
+  <section class="container">
+    <LeftArrowIcon href="/#projects" color="#ddd" />
+    <main class="header">
+      <img
+        class="cover-img"
+        src={project_img.src}
+        alt=`Imagen de portada del proyecto ${title}`
+        width="800"
+        height="580"
+      />
+      <div class="content">
+        <h1 class="title">{title}</h1>
+        <p class="text description">{description}</p>
+        <div class="links">
+          <GithubIcon
+            styles="z-index: 2;"
+            type="button"
+            link={github_repo}
+            width="28"
+            height="28"
+          />
+        </div>
+      </div>
+    </main>
+
+    <section class="body">
+      <p class="text summary">{summary}</p>
+
+      <div class="key-features">
+        <h2 class="title">Key Features</h2>
+        <ul class="list">
+          {key_features.map((feature) => <li class="list-item">{feature}</li>)}
+        </ul>
+      </div>
+
+      <div class="design-goals">
+        <h2 class="title">Design Goals</h2>
+        <ul class="list">
+          {
+            design_goals.map((goal) => (
+              <li class="list-item">
+                <h4 class="item-title">{goal.title}</h4>
+                <p class="description">{goal.description}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </section>
+</BaseLayout>
+
+<style>
+  :root {
+    --dark-blue: #060912;
+    --light-gray: #ececec27;
+  }
+
+  /* General styles */
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1em;
+  }
+
+  .text {
+    font-size: 1.02rem;
+  }
+
+  /* Project styles */
+  .container {
+    padding: 4em 10em;
+    background: linear-gradient(380deg, #010613 -20%, #232243 400%);
+
+    .header {
+      margin-top: 2em;
+      display: flex;
+
+      .cover-img {
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border: 1px solid var(--light-gray);
+        border-top-left-radius: 0.77rem;
+        border-bottom-left-radius: 0.77rem;
+      }
+
+      .content {
+        border: 1px solid var(--light-gray);
+        border-left: none;
+        border-top-right-radius: 0.77rem;
+        border-bottom-right-radius: 0.77rem;
+        padding: 2.5em;
+        background-color: var(--dark-blue);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 1em;
+        position: relative;
+
+        &::after {
+          content: "";
+          background: linear-gradient(180deg, #090f1a 0%, transparent);
+          border: 1px solid var(--light-gray);
+          border-top-right-radius: 0.77rem;
+          border-bottom-right-radius: 0.77rem;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+        }
+
+        .title {
+          position: relative;
+          z-index: 2;
+        }
+
+        .description {
+          position: relative;
+          z-index: 2;
+          color: #ddd;
+        }
+
+        .links {
+          z-index: 2;
+        }
+      }
+    }
+
+    .body {
+      margin-top: 2em;
+      padding: 2.5em;
+      border-radius: 0.77rem;
+      background-color: var(--dark-blue);
+      position: relative;
+
+      &::after {
+        content: "";
+        background: linear-gradient(190deg, #090f1a 0%, #090f1a21);
+        border: 1px solid var(--light-gray);
+        border-radius: 0.77rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+      }
+
+      .summary {
+        position: relative;
+
+        z-index: 2;
+      }
+
+      .key-features {
+        margin-top: 2em;
+
+        .title {
+          position: relative;
+          border-bottom: 1px solid var(--light-gray);
+          padding-bottom: 0.3em;
+          z-index: 2;
+        }
+
+        .list-item {
+          z-index: 2;
+          list-style: circle inside;
+        }
+      }
+
+      .design-goals {
+        margin-top: 2em;
+
+        .title {
+          position: relative;
+          z-index: 2;
+          border-bottom: 1px solid var(--light-gray);
+          padding-bottom: 0.3em;
+        }
+
+        .list {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1em;
+          .list-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+
+            .item-title {
+              position: relative;
+              z-index: 2;
+            }
+
+            .description {
+              position: relative;
+
+              z-index: 2;
+            }
+          }
+        }
+      }
+    }
+  }
+</style>
