@@ -4,7 +4,7 @@ import { changeLanguage } from "i18next";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import GithubIcon from "@/components/atoms/GithubIcon.astro";
 import WebIcon from "@/components/atoms/WebIcon.astro";
-import CloseIcon from "@/components/atoms/CloseIcon.astro";
+// import CloseIcon from "@/components/atoms/CloseIcon.astro";
 import LeftArrowIcon from "@/components/atoms/LeftArrowIcon.astro";
 import ToolPill from "@/components/widgets/ToolPill.astro";
 import { getProjects, projects } from "@/utils/projects";
@@ -60,7 +60,7 @@ const project_tools = (projectName: string) => {
         />
       </button>
       <dialog class="carousel-container" id="modal">
-        <CloseIcon />
+        <!-- <CloseIcon /> -->
         <form class="carousel" action="dialog">
               <img
                 class="cover-img"
