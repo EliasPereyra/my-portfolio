@@ -87,10 +87,15 @@ import { t } from "i18next";
 <style>
   :root {
     --gradient: conic-gradient(from 180deg at 50% 70%,hsla(0,0%,98%,1) 0deg,#2dee94 72.0000010728836deg,#4bec4b 144.0000021457672deg,#709ab9 216.00000858306885deg,#4dffbf 288.0000042915344deg,hsla(0,0%,98%,1) 1turn);
+    --light-gradient-bg: linear-gradient(21deg, #d0dfe6 -19.36%, #e5e7ed -19.36%, #d0dfe6 222.58%);
+    --dark__fst-card-bg-gradient: radial-gradient(at center top, rgba(56, 215, 122, 0.021), rgba(6, 28, 15, 0.038)), radial-gradient(at center bottom, rgba(45, 215, 209, 0.05), rgba(5, 22, 21, 0.08));
+    --light__fst-card-bg-gradient: radial-gradient(at center top, rgb(132 205 162 / 2%), rgb(6 28 15 / 1%)), radial-gradient(at center bottom, rgb(125 211 208 / 5%), rgb(5 22 21 / 4%));
+    --dark__snd-card-bg-gradient: radial-gradient(at top center, rgba(56, 143, 215, 0.05), rgba(6, 16, 28, 0.08)), radial-gradient(at center bottom, rgba(45, 113, 215, 0.05), rgba(5, 14, 22, 0.08));
+    --light__snd-card-bg-gradient: radial-gradient(at top center, rgb(56 143 215 / 1%), rgb(6 16 28 / 1%)), radial-gradient(at center bottom, rgb(45 113 215 / 1%), rgb(5 14 22 / 2%));
     --border-radius: 0.77rem;
     --border-width: 2px;
     --blur: 10px;
-    --light-green: #5ec95c;
+    --light-green: #57dd4b;
     --light-blue: #758fd7;
   }
 
@@ -102,7 +107,7 @@ import { t } from "i18next";
     background: linear-gradient(250deg, #060912 10%, #14161c 320%);
     @media (prefers-color-scheme: light) {
       & {
-        background: linear-gradient(21deg, #d0dfe6 -19.36%, #e5e7ed -19.36%, #d0dfe6 222.58%);
+        background: var(--light-gradient-bg);
         border-top: 1px solid hsl(226, 47%, 85%);
       }
     }
@@ -149,13 +154,19 @@ import { t } from "i18next";
       }
 
       .first-col {
-        background: radial-gradient(at center top, rgba(56, 215, 122, 0.021), rgba(6, 28, 15, 0.038)), radial-gradient(at center bottom, rgba(45, 215, 209, 0.05), rgba(5, 22, 21, 0.08));
-          border: 1px solid #92ff9060;
-        }
+        border: 1px solid #92ff9060;
+        background: var(--dark__fst-card-bg-gradient);
+        @media (prefers-color-scheme: light) {
+          background: var(--light__fst-card-bg-gradient);
+        } 
+      }
 
         .second-col {
-          background: radial-gradient(at top center, rgba(56, 143, 215, 0.05), rgba(6, 16, 28, 0.08)), radial-gradient(at center bottom, rgba(45, 113, 215, 0.05), rgba(5, 14, 22, 0.08));
           border: 1px solid #adc3ff60;
+          background: var(--dark__snd-card-bg-gradient);
+          @media (prefers-color-scheme: light) {
+            background: var(--light__snd-card-bg-gradient);
+          }
         }
 
       .cont-wrapper {
