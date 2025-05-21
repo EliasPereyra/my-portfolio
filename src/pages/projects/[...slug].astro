@@ -1,0 +1,461 @@
+---
+import { changeLanguage } from "i18next";
+
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import GithubIcon from "@/components/atoms/GithubIcon.astro";
+import WebIcon from "@/components/atoms/WebIcon.astro";
+import CloseIcon from "@/components/atoms/CloseIcon.astro";
+import LeftArrowIcon from "@/components/atoms/LeftArrowIcon.astro";
+import ToolPill from "@/components/widgets/ToolPill.astro";
+import { getProjects, projects } from "@/utils/projects";
+
+changeLanguage("spa");
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.map((project) => ({
+    params: { slug: project.slug.toLocaleLowerCase() },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const {
+  title,
+  description,
+  summary,
+  project_img,
+  github_repo,
+  live_link,
+  key_features,
+  design_goals,
+} = project.data;
+
+const project_tools = (projectName: string) => {
+  const project = projects.find(
+    (project) =>
+      project.title.toLocaleLowerCase() === projectName.toLocaleLowerCase()
+  );
+
+  const tags = project?.tags;
+  return tags;
+};
+---
+
+<BaseLayout
+  author="Elias Pereyra"
+  title={`Proyecto ${title} | Elias Pereyra`}
+  description={description}
+>
+  <section class="container">
+    <LeftArrowIcon href="/#projects" color="#ddd" />
+    <main class="header">
+      <button id="show-modal">
+        <img
+          class="cover-img"
+          src={project_img.src}
+          alt=`Imagen de portada del proyecto ${title}`
+          width="800"
+          height="580"
+        />
+      </button>
+      <dialog class="carousel-container" id="modal">
+        <CloseIcon />
+        <form class="carousel" action="dialog">
+              <img
+                class="cover-img"
+                src={project_img.src}
+                alt=`Imagen de portada del proyecto ${title}`
+                width="800"
+                height="580"
+              />
+
+              <img
+                class="cover-img"
+                src={project_img.src}
+                alt=`Imagen de portada del proyecto ${title}`
+                width="800"
+                height="580"
+              />
+
+              <img
+                class="cover-img"
+                src={project_img.src}
+                alt=`Imagen de portada del proyecto ${title}`
+                width="800"
+                height="580"
+              />
+
+              <img
+                class="cover-img"
+                src={project_img.src}
+                alt=`Imagen de portada del proyecto ${title}`
+                width="800"
+                height="580"
+              />
+
+              <img
+                class="cover-img"
+                src={project_img.src}
+                alt=`Imagen de portada del proyecto ${title}`
+                width="800"
+                height="580"
+              />
+        </form>
+      </dialog>
+      <div class="content">
+        <h1 class="main-title">{title}</h1>
+        <p class="text description">{description}</p>
+        <div class="links">
+          <WebIcon link={live_link} width="28" height="28" />
+          <GithubIcon
+            styles="z-index: 2;"
+            type="button"
+            link={github_repo}
+            width="28"
+            height="28"
+          />
+        </div>
+      </div>
+    </main>
+
+    <section class="body">
+      <p class="text summary">{summary}</p>
+
+      <div class="key-features">
+        <h2 class="title">Key Features</h2>
+        <ul class="list">
+          {key_features.map((feature) => <li class="list-item">{feature}</li>)}
+        </ul>
+      </div>
+
+      <div class="design-goals">
+        <h2 class="title">Design Goals</h2>
+        <ul class="list">
+          {
+            design_goals.map((goal) => (
+              <li class="list-item">
+                <h4 class="item-title">{goal.title}</h4>
+                <p class="description">{goal.description}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="tools-used">
+        <h2 class="title">Tools used</h2>
+        <ul class="tag-items">
+          {
+            project_tools(title)?.map(({ tagName, tagIcon, tagColor }) => (
+              <ToolPill
+                tagName={tagName}
+                tagIcon={tagIcon}
+                tagColor={tagColor as string}
+              />
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </section>
+</BaseLayout>
+
+<script>
+  //const showModal = document.querySelector("#show-modal");
+  //const closeModal = document.getElementById("close-modal");
+  //const modal = document.getElementById("modal");
+
+  // showModal?.addEventListener("click", () => {
+  //   // @ts-ignore
+  //   modal?.showModal();
+  // });
+
+  // closeModal?.addEventListener("click", () => {
+  //   // @ts-ignore
+  //   modal?.close();
+  // });
+</script>
+
+<style>
+  :root {
+    --dark-blue: #060912;
+    --light-gray: #ececec27;
+    --gradient: linear-gradient(
+      to right,
+      var(--blue-color),
+      var(--secondary-color)
+    );
+  }
+
+  /* General styles */
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1em;
+  }
+
+  .text {
+    font-size: 1.02rem;
+  }
+
+  .title {
+    position: relative;
+    background-image: var(--gradient);
+    background-size: 100% 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 0.3em;
+    z-index: 2;
+  }
+
+  .description {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Project styles */
+  .container {
+    padding: 4em 10em;
+    background: linear-gradient(380deg, #010613 -20%, #232243 400%);
+    @media (max-width: 425px) {
+      & {
+        padding: 4em 1em;
+      }
+    }
+
+    .header {
+      margin-top: 2em;
+      display: flex;
+      @media(max-width: 425px) {
+        & {
+          flex-direction: column;
+        }
+      }
+
+      #show-modal {
+        /* cursor: pointer; */
+
+        .cover-img {
+          object-fit: cover;
+          aspect-ratio: 1/1;
+          border: 1px solid var(--light-gray);
+          border-top-left-radius: 0.77rem;
+          border-bottom-left-radius: 0.77rem;
+          user-select: none;
+
+          @media(max-width: 425px) {
+            & {
+              border-top-right-radius: 0.77rem;
+              border-bottom-left-radius: 0;
+            }
+          }
+        }
+      }
+
+      :modal {
+        max-width: 100vw;
+        border: none;
+        max-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 4em;
+      }
+
+      .carousel-container {
+        position: relative;
+
+        .carousel {
+          anchor-name: --carousel;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          overscroll-behavior-x: contain;
+          scroll-marker-group: after;
+
+          display: flex;
+          gap: 1em;
+
+          & > img {
+            width: 100%;
+            object-fit: cover;
+            scroll-snap-align: center;
+            aspect-ratio: 1/1;
+            border: 1px solid var(--light-gray);
+            border-radius: 0.77rem;
+            user-select: none;
+          }            
+          
+          &::scroll-button(*) {
+            position: fixed;
+            position-anchor: --carousel;
+          }
+
+          &::scroll-button(left) {
+            padding: .5em;
+            content: "Previous" / "";
+            position-area: inline-start center;
+            border: none;
+            background-color: var(--secondary-color);
+          }
+          
+          &::scroll-button(right) {
+            padding: .5em;
+            content: "Forward" / "";
+            position-area: inline-end center;
+            border: none;
+            background-color: var(--secondary-color);
+          }
+
+          &::scroll-marker-group {
+            position: fixed;
+            position-anchor: --carousel;
+            position-area: block-end;
+            margin: 10px;
+
+            display: grid;
+            grid-auto-columns: 20px;
+            grid-auto-flow: column;
+            gap: 20px;
+          }
+
+          & > img::scroll-marker {
+            content: ' ';
+
+            &::target-current {
+              background-color: var(--blue-color);
+            }
+          }
+          }
+        }
+      }
+
+      .content {
+        border: 1px solid var(--light-gray);
+        border-left: none;
+        border-top-right-radius: 0.77rem;
+        border-bottom-right-radius: 0.77rem;
+        padding: 2.5em;
+        background-color: var(--dark-blue);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 1em;
+        position: relative;
+        &::after {
+          content: "";
+          background: linear-gradient(180deg, #090f1a 0%, transparent);
+          border: 1px solid var(--light-gray);
+          border-top-right-radius: 0.77rem;
+          border-bottom-right-radius: 0.77rem;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+        }
+        @media (max-width: 425px) {
+          & {
+            border-left: 1px solid var(--light-gray);
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0.77rem;
+            border-bottom-left-radius: 0.77rem;
+
+            &::after {
+              border-top-right-radius: 0;
+              border-bottom-right-radius: 0.77rem;
+              border-bottom-left-radius: 0.77rem;
+            }
+          }
+        }
+
+        .main-title {
+          z-index: 2;
+        }
+
+        .links {
+          display: flex;
+          gap: 1em;
+          z-index: 2;
+        }
+      }
+    }
+
+    .body {
+      position: relative;
+      margin-top: 2em;
+      padding: 2.5em;
+      @media (max-width: 425px) {
+        & {
+          padding: 2.5em 1em;
+        }
+      }
+      border-radius: 0.77rem;
+      background-color: var(--dark-blue);
+
+      &::after {
+        content: "";
+        background: linear-gradient(190deg, #090f1a 0%, #090f1a21);
+        border: 1px solid var(--light-gray);
+        border-radius: 0.77rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+      }
+
+      .summary {
+        position: relative;
+        z-index: 2;
+      }
+
+      .key-features {
+        margin-top: 2em;
+
+        .list-item {
+          z-index: 2;
+          list-style: circle inside;
+        }
+      }
+
+      .design-goals {
+        margin-top: 2em;
+
+        .list {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          @media (max-width: 425px) {
+            & {
+              grid-template-columns: 1fr;
+            }
+          }
+          gap: 1em;
+          .list-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+
+            .item-title {
+              position: relative;
+              z-index: 2;
+            }
+          }
+        }
+      }
+
+      .tools-used {
+        margin-top: 2em;
+
+        .tag-items {
+          margin-top: 1em;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5em;
+        }
+      }
+    }
+  }
+</style>
