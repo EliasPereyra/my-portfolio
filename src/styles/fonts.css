@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "OpenSans Bold";
+  src: url("/fonts/OpenSans/open-sans-cyrillic-800-normal.woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenSans Regular";
+  src: url("/fonts/OpenSans/open-sans-cyrillic-700-normal.woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1 {
+  font-family: "OpenSans Bold", system-ui, sans-serif;
+  font-size: clamp(1.9rem, 2.01rem + 1.2vw, 5rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-family: "OpenSans Bold", system-ui, sans-serif;
+  font-size: clamp(1.35rem, 1.1rem + 1.05vw, 3rem);
+  font-weight: 600;
+}
+
+h3 {
+  font-family: "OpenSans Bold", sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.2rem, 1rem + 1vw, 2.5rem);
+}
+
+h4 {
+  font-family: "OpenSans Bold", sans-serif;
+  font-size: clamp(1rem, 0.5rem + 1vw, 2.2rem);
+  font-weight: 500;
+}
+
+:is(p, a, li, small, button, label, input, textarea) {
+  font-family: "OpenSans Regular", sans-serif;
+}

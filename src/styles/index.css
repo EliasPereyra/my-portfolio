@@ -1,3 +1,7 @@
+@layer system;
+
+@import "./fonts.css" layer(system);
+
 :root {
   --black-c-900: color-mix(in lch, hsl(221, 76%, 5%), hsl(120, 24%, 96%) 5%);
   --black-c-800: color-mix(in lch, hsl(221, 76%, 5%), hsl(120, 24%, 96%) 15%);
@@ -7,8 +11,8 @@
 
   --primary-color: var(--black-c-900);
   --secondary-color: hsl(160, 73%, 36%);
-  --secondary-lighter__color: hsl(133, 78%, 65%);
-  --blue-color: hsl(212, 100%, 70%);
+  --secondary-lighter__color: hsl(133, 55%, 54%);
+  --blue-color: hsl(212, 83%, 66%);
   --white-color: var(--white-c-900);
 
   --dark-rb-gradient: linear-gradient(
@@ -16,7 +20,6 @@
     var(--primary-color) 0%,
     var(--secondary-color) 100%
   );
-  --hero__dark-bg: linear-gradient(-200deg, #232243 -79%, #010613 90%);
 }
 
 @media (prefers-color-scheme: light) {
@@ -107,35 +110,7 @@ li {
   list-style: none;
 }
 
-h1 {
-  font-family: "Quicksand", system-ui, sans-serif;
-  font-weight: 800;
-  font-size: clamp(1.9rem, 2.01rem + 1.2vw, 5rem);
-}
-
-h2 {
-  font-family: "Quicksand", system-ui, sans-serif;
-  font-size: clamp(1.35rem, 1.1rem + 1.05vw, 3rem);
-  font-weight: 600;
-}
-
-h3 {
-  font-family: "Quicksand", sans-serif;
-  font-weight: 500;
-  font-size: clamp(1.2rem, 1rem + 1vw, 2.5rem);
-}
-
-h4 {
-  font-family: "Quicksand", sans-serif;
-  font-size: clamp(1rem, 0.5rem + 1vw, 2.2rem);
-  font-weight: 500;
-}
-
 img {
   display: block;
   max-width: 100%;
-}
-
-:is(p, a, li, small, button, label, input, textarea) {
-  font-family: "Quicksand", sans-serif;
 }
