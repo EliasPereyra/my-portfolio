@@ -1,12 +1,13 @@
 ---
 export interface Props {
   color: string;
+  href?: string;
 }
 
-const { color } = Astro.props;
+const { color, href } = Astro.props;
 ---
 
-<a href="/blog">
+<a href={href}>
   <svg
     width="30px"
     height="30px"
