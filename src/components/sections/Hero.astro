@@ -7,18 +7,18 @@ import EmailIcon from "../atoms/EmailIcon.astro";
 import CVIcon from "../atoms/CVIcon.astro";
 ---
 
-<section class="hero-wrapper" id="hero">
+<section class="hero" id="hero">
   <div id="overlay"></div>
   <div id="radial-gradient__effect"></div>
   <div class="text-content">
     <div class="avail-text">
-      <div id="effect-wrapper">
-        <span id="effect"></span>
+      <div class="effect-wrapper">
+        <span class="effect"></span>
         <span></span>
       </div>
       <p class="over-title">{t("hero.available")}</p>
     </div>
-    <h1 class="dark headline-title">{t("hero.headline")}</h1>
+    <h1 class="headline-title" class="dark">{t("hero.headline")}</h1>
     <p class="description-text first-col">
       <strong>{t("hero.first-col")}</strong>
     </p>
@@ -48,95 +48,140 @@ import CVIcon from "../atoms/CVIcon.astro";
 </section>
 
 <style>
-  .hero-wrapper {
-    position: relative;
-    padding: 6em 2em;
-    z-index: 10;
-    background: var(--hero__dark-bg);
+  :root {
+    --hero__dark-bg: linear-gradient(-200deg, #232243 -79%, #010613 90%);
+    --radial-gradient__dark: radial-gradient(
+        at 27% 37%,
+        hsla(215, 98%, 61%, 1) 0px,
+        transparent 0%
+      ),
+      radial-gradient(at 97% 21%, hsl(219, 73%, 71%) 0px, transparent 50%),
+      radial-gradient(at 52% 99%, hsl(226.47deg 98% 61%) 0px, transparent 50%),
+      radial-gradient(at 10% 29%, rgb(90, 160, 252) 0px, transparent 50%),
+      radial-gradient(at 97% 96%, hsl(107, 71%, 70%) 0px, transparent 50%),
+      radial-gradient(
+        at 33% 50%,
+        hsl(222deg 88.45% 67.18%) 0px,
+        transparent 50%
+      ),
+      radial-gradient(at 79% 53%, hsl(234.78deg 68% 79%) 0px, transparent 50%);
+    --radial-gradient__light: radial-gradient(
+        at 27% 37%,
+        hsl(215deg 88.4% 87.7%) 0px,
+        transparent 0%
+      ),
+      radial-gradient(
+        at 97% 21%,
+        hsl(219deg 95.07% 84.03%) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 52% 99%,
+        hsl(226.47deg 83.37% 90.53%) 0px,
+        transparent 50%
+      ),
+      radial-gradient(at 10% 29%, rgb(197 220 249) 0px, transparent 50%),
+      radial-gradient(at 97% 96%, hsl(107, 71%, 70%) 0px, transparent 50%),
+      radial-gradient(at 33% 50%, hsl(222deg 72% 83.66%) 0px, transparent 50%),
+      radial-gradient(
+        at 79% 53%,
+        hsl(234.78deg 50.02% 82.96%) 0px,
+        transparent 50%
+      );
+  }
 
+  .hero {
+    position: relative;
+    z-index: 1000;
+    padding: 6em 2em;
+    background: var(--hero__dark-bg);
     &::before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
+      background-image: url("/assets/grid.svg");
       z-index: -1;
       width: 100%;
       height: 100%;
       opacity: 0.4;
-      background-image: url("/assets/grid.svg");
-      mask-image: radial-gradient(ellipse at center, transparent 20%, black);
       filter: invert(0.85);
+      mask-image: radial-gradient(ellipse at center, transparent 20%, black);
+    }
+    @media (prefers-color-scheme: light) {
+      background: var(--hero__light-bg);
+      &::before {
+        filter: invert(0.4);
+      }
+    }
+
+    #overlay {
+      width: 100%;
+      height: 100%;
+      z-index: 19;
+      background-color: rgb(2 6 23 / 0.5);
     }
 
     #radial-gradient__effect {
-      height: 80%;
-      width: 70em;
       position: absolute;
       top: 0;
       right: 10em;
       z-index: -1;
+      width: 70em;
+      height: 80%;
       border-radius: 100vw;
-      background-image: radial-gradient(
-          at 27% 37%,
-          hsla(215, 98%, 61%, 1) 0px,
-          transparent 0%
-        ),
-        radial-gradient(at 97% 21%, hsl(219, 73%, 71%) 0px, transparent 50%),
-        radial-gradient(at 52% 99%, hsl(226.47deg 98% 61%) 0px, transparent 50%),
-        radial-gradient(at 10% 29%, rgb(90, 160, 252) 0px, transparent 50%),
-        radial-gradient(at 97% 96%, hsl(107, 71%, 70%) 0px, transparent 50%),
-        radial-gradient(
-          at 33% 50%,
-          hsl(222deg 88.45% 67.18%) 0px,
-          transparent 50%
-        ),
-        radial-gradient(at 79% 53%, hsl(234.78deg 68% 79%) 0px, transparent 50%);
       filter: blur(120px) saturate(250%) hue-rotate(10deg);
       opacity: 0.25;
+      background-image: var(--radial-gradient__dark);
+      @media (prefers-color-scheme: light) {
+        background-image: var(--radial-gradient__light);
+      }
     }
 
     .text-content {
+      margin: auto;
+      padding-top: 4em;
+      padding-bottom: 10em;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 1.1rem;
-      margin: auto;
-      padding-bottom: 10em;
-      padding-top: 4em;
       animation: fade-in 0.5s ease-in forwards;
       animation-delay: 0.1s;
 
       .avail-text {
+        margin-bottom: 1rem;
+        padding: 1rem 0.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 1.5rem;
-        margin-bottom: 1rem;
-        padding: 1rem 0.5rem;
-        min-width: min(100%, 20em);
-        color: var(--white-color);
         border: 1px solid rgba(255, 125, 169, 0.55);
         border-radius: 100vw;
+        min-width: min(100%, 20em);
         background: rgba(255, 125, 169, 0.08);
+        color: var(--white-color);
+        @media (prefers-color-scheme: light) {
+          color: var(--primary-color);
+        }
 
-        #effect-wrapper {
+        .effect-wrapper {
           position: relative;
-
-          #effect {
+          .effect {
             position: absolute;
             inset: 0;
             margin: auto;
             border-radius: 50%;
-            background-color: rgba(255, 125, 169, 0.85);
             animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            background-color: rgba(255, 125, 169, 0.85);
           }
 
           span {
-            position: absolute;
-            inset: 0;
             margin: auto;
             padding: 0.5rem;
+            position: absolute;
+            inset: 0;
             border-radius: 50%;
             background-color: rgba(255, 125, 169, 0.85);
             filter: drop-shadow(0px 0px 17px rgba(255, 40, 113, 0.7));
@@ -152,14 +197,21 @@ import CVIcon from "../atoms/CVIcon.astro";
 
       .headline-title {
         margin: 0;
-        color: var(--white-color);
         text-align: center;
+        color: var(--white-color);
+        @media (prefers-color-scheme: light) {
+          color: var(--primary-color);
+        }
       }
 
       .description-text {
-        max-width: 30em;
+        width: 11ch;
         text-align: center;
+        font-size: clamp(1.3rem, 1.05rem + 0.21vw, 1.6rem);
         color: var(--white-c-800);
+        @media (prefers-color-scheme: light) {
+          color: var(--primary-color);
+        }
       }
 
       .first-col {
@@ -168,6 +220,7 @@ import CVIcon from "../atoms/CVIcon.astro";
       }
 
       .second-col {
+        font-size: 1.15rem;
         max-width: 40ch;
       }
     }
@@ -194,30 +247,10 @@ import CVIcon from "../atoms/CVIcon.astro";
   }
 
   @media screen and (max-width: 500px) {
-    .hero-wrapper {
+    section {
       .text-content {
         .avail-text {
           width: 10em;
-        }
-      }
-    }
-  }
-
-  @media (prefers-color-scheme: light) {
-    .hero-wrapper {
-      background: var(--hero__light-bg);
-
-      .text-content {
-        .headline-title {
-          color: var(--primary-color);
-        }
-
-        .avail-text {
-          color: var(--primary-color);
-        }
-
-        .description-text {
-          color: var(--primary-color);
         }
       }
     }
