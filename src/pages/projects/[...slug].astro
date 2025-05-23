@@ -123,14 +123,14 @@ const project_tools = (projectName: string) => {
       <p class="text summary">{summary}</p>
 
       <div class="key-features">
-        <h2 class="title">Key Features</h2>
+        <h2 class="title">Características claves</h2>
         <ul class="list">
           {key_features.map((feature) => <li class="list-item">{feature}</li>)}
         </ul>
       </div>
 
       <div class="design-goals">
-        <h2 class="title">Design Goals</h2>
+        <h2 class="title">Objetivos de Diseño</h2>
         <ul class="list">
           {
             design_goals.map((goal) => (
@@ -144,7 +144,7 @@ const project_tools = (projectName: string) => {
       </div>
 
       <div class="tools-used">
-        <h2 class="title">Tools used</h2>
+        <h2 class="title">Herramientas usadas</h2>
         <ul class="tag-items">
           {
             project_tools(title)?.map(({ tagName, tagIcon, tagColor }) => (
@@ -432,7 +432,7 @@ const project_tools = (projectName: string) => {
               grid-template-columns: 1fr;
             }
           }
-          gap: 1em;
+          gap: 2em;
           .list-item {
             display: flex;
             flex-direction: column;
