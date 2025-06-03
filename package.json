@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@astrojs/mdx": "^4.2.4",
-    "@tinacms/cli": "^1.9.3",
+    "@tinacms/cli": "^1.9.8",
     "@types/node": "^20.17.57",
     "@types/toastify-js": "^1.12.3",
     "@typescript-eslint/parser": "8.28.0",
