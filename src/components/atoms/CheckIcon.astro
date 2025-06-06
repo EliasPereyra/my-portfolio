@@ -1,5 +1,12 @@
+---
+interface Props {
+  id?: string;
+}
+---
+
 <!--?xml version="1.0" encoding="utf-8"?--><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
 <svg
+  id={Astro.props.id}
   width="30"
   height="30"
   viewBox="0 0 24 24"
@@ -25,6 +32,8 @@
   svg {
     opacity: 0.7;
     transition: opacity 0.13s ease-in-out;
+    cursor: pointer;
+    display: none;
   }
 
   svg:hover {
