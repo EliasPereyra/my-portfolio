@@ -68,7 +68,8 @@
   "contact": {
     "title": "¿Te gustaría contactarme?",
     "comment": "Puedes contactarme y con mucho gusto te respondo. Envíame un mensaje y charlemos sobre tu propuesta.",
-    "button": "Envíame un mensaje"
+    "button": "Envíame un mensaje",
+    "emailCopyMessage": "Email copiado"
   },
   "footer": {
     "tool-used": "Desarrollado felizmente con "

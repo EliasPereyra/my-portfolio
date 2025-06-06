@@ -68,7 +68,8 @@
   "contact": {
     "title": "Would you like to work with me?",
     "comment": "Currently I'm up for work. Contact me. Send me a message and let's chat about your proposal.",
-    "button": "Send me a message"
+    "button": "Send me a message",
+    "emailCopyMessage": "Email copied"
   },
   "footer": {
     "tool-used": "Happily developed with "
