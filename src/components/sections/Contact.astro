@@ -1,5 +1,7 @@
 ---
 import { t } from "i18next";
+import CopyIcon from "../atoms/CopyIcon.astro";
+import CheckIcon from "../atoms/CheckIcon.astro";
 ---
 
 <section class="contact" id="contact">
@@ -8,34 +10,59 @@ import { t } from "i18next";
     <h2 class="title">{t("contact.title")}</h2>
     <p class="comment">{t("contact.comment")}</p>
   </div>
-  <div class="copy-wrapper">
-    <a href="mailto:eliaspereyra_gomez@hotmail.com" class="copy-btn"
-      >{t("contact.button")}</a
-    >
+
+  <div class="email-wrapper">
+    <p id="email-address">eliaspereyra_gomez@hotmail.com</p>
+    <CopyIcon id="copy-icon" />
+    <CheckIcon id="check-icon" />
+    <div id="popup" class="popup">
+      <p>{t("contact.emailCopyMessage")}</p>
+    </div>
   </div>
 </section>
 
 <script>
-  // @ts-nocheck
-  // import Toastify from "toastify-js";
-  // import "toastify-js/src/toastify.css";
+  const copyIcon = document.getElementById("copy-icon");
+  const checkIcon = document.getElementById("check-icon");
+  const email = document.getElementById("email-address");
+  const popup = document.getElementById("popup");
 
-  // const copyBtn = document.querySelector("#contact__copy-btn");
+  copyIcon?.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(email?.textContent as string);
 
-  // copyBtn?.addEventListener("click", () => {
-  //   navigator.clipboard.writeText("eliaspereyra_gomez@hotmail.com");
-  //   Toastify({
-  //     text: "Email copied to the clipboard",
-  //     className: "info",
-  //     style: {
-  //       background: "linear-gradient(to right, #0e0f1b, #0C0E22)",
-  //       color: "white",
-  //     },
-  //   }).showToast();
-  // });
+    copyIcon.style.display = "none";
+    checkIcon!.style.display = "block";
+    popup!.style.display = "block";
+
+    setTimeout(() => {
+      copyIcon.style.display = "block";
+      checkIcon!.style.display = "none";
+      popup!.style.display = "none";
+    }, 3000);
+  });
 </script>
 
 <style>
+  @property --glow-deg {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: -90deg;
+  }
+
+  @keyframes glow {
+    0% {
+      --glow-deg: -90deg;
+    }
+
+    50% {
+      --glow-deg: 360deg;
+    }
+
+    100% {
+      --glow-deg: -90deg;
+    }
+  }
+
   .contact {
     position: relative;
     display: flex;
@@ -102,25 +129,48 @@ import { t } from "i18next";
       }
     }
 
-    .copy-wrapper {
-      font-size: 1rem;
-      padding: 1em 2em;
-      border: 1px solid #375085;
+    .email-wrapper {
+      position: relative;
+      z-index: 10;
+      padding: 0.5em 2em;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      border: 3px solid transparent;
       border-radius: 0.5rem;
-      z-index: 2;
-      color: var(--white-color);
-      background: linear-gradient(to right, #0b0e16, #0e1527, #090e1a);
-      box-shadow: 0px 0px 38px 12px #1b2436;
-      transition:
-        border,
-        box-shadow 0.2s ease-out;
-      &:hover {
-        box-shadow: 0px 0px 28px 0px #2d395a;
-        border: 1px solid #486cb9;
-      }
-      .copy-btn {
-        color: var(--white-c-800);
+      background:
+        linear-gradient(#0b0e16 0 0) padding-box,
+        conic-gradient(
+            from var(--glow-deg),
+            var(--secondary-color),
+            #375085,
+            #3f3785,
+            #5f3785,
+            #7f3785,
+            #3f3785,
+            var(--secondary-color)
+          )
+          border-box;
+      filter: drop-shadow(0 0 0.75rem #2d97d448);
+      animation: glow 30s infinite linear;
+
+      #email-address {
+        anchor-name: --copy;
         user-select: none;
+      }
+
+      .popup {
+        display: none;
+        position: absolute;
+        position-anchor: --copy;
+        inset: auto;
+        bottom: anchor(top);
+        right: anchor(right);
+        transform: translateX(100%);
+        padding: 0.5em 1em;
+        border-radius: 0.5rem;
+        background-color: var(--secondary-color);
+        color: var(--white-color);
       }
     }
   }
@@ -154,21 +204,6 @@ import { t } from "i18next";
 
         .comment {
           color: var(--primary-color);
-        }
-      }
-
-      .copy-wrapper {
-        background: #cedaf0;
-        border: 1px solid #92add6;
-        box-shadow: 0px 0px 18px 8px #b0d8ec;
-
-        &:hover {
-          box-shadow: 0px 0px 18px 8px #7fb9f0;
-          border: 1px solid #487db9;
-        }
-
-        .copy-btn {
-          color: var(--black-c-800);
         }
       }
     }
