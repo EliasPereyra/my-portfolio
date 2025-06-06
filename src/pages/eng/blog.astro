@@ -9,6 +9,10 @@ changeLanguage("eng");
 const posts = await getPosts();
 ---
 
-<BaseLayout author="Elias Pereyra" title="My Blog" description="My Blog">
-    <ListPosts posts={posts} >
+<BaseLayout
+  author="Elias Pereyra"
+  title="Blog | Elias Pereyra"
+  description="Escribo sobre todo lo relacionado al desarrollo web y seguridad"
+>
+  <ListPosts posts={posts} />
 </BaseLayout>

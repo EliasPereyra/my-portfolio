@@ -49,13 +49,13 @@ const { Content } = await post.render();
   description={description}
   articleDate={publishDate}
 >
-  <article id="blog-post__article">
-    <LeftArrowIcon color="#eee" />
+  <article class="article">
+    <LeftArrowIcon href="/blog" color="#eee" />
     <div class="content-wrapper">
-      <header id="blog-post__header">
-        <h1 id="blog-post__title">{title}</h1>
+      <header class="header">
+        <h1 class="header-title">{title}</h1>
         <small>{formatDate(publishDate)}</small>
-        <ul id="blog-post__tag-items">
+        <ul id="tag-items">
           {
             formattedTags.map(({ tag, tagColor }) => (
               <Tag tag={tag} tagColor={tagColor} />
@@ -69,47 +69,43 @@ const { Content } = await post.render();
       </section>
     </div>
 
-    <footer id="blog-post__footer-article">
-      <h4 id="blog-post__footer-title">Share this with your friends</h4>
+    <footer class="footer-article">
+      <h4 class="footer-title">Share this with your friends</h4>
       <Share />
     </footer>
   </article>
 </BaseLayout>
 
 <style>
-  #blog-post__article {
-    background: conic-gradient(
-      from 0.35turn at 85% -32%,
-      #010613,
-      #232243 150%
-    );
-    padding: 8em 10em;
+  .article {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1em;
+    padding: 8em 10em;
+    background: linear-gradient(380deg, #010613 -20%, #232243 400%);
 
     :is(h2, h3, h4, p, code, small) {
       color: var(--white-c-700);
     }
 
     .content-wrapper {
-      #blog-post__header {
+      .header {
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 1rem;
         margin-bottom: 1rem;
-        align-items: center;
 
-        #blog-post__tag-items {
+        .tag-items {
           display: flex;
           gap: 0.5em;
           color: var(--white-c-700);
 
           li {
+            padding: 2px 9px;
             border: 1px solid var(--white-c-600);
             border-radius: 7px;
-            padding: 2px 9px;
 
             small {
               transition: opacity 0.32s ease-in-out;
@@ -123,28 +119,15 @@ const { Content } = await post.render();
       }
 
       .content {
+        max-width: 70em;
         padding: 2em 10em;
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        max-width: 70em;
 
         img {
-          object-fit: contain;
           border-radius: 0.7em;
-        }
-
-        h1 {
-          font-size: 2.2rem;
-        }
-
-        h2 {
-          font-size: 1.8rem;
-          font-weight: 700;
-        }
-
-        h3 {
-          font-size: 1.2rem;
+          object-fit: contain;
         }
 
         hr {
@@ -153,10 +136,9 @@ const { Content } = await post.render();
         }
 
         p {
-          color: var(--white-c-700);
-          font-size: 1.2rem;
           max-width: 70ch;
           line-height: 2rem;
+          color: var(--white-c-700);
         }
 
         strong {
@@ -174,7 +156,6 @@ const { Content } = await post.render();
         }
 
         li {
-          font-size: 1.2rem;
           padding: 1rem;
           list-style: disc;
           list-style-position: inside;
@@ -183,31 +164,42 @@ const { Content } = await post.render();
       }
     }
 
-    #blog-post__footer-article {
+    .footer-article {
       margin-top: 1rem;
       padding: 1em;
       border-radius: 0.77rem;
+
+      .footer-title {
+        background-image: linear-gradient(
+          to right,
+          var(--blue-color),
+          var(--secondary-color)
+        );
+        background-size: 0% 2px;
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+      }
     }
   }
 
   @media (prefers-color-scheme: light) {
-    #blog-post__article {
+    .article {
       background: var(--hero__light-bg);
 
       :is(h2, code, small) {
         color: var(--black-c-800);
       }
-      #blog-post__header {
-        #blog-post__title {
+      .header {
+        .header-title {
           color: var(--black-c-800);
         }
-        #blog-post__tag-items {
+        .tag-items {
           li {
             border: 1px solid var(--black-c-800);
           }
         }
       }
-      #blog-post__content-wrapper {
+      .content-wrapper {
         :is(h1, h4, p, li, a) {
           color: var(--black-c-800);
         }
@@ -218,8 +210,8 @@ const { Content } = await post.render();
       }
     }
 
-    #blog-post__footer-article {
-      #blog-post__footer-title {
+    .footer-article {
+      .footer-title {
         color: var(--black-c-800);
       }
     }
