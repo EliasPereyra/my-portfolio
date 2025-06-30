@@ -1,6 +1,5 @@
 ---
 import { changeLanguage } from "i18next";
-
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import GithubIcon from "@/components/atoms/GithubIcon.astro";
 import WebIcon from "@/components/atoms/WebIcon.astro";
@@ -12,33 +11,18 @@ import { getProjects, projects } from "@/utils/projects";
 changeLanguage("spa");
 
 export async function getStaticPaths() {
-  const projects = await getProjects();
-  return projects.map((project) => ({
-    params: { slug: project.slug.toLocaleLowerCase() },
-    props: { project },
-  }));
+    const projects = await getProjects();
+    return projects.map((project) => ({
+        params: { slug: project.slug.toLocaleLowerCase() },
+        props: { project },
+    }));
 }
-
 const { project } = Astro.props;
-const {
-  title,
-  description,
-  summary,
-  project_img,
-  github_repo,
-  live_link,
-  key_features,
-  design_goals,
-} = project.data;
-
+const { title, description, summary, project_img, github_repo, live_link, key_features, design_goals, } = project.data;
 const project_tools = (projectName: string) => {
-  const project = projects.find(
-    (project) =>
-      project.title.toLocaleLowerCase() === projectName.toLocaleLowerCase()
-  );
-
-  const tags = project?.tags;
-  return tags;
+    const project = projects.find((project) => project.title.toLocaleLowerCase() === projectName.toLocaleLowerCase());
+    const tags = project?.tags;
+    return tags;
 };
 ---
 
@@ -107,7 +91,7 @@ const project_tools = (projectName: string) => {
         <h1 class="main-title">{title}</h1>
         <p class="text description">{description}</p>
         <div class="links">
-          <WebIcon link={live_link} width="28" height="28" />
+          {live_link !== "" && <WebIcon link={live_link} width="28" height="28" />}
           <GithubIcon
             styles="z-index: 2;"
             type="button"

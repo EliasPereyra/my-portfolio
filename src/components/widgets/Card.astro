@@ -6,6 +6,7 @@ import WebIcon from "../atoms/WebIcon.astro";
 import GithubIcon from "../atoms/GithubIcon.astro";
 import type { TagData } from "@/utils/projects";
 import { createSlug } from "@/utils/createSlug";
+import RightArrowIcon from "../atoms/RightArrowIcon.astro";
 
 export interface Props {
   title: string;
@@ -29,9 +30,14 @@ const { firstParagraph, secondParagraph, thirdParagraph } = description;
     <header class="header">
       <h3 class="title">
         <a href=`/projects/${createSlug(title)}`>{title}</a>
+        <RightArrowIcon width="28" height="28" />
       </h3>
       <div class="link-items">
-        <WebIcon link={live_link} width="28" height="28" />
+        {
+          live_link !== "" && (
+            <WebIcon link={live_link} width="28" height="28" />
+          )
+        }
         <GithubIcon type="button" link={repo_link} width="28" height="28" />
       </div>
     </header>
@@ -90,7 +96,6 @@ const { firstParagraph, secondParagraph, thirdParagraph } = description;
       width: 100%;
       height: 100%;
       border: 1px solid #dddddd15;
-      border-radius: 0.77rem;
       background: linear-gradient(180deg, #090f1a 0%, transparent);
     }
     @media (prefers-color-scheme: light) {
@@ -130,7 +135,7 @@ const { firstParagraph, secondParagraph, thirdParagraph } = description;
         inset: calc(-1 * var(--spread));
         background: conic-gradient(
           from 90deg at 40% -25%,
-          #43cc4a3a,
+          #6743cc3a,
           #5997bb65
         );
         clip-path: polygon(
@@ -159,8 +164,9 @@ const { firstParagraph, secondParagraph, thirdParagraph } = description;
 
       .header {
         display: flex;
+        flex-direction: column;
         flex-wrap: wrap;
-        align-items: center;
+        justify-content: center;
         gap: 1em;
 
         .title {
@@ -215,8 +221,6 @@ const { firstParagraph, secondParagraph, thirdParagraph } = description;
 
       .cover-thumbnail {
         width: 100%;
-        border-top-right-radius: 0.77rem;
-        border-top-left-radius: 0.77rem;
         object-position: top;
         object-fit: cover;
         transition:
