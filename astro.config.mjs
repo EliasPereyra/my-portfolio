@@ -7,7 +7,6 @@ import astroI18next from "astro-i18next";
 export default defineConfig({
   output: "static",
   site: "https://eliaspereyra.netlify.app",
-  adapter: netlify(),
   markdown: {
     drafts: true,
     shikiConfig: {
