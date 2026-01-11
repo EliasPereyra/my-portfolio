@@ -1,6 +1,12 @@
-<!--?xml version="1.0" encoding="utf-8"?--><!doctype html>
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<a href="mailto:eliaspereyra_gomez@hotmail.com">
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a href={href}>
   <svg
     height="30"
     width="30"

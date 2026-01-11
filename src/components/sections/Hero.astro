@@ -5,12 +5,13 @@ import GithubIcon from "../atoms/GithubIcon.astro";
 import LinkedinIcon from "../atoms/LinkedinIcon.astro";
 import EmailIcon from "../atoms/EmailIcon.astro";
 import CVIcon from "../atoms/CVIcon.astro";
+import { socialNetworks } from "@/utils/PageConfig";
 ---
 
 <section class="hero" id="hero">
   <div id="overlay"></div>
   <div id="radial-gradient__effect"></div>
-  <div class="text-content">
+  <section class="text-content">
     <h1 class="headline-title" class="dark">{t("hero.headline")}</h1>
     <p class="description-text first-col">
       <strong>{t("hero.first-col")}</strong>
@@ -29,35 +30,65 @@ import CVIcon from "../atoms/CVIcon.astro";
     <div class="social-networks">
       <GithubIcon
         type="icon"
-        link="https://github.com/EliasPereyra"
+        link={socialNetworks.githubProfile}
         width="35"
         height="35"
       />
-      <LinkedinIcon href="https://www.linkedin.com/in/elias-pereyra-gomez/" />
-      <EmailIcon />
+      <LinkedinIcon href={socialNetworks.linkedinProfile} />
+      <EmailIcon href={socialNetworks.emailAddress} />
       <CVIcon />
     </div>
-  </div>
+  </section>
 </section>
 
 <style>
   :root {
+    /* The background of the section */
     --hero__dark-bg: linear-gradient(-200deg, #232243 -79%, #010613 90%);
-    --radial-gradient__dark: radial-gradient(
-        at 27% 37%,
-        hsla(215, 98%, 61%, 1) 0px,
-        transparent 0%
-      ),
-      radial-gradient(at 97% 21%, hsl(219, 73%, 71%) 0px, transparent 50%),
-      radial-gradient(at 52% 99%, hsl(226.47deg 98% 61%) 0px, transparent 50%),
-      radial-gradient(at 10% 29%, rgb(90, 160, 252) 0px, transparent 50%),
-      radial-gradient(at 97% 96%, hsl(107, 71%, 70%) 0px, transparent 50%),
-      radial-gradient(
-        at 33% 50%,
-        hsl(222deg 88.45% 67.18%) 0px,
-        transparent 50%
-      ),
-      radial-gradient(at 79% 53%, hsl(234.78deg 68% 79%) 0px, transparent 50%);
+
+    /* Different radial-gradient values for the dark theme */
+    --first-radial-g: radial-gradient(
+      at 27% 37%,
+      hsla(215, 98%, 61%, 1) 0px,
+      transparent 0%
+    );
+    --second-radial-g: radial-gradient(
+      at 97% 21%,
+      hsl(219, 73%, 71%) 0px,
+      transparent 50%
+    );
+    --third-radial-g: radial-gradient(
+      at 52% 99%,
+      hsl(226.47deg 98% 61%) 0px,
+      transparent 50%
+    );
+    --fourth-radial-g: radial-gradient(
+      at 10% 29%,
+      rgb(90, 160, 252) 0px,
+      transparent 50%
+    );
+    --fifth-radial-g: radial-gradient(
+      at 97% 96%,
+      hsl(107, 71%, 70%) 0px,
+      transparent 50%
+    );
+    --sixth-radial-g: radial-gradient(
+      at 33% 50%,
+      hsl(222deg 88.45% 67.18%) 0px,
+      transparent 50%
+    );
+    --seventh-radial-g: radial-gradient(
+      at 79% 53%,
+      hsl(234.78deg 68% 79%) 0px,
+      transparent 50%
+    );
+
+    /* This gradient is for dark theme */
+    --radial-gradient__dark: var(--fifth-radial-g), var(--second-radial-g),
+      var(--third-radial-g), var(--fourth-radial-g), var(--fifth-radial-g),
+      var(--sixth-radial-g), var(--seventh-radial-g);
+
+    /* This gradient is for light theme */
     --radial-gradient__light: radial-gradient(
         at 27% 37%,
         hsl(215deg 88.4% 87.7%) 0px,
@@ -93,10 +124,12 @@ import CVIcon from "../atoms/CVIcon.astro";
       position: absolute;
       top: 0;
       left: 0;
-      background-image: url("/assets/grid.svg");
       z-index: -1;
+
       width: 100%;
       height: 100%;
+      background-image: url("/assets/grid.svg");
+
       opacity: 0.4;
       filter: invert(0.85);
       mask-image: radial-gradient(ellipse at center, transparent 20%, black);
@@ -120,12 +153,15 @@ import CVIcon from "../atoms/CVIcon.astro";
       top: 0;
       right: 10em;
       z-index: -1;
+
       width: 70em;
       height: 80%;
+      background-image: var(--radial-gradient__dark);
+
       border-radius: 100vw;
+
       filter: blur(120px) saturate(250%) hue-rotate(10deg);
       opacity: 0.25;
-      background-image: var(--radial-gradient__dark);
       @media (prefers-color-scheme: light) {
         background-image: var(--radial-gradient__light);
       }
@@ -135,11 +171,13 @@ import CVIcon from "../atoms/CVIcon.astro";
       margin: auto;
       padding-top: 4em;
       padding-bottom: 10em;
+
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 1.1rem;
+
       animation: fade-in 0.5s ease-in forwards;
       animation-delay: 0.1s;
 
@@ -154,8 +192,8 @@ import CVIcon from "../atoms/CVIcon.astro";
 
       .description-text {
         width: 35ch;
-        text-align: center;
         font-size: clamp(1.3rem, 1.05rem + 0.21vw, 1.6rem);
+        text-align: center;
         color: var(--white-c-800);
         @media (prefers-color-scheme: light) {
           color: var(--primary-color);
