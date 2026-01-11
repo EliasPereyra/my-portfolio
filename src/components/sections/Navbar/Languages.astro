@@ -31,18 +31,19 @@ const currentEngPathname = isBlogPathname ? "/eng/blog" : "/eng"
 </div>
 
 <style>
-  .dropdown-wrapper{
-  #dropdown {
-    anchor-name: --btn;
-    .dropdown-btn {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-  }
+  .dropdown-wrapper {
+      #dropdown {
+          anchor-name: --btn;
+
+          .dropdown-btn {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+          }
+      }
 
   #dropdown-items {
-    /* Posicionamiento y estructura */
+    /* Positioning and structure */
     position-anchor: --btn;
     position: absolute;
     inset: auto;
@@ -51,7 +52,11 @@ const currentEngPathname = isBlogPathname ? "/eng/blog" : "/eng"
     overflow: hidden;
     margin: 0;
     padding: .55rem .77rem;
-    /* Visualización */
+    @media (max-width: 500px) {
+        top: anchor(bottom);
+        right: anchor(right);
+    }
+    /* Visualization */
     display: none;
     opacity: 0;
     border-radius: 0.55rem;
@@ -59,13 +64,6 @@ const currentEngPathname = isBlogPathname ? "/eng/blog" : "/eng"
     border: 1px solid var(--secondary-lighter__color);
     transition: display .2s, opacity .2s;
     transition-behavior: allow-discrete;
-    @media (max-width: 425px) {
-      #dropdown-items {
-        top: anchor(bottom);
-        left: none;
-        right: anchor(right);
-      }
-    }     
 
     & > * {
       padding: .5rem;
@@ -106,12 +104,12 @@ const currentEngPathname = isBlogPathname ? "/eng/blog" : "/eng"
 @position-try --left {
     inset: auto;
     top: anchor(bottom);
-    right: anchor(right);
+    left: anchor(left);
 }
 
 @position-try --right {
     inset: auto;
     top: anchor(bottom);
-    left: anchor(left);
+    right: anchor(right);
 }
 </style>

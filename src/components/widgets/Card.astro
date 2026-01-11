@@ -81,12 +81,12 @@ const { firstParagraph, secondParagraph, thirdParagraph } = description;
       border: 1px solid #dddddd15;
       border-radius: 0.77rem;
       background-color: #060912;
-    }
-    @media (min-width: 425px) {
-      &::before {
+
+      @media (min-width: 500px) {
         display: none;
       }
     }
+
     &::after {
       content: "";
       position: absolute;
@@ -98,6 +98,7 @@ const { firstParagraph, secondParagraph, thirdParagraph } = description;
       border: 1px solid #dddddd15;
       background: linear-gradient(180deg, #090f1a 0%, transparent);
     }
+
     @media (prefers-color-scheme: light) {
       &::before {
         background-color: #e4ecf1;
@@ -112,7 +113,8 @@ const { firstParagraph, secondParagraph, thirdParagraph } = description;
       flex-direction: column-reverse;
       gap: 2rem;
     }
-    @media screen and (width: 320px) {
+
+    @media screen and (width: 500px) {
       .link-card {
         padding: 1em;
       }

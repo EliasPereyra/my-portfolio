@@ -38,15 +38,16 @@ const currentBlogPathName = pathname === "/" ? "/blog": "/eng/blog"
   }
 
   #navbar {
-    --_animationStartsAfter: 60vh;
+    --_animationStartsAfter: 10vh;
     --_animationDistance: 500px;
     --_surfaceColorStart: hsl(223, 44%, 14%);
     --_surfaceLightColorStart: #e4ecf1;
     --_surfaceColorEnd: hsl(0 50% 90% / 0.1);
     --_logoAfterAnimation: none;
+
     @supports (animation-timeline: view()) {
       top: -5rem;
-      backdrop-filter: blur(100px) saturate(130%) drop-shadow(0 0 0.75rem #2d59d4fa); 
+      backdrop-filter: blur(100px) saturate(130%) drop-shadow(0 0 0.75rem #2d59d4fa);
 
       animation: stickyNav linear forwards;
       animation-timeline: view();
@@ -69,10 +70,11 @@ const currentBlogPathName = pathname === "/" ? "/blog": "/eng/blog"
       }
     }
 
+    @media (max-width: 900px) {
+        padding: .6em 2em;
+    }
     @media (max-width: 375px) {
-      nav {
         padding: 1em 2em;
-      }
     }
 
     a {
@@ -93,6 +95,10 @@ const currentBlogPathName = pathname === "/" ? "/blog": "/eng/blog"
       align-items: center;
       gap: 1.9em;
 
+      @media (max-width: 900px) {
+        display: none;
+      }
+
       li {
         list-style: none;
         font-size: 0.8rem;
@@ -110,17 +116,6 @@ const currentBlogPathName = pathname === "/" ? "/blog": "/eng/blog"
       display: flex;
       gap: 10px;
       align-items: center;
-    }
-  }
-
-  @media screen and (max-width: 900px) {
-    #navbar {
-      padding: 1.2em 2em;
- 
-      ul {
-        display: none;
-
-      }
     }
   }
 </style>

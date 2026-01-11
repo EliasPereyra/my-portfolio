@@ -44,10 +44,18 @@ import { socialNetworks } from "@/utils/PageConfig";
     position: relative;
     z-index: 5;
 
+    @media (max-width: 500px) {
+      padding: 2em 4em;
+    }
+
     .content {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      @media (max-width: 500px) {
+        flex-direction: column;
+      }
 
       .social-wrapper {
         display: flex;
@@ -67,6 +75,11 @@ import { socialNetworks } from "@/utils/PageConfig";
         align-items: center;
         line-height: 9px;
 
+        @media (max-width: 500px) {
+          margin-top: 2em;
+          flex-direction: column;
+        }
+
         small {
           top: 0;
           left: 0;
@@ -80,24 +93,6 @@ import { socialNetworks } from "@/utils/PageConfig";
     }
   }
 
-  /* When screen size changes */
-  @media screen and (max-width: 500px) {
-    .footer {
-      padding: 4em 2em;
-    }
-  }
-
-  @media (max-width: 590px) {
-    .content {
-      flex-direction: column;
-      .tool-used {
-        margin-top: 2em;
-        flex-direction: column;
-      }
-    }
-  }
-
-  /* When theme changes */
   @media (prefers-color-scheme: light) {
     .footer {
       border-top: 0.2px solid hsl(227, 70%, 87%);

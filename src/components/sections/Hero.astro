@@ -117,7 +117,8 @@ import { socialNetworks } from "@/utils/PageConfig";
   .hero {
     position: relative;
     z-index: 1000;
-    padding: 6em 2em;
+    padding: 12rem 0;
+    height: 100dvh;
     background: var(--hero__dark-bg);
     &::before {
       content: "";
@@ -143,7 +144,6 @@ import { socialNetworks } from "@/utils/PageConfig";
 
     #overlay {
       width: 100%;
-      height: 100%;
       z-index: 19;
       background-color: rgb(2 6 23 / 0.5);
     }
@@ -191,7 +191,6 @@ import { socialNetworks } from "@/utils/PageConfig";
       }
 
       .description-text {
-        width: 35ch;
         font-size: clamp(1.3rem, 1.05rem + 0.21vw, 1.6rem);
         text-align: center;
         color: var(--white-c-800);
