@@ -1,5 +1,6 @@
 ---
 import "@fontsource/quicksand";
+import "../styles/index.css";
 import Heads from "@/components/Heads.astro";
 import Footer from "@/components/sections/Footer.astro";
 import Navbar from "@/components/sections/Navbar/Navbar.astro";
@@ -25,8 +26,5 @@ const { title, author, description, articleDate } = Astro.props as Props;
     <Navbar />
     <slot />
     <Footer />
-    <style is:global>
-      @import "src/styles/index.css";
-    </style>
   </body>
 </html>

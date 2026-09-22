@@ -3,7 +3,6 @@ import { changeLanguage } from "i18next";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import GithubIcon from "@/components/atoms/GithubIcon.astro";
 import WebIcon from "@/components/atoms/WebIcon.astro";
-// import CloseIcon from "@/components/atoms/CloseIcon.astro";
 import LeftArrowIcon from "@/components/atoms/LeftArrowIcon.astro";
 import ToolPill from "@/components/widgets/ToolPill.astro";
 import { getProjects, projects } from "@/utils/projects";
@@ -12,13 +11,15 @@ changeLanguage("spa");
 
 export async function getStaticPaths() {
     const projects = await getProjects();
+    
     return projects.map((project) => ({
-        params: { slug: project.slug.toLocaleLowerCase() },
-        props: { project },
+      params: { slug: project.id },
+      props: { project },
     }));
-}
+  }
 const { project } = Astro.props;
 const { title, description, summary, project_img, github_repo, live_link, key_features, design_goals, } = project.data;
+
 const project_tools = (projectName: string) => {
     const project = projects.find((project) => project.title.toLocaleLowerCase() === projectName.toLocaleLowerCase());
     const tags = project?.tags;
