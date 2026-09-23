@@ -1,206 +1,360 @@
 ---
 import { t } from "i18next";
-import CopyIcon from "../atoms/CopyIcon.astro";
-import CheckIcon from "../atoms/CheckIcon.astro";
+
+import Divider from "@/components/atoms/Divider.astro";
+import Glow from "@/components/atoms/Glow.astro";
+import Icon from "@/components/atoms/Icon.astro";
+import SquareGrid from "@/components/atoms/SquareGrid.astro";
+import { socialNetworks } from "@/utils/PageConfig";
+
+const email = socialNetworks.emailAddress;
 ---
 
-<section class="contact" id="contact">
-  <div class="radial-gradient"></div>
-  <div class="text-content">
-    <h2 class="title">{t("contact.title")}</h2>
-    <p class="comment">{t("contact.comment")}</p>
+<section
+  class="contact"
+  id="contact"
+  aria-labelledby="contact-title"
+  data-spotlight
+>
+  <Divider offset="var(--section-space)" />
+  <Glow
+    tone="crimson"
+    style="top: -10rem; right: -12rem; width: 44rem; height: 40rem;"
+    duration={30}
+    dx="-2rem"
+    dy="2rem"
+  />
+  <div class="contact__pattern" aria-hidden="true">
+    <SquareGrid name="contact" />
+    <SquareGrid
+      name="contact"
+      lit
+      class="contact__pattern-lit"
+      data-spotlight-layer
+    />
   </div>
 
-  <div class="email-wrapper">
-    <p id="email-address">eliaspereyra_gomez@hotmail.com</p>
-    <CopyIcon id="copy-icon" />
-    <CheckIcon id="check-icon" />
-    <div id="popup" class="popup">
-      <p>{t("contact.emailCopyMessage")}</p>
+  <div class="container contact__content">
+    <h2 class="contact__title" id="contact-title">{t("contact.title")}</h2>
+    <p class="contact__subtitle">{t("contact.subtitle")}</p>
+
+    <div class="contact__actions">
+      <div class="contact__email">
+        <a class="contact__mail" href={`mailto:${email}`}>
+          <Icon name="mail" size={20} />
+          {t("contact.write")}
+        </a>
+        <button
+          class="contact__copy"
+          type="button"
+          data-copy-email={email}
+          aria-label={t("contact.copy")}
+        >
+          <Icon name="copy" size={18} class="icon-copy" />
+          <Icon name="check" size={18} class="icon-check" />
+        </button>
+        <span
+          class="contact__toast"
+          role="status"
+          data-copy-status
+          data-message={t("contact.copied")}></span>
+      </div>
+
+      <ul class="contact__links">
+        <li>
+          <a
+            href={socialNetworks.linkedinProfile}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="linkedin" size={28} label="LinkedIn" />
+          </a>
+        </li>
+        <li>
+          <a
+            href={socialNetworks.githubProfile}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="github" size={28} label="GitHub" />
+          </a>
+        </li>
+        <li>
+          <a
+            class="contact__cv"
+            href="/assets/cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="file" size={20} />
+            CV
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
 
-<script>
-  const copyIcon = document.getElementById("copy-icon");
-  const checkIcon = document.getElementById("check-icon");
-  const email = document.getElementById("email-address");
-  const popup = document.getElementById("popup");
-
-  copyIcon?.addEventListener("click", async () => {
-    await navigator.clipboard.writeText(email?.textContent as string);
-
-    copyIcon.style.display = "none";
-    checkIcon!.style.display = "block";
-    popup!.style.display = "block";
-
-    setTimeout(() => {
-      copyIcon.style.display = "block";
-      checkIcon!.style.display = "none";
-      popup!.style.display = "none";
-    }, 3000);
-  });
-</script>
-
 <style>
-  @property --glow-deg {
-    syntax: "<angle>";
-    inherits: true;
-    initial-value: -90deg;
-  }
-
-  @keyframes glow {
-    0% {
-      --glow-deg: -90deg;
-    }
-
-    50% {
-      --glow-deg: 360deg;
-    }
-
-    100% {
-      --glow-deg: -90deg;
-    }
-  }
-
   .contact {
-    /* Positioning */
+    --contact-space: clamp(3.5rem, 2rem + 5vw, 6.5rem);
+
+    position: relative;
+    padding-block: calc(var(--section-space) + var(--contact-space))
+      calc(var(--section-space) + var(--contact-space) * 0.5);
+  }
+
+  .contact__pattern {
+    --square-grid-color: light-dark(
+      hsla(223.6 47.8% 9% / 0.15),
+      hsla(0 0% 68.2% / 0.26)
+    );
+
+    position: absolute;
+    top: var(--section-space);
+    bottom: 0;
+    left: 50%;
+    z-index: 1;
+    width: min(var(--container), 100% - 1.25rem);
+    translate: -50% 0;
+    pointer-events: none;
+    mask-image: linear-gradient(
+        90deg,
+        transparent,
+        black 18%,
+        black 82%,
+        transparent
+      ),
+      radial-gradient(
+        ellipse 75% 120% at 85% 0%,
+        black 0%,
+        hsla(0 0% 0% / 0.55) 45%,
+        hsla(0 0% 0% / 0.2) 100%
+      );
+    mask-composite: intersect;
+  }
+
+  .contact__pattern :global(.contact__pattern-lit) {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    mask-image: radial-gradient(
+      circle 9rem at var(--mx, 50%) var(--my, 50%),
+      black,
+      transparent
+    );
+    transition: opacity 0.4s ease;
+  }
+
+  .contact:global(.is-lit) .contact__pattern :global(.contact__pattern-lit) {
+    opacity: 1;
+  }
+
+  .contact__content {
+    display: grid;
+    justify-items: start;
+  }
+
+  .contact__title {
+    font-size: clamp(2.3rem, 1.5rem + 3vw, 3.125rem);
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  .contact__subtitle {
+    max-width: 33.2rem;
+    margin-top: 0.4rem;
+    font-size: clamp(1.15rem, 1rem + 0.5vw, 1.375rem);
+    font-weight: 300;
+    line-height: 1.6;
+    color: light-dark(var(--text-soft), hsla(0 0% 85.1%));
+  }
+
+  .contact__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem 2rem;
+    margin-top: 2.2rem;
+  }
+
+  .contact__email {
     position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 1em;
-    padding: 14em 10em;
-    /* Visualization */
-    text-align: center;
-    z-index: 5;
-    container-type: inline-size;
-    background: linear-gradient(250deg, #060912 10%, #0c0f16 320%);
+    gap: 0.5rem;
+  }
 
-    @media (max-width: 500px) {
-      padding: 12em 2rem;
+  .contact__mail {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.7rem 1.3rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(90deg, var(--accent-violet), var(--accent-pink))
+        border-box;
+    font-weight: 600;
+    color: var(--text);
+    transition:
+      box-shadow 0.3s ease,
+      translate 0.25s var(--ease-out);
+
+    &:hover {
+      translate: 0 -2px;
+      box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--accent-pink) 70%, transparent);
+    }
+  }
+
+  .contact__copy {
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--text-soft);
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
+
+    &:hover {
+      color: var(--text);
+      border-color: var(--text-muted);
     }
 
-    &::before {
+    :global(svg) {
+      grid-area: 1 / 1;
+      transition:
+        opacity 0.2s ease,
+        scale 0.3s var(--ease-out);
+    }
+
+    :global(.icon-check) {
+      opacity: 0;
+      scale: 0.5;
+      color: var(--accent-pink);
+    }
+
+    &.is-copied {
+      :global(.icon-copy) {
+        opacity: 0;
+        scale: 0.5;
+      }
+
+      :global(.icon-check) {
+        opacity: 1;
+        scale: 1;
+      }
+    }
+  }
+
+  .contact__toast {
+    position: absolute;
+    right: 1.3rem;
+    bottom: calc(100% + 0.6rem);
+    padding: 0.35rem 0.75rem;
+    border: 1px solid color-mix(in oklab, var(--accent-pink) 35%, var(--line));
+    border-radius: var(--radius);
+    background: var(--surface-raised);
+    box-shadow: 0 10px 24px -12px light-dark(hsla(223.6 47.8% 9% / 0.35), hsla(0
+            0% 0% / 0.7));
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--accent-pink);
+    pointer-events: none;
+    opacity: 0;
+    translate: 50% 0.35rem;
+    scale: 0.95;
+    transition:
+      opacity 0.2s ease,
+      translate 0.3s var(--ease-out),
+      scale 0.3s var(--ease-out);
+
+    &::after {
       content: "";
       position: absolute;
-      inset: auto;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      opacity: 0.34;
-      background-image: url("/assets/grid.svg");
-      filter: saturate(30%) invert(0.78) drop-shadow(0 0 1.75rem #2d97d4fa)
-        hue-rotate(160deg);
-      mask-image: radial-gradient(ellipse at center, #070a12, #070a120d 30%);
+      top: 100%;
+      left: 50%;
+      width: 0.5rem;
+      height: 0.5rem;
+      border: inherit;
+      border-top: 0;
+      border-left: 0;
+      background: inherit;
+      translate: -50% -50%;
+      rotate: 45deg;
     }
 
-    .radial-gradient {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      z-index: 1;
-      background-image: linear-gradient(
-          rgb(255 255 255 / 5%) 1px,
-          #00000000 1px
-        ),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, #00000000 1px);
-      background-size: 20px 20px;
-      mask-image: radial-gradient(
-          ellipse at center,
-          #070a120d 40%,
-          #070a12 310%
-        ),
-        radial-gradient(ellipse at bottom, #070a12, #070a120d 10%);
+    &.is-shown {
+      opacity: 1;
+      translate: 50% 0;
+      scale: 1;
     }
+  }
 
-    .text-content {
-      display: flex;
-      flex-direction: column;
+  .contact__links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 
-      .title {
-        margin-inline: auto;
-        max-width: 23ch;
-        color: var(--white-c-900);
-      }
-
-      .comment {
-        line-height: 1.8rem;
-        margin: 1rem auto;
-        width: max(25ch, 50ch);
-        color: var(--white-c-800);
-        @media (max-width: 600px) {
-          width: 35ch;
-        }
-      }
-    }
-
-    .email-wrapper {
-      position: relative;
-      z-index: 10;
-      padding: 0.5em 2em;
-      display: flex;
+    a {
+      display: inline-flex;
       align-items: center;
-      gap: 0.5em;
-      border: 3px solid transparent;
-      border-radius: 0.5rem;
-      background:
-        linear-gradient(#0b0e16 0 0) padding-box,
-        conic-gradient(
-            from var(--glow-deg),
-            var(--secondary-color),
-            #375085,
-            #3f3785,
-            #5f3785,
-            #7f3785,
-            #3f3785,
-            var(--secondary-color)
-          )
-          border-box;
-      filter: drop-shadow(0 0 0.75rem #2d97d448);
-      animation: glow 30s infinite linear;
+      gap: 0.3rem;
+      color: light-dark(var(--text-soft), hsla(0 0% 85.1%));
+      transition:
+        color 0.2s ease,
+        translate 0.25s var(--ease-out);
 
-      #email-address {
-        anchor-name: --copy;
-        user-select: none;
-      }
-
-      .popup {
-        display: none;
-        position: absolute;
-        position-anchor: --copy;
-        inset: auto;
-        bottom: anchor(top);
-        right: anchor(right);
-        transform: translateX(100%);
-        padding: 0.5em 1em;
-        border-radius: 0.5rem;
-        background-color: var(--secondary-color);
-        color: var(--white-color);
+      &:hover {
+        color: var(--accent-pink);
+        translate: 0 -2px;
       }
     }
   }
 
-  @media screen and (max-width: 1400px) {
-    .contact {
-      flex-direction: column;
-    }
+  .contact__cv {
+    font-weight: 600;
   }
 
-  @media (prefers-color-scheme: light) {
-    .contact {
-      background: #e4ecf1;
-
-      .text-content {
-        .title {
-          color: var(--primary-color);
-        }
-
-        .comment {
-          color: var(--primary-color);
-        }
-      }
+  @media (prefers-reduced-motion: reduce) {
+    .contact__toast {
+      transition: none;
     }
   }
 </style>
+
+<script>
+  const setup = () => {
+    const button =
+      document.querySelector<HTMLButtonElement>("[data-copy-email]");
+    const status = document.querySelector<HTMLElement>("[data-copy-status]");
+    if (!button || !status) return;
+
+    let timer: number | undefined;
+    button.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(button.dataset.copyEmail ?? "");
+      } catch {
+        return;
+      }
+      button.classList.add("is-copied");
+      status.textContent = status.dataset.message ?? "";
+      status.classList.add("is-shown");
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        button.classList.remove("is-copied");
+        status.classList.remove("is-shown");
+        // Clear once faded out, so the live region announces again on the next copy
+        timer = window.setTimeout(() => (status.textContent = ""), 300);
+      }, 2500);
+    });
+  };
+
+  document.addEventListener("astro:page-load", setup);
+</script>
