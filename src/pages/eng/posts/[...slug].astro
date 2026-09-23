@@ -8,14 +8,9 @@ import Share from "@/components/widgets/Share.astro";
 import { createSlug } from "@/utils/createSlug";
 import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/posts";
-import { techColors } from "@/utils/TechColors";
 
 changeLanguage("eng");
 
-type Tag = {
-    tag: string;
-    tagColor: string | undefined;
-};
 export async function getStaticPaths() {
     const posts = await getPosts();
     return posts.map((post) => ({
@@ -25,42 +20,23 @@ export async function getStaticPaths() {
 }
 const post = Astro.props;
 const { title, description, tags, publishDate } = post.data;
-const formattedTags = tags.map((tag, i) => {
-    let tagsFormatted: Tag = {
-        tag: "",
-        tagColor: undefined,
-    };
-    Object.values(techColors).forEach((key) => {
-        if (key.description?.toLowerCase() === tag.toLowerCase()) {
-            tagsFormatted = {
-                tag: tag,
-                tagColor: key.description,
-            };
-        }
-    });
-    return tagsFormatted;
-});
 const { Content } = await post.render();
 ---
 
 <BaseLayout
-  title={title}
   author="Elias Pereyra"
+  title={title}
   description={description}
   articleDate={publishDate}
 >
-  <article class="article">
-    <LeftArrowIcon href="/blog" color="#eee" />
+  <article id="blog-post__article">
+    <LeftArrowIcon color="#eee" />
     <div class="content-wrapper">
-      <header class="header">
-        <h1 class="header-title">{title}</h1>
+      <header id="blog-post__header">
+        <h1 id="blog-post__title">{title}</h1>
         <small>{formatDate(publishDate)}</small>
-        <ul id="tag-items">
-          {
-            formattedTags.map(({ tag, tagColor }) => (
-              <Tag tag={tag} tagColor={tagColor} />
-            ))
-          }
+        <ul id="blog-post__tag-items">
+          {tags.map((tag) => <Tag tag={tag} />)}
         </ul>
       </header>
 
@@ -69,43 +45,47 @@ const { Content } = await post.render();
       </section>
     </div>
 
-    <footer class="footer-article">
-      <h4 class="footer-title">Share this with your friends</h4>
+    <footer id="blog-post__footer-article">
+      <h4 id="blog-post__footer-title">Share this with your friends</h4>
       <Share />
     </footer>
   </article>
 </BaseLayout>
 
 <style>
-  .article {
+  #blog-post__article {
+    background: conic-gradient(
+      from 0.35turn at 85% -32%,
+      hsla(223.3 90% 3.9%),
+      hsla(241.8 32.7% 19.8%) 150%
+    );
+    padding: 12em 10em;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1em;
-    padding: 8em 10em;
-    background: linear-gradient(380deg, #010613 -20%, #232243 400%);
 
     :is(h2, h3, h4, p, code, small) {
       color: var(--white-c-700);
     }
 
     .content-wrapper {
-      .header {
+      #blog-post__header {
         display: flex;
         flex-direction: column;
-        align-items: center;
         gap: 1rem;
         margin-bottom: 1rem;
+        align-items: center;
 
-        .tag-items {
+        #blog-post__tag-items {
           display: flex;
           gap: 0.5em;
           color: var(--white-c-700);
 
           li {
-            padding: 2px 9px;
             border: 1px solid var(--white-c-600);
             border-radius: 7px;
+            padding: 2px 9px;
 
             small {
               transition: opacity 0.32s ease-in-out;
@@ -119,15 +99,27 @@ const { Content } = await post.render();
       }
 
       .content {
-        max-width: 70em;
         padding: 2em 10em;
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        max-width: 70em;
 
         img {
-          border-radius: 0.7em;
           object-fit: contain;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        h2 {
+          font-size: 1.8rem;
+          font-weight: 700;
+        }
+
+        h3 {
+          font-size: 1.2rem;
         }
 
         hr {
@@ -136,9 +128,10 @@ const { Content } = await post.render();
         }
 
         p {
+          color: var(--white-c-700);
+          font-size: 1.2rem;
           max-width: 70ch;
           line-height: 2rem;
-          color: var(--white-c-700);
         }
 
         strong {
@@ -156,6 +149,7 @@ const { Content } = await post.render();
         }
 
         li {
+          font-size: 1.2rem;
           padding: 1rem;
           list-style: disc;
           list-style-position: inside;
@@ -164,56 +158,43 @@ const { Content } = await post.render();
       }
     }
 
-    .footer-article {
+    #blog-post__footer-article {
       margin-top: 1rem;
       padding: 1em;
       border-radius: 0.77rem;
+    }
+  }
 
-      .footer-title {
-        background-image: linear-gradient(
-          to right,
-          var(--blue-color),
-          var(--secondary-color)
-        );
-        background-size: 0% 2px;
-        background-position: 0 100%;
-        background-repeat: no-repeat;
+  :global([data-theme="light"]) #blog-post__article {
+    background: var(--hero__light-bg);
+
+    :is(h2, code, small) {
+      color: var(--black-c-800);
+    }
+    #blog-post__header {
+      #blog-post__title {
+        color: var(--black-c-800);
+      }
+      #blog-post__tag-items {
+        li {
+          border: 1px solid var(--black-c-800);
+        }
+      }
+    }
+    #blog-post__content-wrapper {
+      :is(h1, h4, p, li, a) {
+        color: var(--black-c-800);
+      }
+
+      code {
+        color: var(--white-c-700);
       }
     }
   }
 
-  @media (prefers-color-scheme: light) {
-    .article {
-      background: var(--hero__light-bg);
-
-      :is(h2, code, small) {
-        color: var(--black-c-800);
-      }
-      .header {
-        .header-title {
-          color: var(--black-c-800);
-        }
-        .tag-items {
-          li {
-            border: 1px solid var(--black-c-800);
-          }
-        }
-      }
-      .content-wrapper {
-        :is(h1, h4, p, li, a) {
-          color: var(--black-c-800);
-        }
-
-        code {
-          color: var(--white-c-700);
-        }
-      }
-    }
-
-    .footer-article {
-      .footer-title {
-        color: var(--black-c-800);
-      }
+  :global([data-theme="light"]) #blog-post__footer-article {
+    #blog-post__footer-title {
+      color: var(--black-c-800);
     }
   }
 </style>

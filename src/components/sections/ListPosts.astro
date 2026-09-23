@@ -32,7 +32,7 @@ const { posts } = Astro.props;
 <style>
   section {
     padding: 8em 10em;
-    background: linear-gradient(380deg, #010613 -20%, #232243 400%);
+    background: linear-gradient(380deg, hsla(223.3 90% 3.9%) -20%, hsla(241.8 32.7% 19.8%) 400%);
     position: relative;
     z-index: 10;
     position: relative;
@@ -43,12 +43,12 @@ const { posts } = Astro.props;
           hsla(215, 98%, 61%, 1) 0px,
           transparent 0%
         ),
-        radial-gradient(at 97% 21%, rgb(219, 114, 254) 0px, transparent 50%),
-        radial-gradient(at 52% 99%, rgb(253, 58, 129) 0px, transparent 50%),
+        radial-gradient(at 97% 21%, hsla(285 98.6% 72.2%) 0px, transparent 50%),
+        radial-gradient(at 52% 99%, hsla(338.2 98% 61%) 0px, transparent 50%),
         radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
-        radial-gradient(at 97% 96%, rgb(203, 149, 228) 0px, transparent 50%),
+        radial-gradient(at 97% 96%, hsla(281 59.4% 73.9%) 0px, transparent 50%),
         radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
-        radial-gradient(at 79% 53%, rgb(238, 165, 200) 0px, transparent 50%);
+        radial-gradient(at 79% 53%, hsla(331.2 68.2% 79%) 0px, transparent 50%);
       position: absolute;
       width: 60em;
       z-index: -1;
@@ -87,13 +87,11 @@ const { posts } = Astro.props;
     }
   }
 
-  @media (prefers-color-scheme: light) {
-    section {
-      background: var(--hero__light-bg);
+  :global([data-theme="light"]) section {
+    background: var(--hero__light-bg);
 
-      h3 {
-        color: var(--black-c-800);
-      }
+    h3 {
+      color: var(--black-c-800);
     }
   }
 </style>
