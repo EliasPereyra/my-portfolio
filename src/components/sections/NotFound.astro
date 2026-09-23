@@ -1,0 +1,176 @@
+---
+import i18next, { t } from "i18next";
+
+import Glow from "@/components/atoms/Glow.astro";
+import Icon from "@/components/atoms/Icon.astro";
+import SquareGrid from "@/components/atoms/SquareGrid.astro";
+
+const home = i18next.language === "eng" ? "/eng" : "/";
+---
+
+<main class="not-found" data-spotlight>
+  <Glow
+    tone="crimson"
+    style="top: -10rem; left: -20rem; width: 50rem; height: 50rem;"
+    dx="4rem"
+    dy="2rem"
+  />
+  <Glow
+    tone="violet"
+    style="bottom: -20rem; right: -18rem; width: 50rem; height: 50rem;"
+    duration={32}
+    dx="-3rem"
+    dy="-2rem"
+  />
+  <div class="not-found__pattern" aria-hidden="true">
+    <SquareGrid name="not-found" />
+    <SquareGrid
+      name="not-found"
+      lit
+      class="not-found__pattern-lit"
+      data-spotlight-layer
+    />
+  </div>
+
+  <div class="container not-found__content">
+    <p class="not-found__code" aria-hidden="true">404</p>
+    <h1 class="not-found__title">{t("not_found.title")}</h1>
+    <p class="not-found__desc">{t("not_found.desc")}</p>
+    <a class="not-found__back" href={home}>
+      <Icon name="arrow-left" size={18} />
+      {t("not_found.go_back")}
+    </a>
+  </div>
+</main>
+
+<style>
+  .not-found {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: max(100svh, 32rem);
+    padding-block: 6rem 4rem;
+    background: var(--bg-flow);
+  }
+
+  .not-found__pattern {
+    position: absolute;
+    inset: 0;
+    left: 50%;
+    z-index: 1;
+    width: min(var(--container), 100% - 1.25rem);
+    translate: -50% 0;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, black, transparent);
+  }
+
+  .not-found__pattern :global(.not-found__pattern-lit) {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    mask-image: radial-gradient(
+      circle 10rem at var(--mx, 50%) var(--my, 50%),
+      black,
+      transparent
+    );
+    transition: opacity 0.4s ease;
+  }
+
+  .not-found:global(.is-lit) :global(.not-found__pattern-lit) {
+    opacity: 1;
+  }
+
+  .not-found__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .not-found__code {
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 3.5rem + 11vw, 11rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    background: linear-gradient(
+      100deg,
+      var(--accent-violet),
+      var(--accent-pink)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rise 0.8s var(--ease-out) both;
+  }
+
+  .not-found__title {
+    margin-top: 0.75rem;
+    font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+    animation: rise 0.8s var(--ease-out) 0.1s both;
+  }
+
+  .not-found__desc {
+    max-width: 28rem;
+    margin-top: 0.75rem;
+    font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+    line-height: 1.4;
+    color: var(--text-soft);
+    animation: rise 0.8s var(--ease-out) 0.2s both;
+  }
+
+  .not-found__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 2.2rem;
+    padding: 0.7rem 1.3rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(90deg, var(--accent-violet), var(--accent-pink))
+        border-box;
+    font-weight: 600;
+    color: var(--text);
+    animation: rise 0.8s var(--ease-out) 0.3s backwards;
+    transition:
+      box-shadow 0.3s ease,
+      translate 0.25s var(--ease-out);
+
+    :global(svg) {
+      transition: translate 0.25s var(--ease-out);
+    }
+
+    &:hover {
+      translate: 0 -2px;
+      box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--accent-pink) 70%, transparent);
+
+      :global(svg) {
+        translate: -3px 0;
+      }
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      translate: 0 0.6em;
+      filter: blur(6px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .not-found__code,
+    .not-found__title,
+    .not-found__desc,
+    .not-found__back {
+      animation: none;
+    }
+  }
+</style>
