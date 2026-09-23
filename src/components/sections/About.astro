@@ -1,344 +1,148 @@
 ---
 import { t } from "i18next";
 
+import Glow from "@/components/atoms/Glow.astro";
+import TechTag from "@/components/atoms/TechTag.astro";
+import SectionTitle from "@/components/molecules/SectionTitle.astro";
+import { stack } from "@/utils/stack";
+
+const paragraphs = ["first", "second", "third", "fourth"];
+const iconColors = [
+  "var(--accent-violet)",
+  "var(--accent-pink)",
+  "var(--accent-blue)",
+];
 ---
 
-<section id="abt-section">
-  <h2 id="about" class="main-title">{t("about.title")}</h2>
-  <div class="cont">
-    <article class="cont-wrapper first-col" >
-      <div class="glows"></div>
-      <div class="cols-wrapper">
-        <h3 class="col-title work">{t("about.work.title")}</h3>
-        <div class="first-column">
-          <p class="description-text">
-            {t("about.work.first-desc")}
-          </p>
-          <p class="description-text">
-            {t("about.work.second-desc")}
-          </p>
-          <p class="description-text">
-            {t("about.work.third-desc")}
-          </p>
-          <p class="description-text">
-            {t("about.work.fourth-desc")}
-            <a
-              style="color: var(--light-green);"
-              href="https://www.freecodecamp.org/espanol/news/author/elias-pereyra/"
-              target="_blank">{t("about.work.fifth-desc")}</a
-            >
-          </p>
-          <div class="card-wrapper">
-            <div class="card">
-              <a href="https://www.freecodecamp.org/espanol/news/explotacion-de-cors-como-probar-vulnerabilidades/" target="_blank">
-                <h5>Explotación de CORS: Cómo probar vulnerabilidades de recursos compartidos entre orígenes</h5>
-              </a>
-            </div>
-            <div class="card">
-              <a href="https://www.freecodecamp.org/espanol/news/gitting-things-done-una-guia-visual-y-practica-para-git-libro-completo/" target="_blank">
-                <h5>Gitting Things Done – Una guía visual y práctica para Git [Libro completo]</h5>
-              </a>
-            </div>
-            <div class="card">
-              <a href="https://www.freecodecamp.org/espanol/news/learn-linux-for-beginners-from-basics-to-advanced-techniques-full-book/" target="_blank">
-                <h5>Aprender Linux para Principiantes: Desde las Bases a Técnicas Avanzadas [Libro Completo]</h5>
-              </a>
-            </div>
-          </div>
-        </div>
-        
+<section class="about" id="about" aria-labelledby="about-title">
+  <Glow
+    tone="plum"
+    style="top: -4.4rem; left: calc(50% - 1px); width: 80rem; height: 80rem;"
+    duration={38}
+    dx="-3rem"
+    dy="-2rem"
+  />
+  <Glow
+    tone="crimson"
+    style="bottom: -18rem; left: -14rem; width: 36rem; height: 36rem;"
+    duration={30}
+    dx="2rem"
+    dy="-2rem"
+  />
+
+  <div class="container">
+    <SectionTitle id="about-title">{t("about.title")}</SectionTitle>
+
+    <div class="about__layout">
+      <div class="about__text">
+        {paragraphs.map((key) => <p set:html={t(`about.${key}`)} />)}
       </div>
-    </article>
-    <article class="cont-wrapper second-col">
-      <div class="glows"></div>
-      <div class="cols-wrapper">
-        <h3 class="col-title personal">{t("about.personal.title")}</h3>
-        <div class="first-column">
-          <p class="description-text">
-            {t("about.personal.first-desc")}
-            <strong style="color: var(--light-blue);">{t("about.personal.curiosidad")}</strong>
-            {t("about.personal.first-part")}
-            <strong style="color: var(--light-blue);">{t("about.personal.independiente")}</strong>
-            {t("about.personal.second-part")}
-            <strong style="color: var(--light-blue);">{t("about.personal.resiliente")}</strong>
-            {t("about.personal.third-part")}
-          </p>
-          <p class="description-text">
-            {t("about.personal.second-desc")}
-            <strong style="color: var(--light-blue);">{t("about.personal.investigar")}</strong>
-            {t("about.personal.fourth-part")}
-            <strong style="color: var(--light-blue);">{t("about.personal.fundamentos")}</strong>
-            {t("about.personal.fifth-part")}
-          </p>
-          <p class="description-text">
-            {t("about.personal.third-desc")}
-            <strong style="color: var(--light-blue);">{t("about.personal.mente")}</strong>
-            {t("about.personal.sixth-part")}
-            <strong style="color: var(--light-blue);">{t("about.personal.flexible")}</strong>
-            {t("about.personal.seventh-part")}
-            <strong style="color: var(--light-blue);">{t("about.personal.idiomas")}</strong>
-            {t("about.personal.eighth-part")}
-          </p>
-        </div>
-      </div>
-    </article>
+
+      <aside class="about__stack" aria-labelledby="stack-title">
+        <h3 id="stack-title">{t("about.stack.title")}</h3>
+        <dl>
+          {
+            stack.map(({ id, icon: GroupIcon, items }, index) => (
+              <div
+                class="about__group"
+                style={`--group-color: ${iconColors[index % iconColors.length]}`}
+              >
+                <dt>
+                  <GroupIcon
+                    size={18}
+                    class="about__group-icon"
+                    aria-hidden="true"
+                  />
+                  {t(`about.stack.groups.${id}`)}
+                </dt>
+                <dd>
+                  <ul>
+                    {items.map((item) => (
+                      <TechTag name={item} />
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </aside>
+    </div>
   </div>
 </section>
+
 <style>
-  :root {
-    --gradient: conic-gradient(from 180deg at 50% 70%,hsla(0,0%,98%,1) 0deg,#2dee94 72.0000010728836deg,#4bec4b 144.0000021457672deg,#709ab9 216.00000858306885deg,#4dffbf 288.0000042915344deg,hsla(0,0%,98%,1) 1turn);
-    --light-gradient-bg: linear-gradient(21deg, #d0dfe6 -19.36%, #e5e7ed -19.36%, #d0dfe6 222.58%);
-    --dark__fst-card-bg-gradient: radial-gradient(at center top, rgba(56, 215, 122, 0.021), rgba(6, 28, 15, 0.038)), radial-gradient(at center bottom, rgba(45, 215, 209, 0.05), rgba(5, 22, 21, 0.08));
-    --light__fst-card-bg-gradient: radial-gradient(at center top, rgb(132 205 162 / 2%), rgb(6 28 15 / 1%)), radial-gradient(at center bottom, rgb(125 211 208 / 5%), rgb(5 22 21 / 4%));
-    --dark__snd-card-bg-gradient: radial-gradient(at top center, rgba(56, 143, 215, 0.05), rgba(6, 16, 28, 0.08)), radial-gradient(at center bottom, rgba(45, 113, 215, 0.05), rgba(5, 14, 22, 0.08));
-    --light__snd-card-bg-gradient: radial-gradient(at top center, rgb(56 143 215 / 1%), rgb(6 16 28 / 1%)), radial-gradient(at center bottom, rgb(45 113 215 / 1%), rgb(5 14 22 / 2%));
-    --border-radius: 0.77rem;
-    --border-width: 2px;
-    --blur: 10px;
-    --light-green: #57dd4b;
-    --light-blue: #758fd7;
-  }
-
-  #abt-section {
+  .about {
     position: relative;
-    z-index: 5;
-    padding: 16em 10em;
-    border-top: 1px solid hsl(220, 33%, 4%);
-    background: linear-gradient(250deg, #060912 10%, #14161c 320%);
-    @media (prefers-color-scheme: light) {
-      & {
-        background: var(--light-gradient-bg);
-        border-top: 1px solid hsl(226, 47%, 85%);
-      }
+    padding-block: var(--section-space);
+  }
+
+  .about__layout {
+    display: grid;
+    grid-template-columns: minmax(0, var(--split-text)) minmax(0, 23rem);
+    gap: 3rem var(--split-gap);
+    margin-top: 1.9rem;
+
+    @media (max-width: 900px) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .about__text {
+    display: grid;
+    gap: 1.65rem;
+
+    p {
+      font-size: clamp(1.15rem, 1rem + 0.5vw, 1.375rem);
+      line-height: 1.2;
+      color: var(--text-soft);
     }
 
-    .main-title {
-      text-align: center;
-      margin-bottom: 4rem;
-      text-decoration: underline;
-      text-decoration-color: #2d97d4fa;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 20px;
-      color: #f2f7f2;
-      @media (prefers-color-scheme: light) {
-        & {
-          color: var(--primary-color);
-        }
-      }
+    :global(strong) {
+      font-weight: 700;
+      color: var(--text);
+    }
+  }
+
+  .about__stack {
+    padding-top: 0.1rem;
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text);
     }
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      background-image: url("/assets/grid.svg");
-      opacity: 0.03;
-      filter: invert(0.10) drop-shadow(0 0 .75rem #2d97d4fa);
-      mask-image: linear-gradient(0deg, transparent 75%, rgb(5, 6, 10));
+    dl {
+      display: grid;
+      gap: 1.05rem;
+      margin-top: 1.1rem;
     }
+  }
 
-    @media (max-width: 1000px) {
-      padding: 12em 2em;
-    }
+  .about__group {
+    display: grid;
+    gap: 0.45rem;
 
-    .cont {
+    dt {
       display: flex;
-      gap: 1rem;
-
-      @media (max-width: 768px) {
-        flex-direction: column;
-      }
-
-      .first-col {
-        border: 1px solid #92ff9060;
-        background: var(--dark__fst-card-bg-gradient);
-        @media (prefers-color-scheme: light) {
-          background: var(--light__fst-card-bg-gradient);
-        } 
-      }
-
-        .second-col {
-          border: 1px solid #adc3ff60;
-          background: var(--dark__snd-card-bg-gradient);
-          @media (prefers-color-scheme: light) {
-            background: var(--light__snd-card-bg-gradient);
-          }
-        }
-
-      .cont-wrapper {
-        padding: 2.19rem;
-        border-radius: 1.77rem;
-        margin-inline: auto;
-        position: relative;
-
-        .glows {
-          position: absolute;
-          inset: 0;
-          filter: blur(calc(var(--blur) * 1px));
-          pointer-events: none;
-          
-        }
-
-        .cols-wrapper {
-          display: flex;
-          flex-direction: column;
-          gap: 1em;
-
-          .col-title {
-            color: var(--white-c-900);
-            @media (prefers-color-scheme: light) {
-              & {
-                color: var(--primary-color);
-              }
-            }
-          }
-
-          .work {
-            color: var(--light-green);
-          }
-
-          .personal {
-            color: var(--light-blue);
-          }
-          
-          .first-column {
-            position: relative;
-            .description-text {
-              margin-inline: auto;
-              margin-bottom: 2em;
-              line-height: 1.6rem;
-              width: fit-content;
-              color: var(--white-c-800);
-              @media (prefers-color-scheme: light) {
-                & {
-                  color: var(--primary-color);
-                }
-              }
-            }
-            
-            .card-wrapper {
-              .card {
-                position: absolute;
-                left: 12em;
-                bottom: -12em;
-                height: auto;
-                width: 9.4em;
-                padding: 1.4em 1em;
-                border: 1px solid #15171d;
-                border-radius: 0.5em;
-                transition: transform 0.23s ease-in-out;
-                @media (max-width: 768px) {
-                  bottom: -38em;
-                  left: 10em;
-                }
-                @media (max-width: 660px) {
-                  display: none;
-                }
-                
-                h5 {
-                  color: var(--white-c-900);
-                  font-size: 0.9rem;
-                  text-align: center;
-                  &:hover {
-                    text-decoration: underline;
-                  }
-                }
-                
-                &:nth-child(1) {
-                  transform: translateX(-7em) rotate(-10deg);
-                  border: 5px solid transparent;
-                  background: 
-                    linear-gradient(250deg, #0a132bfa 10%, #14161c 320%) padding-box,
-                    linear-gradient(200deg, #5c66f7fa 10%, #ca2866 120%) border-box;
-
-                  &:hover {
-                    transform: translateX(-10em) rotate(0deg) scale(1.2);
-                  }
-                }
-
-                &:nth-child(2){
-                  transform: rotate(0deg);
-                  border: 5px solid transparent;
-                  background: 
-                    linear-gradient(250deg, #0b0a2bfa 10%, #030818 320%) padding-box,
-                    linear-gradient(150deg, #5cf7d5fa 10%, #6628ca 100%) border-box;
-                  z-index: 5;
-
-                  &:hover {
-                    transform: translateX(0em) scale(1.2);
-                  }
-                }
-
-                &:nth-child(3){
-                  transform: translateX(7em) rotate(10deg);
-                  border: 5px solid transparent;
-                  background: 
-                    linear-gradient(250deg, #0a132bfa 10%, #14161c 320%) padding-box,
-                    linear-gradient(150deg, #c65cf7fa 10%, #286eca 100%), border-box;
-
-                  &:hover {
-                    transform: translateX(10em) rotate(0deg) scale(1.2);
-                  }
-                }
-              }
-          }
-        }
-      }
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
     }
-  }
 
-  @media screen and (max-width: 1000px) {
-    #abt-section {
-      .description-text {
-        width: 100%;
-      }
+    :global(.about__group-icon) {
+      flex-shrink: 0;
+      color: color-mix(in oklab, var(--group-color) 80%, var(--text-muted));
     }
-  }
 
-  @media screen and (max-width: 600px) {
-    #abt-section {
-      padding: 12em 1rem;
-    }
-  }
-
-  @media (prefers-color-scheme: light) {
-    #abt-section {
-    border-top: 1px solid hsl(228, 78%, 86%);
-      background: linear-gradient(
-        143deg,
-        #d6e3ea -227.71%,
-        #c0d6e0 -109.44%,
-        #eaebee 116.37%
-      );
-      color: var(--primary-color);
-
-      #abt-section__content {
-        .cont-wrapper {
-          background: linear-gradient(
-            90deg,
-            #9b9ac923 -150%,
-            #8c89c023 -120%,
-            #98aee04c 100%
-          );
-        border: 1px solid #bcbbe9;
-
-
-          .cols-wrapper {
-            .col-title {
-              color: var(--black-c-700);
-            }
-
-            #first-column {
-              .description-text {
-              color: var(--black-c-700);
-            }
-            }
-          }
-      }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
   }
 </style>
