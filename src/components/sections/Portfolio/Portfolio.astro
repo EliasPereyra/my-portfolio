@@ -1,107 +1,36 @@
 ---
 import { t } from "i18next";
 
-import Card from "@/components/widgets/Card.astro";
+import Divider from "@/components/atoms/Divider.astro";
+import Glow from "@/components/atoms/Glow.astro";
+import SectionTitle from "@/components/molecules/SectionTitle.astro";
+import ProjectCard from "@/components/widgets/ProjectCard.astro";
 import { projects } from "@/utils/projects";
 ---
 
-<main class="port-wrapper" id="portfolio">
-  <div class="content">
-    <h2 class="main-title">{t("portfolio.title")}</h2>
-    <ul class="cards">
-      {
-        projects.map(
-          ({ title, description, tags, project_img, live_link, repo_link }) => (
-            <Card
-              title={title}
-              description={description}
-              tags={tags}
-              img={project_img}
-              live_link={live_link}
-              repo_link={repo_link}
-            />
-          )
-        )
-      }
-    </ul>
+<section class="projects" id="portfolio" aria-labelledby="projects-title">
+  <Divider />
+  <Glow tone="violet" style="top: 8rem; right: -18rem; width: 44rem; height: 44rem;" duration={30} dx="-2rem" dy="3rem" />
+  <Glow tone="crimson" style="bottom: -16rem; left: calc(50% - 10rem); width: 36rem; height: 30rem;" duration={36} />
+
+  <div class="container">
+    <SectionTitle id="projects-title">{t("projects.title")}</SectionTitle>
+    <div class="projects__grid">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
   </div>
-</main>
+</section>
 
 <style>
-  .port-wrapper {
-    padding: 10em 10em;
-    background-color: #060912;
-    @media (prefers-color-scheme: light) {
-      & {
-        background: linear-gradient(204deg, #e5e7ed -19.36%, #d0dfe6 222.58%);
-      }
-    }
+  .projects {
     position: relative;
-
-    @media screen and (max-width: 810px) {
-      padding: 10em 1em;
-    }
-
-    &::before {
-      content: "";
-      background: radial-gradient(
-        44.92% 43.13% at 44.74% 50.03%,
-        rgba(30, 62, 104, 0.075) 0%,
-        rgba(27, 65, 114, 0.096) 30%,
-        rgba(7, 15, 28, 0) 100%
-      );
-      position: absolute;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      z-index: 1;
-      filter: blur(50px) drop-shadow(0 0 0.75rem #2d59d4fa) brightness(1.1)
-        saturate(200%) opacity(0.22);
-    }
-
-    .content {
-      .main-title {
-        position: relative;
-        z-index: 2;
-        margin-bottom: 3em;
-        text-align: center;
-        text-decoration: underline;
-        text-decoration-color: #2d97d4fa;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 20px;
-        color: #f2f7f2;
-        @media (prefers-color-scheme: light) {
-          & {
-            color: var(--primary-color);
-          }
-        }
-      }
-
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        align-items: center;
-        gap: 2em;
-        justify-items: center;
-        padding: 0;
-        margin-inline: auto;
-        max-width: 90em;
-        color: hsl(233, 53%, 27%);
-      }
-    }
+    padding-block: var(--section-space);
   }
 
-  @media (prefers-color-scheme: light) {
-    main {
-      background: linear-gradient(204deg, #e5e7ed -19.36%, #d0dfe6 222.58%);
-
-      .content {
-        .main-title {
-          color: var(--primary-color);
-        }
-      }
-    }
+  .projects__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+    gap: 4rem 5rem;
+    margin-top: 3.3rem;
   }
 </style>
