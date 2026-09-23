@@ -1,0 +1,59 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"svg"> {
+  /** Accent-colored copy, meant to sit on top of the base grid as a highlight */
+  lit?: boolean;
+  /** Keeps the pattern id unique when several grids share a page */
+  name?: string;
+}
+
+const { lit = false, name = "grid", class: className, ...rest } = Astro.props;
+
+const CELL = 44;
+const GAP = 4;
+// Each instance needs its own pattern id, since the stroke color comes from the SVG that defines it
+const patternId = `square-grid-${name}-${lit ? "lit" : "base"}`;
+---
+
+<svg
+  class:list={["square-grid", { "square-grid--lit": lit }, className]}
+  width="100%"
+  height="100%"
+  aria-hidden="true"
+  {...rest}
+>
+  <defs>
+    <pattern
+      id={patternId}
+      width={CELL}
+      height={CELL}
+      patternUnits="userSpaceOnUse"
+    >
+      <rect
+        x={GAP / 2 + 0.5}
+        y={GAP / 2 + 0.5}
+        width={CELL - GAP - 1}
+        height={CELL - GAP - 1}
+        rx="6"
+        fill="none"
+        stroke="currentColor"></rect>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill={`url(#${patternId})`}></rect>
+</svg>
+
+<style>
+  .square-grid {
+    display: block;
+    color: var(
+      --square-grid-color,
+      light-dark(hsla(223.6 47.8% 9% / 0.12), hsla(0 0% 68.2% / 0.2))
+    );
+    pointer-events: none;
+  }
+
+  .square-grid--lit {
+    color: color-mix(in oklab, var(--accent-violet) 75%, transparent);
+  }
+</style>

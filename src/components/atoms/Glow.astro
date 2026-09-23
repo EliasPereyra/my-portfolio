@@ -1,0 +1,70 @@
+---
+interface Props {
+  tone: "crimson" | "violet" | "navy" | "plum" | "violet-grain";
+  style?: string;
+  duration?: number;
+  /** Drift distance on each axis */
+  dx?: string;
+  dy?: string;
+}
+
+const { tone, style, duration = 26, dx = "3rem", dy = "-2rem" } = Astro.props;
+---
+
+<div
+  class:list={["glow", `glow--${tone}`]}
+  style={`--drift-duration: ${duration}s; --dx: ${dx}; --dy: ${dy}; ${style ?? ""}`}
+  aria-hidden="true"
+>
+</div>
+
+<style>
+  .glow {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    will-change: transform;
+    animation: drift var(--drift-duration) ease-in-out infinite alternate;
+  }
+
+  .glow--crimson {
+    background: radial-gradient(closest-side, var(--glow-crimson), transparent);
+  }
+
+  .glow--violet {
+    background: radial-gradient(closest-side, var(--glow-violet), transparent);
+  }
+
+  .glow--navy {
+    background: radial-gradient(closest-side, var(--glow-navy), transparent);
+  }
+
+  .glow--plum {
+    background: radial-gradient(closest-side, var(--glow-plum), transparent);
+  }
+
+  .glow--violet-grain {
+    background: url("/assets/glows/violet-grain.svg") center / 100% 100%
+      no-repeat;
+
+    :global([data-theme="light"]) & {
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes drift {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    to {
+      transform: translate3d(var(--dx), var(--dy), 0) scale(1.08);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .glow {
+      animation: none;
+    }
+  }
+</style>
