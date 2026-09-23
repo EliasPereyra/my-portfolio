@@ -1,0 +1,247 @@
+---
+import i18next, { t } from "i18next";
+
+import Glow from "@/components/atoms/Glow.astro";
+import TechTag from "@/components/atoms/TechTag.astro";
+import SectionTitle from "@/components/molecules/SectionTitle.astro";
+import { experience, formatMonth } from "@/utils/experience";
+
+const lang = i18next.language;
+---
+
+<section class="experience" id="experience" aria-labelledby="experience-title">
+  <Glow
+    tone="violet-grain"
+    style="top: -6.75rem; left: calc(50% - 44.2rem); width: 84.9rem; height: 78.4rem;"
+    duration={34}
+    dx="-2.5rem"
+    dy="2rem"
+  />
+
+  <div class="container">
+    <SectionTitle id="experience-title">{t("experience.title")}</SectionTitle>
+
+    <ol class="timeline">
+      {
+        experience.map(({ id, company, role, start, end, tags }) => (
+          <li class="timeline__item" data-timeline-item>
+            <span class="timeline__dot" aria-hidden="true" />
+            <p class="timeline__when">
+              <span class="timeline__dates">
+                <time datetime={start}>{formatMonth(start, lang)}</time>
+                <span aria-hidden="true">–</span>
+                <span class="sr-only">{t("experience.to")}</span>
+                <time datetime={end}>{formatMonth(end, lang)}</time>
+              </span>
+              <span class="timeline__domain">
+                {t(`experience.items.${id}.domain`)}
+              </span>
+            </p>
+            <article>
+              <h3 class="timeline__company">{company}</h3>
+              <p class="timeline__role">{role}</p>
+              <p class="timeline__description">
+                {t(`experience.items.${id}.description`)}
+              </p>
+              <ul class="timeline__tags" aria-label={t("experience.stack")}>
+                {tags.map((tag) => (
+                  <TechTag name={tag} />
+                ))}
+              </ul>
+            </article>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .experience {
+    position: relative;
+    padding-block: var(--section-space);
+  }
+
+  .timeline {
+    --line-x: 0px;
+    --dot: 14px;
+
+    position: relative;
+    display: grid;
+    gap: 4.4rem;
+    margin-top: 2.9rem;
+    padding-left: 2.25rem;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--line-x);
+      width: 1px;
+    }
+
+    &::before {
+      background: var(--timeline-line);
+      opacity: 0.45;
+    }
+
+    &::after {
+      background: linear-gradient(
+        180deg,
+        var(--timeline-dot),
+        var(--accent-pink)
+      );
+      transform-origin: top;
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    .timeline::after {
+      animation: draw-line linear both;
+      animation-timeline: view();
+      animation-range: cover 10% cover 55%;
+    }
+  }
+
+  .timeline__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 46rem);
+    column-gap: 3rem;
+
+    @media (max-width: 760px) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .timeline__dot {
+    position: absolute;
+    top: 17px;
+    left: calc(-2.25rem - var(--dot) / 2 + 0.5px);
+    width: var(--dot);
+    height: var(--dot);
+    border-radius: 50%;
+    background: var(--timeline-dot);
+    box-shadow: 0 0 0 4px
+      color-mix(in oklab, var(--timeline-dot) 18%, transparent);
+    transition:
+      scale 0.45s var(--ease-out),
+      opacity 0.3s ease,
+      box-shadow 0.45s ease;
+  }
+
+  :global(.js) .timeline__item:not(.is-active) .timeline__dot {
+    opacity: 0.45;
+    scale: 0.8;
+  }
+
+  .timeline__item.is-active .timeline__dot {
+    scale: 1.1;
+    box-shadow:
+      0 0 0 5px color-mix(in oklab, var(--timeline-dot) 26%, transparent),
+      0 0 22px 2px color-mix(in oklab, var(--timeline-dot) 70%, transparent);
+  }
+
+  .timeline__when {
+    display: grid;
+    align-content: start;
+    gap: 0.15rem;
+    padding-top: 0.3rem;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--text-muted);
+
+    @media (max-width: 760px) {
+      padding-top: 0;
+      margin-bottom: 0.35rem;
+    }
+  }
+
+  .timeline__dates {
+    display: inline-flex;
+    gap: 0.3rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-soft);
+  }
+
+  .timeline__company {
+    font-size: 1.375rem;
+    font-weight: 500;
+    line-height: 29px;
+    color: var(--text);
+  }
+
+  .timeline__role {
+    margin-top: 0.2rem;
+    font-size: 1rem;
+    line-height: 1.3;
+    color: var(--accent-role);
+  }
+
+  .timeline__description {
+    margin-top: 0.7rem;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: var(--text-soft);
+  }
+
+  .timeline__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 0.65rem;
+    margin-top: 0.9rem;
+  }
+
+  @keyframes draw-line {
+    from {
+      scale: 1 0;
+    }
+
+    to {
+      scale: 1 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .timeline::after {
+      animation: none;
+    }
+
+    .timeline__dot {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const setup = () => {
+    const items = document.querySelectorAll<HTMLElement>(
+      "[data-timeline-item]",
+    );
+    if (!items.length || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          items.forEach((item) =>
+            item.classList.toggle("is-active", item === entry.target),
+          );
+        }
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+
+    items.forEach((item) => observer.observe(item));
+    document.addEventListener(
+      "astro:before-swap",
+      () => observer.disconnect(),
+      { once: true },
+    );
+  };
+
+  document.addEventListener("astro:page-load", setup);
+</script>

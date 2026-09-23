@@ -2,10 +2,7 @@
 import { t, changeLanguage } from "i18next";
 import { PageConfig } from "@/utils/PageConfig";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Hero from "@/components/sections/Hero.astro";
-import Portfolio from "@/components/sections/Portfolio/Portfolio.astro";
-import About from "@/components/sections/About.astro";
-import Contact from "@/components/sections/Contact.astro";
+import Home from "@/components/Home.astro";
 
 changeLanguage("eng");
 ---
@@ -15,8 +12,5 @@ changeLanguage("eng");
   author={PageConfig.author}
   description={t("description")}
 >
-  <Hero />
-  <Portfolio />
-  <About />
-  <Contact />
+  <Home />
 </BaseLayout>

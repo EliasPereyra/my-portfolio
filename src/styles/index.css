@@ -3,35 +3,129 @@
 @import "./fonts.css" layer(system);
 
 :root {
+  color-scheme: dark light;
+
+  --font-sans: "Barlow", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", var(--font-sans);
+
+  /* Layout */
+  --container: 76rem;
+  --gutter: clamp(1.25rem, 0.6rem + 2.6vw, 2.3rem);
+  --radius: 10px;
+  --section-space: clamp(5.5rem, 3rem + 7vw, 9rem);
+  /* Two-column sections (About, Contributions) share the text width and gap, so their right columns line up */
+  --split-text: 34.7rem;
+  --split-gap: 4rem;
+
+  /* Text */
+  --text: light-dark(hsla(223.6 47.8% 9%), hsla(0 0% 100%));
+  --text-soft: light-dark(hsla(220 23.9% 22.2%), hsla(120 9.1% 87.1%));
+  --text-muted: light-dark(hsla(220.7 13.1% 42%), hsla(0 0% 68.2%));
+
+  /* Accents */
+  --accent-pink: light-dark(
+    hsla(336.9 58.4% 48%),
+    hsla(339.7 100% 72.2% / 0.98)
+  );
+  --accent-role: light-dark(
+    hsla(339.9 57.3% 45.9%),
+    hsla(339.7 100% 74.5% / 0.85)
+  );
+  --accent-violet: light-dark(hsla(262.9 72.7% 55.5%), hsla(266 100% 68.8%));
+  --accent-crimson: light-dark(
+    hsla(339.5 73.2% 43.9%),
+    hsla(339.9 73.6% 35.7%)
+  );
+  --accent-blue: light-dark(hsla(222.1 72.2% 56.3%), hsla(221.7 100% 71.8%));
+  --title-bar: linear-gradient(
+    90deg,
+    light-dark(hsla(262.9 72.7% 55.5%), hsla(257.6 50.6% 15.9%)),
+    light-dark(hsla(336.9 58.4% 48%), hsla(339.9 73.6% 35.7%))
+  );
+
+  /* Timeline */
+  --timeline-line: light-dark(hsla(258.1 67.1% 84.5%), hsla(259.2 45.4% 44.5%));
+  --timeline-dot: light-dark(hsla(260.9 100% 65.1%), hsla(266.1 100% 63.9%));
+
+  /* Surfaces */
+  --bg-page: light-dark(hsla(230 50% 97.6%), hsla(225 55.6% 7.1%));
+  --surface: light-dark(hsla(0 0% 100%), hsla(217.8 49.1% 10.8%));
+  --surface-raised: light-dark(hsla(240 100% 99.2%), hsla(216.8 46.3% 13.1%));
+  --bg-flow: linear-gradient(
+    180deg,
+    light-dark(hsla(232 78.9% 96.3%), hsla(227.4 65.5% 11.4%)) 0%,
+    light-dark(hsla(234 71.4% 97.3%), hsla(224 62.5% 9.4%)) 11%,
+    light-dark(hsla(230 60% 98%), hsla(216 58.8% 6.7%)) 22%,
+    light-dark(hsla(222 62.5% 96.9%), hsla(214.3 48.8% 8.4%)) 40%,
+    light-dark(hsla(232.5 66.7% 97.6%), hsla(208.7 46.9% 9.6%)) 57%,
+    light-dark(hsla(246.7 60% 97.1%), hsla(213.9 51.1% 8.8%)) 73%,
+    light-dark(hsla(234.5 57.9% 96.3%), hsla(226.4 55% 7.8%)) 88%,
+    light-dark(hsla(231.4 58.3% 95.3%), hsla(227.4 54.3% 6.9%)) 100%
+  );
+  --bg-footer: linear-gradient(
+    180deg,
+    light-dark(hsla(231.4 58.3% 95.3%), hsla(227.4 54.3% 6.9%)),
+    light-dark(hsla(229.4 51.5% 93.5%), hsla(225 44.4% 3.5%))
+  );
+  --surface-nav: light-dark(
+    hsla(230 50% 97.6% / 0.78),
+    hsla(225.7 53.8% 7.6% / 0.62)
+  );
+  --scrollbar: light-dark(hsla(223.6 47.8% 9% / 0.22), hsla(0 0% 85.1% / 0.18));
+
+  /* Lines */
+  --line: light-dark(hsla(223.6 47.8% 9% / 0.14), hsla(0 0% 85.1% / 0.12));
+  --rail: light-dark(hsla(223.6 47.8% 9% / 0.07), hsla(0 0% 85.1% / 0.06));
+
+  /* Glows */
+  --glow-crimson: light-dark(
+    hsla(337.6 64.7% 54.5% / 0.16),
+    hsla(339.7 72.7% 35.9% / 0.22)
+  );
+  --glow-violet: light-dark(
+    hsla(249.8 65.8% 69% / 0.2),
+    hsla(249.8 65.8% 69% / 0.14)
+  );
+  --glow-navy: light-dark(
+    hsla(223.6 68.7% 68.6% / 0.16),
+    hsla(214.3 42.4% 12.9% / 0.54)
+  );
+  --glow-plum: light-dark(
+    hsla(262.9 72.7% 55.5% / 0.1),
+    hsla(249.7 43.7% 13.9% / 0.5)
+  );
+
+  /* Easing */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Legacy tokens still used by the blog and project pages */
   --black-c-900: color-mix(in lch, hsl(221, 76%, 5%), hsl(120, 24%, 96%) 5%);
   --black-c-800: color-mix(in lch, hsl(221, 76%, 5%), hsl(120, 24%, 96%) 15%);
-
   --white-c-900: color-mix(in lch, hsl(120, 24%, 96%), hsl(221, 76%, 5%) 5%);
   --white-c-800: color-mix(in lch, hsl(120, 24%, 96%), hsl(221, 76%, 5%) 15%);
-
   --primary-color: var(--black-c-900);
   --secondary-color: hsl(160, 73%, 36%);
-  --secondary-lighter__color: hsl(133, 55%, 54%);
+  --secondary-lighter__color: var(--accent-pink);
   --blue-color: hsl(212, 83%, 66%);
   --white-color: var(--white-c-900);
-
-  --dark-rb-gradient: linear-gradient(
-    90deg,
-    var(--primary-color) 0%,
-    var(--secondary-color) 100%
+  --hero__light-bg: linear-gradient(
+    169deg,
+    hsla(0 7.7% 97.5%) -169.26%,
+    hsla(221.8 84.6% 92.4%) 144.3%
+  );
+  --hero__dark-bg: linear-gradient(
+    -200deg,
+    hsla(241.8 32.7% 19.8%) -79%,
+    hsla(223.3 90% 3.9%) 90%
   );
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: var(--white-c-800);
-    --hero__light-bg: linear-gradient(169deg, #f9f8f8 -169.26%, #dbe5fc 144.3%);
-  }
+:root[data-theme="light"] {
+  color-scheme: light;
+}
 
-  :root.dark {
-    --hero__dark-bg: linear-gradient(-200deg, #232243 -79%, #010613 90%);
-    --primary-color: var(--black-c-900);
-  }
+:root[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 /* CSS Reset */
@@ -55,6 +149,12 @@ h6 {
   text-wrap: balance;
 }
 
+h1,
+h2 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
 p {
   text-wrap: pretty;
   line-height: 1.7rem;
@@ -63,46 +163,44 @@ p {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 html,
 body {
   position: relative;
   font-size: 100%;
-  color-scheme: dark light;
+}
 
-  ::-webkit-scrollbar {
-    width: 0.87rem;
-  }
+html {
+  scrollbar-color: var(--scrollbar) transparent;
+}
 
-  ::-webkit-scrollbar-thumb {
-    border: 4px solid transparent;
-    background-clip: padding-box;
-    border-radius: 9999px;
-    background-color: #97bdf7;
-  }
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background-color: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+}
 
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 3.2rem #0e131b;
-    cursor: pointer !important;
-  }
-  @media (prefers-color-scheme: light) {
-    &::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 3.2rem #cdd0da;
-    }
-  }
+:is(button, input, textarea, select) {
+  font: inherit;
+  color: inherit;
 }
 
 button {
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
-ul {
+ul,
+ol {
   padding: 0;
 }
 
@@ -113,4 +211,35 @@ li {
 img {
   display: block;
   max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-violet);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Centered column shared by every home section */
+.container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

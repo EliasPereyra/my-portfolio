@@ -86,15 +86,15 @@ async function sendMail() {
         padding: 1em;
         border-radius: 0.5rem;
         font-size: 1rem;
-        border: 1px solid #5f3ea5;
-        background: #121111;
-        box-shadow: 0px 0px 18px 8px #1b2d36;
+        border: 1px solid hsla(259.2 45.4% 44.5%);
+        background: hsla(0 2.9% 6.9%);
+        box-shadow: 0px 0px 18px 8px hsla(200 33.3% 15.9%);
         transition:
           border,
           box-shadow 0.2s ease-out;
         &:hover {
-          box-shadow: 0px 0px 18px 8px #2d4b5a;
-          border: 1px solid #6c48b9;
+          box-shadow: 0px 0px 18px 8px hsla(200 33.3% 26.5%);
+          border: 1px solid hsla(259.1 44.7% 50.4%);
         }
       }
     }
@@ -106,20 +106,18 @@ async function sendMail() {
     }
   }
 
-  @media (prefers-color-scheme: light) {
-    .form-wrapper {
-      label {
-        color: var(--primary-color);
-      }
+  :global([data-theme="light"]) .form-wrapper {
+    label {
+      color: var(--primary-color);
+    }
 
-      .form-wrapper__btn-wrapper {
-        #form-wrapper__send-btn {
-          box-shadow: 0px 0px 38px 5px #4aa9d870;
+    .form-wrapper__btn-wrapper {
+      #form-wrapper__send-btn {
+        box-shadow: 0px 0px 38px 5px hsla(199.9 64.5% 56.9% / 0.439);
 
-          &:hover {
-            box-shadow: 0px 0px 38px 8px rgba(100, 198, 248, 0.907);
-            border: 1px solid var(secondary-lighter__color);
-          }
+        &:hover {
+          box-shadow: 0px 0px 38px 8px hsla(200.3 91.4% 68.2% / 0.907);
+          border: 1px solid var(secondary-lighter__color);
         }
       }
     }

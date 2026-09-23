@@ -3,7 +3,6 @@ import { changeLanguage } from "i18next";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import GithubIcon from "@/components/atoms/GithubIcon.astro";
 import WebIcon from "@/components/atoms/WebIcon.astro";
-// import CloseIcon from "@/components/atoms/CloseIcon.astro";
 import LeftArrowIcon from "@/components/atoms/LeftArrowIcon.astro";
 import ToolPill from "@/components/widgets/ToolPill.astro";
 import { getProjects, projects } from "@/utils/projects";
@@ -13,7 +12,7 @@ changeLanguage("spa");
 export async function getStaticPaths() {
     const projects = await getProjects();
     return projects.map((project) => ({
-        params: { slug: project.slug.toLocaleLowerCase() },
+        params: { slug: project.id },
         props: { project },
     }));
 }
@@ -31,9 +30,9 @@ const project_tools = (projectName: string) => {
   title={`Proyecto ${title} | Elias Pereyra`}
   description={description}
 >
-  <section class="container">
+  <section class="project-page">
     <LeftArrowIcon href="/#projects" color="#ddd" />
-    <main class="header">
+    <main class="header" transition:animate="slide">
       <button id="show-modal">
         <img
           class="cover-img"
@@ -44,7 +43,6 @@ const project_tools = (projectName: string) => {
         />
       </button>
       <dialog class="carousel-container" id="modal">
-        <!-- <CloseIcon /> -->
         <form class="carousel" action="dialog">
               <img
                 class="cover-img"
@@ -163,13 +161,9 @@ const project_tools = (projectName: string) => {
 
 <style>
   :root {
-    --dark-blue: #060912;
-    --light-gray: #ececec27;
-    --gradient: linear-gradient(
-      to right,
-      var(--blue-color),
-      var(--secondary-color)
-    );
+    --dark-blue: light-dark(hsla(0 0% 100%), hsla(225 50% 4.7%));
+    --light-gray: var(--line);
+    --gradient: var(--title-bar);
   }
 
   /* General styles */
@@ -200,9 +194,9 @@ const project_tools = (projectName: string) => {
   }
 
   /* Project styles */
-  .container {
-    padding: 4em 10em;
-    background: linear-gradient(380deg, #010613 -20%, #232243 400%);
+  .project-page {
+    padding: 6em 10em 4em;
+    background: var(--bg-flow);
     @media (max-width: 425px) {
       & {
         padding: 4em 1em;
@@ -242,7 +236,7 @@ const project_tools = (projectName: string) => {
         max-width: 100vw;
         border: none;
         max-height: 100vh;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: hsla(0 0% 0% / 0.8);
         padding: 4em;
       }
 
@@ -328,7 +322,7 @@ const project_tools = (projectName: string) => {
         position: relative;
         &::after {
           content: "";
-          background: linear-gradient(180deg, #090f1a 0%, transparent);
+          background: linear-gradient(180deg, light-dark(hsla(222.9 46.7% 97.1%), hsla(218.8 48.6% 6.9%)) 0%, transparent);
           border: 1px solid var(--light-gray);
           border-top-right-radius: 0.77rem;
           border-bottom-right-radius: 0.77rem;
@@ -380,7 +374,7 @@ const project_tools = (projectName: string) => {
 
       &::after {
         content: "";
-        background: linear-gradient(190deg, #090f1a 0%, #090f1a21);
+        background: linear-gradient(190deg, light-dark(hsla(222.9 46.7% 97.1%), hsla(218.8 48.6% 6.9%)) 0%, light-dark(hsla(222.9 46.7% 97.1% / 0.129), hsla(218.8 48.6% 6.9% / 0.129)));
         border: 1px solid var(--light-gray);
         border-radius: 0.77rem;
         position: absolute;

@@ -1,7 +1,5 @@
-import { title } from "process";
 import { defineStaticConfig } from "tinacms";
 
-// Your hosting provider likely exposes this as an environment variable
 const branch = process.env.GITHUB_BRANCH || process.env.HEAD || "main";
 
 export default defineStaticConfig({

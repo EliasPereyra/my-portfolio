@@ -46,9 +46,7 @@ const isForSharing = href
     transform: scale(1.2);
   }
 
-  @media (prefers-color-scheme: light) {
-    svg {
-      stroke: var(--primary-color);
-    }
+  :global([data-theme="light"]) svg {
+    stroke: var(--primary-color);
   }
 </style>

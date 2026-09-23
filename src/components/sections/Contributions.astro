@@ -1,0 +1,264 @@
+---
+import i18next, { t } from "i18next";
+
+import Divider from "@/components/atoms/Divider.astro";
+import Glow from "@/components/atoms/Glow.astro";
+import Icon from "@/components/atoms/Icon.astro";
+import SectionTitle from "@/components/molecules/SectionTitle.astro";
+import { contributions, freeCodeCampProfile } from "@/utils/contributions";
+
+const dateFormat = new Intl.DateTimeFormat(
+  i18next.language === "eng" ? "en" : "es",
+  {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  },
+);
+---
+
+<section
+  class="contributions"
+  id="contributions"
+  aria-labelledby="contributions-title"
+>
+  <Divider />
+  <Glow
+    tone="violet"
+    style="top: 6rem; right: -6rem; width: 46rem; height: 38rem;"
+    duration={28}
+    dx="-2rem"
+    dy="2rem"
+  />
+
+  <div class="container">
+    <SectionTitle id="contributions-title"
+      >{t("contributions.title")}</SectionTitle
+    >
+
+    <div class="contributions__layout">
+      <div class="contributions__text">
+        <p set:html={t("contributions.first")} />
+        <p set:html={t("contributions.second")} />
+      </div>
+
+      <div class="contributions__deck-wrapper">
+        <ul class="deck" aria-label={t("contributions.deckLabel")}>
+          {
+            contributions.map(({ title, originalAuthor, date, url }, index) => (
+              <li class="deck__card" style={`--i: ${index}`}>
+                <a href={url} target="_blank" rel="noopener noreferrer">
+                  <time datetime={date}>
+                    {dateFormat.format(new Date(date))}
+                  </time>
+                  <span class="deck__title">{title}</span>
+                  <span class="deck__author">
+                    <strong>{t("contributions.author")}</strong>{" "}
+                    {originalAuthor}
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <a
+          class="contributions__all"
+          href={freeCodeCampProfile}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t("contributions.seeAll")}
+          <Icon name="arrow-up-right" size={16} />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contributions {
+    position: relative;
+    padding-block: var(--section-space);
+  }
+
+  .contributions__layout {
+    display: grid;
+    grid-template-columns: minmax(0, var(--split-text)) minmax(0, 26.9rem);
+    gap: 3rem var(--split-gap);
+    margin-top: 1.9rem;
+
+    @media (max-width: 900px) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .contributions__text {
+    display: grid;
+    gap: 1.6rem;
+
+    p {
+      font-size: clamp(1.15rem, 1rem + 0.5vw, 1.375rem);
+      line-height: 1.2;
+      color: var(--text-soft);
+    }
+
+    :global(strong) {
+      font-weight: 600;
+      color: var(--accent-pink);
+    }
+  }
+
+  .contributions__deck-wrapper {
+    align-content: start;
+    display: grid;
+    gap: 1.6rem;
+  }
+
+  .deck {
+    --card-w: 14.4rem;
+    --card-h: 17.6rem;
+    --step: calc((100% - var(--card-w)) / 2);
+
+    position: relative;
+    height: var(--card-h);
+  }
+
+  .deck__card {
+    position: absolute;
+    top: 0;
+    left: calc(var(--i) * var(--step));
+    z-index: calc(3 - var(--i));
+    width: var(--card-w);
+    height: 100%;
+
+    a {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 2.6rem 1.6rem 1.6rem;
+      overflow: hidden;
+      border: 1px solid
+        color-mix(in oklab, var(--accent-violet) 28%, var(--line));
+      border-radius: var(--radius);
+      background: radial-gradient(
+          120% 80% at 0% 0%,
+          color-mix(in oklab, var(--accent-violet) 16%, transparent),
+          transparent 70%
+        ),
+        var(--surface);
+      color: var(--text);
+      box-shadow: -14px 0 28px -16px light-dark(hsla(223.6 47.8% 9% / 0.35), hsla(0
+              0% 0% / 0.7));
+      transition:
+        translate 0.55s var(--ease-out),
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-violet),
+          var(--accent-pink)
+        );
+      }
+    }
+
+    time {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .deck__title {
+      display: -webkit-box;
+      margin-top: 0.25rem;
+      overflow: hidden;
+      font-size: 1.35rem;
+      line-height: 1.15;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 6;
+    }
+
+    .deck__author {
+      margin-top: auto;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+
+      strong {
+        font-weight: 700;
+        color: var(--text);
+      }
+    }
+  }
+
+  .deck .deck__card:has(~ .deck__card:is(:hover, :focus-within)) {
+    z-index: calc(4 + var(--i));
+  }
+
+  .deck .deck__card:is(:hover, :focus-within) {
+    z-index: 10;
+
+    a {
+      translate: -2.25rem 0;
+      border-color: color-mix(in oklab, var(--accent-violet) 60%, transparent);
+      box-shadow: 0 22px 40px -18px color-mix(in oklab, var(--accent-violet) 55%, transparent);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .deck {
+      display: flex;
+      gap: 1rem;
+      height: auto;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 0.75rem;
+    }
+
+    .deck__card,
+    .deck .deck__card:is(:hover, :focus-within) {
+      position: relative;
+      left: auto;
+      flex: 0 0 var(--card-w);
+      height: var(--card-h);
+      scroll-snap-align: start;
+
+      a {
+        translate: none;
+      }
+    }
+  }
+
+  .contributions__all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    width: fit-content;
+    font-weight: 700;
+    color: var(--text);
+    transition: color 0.2s ease;
+
+    :global(svg) {
+      transition: translate 0.25s var(--ease-out);
+    }
+
+    &:hover {
+      color: var(--accent-pink);
+
+      :global(svg) {
+        translate: 2px -2px;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .deck__card a {
+      transition: none;
+    }
+  }
+</style>

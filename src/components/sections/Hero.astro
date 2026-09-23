@@ -1,243 +1,414 @@
 ---
 import { t } from "i18next";
 
-import GithubIcon from "../atoms/GithubIcon.astro";
-import LinkedinIcon from "../atoms/LinkedinIcon.astro";
-import EmailIcon from "../atoms/EmailIcon.astro";
-import CVIcon from "../atoms/CVIcon.astro";
+import Icon from "@/components/atoms/Icon.astro";
+import Glow from "@/components/atoms/Glow.astro";
+import AvailabilityBadge from "@/components/molecules/AvailabilityBadge.astro";
 import { socialNetworks } from "@/utils/PageConfig";
 ---
 
-<section class="hero" id="hero">
-  <div id="overlay"></div>
-  <div id="radial-gradient__effect"></div>
-  <section class="text-content">
-    <h1 class="headline-title" class="dark">{t("hero.headline")}</h1>
-    <p class="description-text first-col">
-      <strong>{t("hero.first-col")}</strong>
-    </p>
-    <p class="description-text second-col">
-      {t("hero.second-col.with")}
-      <span style="color: var(--blue-color)"
-        >{t("hero.second-col.specialization")}</span
+<section class="hero" id="hero" data-spotlight>
+  <div class="hero__stars" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__spot" aria-hidden="true" data-spotlight-layer></div>
+  <div class="hero__twinkles" aria-hidden="true" data-twinkles></div>
+  <Glow
+    tone="crimson"
+    style="top: -6rem; left: -30rem; width: 60rem; height: 60rem;"
+    dx="4rem"
+    dy="2rem"
+  />
+  <Glow
+    tone="violet"
+    style="top: -18rem; right: -22rem; width: 52rem; height: 52rem;"
+    duration={32}
+    dx="-3rem"
+    dy="3rem"
+  />
+  <Glow
+    tone="navy"
+    style="bottom: -30rem; left: calc(50% - 45rem); width: 90rem; height: 60rem;"
+    duration={40}
+    dx="2rem"
+    dy="-1rem"
+  />
+
+  <div class="container hero__content">
+    <div class="hero__badge"><AvailabilityBadge /></div>
+    <h1 class="hero__headline">
+      <span class="hero__word" style="--i: 0">{t("hero.headline.start")}</span>
+      <span class="hero__word hero__accent hero__accent--pink" style="--i: 1"
+        >{t("hero.headline.ideas")}</span
       >
-      {t("hero.second-col.in")}<strong style="color: var(--blue-color)"
-        >Front-end</strong
+      <span class="hero__word" style="--i: 2">{t("hero.headline.middle")}</span>
+      <span class="hero__word hero__accent hero__accent--violet" style="--i: 3"
+        >{t("hero.headline.facts")}</span
       >
-      {t("hero.second-col.and")}
-      <span style="color: var(--blue-color)">Back-end</span>
-    </p>
-    <div class="social-networks">
-      <GithubIcon
-        type="icon"
-        link={socialNetworks.githubProfile}
-        width="35"
-        height="35"
-      />
-      <LinkedinIcon href={socialNetworks.linkedinProfile} />
-      <EmailIcon href={socialNetworks.emailAddress} />
-      <CVIcon />
-    </div>
-  </section>
+    </h1>
+    <p class="hero__description">{t("hero.description")}</p>
+    <ul class="hero__social">
+      <li>
+        <a
+          href={socialNetworks.linkedinProfile}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="linkedin" size={33} label="LinkedIn" />
+        </a>
+      </li>
+      <li>
+        <a
+          href={socialNetworks.githubProfile}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="github" size={33} label="GitHub" />
+        </a>
+      </li>
+    </ul>
+  </div>
 </section>
 
 <style>
-  :root {
-    /* The background of the section */
-    --hero__dark-bg: linear-gradient(-200deg, #232243 -79%, #010613 90%);
-
-    /* Different radial-gradient values for the dark theme */
-    --first-radial-g: radial-gradient(
-      at 27% 37%,
-      hsla(215, 98%, 61%, 1) 0px,
-      transparent 0%
-    );
-    --second-radial-g: radial-gradient(
-      at 97% 21%,
-      hsl(219, 73%, 71%) 0px,
-      transparent 50%
-    );
-    --third-radial-g: radial-gradient(
-      at 52% 99%,
-      hsl(226.47deg 98% 61%) 0px,
-      transparent 50%
-    );
-    --fourth-radial-g: radial-gradient(
-      at 10% 29%,
-      rgb(90, 160, 252) 0px,
-      transparent 50%
-    );
-    --fifth-radial-g: radial-gradient(
-      at 97% 96%,
-      hsl(107, 71%, 70%) 0px,
-      transparent 50%
-    );
-    --sixth-radial-g: radial-gradient(
-      at 33% 50%,
-      hsl(222deg 88.45% 67.18%) 0px,
-      transparent 50%
-    );
-    --seventh-radial-g: radial-gradient(
-      at 79% 53%,
-      hsl(234.78deg 68% 79%) 0px,
-      transparent 50%
-    );
-
-    /* This gradient is for dark theme */
-    --radial-gradient__dark: var(--fifth-radial-g), var(--second-radial-g),
-      var(--third-radial-g), var(--fourth-radial-g), var(--fifth-radial-g),
-      var(--sixth-radial-g), var(--seventh-radial-g);
-
-    /* This gradient is for light theme */
-    --radial-gradient__light: radial-gradient(
-        at 27% 37%,
-        hsl(215deg 88.4% 87.7%) 0px,
-        transparent 0%
-      ),
-      radial-gradient(
-        at 97% 21%,
-        hsl(219deg 95.07% 84.03%) 0px,
-        transparent 50%
-      ),
-      radial-gradient(
-        at 52% 99%,
-        hsl(226.47deg 83.37% 90.53%) 0px,
-        transparent 50%
-      ),
-      radial-gradient(at 10% 29%, rgb(197 220 249) 0px, transparent 50%),
-      radial-gradient(at 97% 96%, hsl(107, 71%, 70%) 0px, transparent 50%),
-      radial-gradient(at 33% 50%, hsl(222deg 72% 83.66%) 0px, transparent 50%),
-      radial-gradient(
-        at 79% 53%,
-        hsl(234.78deg 50.02% 82.96%) 0px,
-        transparent 50%
-      );
-  }
-
   .hero {
     position: relative;
-    z-index: 1000;
-    padding: 12rem 0;
-    height: 100dvh;
-    background: var(--hero__dark-bg);
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
+    display: grid;
+    place-items: center;
+    min-height: max(100svh, 37.7rem);
+    padding-block: 6rem 4rem;
 
-      width: 100%;
-      height: 100%;
-      background-image: url("/assets/grid.svg");
+    --glow-crimson: light-dark(
+      hsla(337.6 64.7% 54.5% / 0.3),
+      hsla(338.6 70% 39.2% / 0.3)
+    );
+    --glow-violet: light-dark(
+      hsla(253.7 73.7% 62.7% / 0.34),
+      hsla(249.8 65.8% 69% / 0.2)
+    );
+    --glow-navy: light-dark(
+      hsla(225 70.6% 66.7% / 0.28),
+      hsla(219.3 46% 24.7% / 0.55)
+    );
+  }
 
-      opacity: 0.4;
-      filter: invert(0.85);
-      mask-image: radial-gradient(ellipse at center, transparent 20%, black);
-    }
-    @media (prefers-color-scheme: light) {
-      background: var(--hero__light-bg);
-      &::before {
-        filter: invert(0.4);
-      }
-    }
+  .hero__stars {
+    position: absolute;
+    inset: -60% 0 0;
+    z-index: 0;
+    background: url("/assets/hero-stars.webp") center / cover no-repeat;
+    mix-blend-mode: saturation;
+    opacity: 0.6;
+    mask-image: linear-gradient(180deg, black 55%, transparent 100%);
+    animation: stars-zoom 60s ease-in-out infinite alternate;
 
-    #overlay {
-      width: 100%;
-      z-index: 19;
-      background-color: rgb(2 6 23 / 0.5);
-    }
-
-    #radial-gradient__effect {
-      position: absolute;
-      top: 0;
-      right: 10em;
-      z-index: -1;
-
-      width: 70em;
-      height: 80%;
-      background-image: var(--radial-gradient__dark);
-
-      border-radius: 100vw;
-
-      filter: blur(120px) saturate(250%) hue-rotate(10deg);
-      opacity: 0.25;
-      @media (prefers-color-scheme: light) {
-        background-image: var(--radial-gradient__light);
-      }
-    }
-
-    .text-content {
-      margin: auto;
-      padding-top: 4em;
-      padding-bottom: 10em;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 1.1rem;
-
-      animation: fade-in 0.5s ease-in forwards;
-      animation-delay: 0.1s;
-
-      .headline-title {
-        margin: 0;
-        text-align: center;
-        color: var(--white-color);
-        @media (prefers-color-scheme: light) {
-          color: var(--primary-color);
-        }
-      }
-
-      .description-text {
-        font-size: clamp(1.3rem, 1.05rem + 0.21vw, 1.6rem);
-        text-align: center;
-        color: var(--white-c-800);
-        @media (prefers-color-scheme: light) {
-          color: var(--primary-color);
-        }
-      }
-
-      .first-col {
-        font-size: 1.74rem;
-        color: var(--secondary-lighter__color);
-      }
-
-      .second-col {
-        font-size: 1.15rem;
-        max-width: 40ch;
-      }
-    }
-
-    .social-networks {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+    :global([data-theme="light"]) & {
+      display: none;
     }
   }
 
-  @keyframes ping {
-    75%,
-    to {
-      transform: scale(2);
+  .hero__grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: url("/assets/hero-grid.png") top left / 38.4px 38.4px;
+    mix-blend-mode: overlay;
+    opacity: 0.25;
+    filter: blur(0.5px);
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+
+    :global([data-theme="light"]) & {
+      mix-blend-mode: multiply;
+      opacity: 0.35;
+    }
+  }
+
+  @property --spot-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+
+  .hero__spot {
+    --cell: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect x='2.5' y='2.5' width='39' height='39' rx='6' fill='none' stroke='black'/%3E%3C/svg%3E");
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: min(var(--container), 100% - 1.25rem);
+    translate: -50% 0;
+    z-index: 1;
+    opacity: 0;
+    background: conic-gradient(
+      from var(--spot-angle) at var(--mx, 50%) var(--my, 50%),
+      var(--accent-pink),
+      var(--accent-violet),
+      var(--accent-blue),
+      var(--accent-crimson),
+      var(--accent-pink)
+    );
+    mask-image: radial-gradient(
+        circle 11rem at var(--mx, 50%) var(--my, 50%),
+        hsla(0 0% 0% / 0.85),
+        transparent
+      ),
+      var(--cell);
+    mask-size:
+      auto,
+      44px 44px;
+    mask-repeat: no-repeat, repeat;
+    mask-composite: intersect;
+    transition: opacity 0.5s ease;
+    animation: spot-spin 6s linear infinite paused;
+  }
+
+  .hero:global(.is-lit) .hero__spot {
+    opacity: 1;
+    animation-play-state: running;
+  }
+
+  .hero__twinkles {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: min(var(--container), 100% - 1.25rem);
+    translate: -50% 0;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+  }
+
+  .hero:global(.is-lit) .hero__twinkles {
+    opacity: 0.3;
+  }
+
+  .hero__twinkles :global(.twinkle) {
+    position: absolute;
+    width: 39px;
+    height: 39px;
+    border: 1px solid var(--tw-color);
+    border-radius: 6px;
+    background: color-mix(in oklab, var(--tw-color) 10%, transparent);
+    box-shadow: 0 0 14px -4px var(--tw-color);
+    opacity: 0;
+    animation: twinkle 3.2s ease-in-out forwards;
+  }
+
+  @keyframes twinkle {
+    35%,
+    55% {
+      opacity: 0.45;
+    }
+  }
+
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .hero__badge {
+    margin-bottom: 0.5rem;
+    animation: word-in 0.8s var(--ease-out) both;
+  }
+
+  .hero__headline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 0.28em;
+    font-size: clamp(2.5rem, 1.4rem + 3.8vw, 3.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: light-dark(var(--text), hsla(220 16.4% 89.2%));
+  }
+
+  .hero__word {
+    display: inline-block;
+    animation: word-in 0.8s var(--ease-out) both;
+    animation-delay: calc(0.08s + var(--i) * 0.09s);
+  }
+
+  .hero__accent {
+    --accent: var(--accent-pink);
+
+    color: var(--accent);
+    background: linear-gradient(
+        100deg,
+        var(--accent) 42%,
+        light-dark(hsla(0 0% 100% / 0.9), hsla(0 0% 100% / 0.95)) 50%,
+        var(--accent) 58%
+      )
+      100% 0 / 260% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation:
+      word-in 0.8s var(--ease-out) both,
+      sheen 1.4s ease-out both;
+    animation-delay: calc(0.08s + var(--i) * 0.09s),
+      calc(0.9s + var(--i) * 0.12s);
+  }
+
+  .hero__accent--violet {
+    --accent: var(--accent-violet);
+  }
+
+  .hero__description {
+    max-width: 34rem;
+    font-size: clamp(1.2rem, 1.05rem + 0.45vw, 1.4rem);
+    line-height: 1.4;
+    color: light-dark(var(--text-soft), hsla(218.2 12.9% 83.3%));
+    animation: word-in 0.8s var(--ease-out) 0.45s both;
+  }
+
+  .hero__social {
+    display: flex;
+    gap: 0.7rem;
+    margin-top: 0.7rem;
+    animation: word-in 0.8s var(--ease-out) 0.6s both;
+
+    a {
+      display: flex;
+      color: light-dark(var(--text-soft), hsla(0 0% 85.1%));
+      transition:
+        color 0.2s ease,
+        translate 0.25s var(--ease-out);
+
+      &:hover {
+        color: var(--hover, var(--accent-pink));
+        translate: 0 -3px;
+      }
+    }
+
+    li:nth-child(1) a {
+      --hover: var(--accent-violet);
+    }
+  }
+
+  @keyframes word-in {
+    from {
       opacity: 0;
+      translate: 0 0.6em;
+      filter: blur(6px);
     }
   }
 
-  @keyframes fade-in {
+  @keyframes sheen {
+    from {
+      background-position: 100% 0;
+    }
+
     to {
-      opacity: 1;
+      background-position: 0 0;
     }
   }
 
-  @media screen and (max-width: 500px) {
-    section {
-      .text-content {
-        .avail-text {
-          width: 10em;
-        }
-      }
+  @keyframes spot-spin {
+    to {
+      --spot-angle: 360deg;
+    }
+  }
+
+  @keyframes stars-zoom {
+    to {
+      scale: 1.08;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__badge,
+    .hero__word,
+    .hero__accent,
+    .hero__description,
+    .hero__social,
+    .hero__stars {
+      animation: none;
     }
   }
 </style>
+
+<script>
+  const CELL = 44;
+  const INSET = 2.5;
+  const COLORS = [
+    "--accent-pink",
+    "--accent-violet",
+    "--accent-blue",
+    "--accent-crimson",
+  ];
+
+  let stop: (() => void) | undefined;
+
+  const setup = () => {
+    stop?.();
+    stop = undefined;
+
+    const layer = document.querySelector<HTMLElement>("[data-twinkles]");
+    if (!layer || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      return;
+
+    const spawn = () => {
+      const width = layer.clientWidth;
+      const height = layer.clientHeight;
+      const cols = Math.floor(width / CELL);
+      const rows = Math.floor(height / CELL);
+      if (!cols || !rows) return;
+
+      // Favor the empty space around the headline: most picks in the center are skipped
+      let col = 0;
+      let row = 0;
+      for (let tries = 0; tries < 6; tries++) {
+        col = Math.floor(Math.random() * cols);
+        row = Math.floor(Math.random() * rows);
+        const dx = ((col + 0.5) * CELL - width / 2) / (width / 2);
+        const dy = ((row + 0.5) * CELL - height / 2) / (height / 2);
+        const inCenter = (dx / 0.5) ** 2 + (dy / 0.45) ** 2 < 1;
+        if (!inCenter || Math.random() < 0.15) break;
+      }
+
+      const cell = document.createElement("span");
+      cell.className = "twinkle";
+      cell.style.left = `${col * CELL + INSET}px`;
+      cell.style.top = `${row * CELL + INSET}px`;
+      cell.style.setProperty(
+        "--tw-color",
+        `var(${COLORS[Math.floor(Math.random() * COLORS.length)]})`,
+      );
+      cell.addEventListener("animationend", () => cell.remove(), {
+        once: true,
+      });
+      layer.append(cell);
+    };
+
+    let timer: number | undefined;
+    let onScreen = false;
+    const sync = () => {
+      const shouldRun = onScreen && !document.hidden;
+      if (shouldRun && timer === undefined) {
+        timer = window.setInterval(spawn, 700);
+      } else if (!shouldRun && timer !== undefined) {
+        window.clearInterval(timer);
+        timer = undefined;
+      }
+    };
+
+    const observer = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      sync();
+    });
+    observer.observe(layer);
+    document.addEventListener("visibilitychange", sync);
+
+    stop = () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", sync);
+      window.clearInterval(timer);
+    };
+  };
+
+  document.addEventListener("astro:page-load", setup);
+</script>

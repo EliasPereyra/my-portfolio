@@ -1,0 +1,67 @@
+---
+interface Props {
+  offset?: string;
+}
+
+const { offset = "0px" } = Astro.props;
+---
+
+<span class="divider" style={`--divider-offset: ${offset}`} aria-hidden="true"
+></span>
+
+<style>
+  /*
+   * Section seam. Instead of the usual "+" at each rail crossing, the corners
+   * get a dotted "├": the dots run along the rail above and below the seam,
+   * with one arm along the divider toward the center (mirrored on the right).
+   */
+  .divider {
+    /* Multiple of the dot gap, so a dot row lands exactly on the divider */
+    --arm: 16px;
+    --dot-gap: 4px;
+    --dot: radial-gradient(circle, var(--text-muted) 0.55px, transparent 0.9px);
+
+    position: absolute;
+    z-index: 2;
+    top: var(--divider-offset);
+    left: 50%;
+    width: min(var(--container), 100% - 1.25rem);
+    height: 1px;
+    translate: -50% 0;
+    /* The solid line fades out near the corners, where the dotted arms take over */
+    background: linear-gradient(
+      90deg,
+      transparent var(--arm),
+      var(--line) calc(var(--arm) + 2rem),
+      var(--line) calc(100% - var(--arm) - 2rem),
+      transparent calc(100% - var(--arm))
+    );
+
+    /* Shifted by half a dot so the dots sit centered on the lines */
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: calc(-1 * var(--arm) - var(--dot-gap) / 2);
+      width: var(--arm);
+      height: calc(2 * var(--arm) + var(--dot-gap));
+      opacity: 0.8;
+    }
+
+    &::before {
+      left: calc(var(--dot-gap) / -2);
+      background:
+        var(--dot) left top / var(--dot-gap) var(--dot-gap) repeat-y,
+        var(--dot) left var(--arm) / var(--dot-gap) var(--dot-gap) repeat-x;
+      mask-image: radial-gradient(circle var(--arm) at calc(var(--dot-gap) / 2) 50%, black 40%, transparent);
+    }
+
+    &::after {
+      right: calc(var(--dot-gap) / -2);
+      background:
+        var(--dot) right top / var(--dot-gap) var(--dot-gap) repeat-y,
+        var(--dot) right var(--arm) / var(--dot-gap) var(--dot-gap) repeat-x;
+      mask-image: radial-gradient(circle var(--arm) at calc(100% - var(--dot-gap) / 2) 50%, black 40%, transparent);
+    }
+  }
+</style>

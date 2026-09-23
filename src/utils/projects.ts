@@ -9,6 +9,7 @@ export interface TagData {
 
 export interface Project {
   title: string;
+  slug: string;
   project_img: string;
   description: {
     firstParagraph: string;
@@ -16,13 +17,16 @@ export interface Project {
     thirdParagraph: string;
   };
   tags: TagData[];
+  highlightTags: string[];
   live_link: string;
   repo_link: string;
+  platform?: "web" | "mobile";
 }
 
 export const projects: Project[] = [
   {
     title: "WorkStart",
+    slug: "workstart",
     project_img: "/assets/workstart.png",
     description: {
       firstParagraph: "cards.workstart.first-paragraph",
@@ -76,11 +80,20 @@ export const projects: Project[] = [
         tagColor: techColors.MockServiceWorker.description,
       },
     ],
+    highlightTags: [
+      "Next.js",
+      "TypeScript",
+      "Wordpress",
+      "GraphQL",
+      "Vitest",
+      "Mock Service Worker",
+    ],
     live_link: "",
     repo_link: "https://github.com/EliasPereyra/job-platform",
   },
   {
     title: "DocHeal",
+    slug: "docheal",
     project_img: "/assets/turnos.jpg",
     description: {
       firstParagraph: "cards.turnos.first-paragraph",
@@ -143,6 +156,16 @@ export const projects: Project[] = [
         tagIcon: "/assets/icons/figma.svg",
         tagColor: techColors.Figma.description,
       },
+    ],
+    highlightTags: [
+      "Next.js",
+      "TypeScript",
+      "Shadcn",
+      "TailwindCSS",
+      "Appwrite",
+      "React Hook Form",
+      "Zod",
+      "Playwright",
     ],
     live_link: "https://docheal.vercel.app/",
     repo_link: "https://github.com/EliasPereyra/docheal",

@@ -1,121 +1,365 @@
 ---
-import { t } from "i18next";
+import i18next, { t } from "i18next";
 
 import Languages from "./Languages.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 import LogoWhite from "@/components/atoms/LogoWhite.astro";
 
-const {pathname} = Astro.url
+const home = i18next.language === "eng" ? "/eng/" : "/";
 
-const currentBlogPathName = pathname === "/" ? "/blog": "/eng/blog"
+const links = [
+  { id: "hero", label: t("navbar.home") },
+  { id: "experience", label: t("navbar.experience") },
+  { id: "portfolio", label: t("navbar.projects") },
+  { id: "about", label: t("navbar.about") },
+  { id: "contact", label: t("navbar.contact") },
+];
 ---
-<nav id="navbar" transition:animate="fade">
-  <a href="/">
-    <LogoWhite width="73" height="73" />
-  </a>
-  <ul class="navbar-items">
-    <li><a href="/#">{t("navbar.home")}</a></li>
-    <li><a href="/#about">{t("navbar.about")}</a></li>
-    <li><a href="/#portfolio">{t("navbar.projects")}</a></li>
-    <li><a href={currentBlogPathName}>Blog</a></li>
-    <li><a href="/#contact">{t("navbar.contact")}</a></li>
-  </ul>
-  <div class="icons">
-    <Languages />
+
+<header class="navbar" data-navbar>
+  <nav class="navbar__inner" aria-label={t("navbar.label")}>
+    <a class="navbar__logo" href={home} aria-label={t("navbar.home")}>
+      <LogoWhite width="73" height="42" />
+    </a>
+    <ul class="navbar__links">
+      {
+        links.map(({ id, label }) => (
+          <li>
+            <a href={`${home}#${id}`} data-nav-link={id}>
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="navbar__actions">
+      <ThemeToggle />
+      <Languages />
+      <button
+        class="navbar__menu-btn"
+        type="button"
+        popovertarget="mobile-menu"
+        aria-label={t("navbar.menu")}
+        data-menu-button
+      >
+        <span class="navbar__burger" aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu" popover data-mobile-menu>
+    <ul>
+      {
+        links.map(({ id, label }) => (
+          <li>
+            <a href={`${home}#${id}`} data-nav-link={id}>
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </div>
-</nav>
+</header>
 
 <style>
-  @keyframes stickyNav {
-    0% {
-      border-radius: 0;
-    }
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin-bottom: -3.4rem;
+    transition:
+      background-color 0.3s ease,
+      backdrop-filter 0.3s ease,
+      box-shadow 0.3s ease;
 
-    100% {
-      top: .3rem;
-      background-color: var(--_surfaceColorEnd);
-      border-radius: 100vw;
+    &.is-scrolled {
+      background-color: var(--surface-nav);
+      backdrop-filter: blur(14px) saturate(140%);
+      box-shadow: 0 1px 0 var(--line);
     }
   }
 
-  #navbar {
-    --_animationStartsAfter: 10vh;
-    --_animationDistance: 500px;
-    --_surfaceColorStart: hsl(223, 44%, 14%);
-    --_surfaceLightColorStart: #e4ecf1;
-    --_surfaceColorEnd: hsl(0 50% 90% / 0.1);
-    --_logoAfterAnimation: none;
-
-    @supports (animation-timeline: view()) {
-      top: -5rem;
-      backdrop-filter: blur(100px) saturate(130%) drop-shadow(0 0 0.75rem #2d59d4fa);
-
-      animation: stickyNav linear forwards;
-      animation-timeline: view();
-      animation-range-start: calc(100vh + var(--_animationStartsAfter));
-      animation-range-end: calc(100vh + var(--_animationStartsAfter) + var(--_animationDistance));
-    }
-
-    position: sticky;
-    top: 0;
-    z-index: 9999;
-    width: 100%;
+  .navbar__inner {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: .04em 10em;
-    background-color: var(--_surfaceColorStart);
-    @media (prefers-color-scheme: light) {
-      & {
-        background-color: var(--_surfaceLightColorStart);
-      }
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: var(--container);
+    min-height: 3.4rem;
+    margin-inline: auto;
+    padding: 0.4rem clamp(1.25rem, 0.5rem + 2.5vw, 2.5rem);
+  }
+
+  .navbar__logo {
+    display: flex;
+    color: var(--text);
+
+    :global(svg) {
+      width: 73px;
+      height: 42px;
     }
+  }
+
+  .navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 2.1rem;
+    padding: 0.75rem 2.2rem;
 
     @media (max-width: 900px) {
-        padding: .6em 2em;
-    }
-    @media (max-width: 375px) {
-        padding: 1em 2em;
+      display: none;
     }
 
     a {
-      text-decoration: none;
-      color: var(--white-color);
-      font-weight: 500;
+      position: relative;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      transition: color 0.2s ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 25%;
+        bottom: -0.5rem;
+        width: 50%;
+        height: 3px;
+        border-radius: 999px;
+        background: var(--accent-pink);
+        scale: 0 1;
+        transition: scale 0.35s var(--ease-out);
+      }
+
+      &:hover,
+      &[aria-current="true"] {
+        color: var(--text);
+      }
+
+      &[aria-current="true"]::after {
+        scale: 1 1;
+      }
+    }
+  }
+
+  .navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* Mobile menu */
+  .navbar__menu-btn {
+    display: none;
+    place-items: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 0.5rem;
+    color: var(--text-soft);
+
+    @media (max-width: 900px) {
+      display: grid;
     }
 
-    @media (prefers-color-scheme: light) {
-      a {
-        color: var(--primary-color);
+    &:hover {
+      color: var(--text);
+      background-color: color-mix(in oklab, var(--text) 8%, transparent);
+    }
+  }
+
+  .navbar__burger,
+  .navbar__burger::before,
+  .navbar__burger::after {
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    transition:
+      translate 0.3s var(--ease-out),
+      rotate 0.3s var(--ease-out),
+      opacity 0.2s ease;
+  }
+
+  .navbar__burger {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    &::before {
+      translate: 0 -6px;
+    }
+
+    &::after {
+      translate: 0 6px;
+    }
+  }
+
+  .navbar__menu-btn[data-open] .navbar__burger {
+    background: transparent;
+
+    &::before {
+      translate: 0 0;
+      rotate: 45deg;
+    }
+
+    &::after {
+      translate: 0 0;
+      rotate: -45deg;
+    }
+  }
+
+  .mobile-menu {
+    position: fixed;
+    inset: 3.9rem 0.75rem auto;
+    width: auto;
+    margin: 0;
+    padding: 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: color-mix(in oklab, var(--surface) 92%, transparent);
+    backdrop-filter: blur(18px) saturate(140%);
+    box-shadow: 0 24px 48px -24px hsla(0 0% 0% / 0.5);
+    color: var(--text);
+    opacity: 0;
+    translate: 0 -0.5rem;
+    transition:
+      opacity 0.25s ease,
+      translate 0.3s var(--ease-out),
+      display 0.3s allow-discrete,
+      overlay 0.3s allow-discrete;
+
+    &:popover-open {
+      opacity: 1;
+      translate: 0 0;
+
+      @starting-style {
+        opacity: 0;
+        translate: 0 -0.5rem;
       }
     }
 
     ul {
-      margin: 0;
+      display: grid;
+    }
+
+    a {
       display: flex;
       align-items: center;
-      gap: 1.9em;
+      gap: 0.75rem;
+      padding: 0.85rem 0.9rem;
+      border-radius: 0.6rem;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-soft);
+      transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
 
-      @media (max-width: 900px) {
-        display: none;
+      &::before {
+        content: "";
+        width: 3px;
+        height: 1.1rem;
+        border-radius: 999px;
+        background: var(--accent-pink);
+        scale: 1 0;
+        transition: scale 0.3s var(--ease-out);
       }
 
-      li {
-        list-style: none;
-        font-size: 0.8rem;
-        transition: color .15s ease-in-out, text-decoration: .15s ease-in-out;
+      &:hover {
+        background-color: color-mix(in oklab, var(--text) 6%, transparent);
+        color: var(--text);
+      }
 
-        :hover {
-          text-decoration: underline;
-          text-underline-offset: 10px;
-          color: var(--secondary-lighter__color);
+      &[aria-current="true"] {
+        color: var(--text);
+
+        &::before {
+          scale: 1 1;
         }
       }
     }
+  }
 
-    .icons {
-      display: flex;
-      gap: 10px;
-      align-items: center;
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu,
+    .navbar__burger,
+    .navbar__burger::before,
+    .navbar__burger::after {
+      transition: none;
     }
   }
 </style>
+
+<script>
+  const setup = () => {
+    const navbar = document.querySelector<HTMLElement>("[data-navbar]");
+    if (!navbar) return;
+
+    const onScroll = () =>
+      navbar.classList.toggle("is-scrolled", window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    document.addEventListener(
+      "astro:before-swap",
+      () => window.removeEventListener("scroll", onScroll),
+      { once: true },
+    );
+
+    const menu = navbar.querySelector<HTMLElement>("[data-mobile-menu]");
+    const menuButton =
+      navbar.querySelector<HTMLButtonElement>("[data-menu-button]");
+    menu?.addEventListener("toggle", (event) => {
+      const open = (event as ToggleEvent).newState === "open";
+      menuButton?.toggleAttribute("data-open", open);
+      menuButton?.setAttribute("aria-expanded", String(open));
+    });
+    menu
+      ?.querySelectorAll("a")
+      .forEach((link) =>
+        link.addEventListener("click", () => menu.hidePopover()),
+      );
+
+    const links = new Map<string, HTMLAnchorElement[]>();
+    navbar
+      .querySelectorAll<HTMLAnchorElement>("[data-nav-link]")
+      .forEach((link) => {
+        const id = link.dataset.navLink ?? "";
+        links.set(id, [...(links.get(id) ?? []), link]);
+      });
+    const sections = [...links.keys()]
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => section !== null);
+
+    if (!sections.length || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          links.forEach((group, id) =>
+            group.forEach((link) => {
+              if (id === entry.target.id)
+                link.setAttribute("aria-current", "true");
+              else link.removeAttribute("aria-current");
+            }),
+          );
+        }
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    document.addEventListener(
+      "astro:before-swap",
+      () => observer.disconnect(),
+      { once: true },
+    );
+  };
+
+  document.addEventListener("astro:page-load", setup);
+</script>

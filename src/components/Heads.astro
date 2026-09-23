@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 export interface Props {
   title: string;
@@ -57,14 +57,7 @@ const { title, author, description, articleDate } = Astro.props as Props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={socialMediaUrl} />
 
-<ViewTransitions />
+<ClientRouter />
 
-<link
-  rel="preload"
-  href="/fonts/OpenSans/open-sans-cyrillic-700-normal.woff"
-  as="font"
-  type="font/woff"
-  crossorigin
-/>
 
 <!-- Add the dynamic props for the articles -->

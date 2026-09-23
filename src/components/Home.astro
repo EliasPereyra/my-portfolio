@@ -1,0 +1,37 @@
+---
+import Hero from "@/components/sections/Hero.astro";
+import Experience from "@/components/sections/Experience.astro";
+import Portfolio from "@/components/sections/Portfolio/Portfolio.astro";
+import Contributions from "@/components/sections/Contributions.astro";
+import About from "@/components/sections/About.astro";
+import Contact from "@/components/sections/Contact.astro";
+---
+
+<main class="home" transition:animate="slide">
+  <Hero />
+  <Experience />
+  <Portfolio />
+  <Contributions />
+  <About />
+  <Contact />
+</main>
+
+<style>
+  .home {
+    position: relative;
+    background: var(--bg-flow);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      z-index: 1;
+      width: min(var(--container), 100% - 1.25rem);
+      translate: -50% 0;
+      border-inline: 1px solid var(--rail);
+      pointer-events: none;
+    }
+  }
+</style>

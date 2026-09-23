@@ -1,115 +1,81 @@
 ---
-import { t } from "i18next";
+import i18next, { t } from "i18next";
 
 import LogoWhite from "../atoms/LogoWhite.astro";
 import AstroIcon from "../atoms/AstroIcon.astro";
-import LinkedinIcon from "../atoms/LinkedinIcon.astro";
-import GithubIcon from "../atoms/GithubIcon.astro";
-import XIcon from "../atoms/XIcon.astro";
 
-import { socialNetworks } from "@/utils/PageConfig";
+const home = i18next.language === "eng" ? "/eng/" : "/";
 ---
 
-<footer class="footer" id="footer">
-  <div class="content">
-    <div class="social-wrapper">
-      <a id="sw__my-logo" href="/"> <LogoWhite width="143" height="143" /></a>
-      <div class="social-links">
-        <GithubIcon
-          type="icon"
-          link={socialNetworks.githubProfile}
-          width="27"
-          height="27"
-        />
-        <LinkedinIcon
-          width="27"
-          height="27"
-          href={socialNetworks.linkedinProfile}
-        />
-      </div>
-    </div>
-    <div class="tool-used">
-      <small>{t("footer.tool-used")}</small>
-      <a href="https://astro.build" target="_blank"><AstroIcon /></a>
-    </div>
+<footer class="footer">
+  <div class="footer__inner">
+    <a class="footer__logo" href={home} aria-label={t("navbar.home")}>
+      <LogoWhite width="98" height="57" />
+    </a>
+    <p class="footer__made">
+      {t("footer.tool-used")}
+      <a href="https://astro.build" target="_blank" rel="noopener noreferrer" aria-label="Astro">
+        <AstroIcon />
+      </a>
+    </p>
   </div>
 </footer>
 
 <style>
   .footer {
-    border-top: 0.2px solid hsl(225 33% 15% / 1);
-    background: hsl(225 33% 6% / 1);
-    padding: 4em 10em;
-    container-type: inline-size;
     position: relative;
-    z-index: 5;
+    background: var(--bg-footer);
+    border-top: 1px solid var(--rail);
+  }
 
-    @media (max-width: 500px) {
-      padding: 2em 4em;
-    }
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding: 2.4rem clamp(1.25rem, -1rem + 7vw, 5.3rem);
+  }
 
-    .content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  .footer__logo {
+    display: flex;
+    color: var(--text);
 
-      @media (max-width: 500px) {
-        flex-direction: column;
-      }
-
-      .social-wrapper {
-        display: flex;
-        flex-direction: column;
-
-        .social-links {
-          margin-top: -0.9rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 1rem;
-        }
-      }
-
-      .tool-used {
-        display: flex;
-        align-items: center;
-        line-height: 9px;
-
-        @media (max-width: 500px) {
-          margin-top: 2em;
-          flex-direction: column;
-        }
-
-        small {
-          top: 0;
-          left: 0;
-          font-size: 0.73rem;
-          color: var(--white-c-800);
-        }
-        a {
-          margin-top: 0;
-        }
-      }
+    :global(svg) {
+      width: 98px;
+      height: 57px;
     }
   }
 
-  @media (prefers-color-scheme: light) {
-    .footer {
-      border-top: 0.2px solid hsl(227, 70%, 87%);
-      background: linear-gradient(
-        9deg,
-        #cad6e2 6.27%,
-        #f5f5f5 52.57%,
-        #f5f5f5 88.98%
-      );
+  .footer__made {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: light-dark(var(--text-soft), hsla(0 0% 85.1%));
 
-      .content {
-        .tool-used {
-          small {
-            color: var(--primary-color);
-          }
-        }
+    a {
+      display: flex;
+      color: var(--text);
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.75;
       }
+    }
+
+    :global(svg) {
+      width: 64px;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .footer__inner {
+      flex-direction: column;
     }
   }
 </style>

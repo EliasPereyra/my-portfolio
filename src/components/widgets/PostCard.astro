@@ -91,27 +91,25 @@ const { img, title, description, tags, pubDate } = Astro.props;
     }
   }
 
-  @media (prefers-color-scheme: light) {
-    #post-card {
-      #post-card__slug-link {
-        #post-card__title {
-          color: var(--black-c-800);
-        }
+  :global([data-theme="light"]) #post-card {
+    #post-card__slug-link {
+      #post-card__title {
+        color: var(--black-c-800);
+      }
 
-        #post-card__pub-date {
-          color: var(--black-c-800);
-        }
+      #post-card__pub-date {
+        color: var(--black-c-800);
+      }
 
-        #post-card__tag-items {
-          color: var(--black-c-800);
-          li {
-            border: 1px solid var(--black-c-800);
-          }
+      #post-card__tag-items {
+        color: var(--black-c-800);
+        li {
+          border: 1px solid var(--black-c-800);
         }
+      }
 
-        #post-card__brief-desc {
-          color: var(--black-c-800);
-        }
+      #post-card__brief-desc {
+        color: var(--black-c-800);
       }
     }
   }

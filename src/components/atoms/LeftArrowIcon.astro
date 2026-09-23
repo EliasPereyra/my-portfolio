@@ -31,13 +31,11 @@ const { color, href } = Astro.props;
     }
   }
 
-  @media (prefers-color-scheme: light) {
-    a {
-      svg {
-        path {
-          fill: var(--black-c-800);
-          transition: transform 0.23s ease-in-out;
-        }
+  :global([data-theme="light"]) a {
+    svg {
+      path {
+        fill: var(--black-c-800);
+        transition: transform 0.23s ease-in-out;
       }
     }
   }
