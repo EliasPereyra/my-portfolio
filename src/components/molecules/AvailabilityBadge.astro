@@ -2,57 +2,56 @@
 import { t } from "i18next";
 ---
 
-<div class="avail-text">
-  <div class="effect-wrapper">
-    <span class="effect"></span>
-    <span></span>
-  </div>
-  <p class="over-title">{t("hero.available")}</p>
-</div>
+<p class="availability">
+  <span class="availability__dot" aria-hidden="true"></span>
+  {t("hero.available")}
+</p>
 
 <style>
-  .avail-text {
-    margin-bottom: 1rem;
-    padding: 1rem 0.5rem;
-    display: flex;
-    justify-content: center;
+  .availability {
+    display: inline-flex;
     align-items: center;
-    gap: 1.5rem;
-    border: 1px solid rgba(255, 125, 169, 0.55);
-    border-radius: 100vw;
-    min-width: min(100%, 20em);
-    background: rgba(255, 125, 169, 0.08);
-    color: var(--white-color);
-    @media (prefers-color-scheme: light) {
-      color: var(--primary-color);
+    gap: 0.6rem;
+    padding: 0.35rem 0.95rem 0.35rem 0.75rem;
+    border: 1px solid color-mix(in oklab, var(--accent-pink) 45%, transparent);
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--accent-pink) 9%, transparent);
+    backdrop-filter: blur(6px);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text-soft);
+  }
+
+  .availability__dot {
+    position: relative;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent-pink);
+    box-shadow: 0 0 10px var(--accent-pink);
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: inherit;
+      animation: ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
+  }
 
-    .effect-wrapper {
-      position: relative;
-      .effect {
-        position: absolute;
-        inset: 0;
-        margin: auto;
-        border-radius: 50%;
-        animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-        background-color: rgba(255, 125, 169, 0.85);
-      }
-
-      span {
-        margin: auto;
-        padding: 0.5rem;
-        position: absolute;
-        inset: 0;
-        border-radius: 50%;
-        background-color: rgba(255, 125, 169, 0.85);
-        filter: drop-shadow(0px 0px 17px rgba(255, 40, 113, 0.7));
-      }
+  @keyframes ping {
+    75%,
+    100% {
+      scale: 2.4;
+      opacity: 0;
     }
+  }
 
-    .over-title {
-      font-family: "Arial", sans-serif;
-      font-size: 0.8rem;
-      text-box: cap alphabetic;
+  @media (prefers-reduced-motion: reduce) {
+    .availability__dot::after {
+      animation: none;
     }
   }
 </style>
