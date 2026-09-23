@@ -1,0 +1,10 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0H40L0 40V0Z" fill="url(#fade)"/>
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="20.5" y2="20.5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="black"/>
+      <stop offset="0.845" stop-color="black" stop-opacity="0.99"/>
+      <stop offset="0.95" stop-color="black" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

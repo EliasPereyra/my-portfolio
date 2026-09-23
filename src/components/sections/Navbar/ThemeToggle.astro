@@ -1,0 +1,128 @@
+---
+import { t } from "i18next";
+import Icon from "@/components/atoms/Icon.astro";
+---
+
+<button
+  class="theme-toggle"
+  type="button"
+  data-theme-toggle
+  data-label-light={t("navbar.theme.toLight")}
+  data-label-dark={t("navbar.theme.toDark")}
+  aria-label={t("navbar.theme.toLight")}
+>
+  <Icon name="sun" size={20} class="icon-sun" />
+  <Icon name="moon" size={18} class="icon-moon" />
+</button>
+
+<style>
+  .theme-toggle {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    color: var(--text-soft);
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
+
+    &:hover {
+      color: var(--accent-pink);
+      background-color: color-mix(in oklab, var(--text) 8%, transparent);
+    }
+
+    :global(svg) {
+      grid-area: 1 / 1;
+      transition:
+        opacity 0.35s ease,
+        rotate 0.5s var(--ease-out),
+        scale 0.35s ease;
+    }
+  }
+
+  :global([data-theme="light"]) .theme-toggle :global(.icon-sun),
+  :global(:root:not([data-theme="light"])) .theme-toggle :global(.icon-moon) {
+    opacity: 0;
+    rotate: -90deg;
+    scale: 0.6;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .theme-toggle :global(svg) {
+      transition: none;
+    }
+  }
+</style>
+
+<style is:global>
+  /* Capture the whole page as one layer, including the router's named elements */
+  html.theme-transition [data-astro-transition-scope] {
+    view-transition-name: none !important;
+  }
+
+  html.theme-transition::view-transition-old(root) {
+    animation: none;
+    z-index: -1;
+  }
+
+  html.theme-transition::view-transition-new(root) {
+    mask: url("/assets/theme-mask.svg") top left / 0 no-repeat;
+    animation: theme-reveal 1.5s cubic-bezier(0.5, 0, 0.25, 1) both;
+  }
+
+  @keyframes theme-reveal {
+    to {
+      mask-size: 200vmax;
+    }
+  }
+</style>
+
+<script>
+  const setup = () => {
+    const button = document.querySelector<HTMLButtonElement>(
+      "[data-theme-toggle]",
+    );
+    if (!button) return;
+
+    const root = document.documentElement;
+    const syncLabel = () => {
+      const isLight = root.dataset.theme === "light";
+      button.setAttribute(
+        "aria-label",
+        (isLight ? button.dataset.labelDark : button.dataset.labelLight) ?? "",
+      );
+    };
+
+    syncLabel();
+    const switchTheme = () => {
+      const next = root.dataset.theme === "light" ? "dark" : "light";
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem("theme", next);
+      } catch {
+        // Storage can be blocked; the choice still applies to this page view.
+      }
+      syncLabel();
+    };
+
+    button.addEventListener("click", () => {
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      if (!document.startViewTransition || reducedMotion) {
+        switchTheme();
+        return;
+      }
+
+      root.classList.add("theme-transition");
+      const transition = document.startViewTransition(switchTheme);
+      transition.finished.finally(() =>
+        root.classList.remove("theme-transition"),
+      );
+    });
+  };
+
+  document.addEventListener("astro:page-load", setup);
+</script>

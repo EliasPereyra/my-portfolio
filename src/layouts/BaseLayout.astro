@@ -1,5 +1,11 @@
 ---
-import "@fontsource/quicksand";
+import i18next from "i18next";
+import "@fontsource/barlow/300.css";
+import "@fontsource/barlow/400.css";
+import "@fontsource/barlow/500.css";
+import "@fontsource/barlow/600.css";
+import "@fontsource/barlow/700.css";
+import "@fontsource-variable/bricolage-grotesque/opsz.css";
 import "../styles/index.css";
 import Heads from "@/components/Heads.astro";
 import Footer from "@/components/sections/Footer.astro";
@@ -13,18 +19,122 @@ export interface Props {
   articleDate?: Date;
 }
 
-const { title, author, description, articleDate } = Astro.props as Props;
+const { title, author, description } = Astro.props as Props;
+const lang = i18next.language === "eng" ? "en" : "es";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
+    <script is:inline>
+      // Runs before paint so the page never flashes the wrong theme.
+      (() => {
+        if (window.__themeReady) return;
+        window.__themeReady = true;
+
+        const media = matchMedia("(prefers-color-scheme: light)");
+        const stored = () => {
+          try {
+            const value = localStorage.getItem("theme");
+            return value === "light" || value === "dark" ? value : null;
+          } catch {
+            return null;
+          }
+        };
+        const apply = (doc) => {
+          const root = doc.documentElement;
+          root.dataset.theme = stored() ?? (media.matches ? "light" : "dark");
+          root.classList.add("js");
+        };
+
+        apply(document);
+        document.addEventListener("astro:before-swap", (e) =>
+          apply(e.newDocument),
+        );
+        media.addEventListener("change", () => {
+          if (!stored()) apply(document);
+        });
+      })();
+    </script>
     <Heads title={title} author={author} description={description} />
   </head>
   <body>
-    <UpArrowIcon />
-    <Navbar />
-    <slot />
-    <Footer />
+    <div class="page">
+      <UpArrowIcon />
+      <Navbar />
+      <slot />
+      <Footer />
+    </div>
   </body>
 </html>
+
+<style>
+  .page {
+    overflow: clip; /* keeps decorative glows from widening the page without breaking the sticky navbar */
+  }
+</style>
+
+<script>
+  const revealOnScroll = () => {
+    const targets = document.querySelectorAll("[data-reveal]:not(.is-visible)");
+    if (!("IntersectionObserver" in window)) {
+      targets.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.12 },
+    );
+
+    targets.forEach((el) => observer.observe(el));
+  };
+
+  const spotlight = () => {
+    const canHover = window.matchMedia(
+      "(hover: hover) and (pointer: fine)",
+    ).matches;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (!canHover || reducedMotion) return;
+
+    document
+      .querySelectorAll<HTMLElement>("[data-spotlight]")
+      .forEach((host) => {
+        const layers = host.querySelectorAll<HTMLElement>(
+          "[data-spotlight-layer]",
+        );
+        let frame = 0;
+        let x = 0;
+        let y = 0;
+
+        host.addEventListener("pointermove", (event) => {
+          x = event.clientX;
+          y = event.clientY;
+          if (frame) return;
+          frame = requestAnimationFrame(() => {
+            frame = 0;
+            layers.forEach((layer) => {
+              const rect = layer.getBoundingClientRect();
+              layer.style.setProperty("--mx", `${x - rect.left}px`);
+              layer.style.setProperty("--my", `${y - rect.top}px`);
+            });
+            host.classList.add("is-lit");
+          });
+        });
+        host.addEventListener("pointerleave", () =>
+          host.classList.remove("is-lit"),
+        );
+      });
+  };
+
+  document.addEventListener("astro:page-load", revealOnScroll);
+  document.addEventListener("astro:page-load", spotlight);
+</script>

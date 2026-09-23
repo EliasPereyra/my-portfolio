@@ -1,24 +1,87 @@
 {
   "description": "My website where you'll find all my latest projects and, also, a little bit about who I am.",
   "navbar": {
+    "label": "Main navigation",
     "home": "Home",
+    "experience": "Experience",
+    "projects": "Projects",
     "about": "About me",
-    "projects": "My projects",
-    "contact": "Contact"
+    "contact": "Contact",
+    "languages": "Change language",
+    "theme": {
+      "toLight": "Switch to light theme",
+      "toDark": "Switch to dark theme"
+    },
+    "menu": "Open menu"
   },
   "hero": {
     "available": "Available for work",
-    "headline": "Hi! My name is Elias Pereyra",
-    "first-col": "Fullstack Developer",
-    "second-col": {
-      "with": "With",
-      "specialization": "specialization",
-      "in": "in ",
-      "and": "and with a great taste for"
+    "headline": {
+      "start": "Bringing",
+      "ideas": "ideas",
+      "middle": "into",
+      "facts": "facts"
+    },
+    "description": "I’m Elías Pereyra, a Fullstack Developer focused on Web and Mobile Frontend development, with a strong focus on scalability, security, and UX."
+  },
+  "experience": {
+    "title": "Experience",
+    "to": "to",
+    "stack": "Technologies",
+    "items": {
+      "synkpay": {
+        "domain": "Web · Fintech / Crypto",
+        "description": "Owned the frontend development of a medium-sized cryptocurrency dashboard, working independently under the guidance of the Tech Lead. Led a large-scale refactor of the design system from Styled-components to Tailwind + CVA, and moved the codebase from a feature-based to a module-based architecture."
+      },
+      "keywallet": {
+        "domain": "Mobile · Fintech / Crypto",
+        "description": "Contributed to the frontend development of a cryptocurrency wallet as part of a small mobile frontend team of three engineers. I focused on user experience and application security: password and biometric authentication, session auto-lock, and re-authentication mechanisms."
+      },
+      "octaflow": {
+        "domain": "AI · Agentic Engineering",
+        "description": "Octaflow is an AI-assisted engineering platform that enables companies to continue developing and maintaining software products through coordinated AI agents. Worked on the Profile component from the ground up, collaborating with another developer to build the infrastructure around project context, agent planning and execution, harnesses, and verification workflows that help produce complete development outcomes for clients."
+      }
     }
   },
-  "portfolio": {
-    "title": "Projects"
+  "projects": {
+    "title": "Side Projects",
+    "seeMore": "See more",
+    "repo": "Repository for",
+    "live": "Live site for"
+  },
+  "contributions": {
+    "title": "Previous Contributions",
+    "deckLabel": "Some of my translations",
+    "author": "Author:",
+    "seeAll": "See all",
+    "first": "I worked as a translator and technical content reviewer for freeCodeCamp en Español, on articles and handbooks about web development and programming. I translated <strong>more than 40 pieces</strong> of different lengths and complexity, from introductions to basic concepts to documentation on more specific technical topics.",
+    "second": "My goal was to bring quality technical content to people who aren't fluent in English yet, or who simply prefer reading in Spanish. The idea was for everything the freeCodeCamp community builds in English to also reach the Spanish-speaking community."
+  },
+  "about": {
+    "title": "About me",
+    "first": "I’m Elías Pereyra Gómez, a developer from Argentina who enjoys turning ideas into things that <strong>actually work</strong>.",
+    "second": "Most of my work revolves around <strong>web</strong> and <strong>mobile</strong> development, with a particular focus on frontend, UX, scalability, and security. I like understanding how the different pieces of an application fit together, not just the part that users see.",
+    "third": "I also pay special attention to the UI: I like making it attractive and customizable, always grounded in the fundamentals of interface design.",
+    "fourth": "And moving to the back, I also enjoy backend development, so I can build a complete system, end to end.",
+    "stack": {
+      "title": "My Tech Stack",
+      "groups": {
+        "web": "Web frontend",
+        "mobile": "Mobile",
+        "styling": "CSS & UI",
+        "backend": "Backend",
+        "testing": "Testing",
+        "state": "Global state",
+        "tooling": "CI/CD & tooling"
+      }
+    }
+  },
+  "contact": {
+    "title": "Let's build something.",
+    "subtitle": "Open to fullstack and frontend roles.",
+    "write": "Email me",
+    "copy": "Copy email",
+    "copied": "Email copied"
   },
   "cards": {
     "turnos": {
@@ -32,45 +95,6 @@
       "third-paragraph": "The system is developed with Next.js and WordPress as a CMS, communicating through a GraphQL API. The design of all pages and components was created in Penpot and Figma."
     }
   },
-  "about": {
-    "title": "About me",
-    "work": {
-      "title": "What I do",
-      "first-desc": "I am a Fullstack developer with a focus on creating optimized, accessible, and visually appealing web interfaces. My personal projects have allowed me to develop skills in performance, responsive design, and usability, providing a smooth and intuitive experience for users.",
-      "second-desc": "Specialized mainly in Front-end Development, starting with design and using tools like Figma and Penpot to create clean and visually appealing results. I have solid knowledge of HTML, CSS, JavaScript, and modern frameworks like React.js, as well as Node.js and databases on the backend.",
-      "third-desc": "In addition to web development, I volunteer in the freeCodeCamp community, contributing to the open-source ecosystem by translating articles into Spanish. My goal is to make technical knowledge more accessible to Spanish speakers, facilitating the learning of web development and programming for a broader community.",
-      "fourth-desc": "I believe that everyone should have access to education and that sharing knowledge is essential. Through these translations, I help more people learn without the language barrier. You can see the translations I have contributed to ",
-      "fifth-desc": "here."
-    },
-    "personal": {
-      "title": "My personal side",
-      "first-desc": "One of the traits that stand out in me is ",
-      "curiosidad": "curiosity",
-      "first-part": "(it takes me takes me beyond the ordinary), ",
-      "independiente": "being independent",
-      "second-part": "(I like to get a balance between collaboration and autonomy) and ",
-      "resiliente": "being resilient",
-      "third-part": "(I don't give up until I achieve the result I'm aiming for).",
-      "second-desc": "I ",
-      "investigar": "enjoy researching",
-      "fourth-part": "and learning how things work ",
-      "fundamentos": "from the ground up",
-      "fifth-part": ". This is also why I have a strong interest in low-level programming, systems programming, cybersecurity, operating systems, and more. Understanding these fundamentals benefits me by providing a broader perspective on software development.",
-      "third-desc": "And adding to everything mentioned above, I like to be ",
-      "mente": "open-minded",
-      "sixth-part": "and ",
-      "flexible": "flexible",
-      "seventh-part": "in learning new tools to expand and gain more experience in different areas of development. And, I love ",
-      "idiomas": "learning new languages",
-      "eighth-part": ", a passion that has been with me for more than 10 years."
-    }
-  },
-  "contact": {
-    "title": "Would you like to work with me?",
-    "comment": "Currently I'm up for work. Contact me. Send me a message and let's chat about your proposal.",
-    "button": "Send me a message",
-    "emailCopyMessage": "Email copied"
-  },
   "footer": {
     "tool-used": "Happily developed with "
   },
@@ -78,7 +102,8 @@
     "title": "Latest posts"
   },
   "not_found": {
-    "go_back": "Go back",
-    "desc": "That page doesn't exist."
+    "title": "That page doesn't exist",
+    "desc": "The page you're looking for isn't this one, or doesn't exist. Try another one.",
+    "go_back": "Back to home"
   }
 }

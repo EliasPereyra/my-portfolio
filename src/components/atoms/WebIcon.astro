@@ -37,7 +37,7 @@ const { link, width, height } = Astro.props;
     border: 1px solid var(--blue-color);
     border-radius: 0.77rem;
     color: var(--white-c-900);
-    background-image: linear-gradient(to right, var(--primary-color), #111b2c);
+    background-image: linear-gradient(to right, var(--primary-color), hsla(217.8 44.3% 12%));
     transition: filter 0.09s ease-in;
     user-select: none;
 
@@ -50,11 +50,9 @@ const { link, width, height } = Astro.props;
     transition: transform 0.23s ease-in-out;
   }
 
-  @media (prefers-color-scheme: light) {
-    svg {
-      path {
-        fill: var(--primary-color);
-      }
+  :global([data-theme="light"]) svg {
+    path {
+      fill: var(--primary-color);
     }
   }
 </style>

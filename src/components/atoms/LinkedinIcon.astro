@@ -48,9 +48,7 @@ const isSharing = forSharing
     }
   }
 
-  @media (prefers-color-scheme: light) {
-    svg {
-      fill: var(--primary-color);
-    }
+  :global([data-theme="light"]) svg {
+    fill: var(--primary-color);
   }
 </style>
