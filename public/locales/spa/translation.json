@@ -85,7 +85,7 @@
   },
   "cards": {
     "turnos": {
-      "first-paragraph": "Un sistema de gestión de turnos para la consulta de pacientes. Puedes registrarte, ingresar tus datos personales y médicos, y reservar un turno. Luego recibirás una notificación por sms si el doctor confirmó el turno o no.",
+      "first-paragraph": "Un sistema de gestión de turnos para la consulta de pacientes. Puedes registrarte, ingresar tus datos personales y médicos, y reservar un turno. Luego recibirás una notificación por SMS si el doctor confirmó el turno o no.",
       "second-paragraph": "Este tipo de sistema ayuda en la simplificación de los procesos para adquirir un turno con el doctor. Ahorra tiempo de espera para el paciente, provee información básica de antemano y agiliza más el proceso de gestión de turnos para el doctor y recursos materiales.",
       "third-paragraph": "El sistema está desarrollado con Next.js y Appwrite (un BaaS - servicio basado en la nube). Las páginas al igual que los componentes fueron diseñados en Figma."
     },
