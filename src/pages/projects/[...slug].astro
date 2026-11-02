@@ -1,5 +1,5 @@
 ---
-import { changeLanguage } from "i18next";
+import { changeLanguage, t } from "i18next";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import GithubIcon from "@/components/atoms/GithubIcon.astro";
 import WebIcon from "@/components/atoms/WebIcon.astro";
@@ -10,10 +10,10 @@ import { getProjects, projects } from "@/utils/projects";
 changeLanguage("spa");
 
 export async function getStaticPaths() {
-    const projects = await getProjects();
-    return projects.map((project) => ({
-        params: { slug: project.id },
-        props: { project },
+    const projects = await getProjects("spa");
+    return projects.map(({ slug, entry }) => ({
+        params: { slug },
+        props: { project: entry },
     }));
 }
 const { project } = Astro.props;
@@ -27,7 +27,7 @@ const project_tools = (projectName: string) => {
 
 <BaseLayout
   author="Elias Pereyra"
-  title={`Proyecto ${title} | Elias Pereyra`}
+  title={t("project.pageTitle", { title })}
   description={description}
 >
   <section class="project-page">
@@ -37,7 +37,7 @@ const project_tools = (projectName: string) => {
         <img
           class="cover-img"
           src={project_img.src}
-          alt=`Imagen de portada del proyecto ${title}`
+          alt={t("project.coverAlt", { title })}
           width="800"
           height="580"
         />
@@ -47,7 +47,7 @@ const project_tools = (projectName: string) => {
               <img
                 class="cover-img"
                 src={project_img.src}
-                alt=`Imagen de portada del proyecto ${title}`
+                alt={t("project.coverAlt", { title })}
                 width="800"
                 height="580"
               />
@@ -55,7 +55,7 @@ const project_tools = (projectName: string) => {
               <img
                 class="cover-img"
                 src={project_img.src}
-                alt=`Imagen de portada del proyecto ${title}`
+                alt={t("project.coverAlt", { title })}
                 width="800"
                 height="580"
               />
@@ -63,7 +63,7 @@ const project_tools = (projectName: string) => {
               <img
                 class="cover-img"
                 src={project_img.src}
-                alt=`Imagen de portada del proyecto ${title}`
+                alt={t("project.coverAlt", { title })}
                 width="800"
                 height="580"
               />
@@ -71,7 +71,7 @@ const project_tools = (projectName: string) => {
               <img
                 class="cover-img"
                 src={project_img.src}
-                alt=`Imagen de portada del proyecto ${title}`
+                alt={t("project.coverAlt", { title })}
                 width="800"
                 height="580"
               />
@@ -79,7 +79,7 @@ const project_tools = (projectName: string) => {
               <img
                 class="cover-img"
                 src={project_img.src}
-                alt=`Imagen de portada del proyecto ${title}`
+                alt={t("project.coverAlt", { title })}
                 width="800"
                 height="580"
               />
@@ -105,14 +105,14 @@ const project_tools = (projectName: string) => {
       <p class="text summary">{summary}</p>
 
       <div class="key-features">
-        <h2 class="title">Características claves</h2>
+        <h2 class="title">{t("project.keyFeatures")}</h2>
         <ul class="list">
           {key_features.map((feature) => <li class="list-item">{feature}</li>)}
         </ul>
       </div>
 
       <div class="design-goals">
-        <h2 class="title">Objetivos de Diseño</h2>
+        <h2 class="title">{t("project.designGoals")}</h2>
         <ul class="list">
           {
             design_goals.map((goal) => (
@@ -126,7 +126,7 @@ const project_tools = (projectName: string) => {
       </div>
 
       <div class="tools-used">
-        <h2 class="title">Herramientas usadas</h2>
+        <h2 class="title">{t("project.toolsUsed")}</h2>
         <ul class="tag-items">
           {
             project_tools(title)?.map(({ tagName, tagIcon, tagColor }) => (
@@ -166,7 +166,6 @@ const project_tools = (projectName: string) => {
     --gradient: var(--title-bar);
   }
 
-  /* General styles */
   .list {
     display: flex;
     flex-direction: column;
@@ -193,7 +192,6 @@ const project_tools = (projectName: string) => {
     z-index: 2;
   }
 
-  /* Project styles */
   .project-page {
     padding: 6em 10em 4em;
     background: var(--bg-flow);

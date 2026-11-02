@@ -95,6 +95,13 @@
       "third-paragraph": "El sistema está desarrollado con Next.js y Sanity como CMS headless, con consultas GROQ y contenido que se actualiza en vivo. Las cuentas de usuario usan Better Auth (email y contraseña o passkeys) sobre una base de datos PostgreSQL en Neon, y los tests están escritos con Vitest. Las páginas y los componentes fueron diseñados en Figma."
     }
   },
+  "project": {
+    "pageTitle": "Proyecto {{title}} | Elias Pereyra",
+    "coverAlt": "Imagen de portada del proyecto {{title}}",
+    "keyFeatures": "Características clave",
+    "designGoals": "Objetivos de diseño",
+    "toolsUsed": "Herramientas usadas"
+  },
   "footer": {
     "tool-used": "Desarrollado felizmente con "
   },

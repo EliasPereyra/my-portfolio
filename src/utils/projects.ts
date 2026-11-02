@@ -172,8 +172,23 @@ export const projects: Project[] = [
   },
 ];
 
-export const getProjects = async (): Promise<CollectionEntry<"projects">[]> => {
-  const projects = await getCollection("projects");
+export type ProjectLang = "spa" | "eng";
 
-  return projects;
+export interface LocalizedProject {
+  slug: string;
+  entry: CollectionEntry<"projects">;
+}
+
+export const getProjects = async (
+  lang: ProjectLang,
+): Promise<LocalizedProject[]> => {
+  const prefix = `${lang}/`;
+  const projects = await getCollection("projects", ({ id }) =>
+    id.startsWith(prefix),
+  );
+
+  return projects.map((entry) => ({
+    slug: entry.id.slice(prefix.length),
+    entry,
+  }));
 };
