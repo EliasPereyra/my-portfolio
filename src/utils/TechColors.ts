@@ -26,6 +26,9 @@ export const techColors = {
   Figma: Symbol("#F24E1E"),
   Playwright: Symbol("#45ba4b"),
   ApolloGraphQL: Symbol("#311C87"),
+  Sanity: Symbol("#F03E2F"),
+  Neon: Symbol("#34D59A"),
+  BetterAuth: Symbol("#000000"),
 };
 
 const brandColors: Record<string, string | null> = {
@@ -45,6 +48,9 @@ const brandColors: Record<string, string | null> = {
   bitrise: "#8B5CF6",
   python: "#3776AB",
   postgresql: "#4169E1",
+  sanity: "#F03E2F",
+  neon: "#34D59A",
+  "better auth": null,
   "harness engineering": "#FF71A1",
   paperclip: "#9CB2E0",
   "next.js": null,

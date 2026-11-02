@@ -92,7 +92,7 @@
     "workstart": {
       "first-paragraph": "Una plataforma para encontrar trabajos sin experiencia, abarcando distintos tipos de rubros en Argentina. No hace falta registrarse, simplemente selecciona la vacante que te gusta y envía a la empresa un email.",
       "second-paragraph": "Postular directamente a la empresa ahorra mucho tiempo y ayuda a personalizar el contacto. Además cada vacante muestra los detalles más relevantes como el sueldo, modalidad, horario laboral, responsabilidades y los beneficios. La plataforma está diseñada de forma en que los puntos anteriores sean puntos obligatorios para poder publicar vacantes.",
-      "third-paragraph": "El sistema está desarrollado con Next.js y Wordpress como CMS, comunicándose a través de una API de GraphQL. El diseño de todas las páginas y los componentes fueron diseñados en Penpot y Figma."
+      "third-paragraph": "El sistema está desarrollado con Next.js y Sanity como CMS headless, con consultas GROQ y contenido que se actualiza en vivo. Las cuentas de usuario usan Better Auth (email y contraseña o passkeys) sobre una base de datos PostgreSQL en Neon, y los tests están escritos con Vitest. Las páginas y los componentes fueron diseñados en Figma."
     }
   },
   "footer": {
