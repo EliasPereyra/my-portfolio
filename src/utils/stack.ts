@@ -13,20 +13,20 @@ export interface StackGroup {
 }
 
 export const stack: StackGroup[] = [
-  { id: "web", icon: Monitor, items: ["Astro", "Next.js", "React"] },
-  { id: "mobile", icon: Mobile, items: ["Expo", "React Native"] },
+  { id: "web", icon: Monitor, items: ["TypeScript", "React", "Next.js", "Astro"] },
+  { id: "mobile", icon: Mobile, items: ["React Native", "Expo", "Tamagui"] },
   {
     id: "styling",
     icon: Palette,
     items: ["TailwindCSS", "Base UI", "Shadcn", "CVA", "DaisyUI"],
   },
-  { id: "backend", icon: Server, items: ["Express.js", "Hono.js"] },
+  { id: "backend", icon: Server, items: ["Express.js", "Hono.js", "GraphQL", "PostgreSQL", "Python"] },
   {
     id: "testing",
     icon: TestTube,
     items: ["Vitest", "Jest", "MSW", "Playwright"],
   },
-  { id: "state", icon: Layers, items: ["Zustand"] },
+  { id: "state", icon: Layers, items: ["Zustand", "Redux Toolkit"] },
   {
     id: "tooling",
     icon: Rocket,

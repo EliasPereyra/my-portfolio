@@ -1,11 +1,11 @@
 ---
-import { t } from "i18next";
+import i18next, { t } from "i18next";
 
 import Divider from "@/components/atoms/Divider.astro";
 import Glow from "@/components/atoms/Glow.astro";
 import Icon from "@/components/atoms/Icon.astro";
 import SquareGrid from "@/components/atoms/SquareGrid.astro";
-import { socialNetworks } from "@/utils/PageConfig";
+import { getCvHref, socialNetworks } from "@/utils/PageConfig";
 
 const email = socialNetworks.emailAddress;
 ---
@@ -44,6 +44,7 @@ const email = socialNetworks.emailAddress;
           <Icon name="mail" size={20} />
           {t("contact.write")}
         </a>
+        <span class="contact__address">{email}</span>
         <button
           class="contact__copy"
           type="button"
@@ -82,12 +83,12 @@ const email = socialNetworks.emailAddress;
         <li>
           <a
             class="contact__cv"
-            href="/assets/cv.pdf"
+            href={getCvHref(i18next.language)}
             target="_blank"
             rel="noopener noreferrer"
           >
             <Icon name="file" size={20} />
-            CV
+            {t("contact.cv")}
           </a>
         </li>
       </ul>
@@ -182,6 +183,7 @@ const email = socialNetworks.emailAddress;
   .contact__email {
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 0.5rem;
   }
@@ -207,6 +209,14 @@ const email = socialNetworks.emailAddress;
       translate: 0 -2px;
       box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--accent-pink) 70%, transparent);
     }
+  }
+
+  .contact__address {
+    padding-inline: 0.5rem;
+    font-size: 1rem;
+    color: light-dark(var(--text-soft), hsla(0 0% 85.1%));
+    overflow-wrap: anywhere;
+    user-select: all;
   }
 
   .contact__copy {
@@ -300,11 +310,14 @@ const email = socialNetworks.emailAddress;
   .contact__links {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
 
     a {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+      min-width: 2.75rem;
+      min-height: 2.75rem;
       gap: 0.3rem;
       color: light-dark(var(--text-soft), hsla(0 0% 85.1%));
       transition:

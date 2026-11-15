@@ -28,7 +28,7 @@
     hsla(339.7 100% 72.2% / 0.98)
   );
   --accent-role: light-dark(
-    hsla(339.9 57.3% 45.9%),
+    hsla(339.9 57.3% 40%),
     hsla(339.7 100% 74.5% / 0.85)
   );
   --accent-violet: light-dark(hsla(262.9 72.7% 55.5%), hsla(266 100% 68.8%));

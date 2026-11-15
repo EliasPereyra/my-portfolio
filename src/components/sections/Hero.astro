@@ -1,10 +1,13 @@
 ---
-import { t } from "i18next";
+import i18next, { t } from "i18next";
 
 import Icon from "@/components/atoms/Icon.astro";
 import Glow from "@/components/atoms/Glow.astro";
 import AvailabilityBadge from "@/components/molecules/AvailabilityBadge.astro";
-import { socialNetworks } from "@/utils/PageConfig";
+import { getCvHref, socialNetworks } from "@/utils/PageConfig";
+
+const lang = i18next.language;
+const projectsHref = `${lang === "eng" ? "/eng/" : "/"}#portfolio`;
 ---
 
 <section class="hero" id="hero" data-spotlight>
@@ -38,14 +41,32 @@ import { socialNetworks } from "@/utils/PageConfig";
     <h1 class="hero__headline">
       <span class="hero__word" style="--i: 0">{t("hero.headline.start")}</span>
       <span class="hero__word hero__accent hero__accent--pink" style="--i: 1"
-        >{t("hero.headline.ideas")}</span
+        >{t("hero.headline.web")}</span
       >
       <span class="hero__word" style="--i: 2">{t("hero.headline.middle")}</span>
       <span class="hero__word hero__accent hero__accent--violet" style="--i: 3"
-        >{t("hero.headline.facts")}</span
+        >{t("hero.headline.mobile")}</span
       >
+      <span class="hero__word" style="--i: 4">{t("hero.headline.end")}</span>
     </h1>
-    <p class="hero__description">{t("hero.description")}</p>
+    <div class="hero__description-wrap">
+      <p class="hero__description">{t("hero.description")}</p>
+    </div>
+    <div class="hero__actions">
+      <a class="hero__cta" href={projectsHref}>
+        {t("hero.cta")}
+        <Icon name="arrow-right" size={18} />
+      </a>
+      <a
+        class="hero__cv"
+        href={getCvHref(lang)}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="file" size={20} />
+        {t("hero.cv")}
+      </a>
+    </div>
     <ul class="hero__social">
       <li>
         <a
@@ -53,7 +74,7 @@ import { socialNetworks } from "@/utils/PageConfig";
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Icon name="linkedin" size={33} label="LinkedIn" />
+          <Icon name="linkedin" size={28} label="LinkedIn" />
         </a>
       </li>
       <li>
@@ -62,7 +83,7 @@ import { socialNetworks } from "@/utils/PageConfig";
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Icon name="github" size={33} label="GitHub" />
+          <Icon name="github" size={28} label="GitHub" />
         </a>
       </li>
     </ul>
@@ -74,8 +95,8 @@ import { socialNetworks } from "@/utils/PageConfig";
     position: relative;
     display: grid;
     place-items: center;
-    min-height: max(100svh, 37.7rem);
-    padding-block: 6rem 4rem;
+    min-height: max(86svh, 37rem);
+    padding-block: 7rem 3rem;
 
     --glow-crimson: light-dark(
       hsla(337.6 64.7% 54.5% / 0.3),
@@ -220,9 +241,10 @@ import { socialNetworks } from "@/utils/PageConfig";
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 0.28em;
+    max-width: 21ch;
     font-size: clamp(2.5rem, 1.4rem + 3.8vw, 3.75rem);
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.15;
     color: light-dark(var(--text), hsla(220 16.4% 89.2%));
   }
 
@@ -253,8 +275,44 @@ import { socialNetworks } from "@/utils/PageConfig";
       calc(0.9s + var(--i) * 0.12s);
   }
 
+  /* Darker in light theme: the crimson glow behind the headline lowers contrast */
+  .hero__accent--pink {
+    --accent: light-dark(
+      color-mix(in oklab, var(--accent-pink) 86%, black),
+      var(--accent-pink)
+    );
+  }
+
   .hero__accent--violet {
-    --accent: var(--accent-violet);
+    --accent: light-dark(
+      color-mix(in oklab, var(--accent-violet) 85%, black),
+      var(--accent-violet)
+    );
+  }
+
+  /* Blurs the spotlight behind the description only, so it keeps its contrast.
+     It lives on a wrapper because the text's entrance animation would make the
+     text its own backdrop root and hide the spotlight from the blur. */
+  .hero__description-wrap {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -1rem -1.5rem;
+      z-index: -1;
+      border-radius: 2rem;
+      background: color-mix(in oklab, var(--bg-page) 35%, transparent);
+      backdrop-filter: blur(8px);
+      mask-image: radial-gradient(closest-side, black 65%, transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+  }
+
+  .hero:global(.is-lit) .hero__description-wrap::before {
+    opacity: 1;
   }
 
   .hero__description {
@@ -265,14 +323,77 @@ import { socialNetworks } from "@/utils/PageConfig";
     animation: word-in 0.8s var(--ease-out) 0.45s both;
   }
 
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+    margin-top: 1.1rem;
+    animation: word-in 0.8s var(--ease-out) 0.55s both;
+  }
+
+  /* Same gradient-border pill as the contact and project actions */
+  .hero__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 2.9rem;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(90deg, var(--accent-violet), var(--accent-pink))
+        border-box;
+    font-weight: 600;
+    color: var(--text);
+    transition:
+      box-shadow 0.3s ease,
+      translate 0.25s var(--ease-out);
+
+    :global(svg) {
+      transition: translate 0.25s var(--ease-out);
+    }
+
+    &:hover {
+      translate: 0 -2px;
+      box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--accent-pink) 70%, transparent);
+
+      :global(svg) {
+        translate: 3px 0;
+      }
+    }
+  }
+
+  .hero__cv {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 2.9rem;
+    font-weight: 600;
+    color: light-dark(var(--text-soft), hsla(0 0% 85.1%));
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: color-mix(in oklab, currentColor 40%, transparent);
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--text);
+    }
+  }
+
   .hero__social {
     display: flex;
-    gap: 0.7rem;
-    margin-top: 0.7rem;
-    animation: word-in 0.8s var(--ease-out) 0.6s both;
+    gap: 0.25rem;
+    animation: word-in 0.8s var(--ease-out) 0.65s both;
 
     a {
-      display: flex;
+      display: grid;
+      place-items: center;
+      width: 2.75rem;
+      height: 2.75rem;
       color: light-dark(var(--text-soft), hsla(0 0% 85.1%));
       transition:
         color 0.2s ease,
@@ -324,6 +445,7 @@ import { socialNetworks } from "@/utils/PageConfig";
     .hero__word,
     .hero__accent,
     .hero__description,
+    .hero__actions,
     .hero__social,
     .hero__stars {
       animation: none;

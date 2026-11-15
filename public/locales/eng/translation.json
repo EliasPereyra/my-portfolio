@@ -1,6 +1,6 @@
 {
-  "title": "Elias Pereyra Gomez | Fullstack Developer specialized in Front-end with Next.js and React.js",
-  "description": "My website where you'll find all my latest projects and, also, a little bit about who I am.",
+  "title": "Elías Pereyra | Fullstack Developer focused on Web & Mobile Frontend",
+  "description": "I'm Elías Pereyra, a fullstack developer from Argentina focused on web and mobile frontend. Check out my experience, my projects, and how to reach me.",
   "navbar": {
     "label": "Main navigation",
     "home": "Home",
@@ -18,12 +18,15 @@
   "hero": {
     "available": "Available for work",
     "headline": {
-      "start": "Bringing",
-      "ideas": "ideas",
-      "middle": "into",
-      "facts": "facts"
+      "start": "I build",
+      "web": "web",
+      "middle": "and",
+      "mobile": "mobile",
+      "end": "interfaces, end to end"
     },
-    "description": "I’m Elías Pereyra, a Fullstack Developer focused on Web and Mobile Frontend development, with a strong focus on scalability, security, and UX."
+    "description": "I’m Elías Pereyra, a Fullstack Developer focused on web and mobile Frontend.",
+    "cta": "See projects",
+    "cv": "Download CV"
   },
   "experience": {
     "title": "Experience",
@@ -32,26 +35,31 @@
     "items": {
       "synkpay": {
         "domain": "Web · Fintech / Crypto",
-        "description": "Owned the frontend development of a medium-sized cryptocurrency dashboard, working independently under the guidance of the Tech Lead. Led a large-scale refactor of the design system from Styled-components to Tailwind + CVA, and moved the codebase from a feature-based to a module-based architecture."
+        "lead": "Owned the frontend of a cryptocurrency dashboard and reshaped its architecture so it could keep growing.",
+        "description": "Built features end to end with React, GraphQL APIs and Redux Toolkit. Migrated styling from Styled-components to Tailwind, DaisyUI and CVA, and led the move from a feature-based architecture to a modular monolith of 1,000+ files, with clear module boundaries and fewer cross-dependencies."
       },
       "keywallet": {
         "domain": "Mobile · Fintech / Crypto",
-        "description": "Contributed to the frontend development of a cryptocurrency wallet as part of a small mobile frontend team of three engineers. I focused on user experience and application security: password and biometric authentication, session auto-lock, and re-authentication mechanisms."
+        "lead": "Built the security flows of a mobile crypto wallet, as one of three frontend engineers.",
+        "description": "With Expo and Tamagui, implemented password and biometric login, inactivity lock and re-authentication for sensitive actions. Also built in-app notifications on an event-driven architecture, and fixed navigation with Expo Router so going back works reliably even when a screen is reachable from several places."
       },
       "octaflow": {
-        "domain": "AI · Agentic Engineering",
-        "description": "Octaflow is an AI-assisted engineering platform that enables companies to continue developing and maintaining software products through coordinated AI agents. Worked on the Profile component from the ground up, collaborating with another developer to build the infrastructure around project context, agent planning and execution, harnesses, and verification workflows that help produce complete development outcomes for clients."
+        "domain": "AI · Internal project",
+        "lead": "Built, together with another developer, the infrastructure that coordinates AI agents on an AI-assisted engineering platform.",
+        "description": "Project context, task planning and execution, harnesses and verification workflows so agents deliver complete features reliably. Also built the Profile component from scratch."
       }
-    }
+    },
+    "projects": "Projects"
   },
   "projects": {
-    "title": "Side Projects",
-    "seeMore": "See more",
-    "repo": "Repository for",
-    "live": "Live site for"
+    "title": "Projects",
+    "solvedLabel": "What I solved:",
+    "caseStudy": "Case study",
+    "code": "Code",
+    "site": "Live site"
   },
   "contributions": {
-    "title": "Previous Contributions",
+    "title": "Contributions",
     "deckLabel": "Some of my translations",
     "author": "Author:",
     "seeAll": "See all",
@@ -60,10 +68,10 @@
   },
   "about": {
     "title": "About me",
-    "first": "I’m Elías Pereyra Gómez, a developer from Argentina who enjoys turning ideas into things that <strong>actually work</strong>.",
-    "second": "Most of my work revolves around <strong>web</strong> and <strong>mobile</strong> development, with a particular focus on frontend, UX, scalability, and security. I like understanding how the different pieces of an application fit together, not just the part that users see.",
-    "third": "I also pay special attention to the UI: I like making it attractive and customizable, always grounded in the fundamentals of interface design.",
-    "fourth": "And moving to the back, I also enjoy backend development, so I can build a complete system, end to end.",
+    "first": "I’m Elías Pereyra Gómez, a developer from Argentina. I enjoy turning ideas into things that <strong>actually work</strong> and feel good to use.",
+    "second": "I mostly work on <strong>web</strong> and <strong>mobile</strong> frontend, but I like understanding how every piece of an application fits together, not just what users see. That's why I also enjoy backend work and building complete systems, end to end.",
+    "third": "I care about the details in the UI: I lean on the fundamentals of interface design and enjoy building design systems that are consistent and easy to extend, like the one I migrated to Tailwind + CVA.",
+    "fourth": "I'm looking to join a product team where I can contribute on the frontend, learn from experienced people, and keep growing. If that sounds like your team, drop me a line.",
     "stack": {
       "title": "My Tech Stack",
       "groups": {
@@ -79,29 +87,39 @@
   },
   "contact": {
     "title": "Let's build something.",
-    "subtitle": "Open to fullstack and frontend roles.",
+    "subtitle": "Open to frontend and fullstack roles.",
     "write": "Email me",
     "copy": "Copy email",
-    "copied": "Email copied"
+    "copied": "Email copied",
+    "cv": "Download CV"
   },
   "cards": {
     "turnos": {
-      "first-paragraph": "An appointment management system for patient consultations. You can sign up, enter your personal and medical information, and book an appointment. Then, you will receive an SMS notification if the doctor confirms the appointment or not.",
+      "first-paragraph": "An app for booking doctor appointments without phone calls or waiting: patients enter their details once, request an appointment, and get an SMS when the doctor confirms it. On the other side, an admin manages patients and appointments from a dashboard.",
       "second-paragraph": "This type of system helps streamline the process of booking an appointment with a doctor. It saves waiting time for patients, provides basic information in advance, and speeds up the appointment management process for doctors and medical resources.",
-      "third-paragraph": "The system is developed with Next.js and Appwrite (a BaaS - cloud-based service). The pages and components were designed in Figma."
+      "third-paragraph": "The system is developed with Next.js and Appwrite (a BaaS - cloud-based service). The pages and components were designed in Figma.",
+      "solved": "credentials that never reach the browser, long forms validated instantly, and an admin panel that confirms or cancels appointments with an SMS notice."
     },
     "workstart": {
-      "first-paragraph": "A platform for finding jobs with no experience required, covering various industries in Argentina. No registration is needed—simply select the job you like and send an email to the company.",
+      "first-paragraph": "A job board for landing your first job in Argentina, no sign-up needed: pick an opening and email the company directly. Every listing shows the province, work mode, and schedule up front.",
       "second-paragraph": "Applying directly to the company saves a lot of time and helps personalize the contact. Additionally, each job listing displays key details such as salary, work mode, schedule, responsibilities, and benefits. The platform is designed so that these details are mandatory for posting job openings.",
-      "third-paragraph": "The system is built with Next.js and Sanity as a headless CMS, using GROQ queries and live content updates. User accounts run on Better Auth (email and password or passkeys) backed by a PostgreSQL database on Neon, and tests are written with Vitest. The pages and components were designed in Figma."
+      "third-paragraph": "The system is built with Next.js and Sanity as a headless CMS, using GROQ queries and live content updates. User accounts run on Better Auth (email and password or passkeys) backed by a PostgreSQL database on Neon, and tests are written with Vitest and Testing Library. The pages and components were designed in Figma.",
+      "solved": "listings published from a CMS without touching code, direct applications with no account, and tests on search filters and favorites."
     }
   },
   "project": {
     "pageTitle": "{{title}} Project | Elias Pereyra",
-    "coverAlt": "Cover image of the {{title}} project",
+    "coverAlt": "Screenshot of the {{title}} project",
+    "back": "Back to projects",
+    "live": "Live site",
+    "repo": "Source code",
+    "overview": "What it's about",
     "keyFeatures": "Key features",
-    "designGoals": "Design goals",
-    "toolsUsed": "Tools used"
+    "howBuilt": "How I built it",
+    "toolsUsed": "Tech stack",
+    "next": "Next project",
+    "talk": "Want to talk?",
+    "talkCta": "Get in touch"
   },
   "footer": {
     "tool-used": "Happily developed with "
@@ -111,7 +129,32 @@
   },
   "not_found": {
     "title": "That page doesn't exist",
-    "desc": "The page you're looking for isn't this one, or doesn't exist. Try another one.",
+    "desc": "The page you're looking for doesn't exist or has moved.",
     "go_back": "Back to home"
+  },
+  "capabilities": {
+    "title": "What I do",
+    "items": {
+      "design": {
+        "title": "Design systems & frontend architecture",
+        "text": "I migrated a crypto dashboard's styling to Tailwind, DaisyUI and CVA, with variant-based components that are easy to extend, and led its move to a modular monolith of 1,000+ files.",
+        "proof": "SynkPay, in Experience"
+      },
+      "mobile": {
+        "title": "Mobile apps with sensitive flows",
+        "text": "On a crypto wallet built with Expo and Tamagui, I implemented biometric login, inactivity lock, re-authentication for sensitive actions and event-driven in-app notifications.",
+        "proof": "KeyWallet, in Experience"
+      },
+      "product": {
+        "title": "Web products, end to end",
+        "text": "I design in Figma, build with Next.js and wire up the backend: headless CMS, passkey auth, PostgreSQL or a BaaS. WorkStart and DocHeal are live, so you can try them.",
+        "proof": "See the projects"
+      },
+      "quality": {
+        "title": "Quality & testing",
+        "text": "I test components the way people use them, with Testing Library and user-event, and add unit tests with Vitest or Jest and end-to-end tests with Playwright.",
+        "proof": "How I tested WorkStart"
+      }
+    }
   }
 }
