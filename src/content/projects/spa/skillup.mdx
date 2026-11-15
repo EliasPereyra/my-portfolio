@@ -1,0 +1,28 @@
+---
+  title: "SkillUp Campus"
+  description: "Una plataforma e-learning con paneles para estudiantes, docentes y administradores."
+  project_img: "../../../../public/assets/skillup-live.webp"
+  github_repo: "https://github.com/Talently-Lab/SkillUp-s2607"
+  live_link: "https://skill-up-campus.vercel.app/"
+  summary: "SkillUp Campus es un MVP de 8 semanas hecho en equipo. Los estudiantes se inscriben a cursos divididos en módulos y avanzan a su ritmo, los docentes administran sus cursos y el admin ve las estadísticas del campus. Trabajé junto a un desarrollador backend: diseñé la base de datos completa, elegí la arquitectura y las tecnologías del front y del back, armé el setup del backend y la autenticación, desarrollé todo el frontend y me encargué de CI/CD y de los despliegues."
+  key_features:
+    - "Tres roles, cada uno con su panel: estudiante, docente y administrador"
+    - "Catálogo de cursos con búsqueda y filtros"
+    - "Progreso por módulo y por clase"
+    - "Panel de admin con ingresos, ventas mensuales, estudiantes activos y cursos más inscritos"
+    - "Gestión de cursos, módulos y clases para docentes"
+    - "Suspensión de cuentas desde el panel de admin"
+  design_goals:
+    - title: "Un monolito modular pensado para crecer"
+      description: "El front y el back están divididos en módulos por dominio. En el backend, eslint-plugin-boundaries impide que un módulo importe el interior de otro, así cada uno puede separarse, o el proyecto pasar a un monorepo, si llega a crecer."
+    - title: "La base de datos, diseñada de cero"
+      description: "Modelé las 14 tablas en PostgreSQL con Drizzle ORM, con migraciones versionadas y restricciones que protegen los datos, como inscripciones que no pueden quedar huérfanas."
+    - title: "Sesiones seguras"
+      description: "Contraseñas con argon2, un access token de 15 minutos guardado solo en memoria y un refresh token en una cookie httpOnly que se rota en cada uso. Si alguien reutiliza uno viejo, se cierran todas las sesiones. Suma helmet, CORS y límite de intentos."
+    - title: "Una API que se documenta sola"
+      description: "Los mismos esquemas de Zod validan las requests y generan la documentación OpenAPI con Swagger, así nunca se desincronizan."
+    - title: "De la rama a producción"
+      description: "GitHub Actions corre lint, formato, typecheck y build en cada cambio. Desplegué el frontend en Vercel, la API en Render y la base de datos en Neon."
+    - title: "Desarrollo con agentes de IA"
+      description: "Usé Claude Code como herramienta de desarrollo. Yo definía la dirección y el resultado esperado, y revisaba cada cambio antes de integrarlo."
+---

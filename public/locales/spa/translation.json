@@ -110,6 +110,12 @@
     "cv": "Descargar CV"
   },
   "cards": {
+    "skillup": {
+      "first-paragraph": "Una plataforma e-learning donde los estudiantes se inscriben a cursos, avanzan por módulos y siguen su progreso. Es un MVP de 8 semanas hecho en equipo: diseñé la base de datos y la arquitectura, desarrollé todo el frontend y me encargué de los despliegues.",
+      "second-paragraph": "La plataforma tiene tres roles, cada uno con su panel: estudiantes, docentes y administradores. El admin ve ingresos, ventas mensuales, estudiantes activos y los cursos más inscritos.",
+      "third-paragraph": "El frontend está hecho con React y Vite, y el backend con Express, Drizzle ORM y PostgreSQL, como un monolito modular. Se despliega en Vercel, Render y Neon, con CI en GitHub Actions.",
+      "solved": "sesiones seguras con refresh tokens que se rotan en cada uso, un backend modular con límites entre módulos que el linter hace cumplir, y CI que valida cada cambio antes de llegar a producción."
+    },
     "turnos": {
       "first-paragraph": "Una app para sacar turnos médicos sin llamadas ni esperas: el paciente carga sus datos una sola vez, pide el turno y recibe un SMS cuando el médico lo confirma. Del otro lado, el admin gestiona pacientes y turnos desde un panel.",
       "second-paragraph": "Este tipo de sistema ayuda en la simplificación de los procesos para adquirir un turno con el doctor. Ahorra tiempo de espera para el paciente, provee información básica de antemano y agiliza más el proceso de gestión de turnos para el doctor y recursos materiales.",

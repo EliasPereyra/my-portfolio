@@ -42,6 +42,14 @@ const brandColors: Record<string, string | null> = {
   eslint: "#4B32C3",
   prettier: "#F7B93E",
   docker: "#2496ED",
+  express: null,
+  "drizzle orm": "#C5F74F",
+  "node.js": "#5FA04E",
+  vite: "#646CFF",
+  recharts: "#22B5BF",
+  render: null,
+  vercel: null,
+  "claude code": "#D97757",
 };
 
 export const getTechColor = (name: string): string =>

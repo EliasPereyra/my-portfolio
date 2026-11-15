@@ -1,0 +1,28 @@
+---
+  title: "SkillUp Campus"
+  description: "An e-learning platform with dashboards for students, teachers and admins."
+  project_img: "../../../../public/assets/skillup-live.webp"
+  github_repo: "https://github.com/Talently-Lab/SkillUp-s2607"
+  live_link: "https://skill-up-campus.vercel.app/"
+  summary: "SkillUp Campus is an 8-week MVP built as a team. Students enroll in courses split into modules and move at their own pace, teachers manage their courses, and the admin sees the campus statistics. I worked alongside a backend developer: I designed the whole database, chose the architecture and the technologies for both frontend and backend, set up the backend and built authentication, developed the entire frontend, and handled CI/CD and the deployments."
+  key_features:
+    - "Three roles, each with its own dashboard: student, teacher and admin"
+    - "Course catalog with search and filters"
+    - "Progress tracked per module and per lesson"
+    - "Admin dashboard with revenue, monthly sales, active students and most popular courses"
+    - "Course, module and lesson management for teachers"
+    - "Account suspension from the admin dashboard"
+  design_goals:
+    - title: "A modular monolith built to grow"
+      description: "Frontend and backend are split into modules by domain. On the backend, eslint-plugin-boundaries stops one module from importing another's internals, so any module can be split out, or the project moved to a monorepo, if it grows."
+    - title: "The database, designed from scratch"
+      description: "I modeled all 14 tables in PostgreSQL with Drizzle ORM, with versioned migrations and constraints that protect the data, such as enrollments that can't be left orphaned."
+    - title: "Secure sessions"
+      description: "Passwords hashed with argon2, a 15-minute access token kept only in memory, and a refresh token in an httpOnly cookie that rotates on every use. If an old one is reused, every session is closed. Helmet, CORS and rate limiting on top."
+    - title: "An API that documents itself"
+      description: "The same Zod schemas validate requests and generate the OpenAPI docs with Swagger, so they never drift apart."
+    - title: "From branch to production"
+      description: "GitHub Actions runs lint, formatting, typecheck and build on every change. I deployed the frontend on Vercel, the API on Render and the database on Neon."
+    - title: "Development with AI agents"
+      description: "I used Claude Code as a development tool. I set the direction and the expected result, and reviewed every change before merging it."
+---
