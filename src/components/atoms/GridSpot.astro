@@ -1,0 +1,185 @@
+---
+/**
+ * Highlight layer for a [data-spotlight] host: the drawing grid lights up in
+ * cyan around the pointer, and a CAD-style crosshair snaps to the minor grid.
+ * It spans the sheet (rail to rail) and lines up with the page grid in Home.
+ */
+interface Props {
+  crosshair?: boolean;
+}
+
+const { crosshair = true } = Astro.props;
+---
+
+<div class="grid-spot" aria-hidden="true" data-spotlight-layer data-grid-spot>
+  <span class="grid-spot__lines"></span>
+  {
+    crosshair && (
+      <>
+        <span class="grid-spot__axis grid-spot__axis--x" />
+        <span class="grid-spot__axis grid-spot__axis--y" />
+        <span class="grid-spot__coords" data-grid-coords />
+      </>
+    )
+  }
+</div>
+
+<style>
+  .grid-spot {
+    /* Pointer position, snapped to the minor grid where round() exists */
+    --cx: var(--mx, 50%);
+    --cy: var(--my, 50%);
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    z-index: 1;
+    width: min(var(--container), 100% - 1.25rem);
+    translate: -50% 0;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+  }
+
+  @supports (width: round(nearest, 1px, 1px)) {
+    .grid-spot {
+      --cx: round(nearest, var(--mx, 50%), var(--grid-minor-size));
+      --cy: calc(
+        round(nearest, var(--my, 50%) - var(--gy, 0px), var(--grid-minor-size)) +
+          var(--gy, 0px)
+      );
+    }
+  }
+
+  :global(.is-lit) > .grid-spot {
+    opacity: 1;
+  }
+
+  .grid-spot__lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--line-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-color) 1px, transparent 1px),
+      linear-gradient(var(--line-color-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-color-soft) 1px, transparent 1px);
+    background-size:
+      var(--grid-major-size) var(--grid-major-size),
+      var(--grid-major-size) var(--grid-major-size),
+      var(--grid-minor-size) var(--grid-minor-size),
+      var(--grid-minor-size) var(--grid-minor-size);
+    background-position: 0 var(--gy, 0px);
+    mask-image: radial-gradient(
+      circle 11rem at var(--mx, 50%) var(--my, 50%),
+      black,
+      transparent
+    );
+
+    --line-color: color-mix(in oklab, var(--accent-cyan) 55%, transparent);
+    --line-color-soft: color-mix(in oklab, var(--accent-cyan) 24%, transparent);
+  }
+
+  .grid-spot__axis {
+    position: absolute;
+    background: var(--mark);
+  }
+
+  .grid-spot__axis--x {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    translate: var(--cx) 0;
+    mask-image: linear-gradient(
+      180deg,
+      transparent calc(var(--cy) - 16rem),
+      black var(--cy),
+      transparent calc(var(--cy) + 16rem)
+    );
+  }
+
+  .grid-spot__axis--y {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    translate: 0 var(--cy);
+    mask-image: linear-gradient(
+      90deg,
+      transparent calc(var(--cx) - 22rem),
+      black var(--cx),
+      transparent calc(var(--cx) + 22rem)
+    );
+  }
+
+  .grid-spot__coords {
+    position: absolute;
+    top: 0;
+    left: 0;
+    translate: calc(var(--cx) + 0.6rem) calc(var(--cy) + 0.5rem);
+    padding: 0.1rem 0.35rem;
+    background: color-mix(in oklab, var(--bg-page) 80%, transparent);
+    font-family: var(--font-mono);
+    font-size: var(--mono-xs);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.4;
+    white-space: pre;
+    color: var(--accent-cyan);
+  }
+</style>
+
+<script>
+  const MAJOR = 80;
+  const MINOR = 16;
+
+  let cleanup: (() => void) | undefined;
+
+  const setup = () => {
+    cleanup?.();
+    const sheet = document.querySelector<HTMLElement>("[data-sheet]");
+    const layers = document.querySelectorAll<HTMLElement>("[data-grid-spot]");
+    if (!sheet || !layers.length) return;
+
+    // Each layer sits at its own height, so it shifts its pattern to stay on the page grid
+    const align = () => {
+      const sheetTop = sheet.getBoundingClientRect().top;
+      layers.forEach((layer) => {
+        const offset = layer.getBoundingClientRect().top - sheetTop;
+        const gy = (((-offset) % MAJOR) + MAJOR) % MAJOR;
+        layer.style.setProperty("--gy", `${gy}px`);
+      });
+    };
+
+    const pad = (n: number) => String(Math.max(0, n)).padStart(4, "0");
+    const listeners: Array<() => void> = [];
+
+    layers.forEach((layer) => {
+      const coords = layer.querySelector<HTMLElement>("[data-grid-coords]");
+      const host = layer.closest<HTMLElement>("[data-spotlight]");
+      if (!coords || !host) return;
+
+      const onMove = (event: PointerEvent) => {
+        const rect = layer.getBoundingClientRect();
+        const sheetTop = sheet.getBoundingClientRect().top;
+        const x = Math.round((event.clientX - rect.left) / MINOR) * MINOR;
+        const y = Math.round((event.clientY - sheetTop) / MINOR) * MINOR;
+        coords.textContent = `X ${pad(x)}  Y ${pad(y)}`;
+      };
+      host.addEventListener("pointermove", onMove);
+      listeners.push(() => host.removeEventListener("pointermove", onMove));
+    });
+
+    align();
+    const observer = new ResizeObserver(align);
+    observer.observe(sheet);
+
+    cleanup = () => {
+      observer.disconnect();
+      listeners.forEach((off) => off());
+    };
+  };
+
+  document.addEventListener("astro:page-load", setup);
+</script>

@@ -1,6 +1,6 @@
 ---
 interface Props {
-  tone: "crimson" | "violet" | "navy" | "plum" | "violet-grain";
+  tone: "crimson" | "cyan" | "violet" | "navy" | "plum" | "violet-grain";
   style?: string;
   duration?: number;
   /** Drift distance on each axis */
@@ -29,6 +29,10 @@ const { tone, style, duration = 26, dx = "3rem", dy = "-2rem" } = Astro.props;
 
   .glow--crimson {
     background: radial-gradient(closest-side, var(--glow-crimson), transparent);
+  }
+
+  .glow--cyan {
+    background: radial-gradient(closest-side, var(--glow-cyan), transparent);
   }
 
   .glow--violet {

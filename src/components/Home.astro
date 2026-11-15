@@ -8,7 +8,7 @@ import About from "@/components/sections/About.astro";
 import Contact from "@/components/sections/Contact.astro";
 ---
 
-<main class="home" transition:animate="slide">
+<main class="home drawing-sheet" transition:animate="slide" data-sheet>
   <Hero />
   <Capabilities />
   <Portfolio />
@@ -20,20 +20,43 @@ import Contact from "@/components/sections/Contact.astro";
 
 <style>
   .home {
-    position: relative;
     background: var(--bg-flow);
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      z-index: 1;
-      width: min(var(--container), 100% - 1.25rem);
-      translate: -50% 0;
-      border-inline: 1px solid var(--rail);
-      pointer-events: none;
-    }
   }
 </style>
+
+<script>
+  /*
+   * Content heights are arbitrary, so each section gets a little extra bottom
+   * padding to end on the minor grid. Then every section, its seam and its
+   * header rule start on a grid line, whatever the copy above them measures.
+   */
+  const GRID = 16;
+
+  const setup = () => {
+    const sheet = document.querySelector<HTMLElement>("main[data-sheet]");
+    if (!sheet || !("ResizeObserver" in window)) return;
+
+    const sections = [...sheet.querySelectorAll<HTMLElement>(":scope > section")];
+    const snap = (section: HTMLElement) => {
+      section.style.removeProperty("padding-bottom");
+      const height = section.getBoundingClientRect().height;
+      const extra = Math.ceil(height / GRID - 0.01) * GRID - height;
+      if (extra > 0.01) {
+        const base = parseFloat(getComputedStyle(section).paddingBottom);
+        section.style.paddingBottom = `${base + extra}px`;
+      }
+    };
+
+    const observer = new ResizeObserver((entries) =>
+      entries.forEach((entry) => snap(entry.target as HTMLElement)),
+    );
+    sections.forEach((section) => observer.observe(section));
+    document.addEventListener(
+      "astro:before-swap",
+      () => observer.disconnect(),
+      { once: true },
+    );
+  };
+
+  document.addEventListener("astro:page-load", setup);
+</script>

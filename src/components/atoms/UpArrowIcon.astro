@@ -35,21 +35,32 @@
     right: 2em;
     bottom: 2em;
     z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5em;
-    border: 1px solid var(--line);
-    border-radius: 50%;
+    /* A drafted square, like the copy button: hairline frame, cyan when targeted */
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
     background: var(--surface-nav);
     backdrop-filter: blur(10px);
-    color: var(--text);
+    color: var(--text-soft);
     cursor: pointer;
-    transition: color 0.2s ease, border-color 0.2s ease;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease,
+      background-color 0.2s ease;
 
-    &:hover {
-      color: var(--accent-pink);
-      border-color: var(--accent-pink);
+    @media (max-width: 640px) {
+      right: 1rem;
+      bottom: 1rem;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+      background: color-mix(in oklab, var(--accent-cyan) 10%, var(--bg-page));
     }
 
     @supports (animation-timeline: view()) {
@@ -65,6 +76,12 @@
       width: 20px;
       height: 20px;
       stroke: currentColor;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .button {
+      transition: none;
     }
   }
 </style>
