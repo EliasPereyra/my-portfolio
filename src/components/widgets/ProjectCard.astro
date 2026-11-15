@@ -9,9 +9,11 @@ interface Props {
   project: Project;
   /** Figure number on the drawing, shown in the frame's caption bar */
   figure: number;
+  /** Lead project: spans the grid row, with the figure beside the text */
+  featured?: boolean;
 }
 
-const { project, figure } = Astro.props;
+const { project, figure, featured = false } = Astro.props;
 const {
   title,
   slug,
@@ -28,7 +30,7 @@ const detailHref = `${i18next.language === "eng" ? "/eng" : ""}/projects/${slug}
 const host = live_link ? new URL(live_link).host.replace(/^www\./, "") : "";
 ---
 
-<article class="project">
+<article class:list={["project", { "project--featured": featured }]}>
   <a
     class:list={[
       "project__media",
@@ -105,6 +107,37 @@ const host = live_link ? new URL(live_link).host.replace(/^www\./, "") : "";
   .project {
     display: flex;
     flex-direction: column;
+  }
+
+  /* Featured: figure on the left across every row, text stacked on the right */
+  .project--featured {
+    grid-column: 1 / -1;
+
+    @media (min-width: 900px) {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      grid-template-rows: repeat(5, auto) 1fr;
+      column-gap: 4rem;
+      align-items: start;
+
+      .project__media {
+        grid-column: 1;
+        grid-row: 1 / -1;
+      }
+
+      > :not(.project__media) {
+        grid-column: 2;
+      }
+
+      .project__title {
+        margin-top: 0;
+        font-size: 1.75rem;
+      }
+
+      .project__links {
+        margin-top: 0;
+      }
+    }
   }
 
   /* The screenshot is drawn as a figure: a hairline frame with crop marks and a caption bar */

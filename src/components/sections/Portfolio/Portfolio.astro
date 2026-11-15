@@ -15,7 +15,11 @@ import { projects } from "@/utils/projects";
     <div class="projects__grid">
       {
         projects.map((project, index) => (
-          <ProjectCard project={project} figure={index + 1} />
+          <ProjectCard
+            project={project}
+            figure={index + 1}
+            featured={index === 0}
+          />
         ))
       }
     </div>
@@ -28,10 +32,15 @@ import { projects } from "@/utils/projects";
     padding-block: var(--section-space);
   }
 
+  /* The first project spans the full row; the rest pair up below it */
   .projects__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 4.5rem 5rem;
     margin-top: 3.3rem;
+
+    @media (max-width: 760px) {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
 </style>
