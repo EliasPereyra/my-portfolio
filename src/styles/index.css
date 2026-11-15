@@ -7,93 +7,82 @@
 
   --font-sans: "Barlow", system-ui, sans-serif;
   --font-display: "Bricolage Grotesque Variable", var(--font-sans);
+  /* Annotation voice: dates, sheet references, dimensions, tech names */
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  /* The only two mono sizes: labels and refs, then values (dates, tags, numbers) */
+  --mono-xs: 0.6875rem;
+  --mono-sm: 0.8125rem;
 
   /* Layout */
   --container: 76rem;
   --gutter: clamp(1.25rem, 0.6rem + 2.6vw, 2.3rem);
-  --radius: 10px;
-  --section-space: clamp(5.5rem, 3rem + 7vw, 9rem);
+  --radius: 3px;
+  /* Section padding in whole grid steps (80, 96, 128px), so sections stay on the grid */
+  --section-space: 5rem;
+  /* Drawing grid: minor and major cells, measured from the left rail */
+  --grid-minor-size: 16px;
+  --grid-major-size: 80px;
   /* Two-column sections (About, Contributions) share the text width and gap, so their right columns line up */
   --split-text: 34.7rem;
   --split-gap: 4rem;
 
+  /*
+   * Blueprint world. Dark is cyanotype: navy paper, cyan linework. Light is
+   * drafting paper: warm white, blue ink. Pink is the red pencil for marks
+   * and emphasis, never for structure.
+   */
+
   /* Text */
-  --text: light-dark(hsla(223.6 47.8% 9%), hsla(0 0% 100%));
-  --text-soft: light-dark(hsla(220 23.9% 22.2%), hsla(120 9.1% 87.1%));
-  --text-muted: light-dark(hsla(220.7 13.1% 42%), hsla(0 0% 68.2%));
+  --text: light-dark(hsl(216 45% 13%), hsl(200 30% 96%));
+  --text-soft: light-dark(hsl(214 22% 26%), hsl(205 24% 84%));
+  --text-muted: light-dark(hsl(212 14% 39%), hsl(206 16% 67%));
 
   /* Accents */
-  --accent-pink: light-dark(
-    hsla(336.9 58.4% 48%),
-    hsla(339.7 100% 72.2% / 0.98)
-  );
-  --accent-role: light-dark(
-    hsla(339.9 57.3% 45.9%),
-    hsla(339.7 100% 74.5% / 0.85)
-  );
-  --accent-violet: light-dark(hsla(262.9 72.7% 55.5%), hsla(266 100% 68.8%));
-  --accent-crimson: light-dark(
-    hsla(339.5 73.2% 43.9%),
-    hsla(339.9 73.6% 35.7%)
-  );
-  --accent-blue: light-dark(hsla(222.1 72.2% 56.3%), hsla(221.7 100% 71.8%));
-  --title-bar: linear-gradient(
-    90deg,
-    light-dark(hsla(262.9 72.7% 55.5%), hsla(257.6 50.6% 15.9%)),
-    light-dark(hsla(336.9 58.4% 48%), hsla(339.9 73.6% 35.7%))
-  );
+  --accent-cyan: light-dark(hsl(206 78% 36%), hsl(190 85% 70%));
+  --accent-pink: light-dark(hsl(345 68% 44%), hsl(340 100% 73%));
+  --accent-role: light-dark(hsl(345 60% 38%), hsla(340 100% 76% / 0.88));
+  /* Legacy names still read by the project and 404 pages, folded into the blueprint palette */
+  --accent-violet: var(--accent-cyan);
+  --accent-blue: var(--accent-cyan);
+  --accent-crimson: var(--accent-pink);
+  --title-bar: var(--accent-pink);
 
   /* Timeline */
-  --timeline-line: light-dark(hsla(258.1 67.1% 84.5%), hsla(259.2 45.4% 44.5%));
-  --timeline-dot: light-dark(hsla(260.9 100% 65.1%), hsla(266.1 100% 63.9%));
+  --timeline-line: light-dark(hsla(206 70% 40% / 0.35), hsla(190 80% 70% / 0.35));
+  --timeline-dot: var(--accent-cyan);
 
   /* Surfaces */
-  --bg-page: light-dark(hsla(230 50% 97.6%), hsla(225 55.6% 7.1%));
-  --surface: light-dark(hsla(0 0% 100%), hsla(217.8 49.1% 10.8%));
-  --surface-raised: light-dark(hsla(240 100% 99.2%), hsla(216.8 46.3% 13.1%));
+  --bg-page: light-dark(hsl(44 33% 95.5%), hsl(216 62% 8%));
+  --surface: light-dark(hsl(44 40% 98.5%), hsl(214 52% 10.5%));
+  --surface-raised: light-dark(hsl(42 35% 99.2%), hsl(213 46% 13%));
   --bg-flow: linear-gradient(
     180deg,
-    light-dark(hsla(232 78.9% 96.3%), hsla(227.4 65.5% 11.4%)) 0%,
-    light-dark(hsla(234 71.4% 97.3%), hsla(224 62.5% 9.4%)) 11%,
-    light-dark(hsla(230 60% 98%), hsla(216 58.8% 6.7%)) 22%,
-    light-dark(hsla(222 62.5% 96.9%), hsla(214.3 48.8% 8.4%)) 40%,
-    light-dark(hsla(232.5 66.7% 97.6%), hsla(208.7 46.9% 9.6%)) 57%,
-    light-dark(hsla(246.7 60% 97.1%), hsla(213.9 51.1% 8.8%)) 73%,
-    light-dark(hsla(234.5 57.9% 96.3%), hsla(226.4 55% 7.8%)) 88%,
-    light-dark(hsla(231.4 58.3% 95.3%), hsla(227.4 54.3% 6.9%)) 100%
+    light-dark(hsl(44 30% 96.5%), hsl(214 60% 10%)) 0%,
+    light-dark(hsl(44 33% 95.5%), hsl(216 62% 8%)) 30%,
+    light-dark(hsl(44 30% 95%), hsl(217 60% 7.5%)) 100%
   );
-  --bg-footer: linear-gradient(
-    180deg,
-    light-dark(hsla(231.4 58.3% 95.3%), hsla(227.4 54.3% 6.9%)),
-    light-dark(hsla(229.4 51.5% 93.5%), hsla(225 44.4% 3.5%))
-  );
+  --bg-footer: light-dark(hsl(44 26% 93%), hsl(218 58% 6%));
   --surface-nav: light-dark(
-    hsla(230 50% 97.6% / 0.78),
-    hsla(225.7 53.8% 7.6% / 0.62)
+    hsla(44 33% 95.5% / 0.82),
+    hsla(216 62% 8% / 0.72)
   );
-  --scrollbar: light-dark(hsla(223.6 47.8% 9% / 0.22), hsla(0 0% 85.1% / 0.18));
+  --scrollbar: light-dark(hsla(206 70% 30% / 0.3), hsla(190 80% 75% / 0.22));
 
   /* Lines */
-  --line: light-dark(hsla(223.6 47.8% 9% / 0.14), hsla(0 0% 85.1% / 0.12));
-  --rail: light-dark(hsla(223.6 47.8% 9% / 0.07), hsla(0 0% 85.1% / 0.06));
+  --line: light-dark(hsla(212 40% 20% / 0.15), hsla(195 60% 82% / 0.14));
+  --line-strong: light-dark(hsla(206 55% 30% / 0.32), hsla(190 70% 78% / 0.3));
+  --rail: light-dark(hsla(206 55% 30% / 0.2), hsla(190 70% 78% / 0.14));
+  --grid-minor: light-dark(hsla(206 70% 40% / 0.055), hsla(195 80% 75% / 0.032));
+  --grid-major: light-dark(hsla(206 70% 40% / 0.12), hsla(195 80% 75% / 0.07));
+  /* Registration marks, crop marks and rail ticks */
+  --mark: light-dark(hsla(206 70% 34% / 0.6), hsla(190 85% 72% / 0.55));
 
-  /* Glows */
-  --glow-crimson: light-dark(
-    hsla(337.6 64.7% 54.5% / 0.16),
-    hsla(339.7 72.7% 35.9% / 0.22)
-  );
-  --glow-violet: light-dark(
-    hsla(249.8 65.8% 69% / 0.2),
-    hsla(249.8 65.8% 69% / 0.14)
-  );
-  --glow-navy: light-dark(
-    hsla(223.6 68.7% 68.6% / 0.16),
-    hsla(214.3 42.4% 12.9% / 0.54)
-  );
-  --glow-plum: light-dark(
-    hsla(262.9 72.7% 55.5% / 0.1),
-    hsla(249.7 43.7% 13.9% / 0.5)
-  );
+  /* Glows: kept few and faint, they only lift the dark paper; drafting paper stays flat */
+  --glow-crimson: light-dark(transparent, hsla(340 80% 50% / 0.1));
+  --glow-cyan: light-dark(transparent, hsla(192 85% 55% / 0.08));
+  --glow-violet: var(--glow-cyan);
+  --glow-navy: light-dark(transparent, hsla(214 60% 20% / 0.4));
+  --glow-plum: var(--glow-navy);
 
   /* Easing */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -118,6 +107,18 @@
     hsla(241.8 32.7% 19.8%) -79%,
     hsla(223.3 90% 3.9%) 90%
   );
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-space: 6rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --section-space: 8rem;
+  }
 }
 
 :root[data-theme="light"] {
@@ -181,7 +182,13 @@ html {
   scrollbar-color: var(--scrollbar) transparent;
 }
 
+::selection {
+  background: color-mix(in oklab, var(--accent-pink) 32%, transparent);
+  color: var(--text);
+}
+
 body {
+  caret-color: var(--accent-pink);
   font-family: var(--font-sans);
   color: var(--text);
   background-color: var(--bg-page);
@@ -216,7 +223,7 @@ img {
 :focus-visible {
   outline: 2px solid var(--accent-violet);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: var(--radius);
 }
 
 .sr-only {
@@ -236,6 +243,155 @@ img {
   max-width: var(--container);
   margin-inline: auto;
   padding-inline: var(--gutter);
+}
+
+/*
+ * The drawing sheet: grid paper plus the two rails with their rulers.
+ * Used by the home page and the 404; add data-sheet so GridSpot layers align.
+ */
+.drawing-sheet {
+  --sheet-width: min(var(--container), 100% - 1.25rem);
+
+  position: relative;
+
+  /*
+   * Drawing grid. It starts exactly on the left rail (shifted out by a whole
+   * number of major cells), so every highlight layer can line up with it.
+   */
+  &::after {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    left: calc(50% - var(--sheet-width) / 2 - 10 * var(--grid-major-size));
+    right: calc(50% - var(--sheet-width) / 2 - 10 * var(--grid-major-size));
+    z-index: 0;
+    background-image:
+      linear-gradient(var(--grid-major) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+      linear-gradient(var(--grid-minor) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
+    background-size:
+      var(--grid-major-size) var(--grid-major-size),
+      var(--grid-major-size) var(--grid-major-size),
+      var(--grid-minor-size) var(--grid-minor-size),
+      var(--grid-minor-size) var(--grid-minor-size);
+    /* Full strength on the sheet, fading out past the rails */
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      hsla(0 0% 0% / 0.35) calc(10 * var(--grid-major-size) - 18rem),
+      black calc(10 * var(--grid-major-size)),
+      black calc(100% - 10 * var(--grid-major-size)),
+      hsla(0 0% 0% / 0.35) calc(100% - 10 * var(--grid-major-size) + 18rem),
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  /* The two rails, each carrying a ruler: short ticks every minor cell, long ones every major */
+  &::before {
+    --tick-major: 10px;
+    --tick-minor: 5px;
+
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    z-index: 1;
+    width: var(--sheet-width);
+    translate: -50% 0;
+    border-inline: 1px solid var(--rail);
+    background:
+      linear-gradient(var(--mark) 1px, transparent 1px) left top /
+        var(--tick-major) var(--grid-major-size) repeat-y,
+      linear-gradient(var(--mark) 1px, transparent 1px) right top /
+        var(--tick-major) var(--grid-major-size) repeat-y,
+      linear-gradient(var(--rail) 1px, transparent 1px) left top /
+        var(--tick-minor) var(--grid-minor-size) repeat-y,
+      linear-gradient(var(--rail) 1px, transparent 1px) right top /
+        var(--tick-minor) var(--grid-minor-size) repeat-y;
+    pointer-events: none;
+
+    /* The gutter is narrow on phones: keep the ruler clear of the text */
+    @media (max-width: 640px) {
+      --tick-major: 5px;
+      --tick-minor: 0px;
+    }
+  }
+}
+
+/* Primary action: a drafted box in cyan ink, shared by the hero and contact */
+.bp-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.9rem;
+  padding: 0.7rem 1.3rem;
+  border: 1px solid var(--accent-cyan);
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--accent-cyan) 10%, var(--bg-page));
+  font-weight: 600;
+  color: var(--text);
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.3s ease,
+    translate 0.25s var(--ease-out);
+
+  /* Only directional arrows nudge on hover; other icons (mail, globe) stay put */
+  .bp-button__nudge {
+    transition: translate 0.25s var(--ease-out);
+  }
+
+  &:hover {
+    translate: 0 -2px;
+    background: color-mix(in oklab, var(--accent-cyan) 18%, var(--bg-page));
+    box-shadow: 0 12px 26px -16px
+      color-mix(in oklab, var(--accent-cyan) 80%, transparent);
+
+    .bp-button__nudge {
+      translate: 3px 0;
+    }
+  }
+}
+
+/*
+ * Crop marks: an L at each corner, drawn just outside the element's box.
+ * Set --crop-color to recolor them (hover, emphasis).
+ */
+.crop-marks {
+  --crop: 12px;
+  --crop-gap: 7px;
+  --crop-color: var(--mark);
+
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: calc(-1 * var(--crop-gap));
+    z-index: 0;
+    background:
+      linear-gradient(var(--crop-color), var(--crop-color)) left top / var(--crop) 1px,
+      linear-gradient(var(--crop-color), var(--crop-color)) left top / 1px var(--crop),
+      linear-gradient(var(--crop-color), var(--crop-color)) right top / var(--crop) 1px,
+      linear-gradient(var(--crop-color), var(--crop-color)) right top / 1px var(--crop),
+      linear-gradient(var(--crop-color), var(--crop-color)) left bottom / var(--crop) 1px,
+      linear-gradient(var(--crop-color), var(--crop-color)) left bottom / 1px var(--crop),
+      linear-gradient(var(--crop-color), var(--crop-color)) right bottom / var(--crop) 1px,
+      linear-gradient(var(--crop-color), var(--crop-color)) right bottom / 1px var(--crop);
+    background-repeat: no-repeat;
+    pointer-events: none;
+    transition: inset 0.35s var(--ease-out);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bp-button,
+  .bp-button__nudge,
+  .crop-marks::before {
+    transition: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

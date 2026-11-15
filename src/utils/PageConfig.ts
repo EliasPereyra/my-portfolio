@@ -1,14 +1,11 @@
 export interface PageConfig {
-  title: string;
   description: string;
   author: string;
 }
 
 export const PageConfig: PageConfig = {
-  title:
-    "Elias Pereyra Gomez | Fullstack especializado en Front-end con Next.js y React.js",
   description:
-    "Mi página personal donde encontrarás todos mis últimos proyectos y, también, un poquito sobre quién soy",
+    "Soy Elías Pereyra, desarrollador fullstack enfocado en el frontend web y mobile, de Argentina. Mirá mi experiencia, mis proyectos y cómo contactarme.",
   author: "Elias Pereyra Gomez",
 };
 
@@ -17,3 +14,11 @@ export const socialNetworks = {
   githubProfile: "https://github.com/EliasPereyra",
   emailAddress: "eliaspereyra_gomez@hotmail.com",
 };
+
+const cvFiles = {
+  spa: "/assets/elias-pereyra-cv-spa.pdf",
+  eng: "/assets/elias-pereyra-cv-eng.pdf",
+};
+
+export const getCvHref = (lang: string) =>
+  lang === "eng" ? cvFiles.eng : cvFiles.spa;

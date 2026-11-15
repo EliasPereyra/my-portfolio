@@ -44,7 +44,7 @@ const currentEngPathname = isBlogPathname ? "/eng/blog" : "/eng";
     align-items: center;
     gap: 2px;
     padding: 0.35rem 0.4rem;
-    border-radius: 0.5rem;
+    border-radius: var(--radius);
     color: var(--text-soft);
     transition:
       color 0.2s ease,
@@ -70,8 +70,8 @@ const currentEngPathname = isBlogPathname ? "/eng/blog" : "/eng";
 
     display: none;
     opacity: 0;
-    border: 1px solid var(--line);
-    border-radius: 0.55rem;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
     background: var(--surface);
     box-shadow: 0 12px 32px hsla(0 0% 0% / 0.25);
     transition:

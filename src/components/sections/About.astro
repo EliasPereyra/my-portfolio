@@ -1,72 +1,65 @@
 ---
 import { t } from "i18next";
 
-import Glow from "@/components/atoms/Glow.astro";
-import TechTag from "@/components/atoms/TechTag.astro";
+import Divider from "@/components/atoms/Divider.astro";
 import SectionTitle from "@/components/molecules/SectionTitle.astro";
 import { stack } from "@/utils/stack";
+import { getTechColor } from "@/utils/TechColors";
 
-const paragraphs = ["first", "second", "third", "fourth"];
-const iconColors = [
-  "var(--accent-violet)",
-  "var(--accent-pink)",
-  "var(--accent-blue)",
-];
+const paragraphs = ["first", "second", "third"];
+const totalPieces = stack.reduce((sum, group) => sum + group.items.length, 0);
+const pad = (n: number) => String(n).padStart(2, "0");
 ---
 
 <section class="about" id="about" aria-labelledby="about-title">
-  <Glow
-    tone="plum"
-    style="top: -4.4rem; left: calc(50% - 1px); width: 80rem; height: 80rem;"
-    duration={38}
-    dx="-3rem"
-    dy="-2rem"
-  />
-  <Glow
-    tone="crimson"
-    style="bottom: -18rem; left: -14rem; width: 36rem; height: 36rem;"
-    duration={30}
-    dx="2rem"
-    dy="-2rem"
-  />
+  <Divider />
 
   <div class="container">
-    <SectionTitle id="about-title">{t("about.title")}</SectionTitle>
+    <SectionTitle sheet="about" id="about-title">{t("about.title")}</SectionTitle>
 
-    <div class="about__layout">
-      <div class="about__text">
-        {paragraphs.map((key) => <p set:html={t(`about.${key}`)} />)}
+    <div class="about__text">
+      {paragraphs.map((key) => <p set:html={t(`about.${key}`)} />)}
+    </div>
+
+    <!-- The stack table: one row per area, with its technologies and count -->
+    <div class="bom">
+      <div class="bom__head">
+        <h3 id="stack-title">{t("about.stack.title")}</h3>
+        <p class="bom__caption">
+          {t("about.stack.pieces", { n: totalPieces })}
+        </p>
       </div>
 
-      <aside class="about__stack" aria-labelledby="stack-title">
-        <h3 id="stack-title">{t("about.stack.title")}</h3>
-        <dl>
+      <table class="bom__table" aria-labelledby="stack-title">
+        <thead>
+          <tr>
+            <th scope="col" class="bom__index">{t("about.stack.columns.index")}</th>
+            <th scope="col">{t("about.stack.columns.group")}</th>
+            <th scope="col">{t("about.stack.columns.items")}</th>
+            <th scope="col" class="bom__count">{t("about.stack.columns.count")}</th>
+          </tr>
+        </thead>
+        <tbody>
           {
-            stack.map(({ id, icon: GroupIcon, items }, index) => (
-              <div
-                class="about__group"
-                style={`--group-color: ${iconColors[index % iconColors.length]}`}
-              >
-                <dt>
-                  <GroupIcon
-                    size={18}
-                    class="about__group-icon"
-                    aria-hidden="true"
-                  />
+            stack.map(({ id, items }, index) => (
+              <tr>
+                <td class="bom__index">{pad(index + 1)}</td>
+                <th scope="row" class="bom__group">
                   {t(`about.stack.groups.${id}`)}
-                </dt>
-                <dd>
-                  <ul>
+                </th>
+                <td>
+                  <ul class="bom__items">
                     {items.map((item) => (
-                      <TechTag name={item} />
+                      <li style={`--tech: ${getTechColor(item)}`}>{item}</li>
                     ))}
                   </ul>
-                </dd>
-              </div>
+                </td>
+                <td class="bom__count">{pad(items.length)}</td>
+              </tr>
             ))
           }
-        </dl>
-      </aside>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -77,24 +70,15 @@ const iconColors = [
     padding-block: var(--section-space);
   }
 
-  .about__layout {
-    display: grid;
-    grid-template-columns: minmax(0, var(--split-text)) minmax(0, 23rem);
-    gap: 3rem var(--split-gap);
-    margin-top: 1.9rem;
-
-    @media (max-width: 900px) {
-      grid-template-columns: minmax(0, 1fr);
-    }
-  }
-
   .about__text {
     display: grid;
-    gap: 1.65rem;
+    gap: 1.5rem;
+    max-width: 44rem;
+    margin-top: 2.4rem;
 
     p {
       font-size: clamp(1.15rem, 1rem + 0.5vw, 1.375rem);
-      line-height: 1.2;
+      line-height: 1.5;
       color: var(--text-soft);
     }
 
@@ -104,45 +88,164 @@ const iconColors = [
     }
   }
 
-  .about__stack {
-    padding-top: 0.1rem;
+  /* Stack table */
+  .bom {
+    margin-top: clamp(3.5rem, 2.5rem + 3vw, 5rem);
+  }
+
+  .bom__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.4rem 1.5rem;
+    padding-bottom: 0.9rem;
 
     h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      line-height: 1.2;
+      font-size: clamp(1.25rem, 1.1rem + 0.4vw, 1.45rem);
+      font-weight: 600;
+      line-height: 1.3;
       color: var(--text);
-    }
-
-    dl {
-      display: grid;
-      gap: 1.05rem;
-      margin-top: 1.1rem;
     }
   }
 
-  .about__group {
-    display: grid;
-    gap: 0.45rem;
+  .bom__caption {
+    display: flex;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--mono-xs);
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+  }
 
-    dt {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      font-size: 0.875rem;
+  .bom__table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--line-strong);
+    background: color-mix(in oklab, var(--bg-page) 60%, transparent);
+    text-align: left;
+
+    thead th {
+      padding: 0.55rem 1rem;
+      border-bottom: 1px solid var(--line-strong);
+      font-family: var(--font-mono);
+      font-size: var(--mono-xs);
       font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       color: var(--text-muted);
     }
 
-    :global(.about__group-icon) {
-      flex-shrink: 0;
-      color: color-mix(in oklab, var(--group-color) 80%, var(--text-muted));
+    tbody tr {
+      transition: background-color 0.25s ease;
+
+      &:hover {
+        background: color-mix(in oklab, var(--accent-cyan) 5%, transparent);
+      }
+
+      & + tr > * {
+        border-top: 1px solid var(--line);
+      }
     }
 
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+    tbody :is(td, th) {
+      padding: 0.85rem 1rem;
+      vertical-align: baseline;
+    }
+
+    /* Column rules, as on a drawing's parts list */
+    :is(td, th) + :is(td, th) {
+      border-left: 1px solid var(--line);
+    }
+  }
+
+  .bom__index,
+  .bom__count {
+    width: 1%;
+    font-family: var(--font-mono);
+    font-size: var(--mono-sm);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--text-muted);
+  }
+
+  .bom__count {
+    text-align: right;
+
+    thead & {
+      text-align: right;
+    }
+  }
+
+  .bom__group {
+    width: 13rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .bom__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0;
+
+    li {
+      font-family: var(--font-mono);
+      font-size: var(--mono-sm);
+      line-height: 1.5;
+      color: var(--text-soft);
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: color-mix(in oklab, var(--tech) 75%, var(--text));
+      }
+
+      &:not(:last-child)::after {
+        content: "·";
+        margin-inline: 0.6rem;
+        color: var(--text-muted);
+      }
+    }
+  }
+
+  /* On narrow screens each row stacks: number and group on top, parts below */
+  @media (max-width: 640px) {
+    .bom__table {
+      thead {
+        display: none;
+      }
+
+      tbody tr {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        column-gap: 0.75rem;
+        padding: 0.85rem 1rem;
+      }
+
+      tbody tr + tr {
+        border-top: 1px solid var(--line);
+
+        & > * {
+          border-top: 0;
+        }
+      }
+
+      tbody :is(td, th) {
+        padding: 0;
+        border-left: 0;
+      }
+
+      tbody td:nth-child(3) {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        margin-top: 0.45rem;
+      }
+    }
+
+    .bom__group {
+      width: auto;
     }
   }
 </style>

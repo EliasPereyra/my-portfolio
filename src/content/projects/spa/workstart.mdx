@@ -1,0 +1,26 @@
+---
+  title: "WorkStart"
+  description: "Una plataforma para encontrar trabajos que no requieren experiencia, abarcando diversas industrias en Argentina"
+  project_img: "../../../../public/assets/workstart-live.webp"
+  github_repo: "https://github.com/EliasPereyra/job-platform"
+  live_link: "https://job-platform-two.vercel.app/"
+  summary: "Conseguir el primer trabajo sin experiencia es difícil, y muchas ofertas ni siquiera dicen cuánto pagan. En WorkStart buscás empleos sin registrarte y, cuando encontrás uno que te interesa, le escribís directo a la empresa, sin formularios de por medio. Cada vacante tiene que indicar provincia, modalidad y jornada para poder publicarse. El contenido se gestiona en Sanity, así publicar o editar una oferta no requiere tocar código."
+  key_features: 
+    - "No se necesita registro para buscar empleos ni postularse"
+    - "Buscar empleos por título, provincia y categoría"
+    - "Explorar ofertas por provincia desde un mapa de Argentina"
+    - "Ver todos los empleos de una empresa"
+    - "Cuenta opcional con email y contraseña o passkeys para guardar empleos favoritos"
+    - "Diseño responsivo"
+  design_goals: 
+    - title: "Publicar ofertas sin tocar código"
+      description: "Las ofertas y las empresas se cargan desde Sanity Studio y se consultan con GROQ. Con el contenido en vivo, lo que se publica aparece en el sitio sin redeploy."
+    - title: "Postularse sin cuenta"
+      description: "Para postularte no hace falta registrarte: le escribís directo a la empresa. La cuenta es opcional y sirve para guardar favoritos."
+    - title: "Entrar sin recordar otra contraseña"
+      description: "Las cuentas usan Better Auth con email y contraseña o passkeys, para entrar sin recordar otra contraseña más."
+    - title: "Datos de usuarios separados del contenido"
+      description: "Usuarios, sesiones y favoritos viven en PostgreSQL sobre Neon, separados del contenido editorial que maneja Sanity."
+    - title: "Tests sobre lo que más usa la gente"
+      description: "Los filtros de búsqueda y el botón de favoritos se prueban como los usaría alguien de verdad, con Testing Library y user-event, y con Vitest se testean también las consultas GROQ y los helpers de URLs."
+---

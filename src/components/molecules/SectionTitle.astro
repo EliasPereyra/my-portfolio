@@ -1,43 +1,135 @@
 ---
+import { t } from "i18next";
+
+import { SHEET_TOTAL, sheetNumber, type SheetId } from "@/utils/sheets";
+
 interface Props {
   id?: string;
+  /** Which home sheet this section is; shown at the end of the dimension line */
+  sheet?: SheetId;
 }
 
-const { id } = Astro.props;
+const { id, sheet } = Astro.props;
+const number = sheet ? sheetNumber(sheet) : undefined;
+const total = String(SHEET_TOTAL).padStart(2, "0");
 ---
 
-<h2 class="section-title" id={id} data-reveal><slot /></h2>
+<div class="sheet-head" data-reveal>
+  <h2 class="sheet-head__title" id={id}><slot /></h2>
+  <span class="sheet-head__rule" aria-hidden="true"></span>
+  {
+    number && (
+      <span
+        class="sheet-head__ref"
+        title={t("sheet.label", { n: Number(number), total: SHEET_TOTAL })}
+        aria-hidden="true"
+      >
+        {`H-${number}`}<span>{`/${total}`}</span>
+      </span>
+    )
+  }
+</div>
 
 <style>
-  .section-title {
-    position: relative;
-    display: inline-block;
-    padding-top: 0.6rem;
-    font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.25rem);
-    font-weight: 700;
-    line-height: 1.6;
-    color: var(--text);
+  /*
+   * Section header as a dimension line: the title, then a hairline with end
+   * ticks running to the right rail, closed by the sheet reference.
+   */
+  /*
+   * Sized on the grid: a 48px title line with the rule 32px down, so when the
+   * header starts on a grid line (see Home), the rule lands on one too.
+   */
+  .sheet-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1.1rem;
+    line-height: 3rem;
+  }
 
-    &::before {
+  .sheet-head__title {
+    flex-shrink: 0;
+    max-width: 100%;
+    font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.5rem);
+    font-weight: 700;
+    line-height: inherit;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .sheet-head__rule {
+    position: relative;
+    flex: 1;
+    align-self: flex-start;
+    min-width: 2rem;
+    height: 1px;
+    margin-top: 2rem;
+    background: var(--line-strong);
+    transform-origin: left;
+    transition: scale 1s var(--ease-out) 0.1s;
+
+    /* End ticks, like the extension marks of a dimension */
+    &::before,
+    &::after {
       content: "";
       position: absolute;
-      top: 0;
+      top: -4px;
+      width: 1px;
+      height: 9px;
+      background: var(--mark);
+    }
+
+    &::before {
       left: 0;
-      width: 100%;
-      height: 2px;
-      border-radius: var(--radius);
-      background: var(--title-bar);
-      transform-origin: left;
-      transition: scale 0.9s var(--ease-out) 0.15s;
+      background: var(--accent-pink);
+    }
+
+    &::after {
+      right: 0;
     }
   }
 
-  :global(.js) .section-title:not(.is-visible)::before {
+  .sheet-head__ref {
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: var(--mono-xs);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+    color: var(--accent-cyan);
+
+    span {
+      color: var(--text-muted);
+    }
+  }
+
+  :global(.js) .sheet-head:not(.is-visible) .sheet-head__rule {
     scale: 0 1;
   }
 
+  /* Phones: no room for the rule, so the sheet ref follows the title's last word */
+  @media (max-width: 520px) {
+    .sheet-head {
+      display: block;
+      line-height: 2.5rem;
+    }
+
+    .sheet-head__title {
+      display: inline;
+    }
+
+    .sheet-head__rule {
+      display: none;
+    }
+
+    .sheet-head__ref {
+      display: inline-block;
+      margin-left: 0.75rem;
+      white-space: nowrap;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .section-title::before {
+    .sheet-head__rule {
       transition: none;
     }
   }

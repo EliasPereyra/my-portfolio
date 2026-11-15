@@ -1,0 +1,155 @@
+---
+import i18next, { t } from "i18next";
+
+import Divider from "@/components/atoms/Divider.astro";
+import Icon from "@/components/atoms/Icon.astro";
+import SectionTitle from "@/components/molecules/SectionTitle.astro";
+
+const home = i18next.language === "eng" ? "/eng/" : "/";
+const projectBase = i18next.language === "eng" ? "/eng/projects" : "/projects";
+
+// Each capability points at the place on the site that proves it
+const capabilities = [
+  { id: "design", href: `${home}#experience` },
+  { id: "mobile", href: `${home}#experience` },
+  { id: "product", href: `${home}#portfolio` },
+  { id: "quality", href: `${projectBase}/workstart#how-title` },
+];
+---
+
+<section
+  class="capabilities"
+  id="capabilities"
+  aria-labelledby="capabilities-title"
+>
+  <Divider />
+  <div class="container">
+    <SectionTitle sheet="capabilities" id="capabilities-title"
+      >{t("capabilities.title")}</SectionTitle
+    >
+    <ul class="capabilities__list">
+      {
+        capabilities.map(({ id, href }, index) => (
+          <li class="capability">
+            <span class="capability__ref" aria-hidden="true">
+              {`${String.fromCharCode(65 + Math.floor(index / 2))}${(index % 2) + 1}`}
+            </span>
+            <h3 class="capability__title">
+              {t(`capabilities.items.${id}.title`)}
+            </h3>
+            <p class="capability__text">{t(`capabilities.items.${id}.text`)}</p>
+            <a class="capability__proof" href={href}>
+              {t(`capabilities.items.${id}.proof`)}
+              <Icon name="arrow-right" size={16} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .capabilities {
+    position: relative;
+    /* A shorter top, in grid steps, so the section peeks in under the hero */
+    padding-block: 4rem var(--section-space);
+
+    @media (min-width: 768px) {
+      padding-top: 5rem;
+    }
+  }
+
+  /* A 2×2 schedule: cells share hairlines, each keyed by its grid reference */
+  .capabilities__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 2.6rem;
+    border-top: 1px solid var(--line-strong);
+    border-left: 1px solid var(--line-strong);
+
+    @media (max-width: 760px) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .capability {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1.8rem clamp(1.25rem, 0.5rem + 2vw, 2.2rem) 1.4rem;
+    border-right: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+    background: color-mix(in oklab, var(--bg-page) 55%, transparent);
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background: color-mix(in oklab, var(--accent-cyan) 5%, var(--bg-page));
+    }
+  }
+
+  .capability__ref {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: var(--mono-xs);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--accent-cyan);
+  }
+
+  .capability__title {
+    font-size: clamp(1.25rem, 1.1rem + 0.4vw, 1.45rem);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text);
+  }
+
+  .capability__text {
+    max-width: 60ch;
+    margin-top: 0.7rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-soft);
+  }
+
+  .capability__proof {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 0.4rem;
+    min-height: 2.75rem;
+    margin-top: auto;
+    padding-top: 0.6rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: color-mix(
+      in oklab,
+      var(--accent-pink) 60%,
+      transparent
+    );
+    transition: color 0.2s ease;
+
+    :global(svg) {
+      transition: translate 0.25s var(--ease-out);
+    }
+
+    &:hover {
+      color: var(--accent-pink);
+
+      :global(svg) {
+        translate: 4px 0;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .capability__proof :global(svg) {
+      transition: none;
+    }
+  }
+</style>

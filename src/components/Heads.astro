@@ -34,7 +34,7 @@ const { title, author, description, articleDate } = Astro.props as Props;
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={articleDate ? "article" : "website"} />
-<meta property="og:url" content="https://eliaspereyra.netlify.app/" />
+<meta property="og:url" content={canonicalUrl} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={socialMediaUrl} />
@@ -43,7 +43,7 @@ const { title, author, description, articleDate } = Astro.props as Props;
     <>
       <meta property="article:author" content={author} />
       <meta
-        property="article:pubish_date"
+        property="article:publish_date"
         content={articleDate.toISOString()}
       />
     </>
@@ -52,12 +52,9 @@ const { title, author, description, articleDate } = Astro.props as Props;
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://eliaspereyra.netlify.app/" />
+<meta property="twitter:url" content={canonicalUrl} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={socialMediaUrl} />
 
 <ClientRouter />
-
-
-<!-- Add the dynamic props for the articles -->

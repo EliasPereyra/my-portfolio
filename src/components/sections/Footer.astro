@@ -25,7 +25,7 @@ const home = i18next.language === "eng" ? "/eng/" : "/";
   .footer {
     position: relative;
     background: var(--bg-footer);
-    border-top: 1px solid var(--rail);
+    border-top: 1px solid var(--line-strong);
   }
 
   .footer__inner {
@@ -36,7 +36,7 @@ const home = i18next.language === "eng" ? "/eng/" : "/";
     gap: 1.5rem;
     max-width: var(--container);
     margin-inline: auto;
-    padding: 2.4rem clamp(1.25rem, -1rem + 7vw, 5.3rem);
+    padding: 2.2rem var(--gutter);
   }
 
   .footer__logo {
@@ -53,9 +53,9 @@ const home = i18next.language === "eng" ? "/eng/" : "/";
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    font-size: 0.875rem;
-    font-weight: 300;
-    color: light-dark(var(--text-soft), hsla(0 0% 85.1%));
+    font-family: var(--font-mono);
+    font-size: var(--mono-xs);
+    color: var(--text-muted);
 
     a {
       display: flex;

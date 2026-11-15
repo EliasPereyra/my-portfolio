@@ -1,5 +1,6 @@
 {
-  "description": "Mi sitio web personal donde encontrarás todos mis últimos proyectos y, también, un poquito sobre quién soy",
+  "title": "Elías Pereyra | Desarrollador Fullstack enfocado en Frontend web y mobile",
+  "description": "Soy Elías Pereyra, desarrollador fullstack enfocado en el frontend web y mobile, de Argentina. Mirá mi experiencia, mis proyectos y cómo contactarme.",
   "navbar": {
     "label": "Navegación principal",
     "home": "Inicio",
@@ -17,12 +18,25 @@
   "hero": {
     "available": "Disponible para trabajar",
     "headline": {
-      "start": "Convirtiendo",
-      "ideas": "ideas",
-      "middle": "en",
-      "facts": "hechos"
+      "start": "Construyo interfaces",
+      "web": "web",
+      "middle": "y",
+      "mobile": "mobile",
+      "end": "de punta a punta"
     },
-    "description": "Soy Elías Pereyra, desarrollador Fullstack enfocado en el Frontend Web y Mobile, con especial atención a la escalabilidad, la seguridad y la UX."
+    "description": "Soy Elías Pereyra, desarrollador Fullstack enfocado en el Frontend web y mobile.",
+    "cta": "Ver proyectos",
+    "cv": "Descargar CV",
+    "profile": {
+      "label": "Perfil",
+      "role": "Rol",
+      "roleValue": "Fullstack · foco frontend",
+      "focus": "Área",
+      "focusValue": "Web y mobile",
+      "base": "Base",
+      "baseValue": "Argentina · remoto",
+      "status": "Estado"
+    }
   },
   "experience": {
     "title": "Experiencia",
@@ -31,23 +45,28 @@
     "items": {
       "synkpay": {
         "domain": "Web · Fintech / Cripto",
-        "description": "Me encargué del desarrollo frontend de un dashboard de criptomonedas de tamaño medio, trabajando de forma independiente bajo la guía del Tech Lead. Realicé un refactor a gran escala del sistema de diseño de Styled-components hacia Tailwind + CVA y un cambio de arquitectura de Feature-based a Module-based."
+        "lead": "Llevé el frontend de un dashboard de criptomonedas y ordené su arquitectura para que pudiera crecer.",
+        "description": "Implementé funcionalidades de punta a punta con React, APIs GraphQL y Redux Toolkit. Migré los estilos de Styled-components a Tailwind, DaisyUI y CVA, y lideré el paso de una arquitectura por features a un monolito modular de más de 1.000 archivos, con límites claros entre módulos y menos dependencias cruzadas."
       },
       "keywallet": {
         "domain": "Mobile · Fintech / Cripto",
-        "description": "Contribuí al desarrollo frontend de una billetera de criptomonedas como parte de un equipo mobile de tres ingenieros. Me enfoqué en la experiencia de usuario y en la seguridad de la aplicación: autenticación con contraseña y biometría, bloqueo automático de sesión y mecanismos de re-autenticación."
+        "lead": "Construí los flujos de seguridad de una billetera cripto mobile, en un equipo de tres ingenieros frontend.",
+        "description": "Con Expo y Tamagui implementé login con contraseña y biometría, bloqueo por inactividad y re-autenticación ante acciones sensibles. También armé las notificaciones in-app con una arquitectura orientada a eventos, y resolví la navegación con Expo Router para que volver atrás funcione bien aunque a una pantalla se llegue desde varios lugares."
       },
       "octaflow": {
-        "domain": "IA · Agentic Engineering",
-        "description": "Octaflow es una plataforma de ingeniería asistida por IA que permite a las empresas seguir desarrollando y manteniendo productos de software mediante agentes de IA coordinados. Desarrollé el componente de Perfil desde cero y, junto a otro desarrollador, construí la infraestructura de contexto de proyecto, planificación y ejecución de agentes, harnesses y flujos de verificación que ayudan a entregar resultados de desarrollo completos a los clientes."
+        "domain": "IA · Proyecto interno",
+        "lead": "Armé, junto a otro desarrollador, la infraestructura que coordina agentes de IA en una plataforma de ingeniería asistida.",
+        "description": "Contexto de proyecto, planificación y ejecución de tareas, harnesses y flujos de verificación para que los agentes entreguen features completas de forma confiable. También desarrollé desde cero el componente de Perfil."
       }
-    }
+    },
+    "projects": "Proyectos"
   },
   "projects": {
-    "title": "Proyectos personales",
-    "seeMore": "Ver más",
-    "repo": "Repositorio de",
-    "live": "Sitio de"
+    "title": "Proyectos",
+    "solvedLabel": "Qué resolví:",
+    "caseStudy": "Caso de estudio",
+    "code": "Código",
+    "site": "Sitio"
   },
   "contributions": {
     "title": "Contribuciones",
@@ -59,10 +78,9 @@
   },
   "about": {
     "title": "Sobre mí",
-    "first": "Soy Elías Pereyra Gómez, un desarrollador de Argentina al que le gusta convertir ideas en cosas que <strong>realmente funcionan</strong>.",
-    "second": "La mayor parte de mi trabajo gira en torno al desarrollo <strong>web</strong> y <strong>mobile</strong>, con un foco particular en frontend, UX, escalabilidad y seguridad. Me gusta entender cómo encajan las distintas piezas de una aplicación, no solo la parte que ven los usuarios.",
-    "third": "También le doy especial atención a la UI: me gusta que sea atractiva y personalizable, siempre apoyándome en los fundamentos del diseño de interfaces.",
-    "fourth": "Y yendo hacia la parte trasera, también disfruto el desarrollo backend, para poder construir un sistema completo, de punta a punta.",
+    "first": "Soy Elías Pereyra Gómez, desarrollador de Argentina. Me gusta convertir ideas en cosas que <strong>realmente funcionan</strong> y que da gusto usar.",
+    "second": "Trabajo sobre todo en el frontend <strong>web</strong> y <strong>mobile</strong>, pero me interesa entender cómo encaja cada pieza de una aplicación, no solo lo que ve el usuario. Por eso también disfruto del backend y de armar sistemas completos, de punta a punta.",
+    "third": "En la UI cuido los detalles: me apoyo en los fundamentos del diseño de interfaces y me gusta armar design systems consistentes y fáciles de extender, como el que migré a Tailwind + CVA.",
     "stack": {
       "title": "Mi stack",
       "groups": {
@@ -73,27 +91,57 @@
         "testing": "Testing",
         "state": "Estado global",
         "tooling": "CI/CD y herramientas"
+      },
+      "pieces": "{{n}} tecnologías",
+      "columns": {
+        "index": "N.º",
+        "group": "Áreas",
+        "items": "Tecnologías",
+        "count": "Cant."
       }
     }
   },
   "contact": {
     "title": "Construyamos algo.",
-    "subtitle": "Abierto a roles fullstack y frontend.",
-    "write": "Escríbeme",
+    "subtitle": "Busco sumarme a un equipo como Frontend o Fullstack Developer, donde pueda aportar mi experiencia y seguir creciendo profesionalmente.",
+    "write": "Escribime",
     "copy": "Copiar email",
-    "copied": "Email copiado"
+    "copied": "Email copiado",
+    "cv": "Descargar CV"
   },
   "cards": {
+    "skillup": {
+      "first-paragraph": "Una plataforma e-learning donde los estudiantes se inscriben a cursos, avanzan por módulos y siguen su progreso. Es un MVP de 8 semanas hecho en equipo: diseñé la base de datos y la arquitectura, desarrollé todo el frontend y me encargué de los despliegues.",
+      "second-paragraph": "La plataforma tiene tres roles, cada uno con su panel: estudiantes, docentes y administradores. El admin ve ingresos, ventas mensuales, estudiantes activos y los cursos más inscritos.",
+      "third-paragraph": "El frontend está hecho con React y Vite, y el backend con Express, Drizzle ORM y PostgreSQL, como un monolito modular. Se despliega en Vercel, Render y Neon, con CI en GitHub Actions.",
+      "solved": "sesiones seguras con refresh tokens que se rotan en cada uso, un backend modular con límites entre módulos que el linter hace cumplir, y CI que valida cada cambio antes de llegar a producción."
+    },
     "turnos": {
-      "first-paragraph": "Un sistema de gestión de turnos para la consulta de pacientes. Puedes registrarte, ingresar tus datos personales y médicos, y reservar un turno. Luego recibirás una notificación por sms si el doctor confirmó el turno o no.",
+      "first-paragraph": "Una app para sacar turnos médicos sin llamadas ni esperas: el paciente carga sus datos una sola vez, pide el turno y recibe un SMS cuando el médico lo confirma. Del otro lado, el admin gestiona pacientes y turnos desde un panel.",
       "second-paragraph": "Este tipo de sistema ayuda en la simplificación de los procesos para adquirir un turno con el doctor. Ahorra tiempo de espera para el paciente, provee información básica de antemano y agiliza más el proceso de gestión de turnos para el doctor y recursos materiales.",
-      "third-paragraph": "El sistema está desarrollado con Next.js y Appwrite (un BaaS - servicio basado en la nube). Las páginas al igual que los componentes fueron diseñados en Figma."
+      "third-paragraph": "El sistema está desarrollado con Next.js y Appwrite (un BaaS - servicio basado en la nube). Las páginas al igual que los componentes fueron diseñados en Figma.",
+      "solved": "credenciales que nunca llegan al navegador, formularios largos validados al instante y un panel que confirma o cancela turnos con aviso por SMS."
     },
     "workstart": {
-      "first-paragraph": "Una plataforma para encontrar trabajos sin experiencia, abarcando distintos tipos de rubros en Argentina. No hace falta registrarse, simplemente selecciona la vacante que te gusta y envía a la empresa un email.",
+      "first-paragraph": "Una bolsa de trabajo para conseguir tu primer empleo en Argentina, sin registrarte: elegís la vacante y le escribís directo a la empresa. Cada oferta muestra de entrada la provincia, la modalidad y la jornada.",
       "second-paragraph": "Postular directamente a la empresa ahorra mucho tiempo y ayuda a personalizar el contacto. Además cada vacante muestra los detalles más relevantes como el sueldo, modalidad, horario laboral, responsabilidades y los beneficios. La plataforma está diseñada de forma en que los puntos anteriores sean puntos obligatorios para poder publicar vacantes.",
-      "third-paragraph": "El sistema está desarrollado con Next.js y Wordpress como CMS, comunicándose a través de una API de GraphQL. El diseño de todas las páginas y los componentes fueron diseñados en Penpot y Figma."
+      "third-paragraph": "El sistema está desarrollado con Next.js y Sanity como CMS headless, con consultas GROQ y contenido que se actualiza en vivo. Las cuentas de usuario usan Better Auth (email y contraseña o passkeys) sobre una base de datos PostgreSQL en Neon, y los tests están escritos con Vitest y Testing Library. Las páginas y los componentes fueron diseñados en Figma.",
+      "solved": "ofertas que se publican desde un CMS sin tocar código, postulación directa sin crear cuenta y tests sobre los filtros y los favoritos."
     }
+  },
+  "project": {
+    "pageTitle": "Proyecto {{title}} | Elias Pereyra",
+    "coverAlt": "Captura del proyecto {{title}}",
+    "back": "Volver a proyectos",
+    "live": "Ver sitio",
+    "repo": "Código",
+    "overview": "De qué se trata",
+    "keyFeatures": "Características clave",
+    "howBuilt": "Cómo lo construí",
+    "toolsUsed": "Tecnologías",
+    "next": "Siguiente proyecto",
+    "talk": "¿Querés que hablemos?",
+    "talkCta": "Escribime"
   },
   "footer": {
     "tool-used": "Desarrollado felizmente con "
@@ -103,7 +151,35 @@
   },
   "not_found": {
     "title": "Esa página no existe",
-    "desc": "Esa página que buscas no es esta, o no existe. Intenta con otra.",
+    "desc": "La página que buscás no existe o fue movida.",
     "go_back": "Volver al inicio"
+  },
+  "capabilities": {
+    "title": "Qué hago",
+    "items": {
+      "design": {
+        "title": "Design systems y arquitectura frontend",
+        "text": "Armo interfaces a partir de un sistema: componentes con variantes claras, tokens compartidos y una estructura que aguanta que el proyecto crezca.",
+        "proof": "Lo apliqué en SynkPay"
+      },
+      "mobile": {
+        "title": "Apps mobile con flujos sensibles",
+        "text": "Desarrollo apps con React Native y Expo, cuidando los flujos donde un error cuesta caro: autenticación, sesiones y acciones sensibles.",
+        "proof": "Lo apliqué en KeyWallet"
+      },
+      "product": {
+        "title": "Productos web de punta a punta",
+        "text": "Llevo una idea de Figma a producción: diseño las pantallas, construyo el frontend con Next.js y conecto lo que haga falta del backend.",
+        "proof": "Ver los proyectos"
+      },
+      "quality": {
+        "title": "Calidad y testing",
+        "text": "Escribo tests que siguen lo que hace el usuario, del componente al flujo completo, para poder cambiar código sin miedo.",
+        "proof": "Cómo testeé WorkStart"
+      }
+    }
+  },
+  "sheet": {
+    "label": "Hoja {{n}} de {{total}}"
   }
 }

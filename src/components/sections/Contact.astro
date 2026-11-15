@@ -1,13 +1,16 @@
 ---
-import { t } from "i18next";
+import i18next, { t } from "i18next";
 
 import Divider from "@/components/atoms/Divider.astro";
 import Glow from "@/components/atoms/Glow.astro";
+import GridSpot from "@/components/atoms/GridSpot.astro";
 import Icon from "@/components/atoms/Icon.astro";
-import SquareGrid from "@/components/atoms/SquareGrid.astro";
-import { socialNetworks } from "@/utils/PageConfig";
+import { getCvHref, socialNetworks } from "@/utils/PageConfig";
+import { SHEET_TOTAL, sheetNumber } from "@/utils/sheets";
 
 const email = socialNetworks.emailAddress;
+const sheetRef = `H-${sheetNumber("contact")}`;
+const sheetTotal = `/${String(SHEET_TOTAL).padStart(2, "0")}`;
 ---
 
 <section
@@ -19,31 +22,28 @@ const email = socialNetworks.emailAddress;
   <Divider offset="var(--section-space)" />
   <Glow
     tone="crimson"
-    style="top: -10rem; right: -12rem; width: 44rem; height: 40rem;"
+    style="top: 0rem; right: -14rem; width: 44rem; height: 40rem;"
     duration={30}
     dx="-2rem"
     dy="2rem"
   />
-  <div class="contact__pattern" aria-hidden="true">
-    <SquareGrid name="contact" />
-    <SquareGrid
-      name="contact"
-      lit
-      class="contact__pattern-lit"
-      data-spotlight-layer
-    />
-  </div>
+  <GridSpot />
 
-  <div class="container contact__content">
+  <div class="container">
+   <div class="contact__content crop-marks">
+    <span class="contact__ref" aria-hidden="true"
+      >{sheetRef}<span>{sheetTotal}</span></span
+    >
     <h2 class="contact__title" id="contact-title">{t("contact.title")}</h2>
     <p class="contact__subtitle">{t("contact.subtitle")}</p>
 
     <div class="contact__actions">
       <div class="contact__email">
-        <a class="contact__mail" href={`mailto:${email}`}>
+        <a class="bp-button" href={`mailto:${email}`}>
           <Icon name="mail" size={20} />
           {t("contact.write")}
         </a>
+        <span class="contact__address">{email}</span>
         <button
           class="contact__copy"
           type="button"
@@ -82,16 +82,17 @@ const email = socialNetworks.emailAddress;
         <li>
           <a
             class="contact__cv"
-            href="/assets/cv.pdf"
+            href={getCvHref(i18next.language)}
             target="_blank"
             rel="noopener noreferrer"
           >
             <Icon name="file" size={20} />
-            CV
+            {t("contact.cv")}
           </a>
         </li>
       </ul>
     </div>
+   </div>
   </div>
 </section>
 
@@ -101,74 +102,49 @@ const email = socialNetworks.emailAddress;
 
     position: relative;
     padding-block: calc(var(--section-space) + var(--contact-space))
-      calc(var(--section-space) + var(--contact-space) * 0.5);
+      calc(var(--section-space) * 0.8);
   }
 
-  .contact__pattern {
-    --square-grid-color: light-dark(
-      hsla(223.6 47.8% 9% / 0.15),
-      hsla(0 0% 68.2% / 0.26)
-    );
-
-    position: absolute;
-    top: var(--section-space);
-    bottom: 0;
-    left: 50%;
-    z-index: 1;
-    width: min(var(--container), 100% - 1.25rem);
-    translate: -50% 0;
-    pointer-events: none;
-    mask-image: linear-gradient(
-        90deg,
-        transparent,
-        black 18%,
-        black 82%,
-        transparent
-      ),
-      radial-gradient(
-        ellipse 75% 120% at 85% 0%,
-        black 0%,
-        hsla(0 0% 0% / 0.55) 45%,
-        hsla(0 0% 0% / 0.2) 100%
-      );
-    mask-composite: intersect;
-  }
-
-  .contact__pattern :global(.contact__pattern-lit) {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    mask-image: radial-gradient(
-      circle 9rem at var(--mx, 50%) var(--my, 50%),
-      black,
-      transparent
-    );
-    transition: opacity 0.4s ease;
-  }
-
-  .contact:global(.is-lit) .contact__pattern :global(.contact__pattern-lit) {
-    opacity: 1;
-  }
-
+  /* The closing block of the drawing: framed, with crop marks and the last sheet number */
   .contact__content {
     display: grid;
     justify-items: start;
+    padding: clamp(2rem, 1rem + 4vw, 3.5rem) clamp(1.25rem, 0.5rem + 4vw, 3.5rem);
+    border: 1px solid var(--line-strong);
+    background: color-mix(in oklab, var(--bg-page) 72%, transparent);
+  }
+
+  .contact__ref {
+    position: absolute;
+    top: 0.85rem;
+    right: 1rem;
+    font-family: var(--font-mono);
+    font-size: var(--mono-xs);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--accent-cyan);
+
+    span {
+      color: var(--text-muted);
+    }
   }
 
   .contact__title {
-    font-size: clamp(2.3rem, 1.5rem + 3vw, 3.125rem);
+    font-size: clamp(2.3rem, 1.4rem + 3.4vw, 3.5rem);
     font-weight: 700;
-    line-height: 1.5;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
     color: var(--text);
   }
 
   .contact__subtitle {
-    max-width: 33.2rem;
-    margin-top: 0.4rem;
+    /* Two or three comfortable lines for the longer pitch */
+    max-width: min(40rem, 68ch);
+    margin-top: 0.6rem;
     font-size: clamp(1.15rem, 1rem + 0.5vw, 1.375rem);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.6;
-    color: light-dark(var(--text-soft), hsla(0 0% 85.1%));
+    color: var(--text-soft);
   }
 
   .contact__actions {
@@ -182,31 +158,18 @@ const email = socialNetworks.emailAddress;
   .contact__email {
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 0.5rem;
   }
 
-  .contact__mail {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    padding: 0.7rem 1.3rem;
-    border: 1px solid transparent;
-    border-radius: 999px;
-    background:
-      linear-gradient(var(--surface), var(--surface)) padding-box,
-      linear-gradient(90deg, var(--accent-violet), var(--accent-pink))
-        border-box;
-    font-weight: 600;
-    color: var(--text);
-    transition:
-      box-shadow 0.3s ease,
-      translate 0.25s var(--ease-out);
-
-    &:hover {
-      translate: 0 -2px;
-      box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--accent-pink) 70%, transparent);
-    }
+  .contact__address {
+    padding-inline: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--mono-sm);
+    color: var(--text-soft);
+    overflow-wrap: anywhere;
+    user-select: all;
   }
 
   .contact__copy {
@@ -214,8 +177,8 @@ const email = socialNetworks.emailAddress;
     place-items: center;
     width: 2.6rem;
     height: 2.6rem;
-    border: 1px solid var(--line);
-    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
     color: var(--text-soft);
     transition:
       color 0.2s ease,
@@ -300,13 +263,16 @@ const email = socialNetworks.emailAddress;
   .contact__links {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
 
     a {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+      min-width: 2.75rem;
+      min-height: 2.75rem;
       gap: 0.3rem;
-      color: light-dark(var(--text-soft), hsla(0 0% 85.1%));
+      color: var(--text-soft);
       transition:
         color 0.2s ease,
         translate 0.25s var(--ease-out);

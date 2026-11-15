@@ -7,14 +7,19 @@ import type { Project } from "@/utils/projects";
 
 interface Props {
   project: Project;
+  /** Figure number on the drawing, shown in the frame's caption bar */
+  figure: number;
+  /** Lead project: spans the grid row, with the figure beside the text */
+  featured?: boolean;
 }
 
-const { project } = Astro.props;
+const { project, figure, featured = false } = Astro.props;
 const {
   title,
   slug,
   project_img,
   description,
+  solved,
   highlightTags,
   live_link,
   repo_link,
@@ -25,21 +30,21 @@ const detailHref = `${i18next.language === "eng" ? "/eng" : ""}/projects/${slug}
 const host = live_link ? new URL(live_link).host.replace(/^www\./, "") : "";
 ---
 
-<article class="project">
+<article class:list={["project", { "project--featured": featured }]}>
   <a
-    class:list={["project__media", `project__media--${platform}`]}
+    class:list={[
+      "project__media",
+      "crop-marks",
+      `project__media--${platform}`,
+    ]}
     href={detailHref}
     tabindex="-1"
     aria-hidden="true"
   >
-    {
-      platform === "web" && (
-        <span class="project__bar">
-          <span class="project__lights" />
-          {host && <span class="project__url">{host}</span>}
-        </span>
-      )
-    }
+    <span class="project__bar">
+      <span class="project__fig">{`FIG. ${String(figure).padStart(2, "0")}`}</span>
+      {host && <span class="project__url">{host}</span>}
+    </span>
     <span class="project__screen">
       <img
         src={project_img}
@@ -55,44 +60,43 @@ const host = live_link ? new URL(live_link).host.replace(/^www\./, "") : "";
     <a href={detailHref}>{title}</a>
   </h3>
   <p class="project__description">{t(description.firstParagraph)}</p>
+  <p class="project__solved">
+    <strong>{t("projects.solvedLabel")}</strong>{" "}{t(solved)}
+  </p>
   <ul class="project__tags" aria-label={t("experience.stack")}>
     {highlightTags.map((tag) => <TechTag name={tag} />)}
   </ul>
   <div class="project__links">
     <a class="project__more" href={detailHref}>
-      {t("projects.seeMore")}
+      {t("projects.caseStudy")}
       <span class="sr-only">{title}</span>
       <Icon name="arrow-right" size={16} />
     </a>
     {
       repo_link && (
         <a
-          class="project__icon-link"
+          class="project__link"
           href={repo_link}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Icon
-            name="github"
-            size={22}
-            label={`${t("projects.repo")} ${title}`}
-          />
+          <Icon name="github" size={20} />
+          {t("projects.code")}
+          <span class="sr-only">{title}</span>
         </a>
       )
     }
     {
       live_link && (
         <a
-          class="project__icon-link"
+          class="project__link"
           href={live_link}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Icon
-            name="globe"
-            size={20}
-            label={`${t("projects.live")} ${title}`}
-          />
+          <Icon name="globe" size={18} />
+          {t("projects.site")}
+          <span class="sr-only">{title}</span>
         </a>
       )
     }
@@ -105,46 +109,79 @@ const host = live_link ? new URL(live_link).host.replace(/^www\./, "") : "";
     flex-direction: column;
   }
 
+  /* Featured: figure on the left across every row, text stacked on the right */
+  .project--featured {
+    grid-column: 1 / -1;
+
+    @media (min-width: 900px) {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      grid-template-rows: repeat(5, auto) 1fr;
+      column-gap: 4rem;
+      align-items: start;
+
+      .project__media {
+        grid-column: 1;
+        grid-row: 1 / -1;
+      }
+
+      > :not(.project__media) {
+        grid-column: 2;
+      }
+
+      .project__title {
+        margin-top: 0;
+        font-size: 1.75rem;
+      }
+
+      .project__links {
+        margin-top: 0;
+      }
+    }
+  }
+
+  /* The screenshot is drawn as a figure: a hairline frame with crop marks and a caption bar */
   .project__media {
-    position: relative;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    border: 1px solid var(--line-strong);
     border-radius: var(--radius);
     background: var(--surface-raised);
-    box-shadow: 0 0 0 1px var(--line);
-    transition: box-shadow 0.35s ease;
+    transition:
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
   }
 
   .project__bar {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    position: relative;
+    z-index: 1;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
     height: 1.9rem;
-    padding-inline: 0.8rem;
+    padding-inline: 0.75rem;
     border-bottom: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: var(--mono-xs);
+    letter-spacing: 0.04em;
   }
 
-  .project__lights {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--line);
-    box-shadow:
-      12px 0 var(--line),
-      24px 0 var(--line);
+  .project__fig {
+    font-weight: 600;
+    color: var(--accent-cyan);
   }
 
   .project__url {
-    padding: 0.1rem 0.9rem;
-    border-radius: 999px;
-    background: color-mix(in oklab, var(--text) 6%, transparent);
-    font-size: 0.72rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     color: var(--text-muted);
   }
 
   .project__screen {
     position: relative;
+    z-index: 1;
     display: block;
     aspect-ratio: 331 / 235;
     overflow: hidden;
@@ -156,50 +193,31 @@ const host = live_link ? new URL(live_link).host.replace(/^www\./, "") : "";
       object-position: top;
       transition: scale 0.6s var(--ease-out);
     }
-
-    /* Gloss sweep, same language as the hero headline */
-    &::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        115deg,
-        transparent 35%,
-        hsla(0 0% 100% / 0.22) 50%,
-        transparent 65%
-      );
-      translate: -110% 0;
-      transition: translate 0.9s var(--ease-out);
-    }
   }
 
   .project__media--mobile {
-    display: grid;
-    place-items: center;
-    aspect-ratio: 331 / 265;
-    padding-block: 1.2rem;
-
     .project__screen {
-      height: 100%;
+      align-self: center;
+      width: min(42%, 10rem);
       aspect-ratio: 9 / 19;
-      border: 4px solid light-dark(hsla(224 28.3% 89.6%), hsla(220 33.3% 15.9%));
+      margin-block: 1.2rem;
+      border: 4px solid light-dark(hsl(42 20% 86%), hsl(214 40% 18%));
       border-radius: 1.4rem;
     }
   }
 
   .project:has(a:hover, a:focus-visible) {
     .project__media {
-      box-shadow:
-        0 0 0 1px color-mix(in oklab, var(--accent-violet) 60%, transparent),
-        0 18px 40px -18px color-mix(in oklab, var(--accent-violet) 55%, transparent);
+      --crop-gap: 11px;
+      --crop-color: var(--accent-pink);
+
+      border-color: color-mix(in oklab, var(--accent-cyan) 70%, transparent);
+      box-shadow: 0 20px 40px -24px
+        color-mix(in oklab, var(--accent-cyan) 60%, transparent);
     }
 
     .project__screen img {
-      scale: 1.04;
-    }
-
-    .project__screen::after {
-      translate: 110% 0;
+      scale: 1.03;
     }
   }
 
@@ -223,8 +241,20 @@ const host = live_link ? new URL(live_link).host.replace(/^www\./, "") : "";
     margin-top: 1.05rem;
     font-size: 1rem;
     font-weight: 300;
-    line-height: 1.2;
+    line-height: 1.55;
     color: var(--text);
+  }
+
+  .project__solved {
+    margin-top: 0.8rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--text-soft);
+
+    strong {
+      font-weight: 600;
+      color: var(--text);
+    }
   }
 
   .project__tags {
@@ -236,16 +266,19 @@ const host = live_link ? new URL(live_link).host.replace(/^www\./, "") : "";
 
   .project__links {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 1rem;
+    gap: 0.25rem 1.5rem;
     margin-top: auto;
-    padding-top: 2.4rem;
+    padding-top: 1.8rem;
   }
 
   .project__more {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
+    min-height: 2.75rem;
+    font-weight: 600;
     font-size: 1rem;
     color: var(--text);
     text-decoration: underline;
@@ -266,9 +299,12 @@ const host = live_link ? new URL(live_link).host.replace(/^www\./, "") : "";
     }
   }
 
-  .project__icon-link {
-    display: flex;
-    color: var(--text-muted);
+  .project__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 2.75rem;
+    color: var(--text-soft);
     transition: color 0.2s ease;
 
     &:hover {
@@ -277,8 +313,7 @@ const host = live_link ? new URL(live_link).host.replace(/^www\./, "") : "";
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .project__screen img,
-    .project__screen::after {
+    .project__screen img {
       transition: none;
     }
   }

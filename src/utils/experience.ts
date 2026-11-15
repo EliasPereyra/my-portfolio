@@ -1,51 +1,57 @@
-export interface ExperienceItem {
+export interface ExperienceProject {
   id: string;
+  name: string;
+  tags: string[];
+}
+
+export interface ExperienceItem {
   company: string;
   role: string;
   start: string;
   end: string;
-  tags: string[];
+  projects: ExperienceProject[];
 }
 
+// One employer, three projects. Project order is deliberate: the agentic work
+// goes last because it isn't related to the frontend roles being sought.
 export const experience: ExperienceItem[] = [
   {
-    id: "synkpay",
-    company: "Crypto Dashboard",
-    role: "Frontend Web Developer",
-    start: "2025-08",
-    end: "2025-12",
-    tags: [
-      "React",
-      "TypeScript",
-      "Tailwind",
-      "CVA",
-      "Redux Toolkit",
-      "GraphQL",
-      "Jest",
-    ],
-  },
-  {
-    id: "keywallet",
-    company: "KeyWallet",
-    role: "Frontend Mobile Developer",
-    start: "2025-12",
-    end: "2026-05",
-    tags: [
-      "React Native",
-      "TypeScript",
-      "Expo",
-      "Tamagui",
-      "Zustand",
-      "Bitrise",
-    ],
-  },
-  {
-    id: "octaflow",
-    company: "Octaflow Company",
-    role: "Agentic Engineering Engineer",
-    start: "2026-05",
+    company: "Octaflow Labs",
+    role: "Frontend Developer",
+    start: "2025-06",
     end: "2026-09",
-    tags: ["Python", "PostgreSQL", "Harness Engineering", "Paperclip"],
+    projects: [
+      {
+        id: "synkpay",
+        name: "SynkPay",
+        tags: [
+          "React",
+          "TypeScript",
+          "Tailwind",
+          "CVA",
+          "Redux Toolkit",
+          "GraphQL",
+          "Jest",
+        ],
+      },
+      {
+        id: "keywallet",
+        name: "KeyWallet",
+        tags: [
+          "React Native",
+          "TypeScript",
+          "Expo",
+          "Tamagui",
+          "Zustand",
+          "Bitrise",
+        ],
+      },
+      {
+        id: "octaflow",
+        name: "Agentic Engineering",
+        tags: ["Python", "PostgreSQL", "AI Agents", "Paperclip"],
+      },
+    ],
   },
 ];
 
