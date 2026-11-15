@@ -26,7 +26,17 @@
     },
     "description": "Soy Elías Pereyra, desarrollador Fullstack enfocado en el Frontend web y mobile.",
     "cta": "Ver proyectos",
-    "cv": "Descargar CV"
+    "cv": "Descargar CV",
+    "profile": {
+      "label": "Perfil",
+      "role": "Rol",
+      "roleValue": "Fullstack · foco frontend",
+      "focus": "Área",
+      "focusValue": "Web y mobile",
+      "base": "Base",
+      "baseValue": "Argentina · remoto",
+      "status": "Estado"
+    }
   },
   "experience": {
     "title": "Experiencia",
@@ -71,7 +81,6 @@
     "first": "Soy Elías Pereyra Gómez, desarrollador de Argentina. Me gusta convertir ideas en cosas que <strong>realmente funcionan</strong> y que da gusto usar.",
     "second": "Trabajo sobre todo en el frontend <strong>web</strong> y <strong>mobile</strong>, pero me interesa entender cómo encaja cada pieza de una aplicación, no solo lo que ve el usuario. Por eso también disfruto del backend y de armar sistemas completos, de punta a punta.",
     "third": "En la UI cuido los detalles: me apoyo en los fundamentos del diseño de interfaces y me gusta armar design systems consistentes y fáciles de extender, como el que migré a Tailwind + CVA.",
-    "fourth": "Busco sumarme a un equipo de producto donde pueda aportar en frontend, aprender de gente con experiencia y seguir creciendo. Si eso suena a tu equipo, escribime.",
     "stack": {
       "title": "Mi stack",
       "groups": {
@@ -82,12 +91,19 @@
         "testing": "Testing",
         "state": "Estado global",
         "tooling": "CI/CD y herramientas"
+      },
+      "pieces": "{{n}} tecnologías",
+      "columns": {
+        "index": "N.º",
+        "group": "Áreas",
+        "items": "Tecnologías",
+        "count": "Cant."
       }
     }
   },
   "contact": {
     "title": "Construyamos algo.",
-    "subtitle": "Abierto a roles frontend y fullstack.",
+    "subtitle": "Busco sumarme a un equipo como Frontend o Fullstack Developer, donde pueda aportar mi experiencia y seguir creciendo profesionalmente.",
     "write": "Escribime",
     "copy": "Copiar email",
     "copied": "Email copiado",
@@ -137,24 +153,27 @@
     "items": {
       "design": {
         "title": "Design systems y arquitectura frontend",
-        "text": "Migré los estilos de un dashboard cripto a Tailwind, DaisyUI y CVA, con componentes con variantes fáciles de extender, y lideré su paso a un monolito modular de más de 1.000 archivos.",
-        "proof": "SynkPay, en Experiencia"
+        "text": "Armo interfaces a partir de un sistema: componentes con variantes claras, tokens compartidos y una estructura que aguanta que el proyecto crezca.",
+        "proof": "Lo apliqué en SynkPay"
       },
       "mobile": {
         "title": "Apps mobile con flujos sensibles",
-        "text": "En una billetera cripto con Expo y Tamagui implementé login biométrico, bloqueo por inactividad, re-autenticación ante acciones sensibles y notificaciones in-app orientadas a eventos.",
-        "proof": "KeyWallet, en Experiencia"
+        "text": "Desarrollo apps con React Native y Expo, cuidando los flujos donde un error cuesta caro: autenticación, sesiones y acciones sensibles.",
+        "proof": "Lo apliqué en KeyWallet"
       },
       "product": {
         "title": "Productos web de punta a punta",
-        "text": "Diseño en Figma, desarrollo con Next.js y conecto el backend: CMS headless, autenticación con passkeys, PostgreSQL o un BaaS. WorkStart y DocHeal están publicados y podés probarlos.",
+        "text": "Llevo una idea de Figma a producción: diseño las pantallas, construyo el frontend con Next.js y conecto lo que haga falta del backend.",
         "proof": "Ver los proyectos"
       },
       "quality": {
         "title": "Calidad y testing",
-        "text": "Testeo los componentes como los usa una persona, con Testing Library y user-event, y sumo tests unitarios con Vitest o Jest y end-to-end con Playwright.",
+        "text": "Escribo tests que siguen lo que hace el usuario, del componente al flujo completo, para poder cambiar código sin miedo.",
         "proof": "Cómo testeé WorkStart"
       }
     }
+  },
+  "sheet": {
+    "label": "Hoja {{n}} de {{total}}"
   }
 }

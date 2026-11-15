@@ -26,7 +26,17 @@
     },
     "description": "I’m Elías Pereyra, a Fullstack Developer focused on web and mobile Frontend.",
     "cta": "See projects",
-    "cv": "Download CV"
+    "cv": "Download CV",
+    "profile": {
+      "label": "Profile",
+      "role": "Role",
+      "roleValue": "Fullstack · frontend focus",
+      "focus": "Focus",
+      "focusValue": "Web & mobile",
+      "base": "Based in",
+      "baseValue": "Argentina · remote",
+      "status": "Status"
+    }
   },
   "experience": {
     "title": "Experience",
@@ -71,7 +81,6 @@
     "first": "I’m Elías Pereyra Gómez, a developer from Argentina. I enjoy turning ideas into things that <strong>actually work</strong> and feel good to use.",
     "second": "I mostly work on <strong>web</strong> and <strong>mobile</strong> frontend, but I like understanding how every piece of an application fits together, not just what users see. That's why I also enjoy backend work and building complete systems, end to end.",
     "third": "I care about the details in the UI: I lean on the fundamentals of interface design and enjoy building design systems that are consistent and easy to extend, like the one I migrated to Tailwind + CVA.",
-    "fourth": "I'm looking to join a product team where I can contribute on the frontend, learn from experienced people, and keep growing. If that sounds like your team, drop me a line.",
     "stack": {
       "title": "My Tech Stack",
       "groups": {
@@ -82,12 +91,19 @@
         "testing": "Testing",
         "state": "Global state",
         "tooling": "CI/CD & tooling"
+      },
+      "pieces": "{{n}} technologies",
+      "columns": {
+        "index": "No.",
+        "group": "Areas",
+        "items": "Technologies",
+        "count": "Qty."
       }
     }
   },
   "contact": {
     "title": "Let's build something.",
-    "subtitle": "Open to frontend and fullstack roles.",
+    "subtitle": "I'm looking to join a team as a Frontend or Fullstack Developer, where I can bring my experience and keep growing professionally.",
     "write": "Email me",
     "copy": "Copy email",
     "copied": "Email copied",
@@ -137,24 +153,27 @@
     "items": {
       "design": {
         "title": "Design systems & frontend architecture",
-        "text": "I migrated a crypto dashboard's styling to Tailwind, DaisyUI and CVA, with variant-based components that are easy to extend, and led its move to a modular monolith of 1,000+ files.",
-        "proof": "SynkPay, in Experience"
+        "text": "I build interfaces from a system: components with clear variants, shared tokens and a structure that holds up as the project grows.",
+        "proof": "Applied at SynkPay"
       },
       "mobile": {
         "title": "Mobile apps with sensitive flows",
-        "text": "On a crypto wallet built with Expo and Tamagui, I implemented biometric login, inactivity lock, re-authentication for sensitive actions and event-driven in-app notifications.",
-        "proof": "KeyWallet, in Experience"
+        "text": "I build apps with React Native and Expo, taking care of the flows where a mistake is costly: authentication, sessions and sensitive actions.",
+        "proof": "Applied at KeyWallet"
       },
       "product": {
         "title": "Web products, end to end",
-        "text": "I design in Figma, build with Next.js and wire up the backend: headless CMS, passkey auth, PostgreSQL or a BaaS. WorkStart and DocHeal are live, so you can try them.",
+        "text": "I take an idea from Figma to production: I design the screens, build the frontend with Next.js and wire up whatever the backend needs.",
         "proof": "See the projects"
       },
       "quality": {
         "title": "Quality & testing",
-        "text": "I test components the way people use them, with Testing Library and user-event, and add unit tests with Vitest or Jest and end-to-end tests with Playwright.",
+        "text": "I write tests that follow what the user does, from the component to the full flow, so I can change code without fear.",
         "proof": "How I tested WorkStart"
       }
     }
+  },
+  "sheet": {
+    "label": "Sheet {{n}} of {{total}}"
   }
 }

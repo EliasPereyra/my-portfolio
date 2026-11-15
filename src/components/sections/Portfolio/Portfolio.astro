@@ -2,7 +2,6 @@
 import { t } from "i18next";
 
 import Divider from "@/components/atoms/Divider.astro";
-import Glow from "@/components/atoms/Glow.astro";
 import SectionTitle from "@/components/molecules/SectionTitle.astro";
 import ProjectCard from "@/components/widgets/ProjectCard.astro";
 import { projects } from "@/utils/projects";
@@ -10,13 +9,15 @@ import { projects } from "@/utils/projects";
 
 <section class="projects" id="portfolio" aria-labelledby="projects-title">
   <Divider />
-  <Glow tone="violet" style="top: 8rem; right: -18rem; width: 44rem; height: 44rem;" duration={30} dx="-2rem" dy="3rem" />
-  <Glow tone="crimson" style="bottom: -16rem; left: calc(50% - 10rem); width: 36rem; height: 30rem;" duration={36} />
 
   <div class="container">
-    <SectionTitle id="projects-title">{t("projects.title")}</SectionTitle>
+    <SectionTitle sheet="portfolio" id="projects-title">{t("projects.title")}</SectionTitle>
     <div class="projects__grid">
-      {projects.map((project) => <ProjectCard project={project} />)}
+      {
+        projects.map((project, index) => (
+          <ProjectCard project={project} figure={index + 1} />
+        ))
+      }
     </div>
   </div>
 </section>
@@ -30,7 +31,7 @@ import { projects } from "@/utils/projects";
   .projects__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
-    gap: 4rem 5rem;
+    gap: 4.5rem 5rem;
     margin-top: 3.3rem;
   }
 </style>

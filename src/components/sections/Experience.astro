@@ -1,7 +1,7 @@
 ---
 import i18next, { t } from "i18next";
 
-import Glow from "@/components/atoms/Glow.astro";
+import Divider from "@/components/atoms/Divider.astro";
 import TechTag from "@/components/atoms/TechTag.astro";
 import SectionTitle from "@/components/molecules/SectionTitle.astro";
 import { experience, formatMonth } from "@/utils/experience";
@@ -10,16 +10,10 @@ const lang = i18next.language;
 ---
 
 <section class="experience" id="experience" aria-labelledby="experience-title">
-  <Glow
-    tone="violet-grain"
-    style="top: -6.75rem; left: calc(50% - 44.2rem); width: 84.9rem; height: 78.4rem;"
-    duration={34}
-    dx="-2.5rem"
-    dy="2rem"
-  />
+  <Divider />
 
   <div class="container">
-    <SectionTitle id="experience-title">{t("experience.title")}</SectionTitle>
+    <SectionTitle sheet="experience" id="experience-title">{t("experience.title")}</SectionTitle>
 
     {
       experience.map(({ company, role, start, end, projects }) => (
@@ -78,10 +72,15 @@ const lang = i18next.language;
     padding-block: var(--section-space);
   }
 
-  /* The rail runs from the employer down through its projects */
+  /*
+   * One vertical line runs from the employer node down through its projects.
+   * It starts at the employer node's center, so the square reads as its origin.
+   */
   .job {
     --line-x: 0px;
     --dot: 14px;
+    --job-dot: 18px;
+    --job-dot-top: 9px;
 
     position: relative;
     display: grid;
@@ -93,7 +92,7 @@ const lang = i18next.language;
     &::after {
       content: "";
       position: absolute;
-      top: 0;
+      top: calc(var(--job-dot-top) + var(--job-dot) / 2);
       bottom: 0;
       left: var(--line-x);
       width: 1px;
@@ -105,11 +104,7 @@ const lang = i18next.language;
     }
 
     &::after {
-      background: linear-gradient(
-        180deg,
-        var(--timeline-dot),
-        var(--accent-pink)
-      );
+      background: var(--accent-cyan);
       transform-origin: top;
     }
   }
@@ -130,7 +125,7 @@ const lang = i18next.language;
   .timeline__item {
     position: relative;
     display: grid;
-    grid-template-columns: 11rem minmax(0, 46rem);
+    grid-template-columns: 12.5rem minmax(0, 46rem);
     column-gap: 3rem;
 
     @media (max-width: 760px) {
@@ -138,40 +133,41 @@ const lang = i18next.language;
     }
   }
 
+  /* Project nodes: a ring on the line that fills in pink as you reach it */
   .timeline__dot {
     position: absolute;
-    top: 17px;
+    top: 13px;
     left: calc(-2.25rem - var(--dot) / 2 + 0.5px);
     width: var(--dot);
     height: var(--dot);
+    border: 1px solid var(--accent-cyan);
     border-radius: 50%;
-    background: var(--timeline-dot);
-    box-shadow: 0 0 0 4px
-      color-mix(in oklab, var(--timeline-dot) 18%, transparent);
+    background: var(--bg-page);
     transition:
-      scale 0.45s var(--ease-out),
-      opacity 0.3s ease,
+      background-color 0.4s ease,
+      border-color 0.4s ease,
       box-shadow 0.45s ease;
   }
 
+  /* The employer node is a survey mark: a square with a crosshair, centered on the same line */
   .timeline__dot--job {
-    --dot: 18px;
+    --dot: var(--job-dot);
 
-    top: 9px;
-  }
-
-  :global(.js)
-    .timeline__item:not(.is-active, .timeline__item--job)
-    .timeline__dot {
-    opacity: 0.45;
-    scale: 0.8;
+    top: var(--job-dot-top);
+    z-index: 1;
+    border-radius: 2px;
+    background:
+      linear-gradient(var(--accent-cyan), var(--accent-cyan)) center / 100% 1px
+        no-repeat,
+      linear-gradient(var(--accent-cyan), var(--accent-cyan)) center / 1px 100%
+        no-repeat,
+      var(--bg-page);
   }
 
   .timeline__item.is-active .timeline__dot {
-    scale: 1.1;
-    box-shadow:
-      0 0 0 5px color-mix(in oklab, var(--timeline-dot) 26%, transparent),
-      0 0 22px 2px color-mix(in oklab, var(--timeline-dot) 70%, transparent);
+    border-color: var(--accent-pink);
+    background: var(--accent-pink);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent-pink) 22%, transparent);
   }
 
   .timeline__when {
@@ -192,9 +188,11 @@ const lang = i18next.language;
   .timeline__dates {
     display: inline-flex;
     gap: 0.3rem;
-    font-size: 1rem;
+    font-family: var(--font-mono);
+    font-size: var(--mono-sm);
     font-weight: 500;
-    color: var(--text-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--accent-cyan);
   }
 
   .timeline__company {
@@ -235,6 +233,8 @@ const lang = i18next.language;
   }
 
   .timeline__domain {
+    font-family: var(--font-mono);
+    font-size: var(--mono-xs);
     color: var(--text-soft);
   }
 

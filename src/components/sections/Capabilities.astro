@@ -24,13 +24,16 @@ const capabilities = [
 >
   <Divider />
   <div class="container">
-    <SectionTitle id="capabilities-title"
+    <SectionTitle sheet="capabilities" id="capabilities-title"
       >{t("capabilities.title")}</SectionTitle
     >
     <ul class="capabilities__list">
       {
-        capabilities.map(({ id, href }) => (
+        capabilities.map(({ id, href }, index) => (
           <li class="capability">
+            <span class="capability__ref" aria-hidden="true">
+              {`${String.fromCharCode(65 + Math.floor(index / 2))}${(index % 2) + 1}`}
+            </span>
             <h3 class="capability__title">
               {t(`capabilities.items.${id}.title`)}
             </h3>
@@ -49,38 +52,51 @@ const capabilities = [
 <style>
   .capabilities {
     position: relative;
-    padding-block: clamp(3.5rem, 2rem + 4vw, 6rem) var(--section-space);
-  }
+    /* A shorter top, in grid steps, so the section peeks in under the hero */
+    padding-block: 4rem var(--section-space);
 
-  .capabilities__list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 3rem clamp(2.5rem, 1rem + 4vw, 5rem);
-    margin-top: 2.6rem;
-
-    @media (max-width: 760px) {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 2.4rem;
+    @media (min-width: 768px) {
+      padding-top: 5rem;
     }
   }
 
-  /* A hairline with a short accent run, echoing the section title bar */
+  /* A 2×2 schedule: cells share hairlines, each keyed by its grid reference */
+  .capabilities__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 2.6rem;
+    border-top: 1px solid var(--line-strong);
+    border-left: 1px solid var(--line-strong);
+
+    @media (max-width: 760px) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
   .capability {
     position: relative;
     display: flex;
     flex-direction: column;
-    padding-top: 1.4rem;
-    border-top: 1px solid var(--line);
+    padding: 1.8rem clamp(1.25rem, 0.5rem + 2vw, 2.2rem) 1.4rem;
+    border-right: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+    background: color-mix(in oklab, var(--bg-page) 55%, transparent);
+    transition: background-color 0.3s ease;
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: -1px;
-      left: 0;
-      width: 2.75rem;
-      height: 2px;
-      background: var(--title-bar);
+    &:hover {
+      background: color-mix(in oklab, var(--accent-cyan) 5%, var(--bg-page));
     }
+  }
+
+  .capability__ref {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: var(--mono-xs);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--accent-cyan);
   }
 
   .capability__title {
@@ -104,7 +120,8 @@ const capabilities = [
     align-self: flex-start;
     gap: 0.4rem;
     min-height: 2.75rem;
-    margin-top: 0.4rem;
+    margin-top: auto;
+    padding-top: 0.6rem;
     font-weight: 600;
     color: var(--text);
     text-decoration: underline;
