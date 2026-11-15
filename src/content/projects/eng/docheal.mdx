@@ -1,10 +1,10 @@
 ---
   title: "DocHeal"
   description: "A web app for booking doctor appointments, making communication between patients and doctors simple and efficient."
-  project_img: "../../../../public/assets/turnos.jpg"
+  project_img: "../../../../public/assets/docheal-live.webp"
   github_repo: "https://github.com/EliasPereyra/docheal"
   live_link: "https://docheal.vercel.app/"
-  summary: "DocHeal offers a clean interface and a smooth user experience, making appointment scheduling efficient for both patients and doctors. It also sends SMS notifications so patients get updates on their appointments. The goal of the app is to make booking a medical appointment a hassle-free process."
+  summary: "Booking a doctor's appointment usually means phone calls, waiting, and filling in the same details over and over. With DocHeal, patients sign up, enter their personal and medical information once, and request an appointment in a few steps. When the doctor confirms or cancels it, they get an SMS. On the other side, an admin dashboard lists every appointment and lets staff manage them."
   key_features: 
     - "Sign up with email and password"
     - "Store all your personal and medical information"
@@ -13,12 +13,12 @@
     - "An admin dashboard to manage patient information and appointments"
     - "Responsive design for different screen sizes"
   design_goals: 
-    - title: "Clean interface"
-      description: "The design follows solid UI/UX principles, making it easy to navigate and understand."
-    - title: "Security and privacy"
-      description: "The app uses Zod to validate user data, ensuring that only valid information is sent to the server."
-    - title: "Front-end focus"
-      description: "By relying on Appwrite (a BaaS), the front-end can focus on improving the user experience and making it more efficient."
-    - title: "Responsive design"
-      description: "So users can access the web app from any device, regardless of its screen size."
+    - title: "Keep the API key out of the browser"
+      description: "Every Appwrite operation runs in Next.js Server Actions with the Node SDK, so the API key never reaches the browser."
+    - title: "A ready-made backend to focus on UX"
+      description: "A BaaS handles the database, file storage, and SMS delivery. That let me focus on the patient and admin experience."
+    - title: "Long forms without submit-time errors"
+      description: "React Hook Form and Zod schemas give instant feedback on long forms, like the one for personal and medical details."
+    - title: "Manage appointments and notify patients"
+      description: "Appointments are listed in a table with their status (scheduled, pending, or cancelled) and actions to confirm or cancel them, which triggers the SMS to the patient."
 ---

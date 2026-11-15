@@ -1,11 +1,4 @@
 import { getCollection, type CollectionEntry } from "astro:content";
-import { techColors } from "./TechColors";
-
-export interface TagData {
-  tagName: string;
-  tagIcon: string;
-  tagColor: string | undefined;
-}
 
 export interface Project {
   title: string;
@@ -16,7 +9,8 @@ export interface Project {
     secondParagraph: string;
     thirdParagraph: string;
   };
-  tags: TagData[];
+  solved: string;
+  tags: string[];
   highlightTags: string[];
   live_link: string;
   repo_link: string;
@@ -27,58 +21,24 @@ export const projects: Project[] = [
   {
     title: "WorkStart",
     slug: "workstart",
-    project_img: "/assets/workstart.png",
+    project_img: "/assets/workstart-live.webp",
     description: {
       firstParagraph: "cards.workstart.first-paragraph",
       secondParagraph: "cards.workstart.second-paragraph",
       thirdParagraph: "cards.workstart.third-paragraph",
     },
+    solved: "cards.workstart.solved",
     tags: [
-      {
-        tagName: "Next.js",
-        tagIcon: "/assets/icons/nextdotjs.svg",
-        tagColor: techColors.NextJs.description,
-      },
-      {
-        tagName: "React.js",
-        tagIcon: "/assets/icons/react.svg",
-        tagColor: techColors.React.description,
-      },
-      {
-        tagName: "TypeScript",
-        tagIcon: "/assets/icons/typescript.svg",
-        tagColor: techColors.TS.description,
-      },
-      {
-        tagName: "Sanity",
-        tagIcon: "/assets/icons/sanity.svg",
-        tagColor: techColors.Sanity.description,
-      },
-      {
-        tagName: "Neon",
-        tagIcon: "/assets/icons/neon.svg",
-        tagColor: techColors.Neon.description,
-      },
-      {
-        tagName: "PostgreSQL",
-        tagIcon: "/assets/icons/postgresql.svg",
-        tagColor: techColors.PostgreSQL.description,
-      },
-      {
-        tagName: "Vitest",
-        tagIcon: "/assets/icons/vitest.svg",
-        tagColor: techColors.Vitest.description,
-      },
-      {
-        tagName: "Better Auth",
-        tagIcon: "/assets/icons/betterauth.svg",
-        tagColor: techColors.BetterAuth.description,
-      },
-      {
-        tagName: "Figma",
-        tagIcon: "/assets/icons/figma.svg",
-        tagColor: techColors.Figma.description,
-      },
+      "Next.js",
+      "React.js",
+      "TypeScript",
+      "Sanity",
+      "Neon",
+      "PostgreSQL",
+      "Vitest",
+      "Testing Library",
+      "Better Auth",
+      "Figma",
     ],
     highlightTags: [
       "Next.js",
@@ -88,74 +48,31 @@ export const projects: Project[] = [
       "Better Auth",
       "Vitest",
     ],
-    live_link: "",
+    live_link: "https://job-platform-two.vercel.app/",
     repo_link: "https://github.com/EliasPereyra/job-platform",
   },
   {
     title: "DocHeal",
     slug: "docheal",
-    project_img: "/assets/turnos.jpg",
+    project_img: "/assets/docheal-live.webp",
     description: {
       firstParagraph: "cards.turnos.first-paragraph",
       secondParagraph: "cards.turnos.second-paragraph",
       thirdParagraph: "cards.turnos.third-paragraph",
     },
+    solved: "cards.turnos.solved",
     tags: [
-      {
-        tagName: "Next.js",
-        tagIcon: "/assets/icons/nextdotjs.svg",
-        tagColor: techColors.NextJs.description,
-      },
-      {
-        tagName: "React.js",
-        tagIcon: "/assets/icons/react.svg",
-        tagColor: techColors.React.description,
-      },
-      {
-        tagName: "TypeScript",
-        tagIcon: "/assets/icons/typescript.svg",
-        tagColor: techColors.TS.description,
-      },
-      {
-        tagName: "Shadcn",
-        tagIcon: "/assets/icons/shadcnui.svg",
-        tagColor: techColors.ShadcnUI.description,
-      },
-      {
-        tagName: "TailwindCSS",
-        tagIcon: "/assets/icons/tailwindcss.svg",
-        tagColor: techColors.TailwindCSS.description,
-      },
-      {
-        tagName: "Appwrite",
-        tagIcon: "/assets/icons/appwrite.svg",
-        tagColor: techColors.Appwrite.description,
-      },
-      {
-        tagName: "React Hook Form",
-        tagIcon: "/assets/icons/reacthookform.svg",
-        tagColor: techColors.reactHookForm.description,
-      },
-      {
-        tagName: "React Table",
-        tagIcon: "/assets/icons/reacttable.svg",
-        tagColor: techColors.ReactTable.description,
-      },
-      {
-        tagName: "Zod",
-        tagIcon: "/assets/icons/zod.svg",
-        tagColor: techColors.DotNet.description,
-      },
-      {
-        tagName: "Playwright",
-        tagIcon: "/assets/icons/playwright.svg",
-        tagColor: techColors.Playwright.description,
-      },
-      {
-        tagName: "Figma",
-        tagIcon: "/assets/icons/figma.svg",
-        tagColor: techColors.Figma.description,
-      },
+      "Next.js",
+      "React.js",
+      "TypeScript",
+      "Shadcn",
+      "TailwindCSS",
+      "Appwrite",
+      "React Hook Form",
+      "React Table",
+      "Zod",
+      "Playwright",
+      "Figma",
     ],
     highlightTags: [
       "Next.js",
